@@ -5,6 +5,7 @@
 	<title><?= $this->e($title) ?></title>
 
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
 </head>
 <body>
 	<div class="container">
