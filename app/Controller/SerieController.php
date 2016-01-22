@@ -12,7 +12,13 @@ class SerieController extends Controller
 	 */
 	public function detail()
 	{
-		$this->show('serie/detail');
+		$serieManager = new \Manager\SerieManager();
+
+		$series = $serieManager->findAll();
+
+		$this->show('serie/detail', [
+			"series" => $series
+		]);
 	}
 
 }
