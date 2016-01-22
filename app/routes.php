@@ -8,4 +8,7 @@
 
 		//page de détail d'une série
 		['GET|POST', '/detail/', 'Serie#detail', 'detail'],
+
+		//page de profil (avec liste des séries)
+		['GET', '/profile/', 'Profile#profile', 'profile'],
 	);
