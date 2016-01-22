@@ -17,6 +17,9 @@
 				<ul class="nav nav-tabs">
 					<li><a href="<?php echo $this->url('home') ?>" title="Accueil">Accueil</a></li>
 					<li><a href="<?php echo $this->url('register') ?>" title="Inscription">Inscription</a></li>
+					<input type="username" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<button type="submit">Login</button>
 				</ul>
 			</nav>
 
