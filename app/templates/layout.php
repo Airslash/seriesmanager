@@ -17,9 +17,13 @@
 				<ul class="nav nav-tabs">
 					<li><a href="<?php echo $this->url('home') ?>" title="Accueil">Accueil</a></li>
 					<li><a href="<?php echo $this->url('register') ?>" title="Inscription">Inscription</a></li>
+<<<<<<< HEAD
 					<input type="username" name="username" placeholder="Username">
 					<input type="password" name="password" placeholder="Password">
 					<button type="submit">Login</button>
+=======
+					<li><a href="<?php echo $this->url('profile') ?>" title="Profile">Profile</a></li>
+>>>>>>> origin/master
 				</ul>
 			</nav>
 
