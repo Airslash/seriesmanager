@@ -15,7 +15,7 @@ class UserController extends Controller
 
 		$passwordError = "";
 
-		// soumision du formulaire
+		// Vérification de formulaire
 		if ($_POST){
 			$username = $_POST['username'];
 			$email = $_POST['email'];
@@ -32,6 +32,7 @@ class UserController extends Controller
 
 			$userManager = new \Manager\UserManager();
 
+			// Email déjà existant
 			if ($userManager->emailExists($email) ){
 				$isValid = false;
 				$passwordError = "Email déjà utilisé !";
@@ -60,8 +61,3 @@ class UserController extends Controller
 
 	}
 }
-			
-
-// Vérification de formulaire
-// Email déjà existant
-// mot de passe etc... une fois base de données prête
