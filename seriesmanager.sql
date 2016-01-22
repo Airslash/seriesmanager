@@ -42,6 +42,20 @@ USE `seriesmanager`;
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `bookmarks`
+-- Table de jointure qui nous permet de relier un utilisateur à un type d'élément (serie ou episode)
+
+DROP TABLE IF EXISTS `bookmarks`;
+CREATE TABLE IF NOT EXISTS `bookmarks` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `element_id` int(10) UNSIGNED NOT NULL,
+  -- `status` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `episodes`
 --
 
@@ -49,11 +63,11 @@ DROP TABLE IF EXISTS `episodes`;
 CREATE TABLE IF NOT EXISTS `episodes` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `imdb_id` varchar(191) NOT NULL,
-  `season` varchar(255) NOT NULL,
   `title` varchar(191) NOT NULL,
-  `date` datetime NOT NULL,
   `poster` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `season` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -69,11 +83,12 @@ CREATE TABLE IF NOT EXISTS `series` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `imdb_id` varchar(191) NOT NULL,
   `title` varchar(191) NOT NULL,
-  `start_date` datetime NOT NULL,
-  `end_date` datetime DEFAULT NULL,
-  `actors` varchar(255) NOT NULL,
   `poster` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `actors` varchar(255) NOT NULL,
+  `genre` varchar(255) NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_title` (`title`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
