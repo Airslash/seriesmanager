@@ -10,17 +10,17 @@
 <body>
 	<div class="container">
 		<header>
-<<<<<<< HEAD
-			<h1>W :: <?= $this->e($title) ?></h1>
+
+			<h1>SeriesManager :: <?= $this->e($title) ?></h1>
+
 			<nav>
 				<ul class="nav nav-tabs">
 					<li><a href="<?php echo $this->url('home') ?>" title="Accueil">Accueil</a></li>
 					<li><a href="<?php echo $this->url('register') ?>" title="Inscription">Inscription</a></li>
 				</ul>
 			</nav>
-=======
-			<h1>SeriesManager :: <?= $this->e($title) ?></h1>
->>>>>>> origin/master
+
+			
 		</header>
 
 		<section>
