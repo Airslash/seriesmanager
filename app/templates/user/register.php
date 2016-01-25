@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Inscription']) ?>
 
 <?php $this->start('main_content') ?>
-	<h1>Inscription</h1>
+	<h1>Register</h1>
 
 
 	<form method="POST" novalidate>
