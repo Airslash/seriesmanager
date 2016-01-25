@@ -13,6 +13,12 @@
 			<div id="serie-actors"><?= $serie["actors"] ?></div>
 			<div id="serie-description"><?= $serie["description"] ?></div>
 		</div>
+
+		<a href="http://www.amazon.fr/s/ref=nb_sb_noss_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=<?= $serie["title"] ?>" target="_blank">Amazon</a>
+
+		<br />
+
+		<a href="https://kat.cr/usearch/<?= $serie["title"] ?>/" target="_blank">Voir un extrait</a>
 	
 	<?php endforeach; ?>
 	
