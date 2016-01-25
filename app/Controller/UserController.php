@@ -60,4 +60,50 @@ class UserController extends Controller
 		]);
 
 	}
+
+	/**
+	 * Page de connexion
+	 */
+
+	public function login()
+	{
+		if (!empty($_POST)){
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+
+			$authentificationManager = new \W\Security\AuthentificationManager;
+			$result = $authentificationManager->isValidLoginInfo( $username, $password);
+			// connexion réussie
+			if ($result){
+				// on récupère le user en base de données
+				$userManager = new \Manager\UserManager;
+				$user = $userManager->find($result);
+				
+			// on le connecte
+				$authentificationManager->logUserIn($user);
+			}
+			// mauvais identifiant
+			else {
+				echo "Wrong id";
+			}
+		}
+
+		$this->show("user/login");
+	}
+
+	/**
+	 * Page de déconnexion
+	 */
+
+	public function logout()
+	{
+		$authentificationManager = new \W\Security\AuthentificationManager;
+
+		$authentificationManager->logUserOut();
+
+
+		$this->show("user/logout");
+	}
+	
+
 }
