@@ -1,21 +1,44 @@
 <?php $this->layout('layout', ['title' => 'Inscription']) ?>
 
 <?php $this->start('main_content') ?>
-	<h1>Inscription</h1>
-
-
-	<form method="POST" novalidate>
+	
+	<form method="POST" class="form-horizontal" novalidate>
 		
-		<label for="username">Enter your username</label>	
-		<input type="text" name="username" placeholder="Enter your username"><br />
-		<label for="email">Enter your email</label>
-		<input type="email" name="email" placeholder="Enter your email"><br />
-		<label for="password">Enter your password</label>
-		<input type="password" name="password" placeholder="Enter your password"><br />
-		<label for="password_bis">Confirm your password</label>
-		<input type="password" name="password_bis" placeholder="Confirm your password">
+		<div class="form-group">	
+			<label for="username" class="col-sm-2 control-label">Enter your username</label>
+			<div class="col-sm-4">	
+				<input type="text" class="form-control" name="username" placeholder="Enter your username">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="email" class="col-sm-2 control-label">Enter your email</label>
+			<div class="col-sm-4">
+				<input type="email" class="form-control" name="email" placeholder="Enter your email">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="password" class="col-sm-2 control-label">Enter your password</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" name="password" placeholder="Enter your password">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="password_bis" class="col-sm-2 control-label">Confirm your password</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" name="password_bis" placeholder="Confirm your password">
+			</div>
+		</div>
+
 		<?php echo $passwordError; ?><br />
-		<button type="submit">Register</button>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Register</button>
+			</div>
+		</div>
 
 		</form>
 
