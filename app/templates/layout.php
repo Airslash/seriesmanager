@@ -43,6 +43,8 @@
 	</div>
 
 	<script src="<?= $this->assetUrl('js/jquery-1.12.0.min.js') ?>"></script>
+	<script src="<?= $this->assetUrl('js/masonry.pkgd.js') ?>"></script>
+	<script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
 </body>
 </html>
