@@ -1,13 +1,9 @@
 <?php $this->layout('layout', ['title' => 'Inscription']) ?>
 
 <?php $this->start('main_content') ?>
-<<<<<<< HEAD
+
 	<h1>Register</h1>
 
-
-	<form method="POST" novalidate>
-=======
-	
 	<form method="POST" class="form-horizontal" novalidate>
 		
 		<div class="form-group">	
@@ -23,7 +19,6 @@
 				<input type="email" class="form-control" name="email" placeholder="Enter your email">
 			</div>
 		</div>
->>>>>>> origin/master
 		
 		<div class="form-group">
 			<label for="password" class="col-sm-2 control-label">Enter your password</label>
@@ -47,6 +42,6 @@
 			</div>
 		</div>
 
-		</form>
+	</form>
 
 <?php $this->stop('main_content') ?>
