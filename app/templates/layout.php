@@ -16,6 +16,7 @@
 
 	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
 
+<<<<<<< HEAD
 
 	<!--Navigation bar -->
 
@@ -51,6 +52,22 @@
 			        <li><a href="<?php echo $this->url('register') ?>" title="Inscription">Register</a></li>
 			        <li><a href="<?php echo $this->url('profile') ?>" title="Profile">Profile</a></li>
 		       	</ul>
+=======
+			<nav>
+				<ul class="nav nav-tabs">
+					<li><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+					<li><a href="<?php echo $this->url('register') ?>" title="Signin">Register</a></li>
+
+					<li><a href="<?php echo $this->url('profile') ?>" title="Profile">Profile</a></li>
+				
+				<form action="<?php echo $this->url('login') ?>" method="POST">
+					<input type="username" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<input type="submit" value="Login" />
+
+					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
+				</form>
+>>>>>>> origin/master
 
 
       		<!--form class="navbar-form navbar-left" role="search">
@@ -100,7 +117,11 @@
 	<!--/div-->
 
 	<script src="<?= $this->assetUrl('js/jquery-1.12.0.min.js') ?>"></script>
+<<<<<<< HEAD
 	<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>"></script>
+=======
+	<script src="<?= $this->assetUrl('js/masonry.pkgd.js') ?>"></script>
+>>>>>>> origin/master
 	<script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
 </body>
