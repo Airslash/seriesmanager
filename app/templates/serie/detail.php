@@ -18,7 +18,7 @@
 
 		<br />
 
-		<a href="https://kat.cr/usearch/<?= $serie["title"] ?>/" target="_blank">Voir un extrait</a>
+		<a href="https://kat.cr/usearch/<?= $serie["title"] ?>/" target="_blank">Get torrents</a>
 	
 	<?php endforeach; ?>
 	

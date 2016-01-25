@@ -11,4 +11,7 @@
 
 		//page de profil (avec liste des séries)
 		['GET', '/profile/', 'Profile#profile', 'profile'],
+
+		//page de détail d'un épisode
+		['GET', '/episode_detail/', 'Episode#episode_detail', 'episode_detail'],
 	);
