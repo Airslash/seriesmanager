@@ -64,6 +64,7 @@ DROP TABLE IF EXISTS `episodes`;
 CREATE TABLE IF NOT EXISTS `episodes` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `imdb_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `serie_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
