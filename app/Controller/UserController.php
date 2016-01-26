@@ -81,11 +81,13 @@ class UserController extends Controller
 				
 			// on le connecte
 				$authentificationManager->logUserIn($user);
-			}
-			// mauvais identifiant
+
+			} 
+
 			else {
-				echo "Wrong id";
+
 			}
+			
 		}
 
 		$this->show("user/login");
