@@ -6,24 +6,19 @@
 <div class="container-fluid" id="header">
 
 	<div id="series-carousel" class="carousel container slide">
-  <div class="carousel-inner">
+  		<div class="carousel-inner">
             <div class="active item one"></div>
             <div class="item two"></div>
             <div class="item three"></div>
-            
-  </div>
-
-  </div>
+        </div>
+  	</div>
+</div>
 
 
 <?= $this->stop('header') ?>
 
 <?php $this->start('main_content') ?>
 	
-
-
-
-
 
 
 
