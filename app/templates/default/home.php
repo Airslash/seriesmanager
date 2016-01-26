@@ -10,6 +10,7 @@
             <div class="active item one"></div>
             <div class="item two"></div>
             <div class="item three"></div>
+            <div class="item four"></div>
             
   </div>
 

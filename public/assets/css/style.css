@@ -81,7 +81,14 @@ Diaporama
     -moz-background-size: cover;
 }
 .carousel .three {
-    background: url(../img/bg.jpg);
+    background: url(../img/parks.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -moz-background-size: cover;
+}
+
+.carousel .four {
+    background: url(../img/sunny.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     -moz-background-size: cover;
