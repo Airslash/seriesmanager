@@ -21,4 +21,7 @@
 		//page de déconnexion
 		['GET|POST', '/logout/', 'User#logout', 'logout'],
 
+
+		//page de détail d'un épisode
+		['GET', '/episode_detail/', 'Episode#episode_detail', 'episode_detail'],
 	);
