@@ -70,10 +70,10 @@
 
 
 		<form class="navbar-form" role="search">
-        	<div class="form-group">
+        	<div id="search-input" class="form-group">
           		<input type="text" class="form-control" placeholder="Search">
           	 </div>
-    			<button type="submit" class="btn btn-default">Submit</button>
+    			<button type="submit" class="btn btn-default">Search</button>
       	</form>
 
 
