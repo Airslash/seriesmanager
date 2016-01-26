@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `episodes` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `episode` int(10) UNSIGNED NOT NULL,
   `season` int(10) UNSIGNED NOT NULL,
-  `date` date NOT NULL,
+  `air_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
