@@ -1,5 +1,5 @@
 html, body {
-
+    color: black;
 	
 }
 
@@ -15,7 +15,7 @@ html, body {
 
 #signIn{
 	float: right;
-	background-color: rgba(45,46,50,0.5);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 /*********************************
 Barre de recherche
@@ -26,7 +26,7 @@ Barre de recherche
 
 .navbar.navbar-default {
 	width: 100%; 
-	background-color: rgba(45,46,50,0.5);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .navbar-form {
@@ -38,26 +38,29 @@ Barre de recherche
 .navbar-form input{
 	
 	float: left;
-	background-color: rgba(45,46,50,0.5);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 
 .navbar-form button{
 	margin-left: 5px; 
 	float: right;
-	background-color: rgba(45,46,50,0.5);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
-#search-input .form-control {
+/* #search-input .form-control {
     width: 500px;
 }
-
+ */
 
 /*************************
 Diaporama
 /*************************/
 
-.carousel { z-index: -99; } /* keeps this behind all content */
+.carousel { /* keeps this behind all content */
+    z-index: -99; 
+} 
+
 .carousel .item {
     position: fixed; 
     width: 100%; height: 100%;

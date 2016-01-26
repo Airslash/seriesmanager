@@ -57,7 +57,7 @@
 				<form action="<?php echo $this->url('login') ?>" method="POST">
 					<input type="username" name="username" placeholder="Username">
 					<input type="password" name="password" placeholder="Password">
-					<input type="submit" value="Login" />
+					<input type="submit" value="Login" >
 
 					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
 				</form>
