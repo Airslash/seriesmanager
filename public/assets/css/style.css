@@ -3,6 +3,11 @@ html, body {
 	
 }
 
+ #main-content {
+    width: 1300px;
+    margin: auto;
+ }
+
 .navbar-header {
 	width: 100%; 
 }

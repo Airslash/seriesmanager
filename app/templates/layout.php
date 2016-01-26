@@ -14,6 +14,8 @@
 
 <body>
 
+	<div id="main-content">
+
 	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
 
 
@@ -84,6 +86,8 @@
 
 		<footer>
 		</footer>
+
+	</div>
 
 
 
