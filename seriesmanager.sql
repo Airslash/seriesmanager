@@ -100,7 +100,6 @@ CREATE TABLE IF NOT EXISTS `series` (
   `seasons` int(10) UNSIGNED NOT NULL,
   `start_date` year(4) NOT NULL,
   `end_date` year(4) DEFAULT NULL,
-  `amazon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_title` (`title`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
