@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `series` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `actors` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seasons` int(10) UNSIGNED NOT NULL,
+  `season_count` int(10) UNSIGNED NOT NULL,
   `start_date` year(4) NOT NULL,
   `end_date` year(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
