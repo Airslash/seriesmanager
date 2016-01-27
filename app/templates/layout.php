@@ -16,10 +16,8 @@
 
 	<div id="main-content">
 
-<<<<<<< HEAD
 	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
-=======
->>>>>>> refs/remotes/origin/master
+
 	<!--Navigation bar -->
 
  		<!-- <nav class="navbar navbar-default" role="navigation"> -->
@@ -37,7 +35,6 @@
 					?>
 					<p>Vous êtes connecté en tant que <?= $w_user['username'] ?></p>
 
-<<<<<<< HEAD
 			</div><!-- navbar-header -->
 
     		<!--Drop-down menu-->
@@ -55,7 +52,7 @@
 					<input type="password" name="password" placeholder="Password">
 
 					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
-=======
+
 					<!-- logout -->
 					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
 
@@ -76,15 +73,13 @@
 					<a href="<?php echo $this->url('password') ?>" title="Password">Forgot your password ?</a>
 					<br />
 					<input type="submit" value="Log In" >
->>>>>>> refs/remotes/origin/master
+
 				</form>
 				
 				<?php 
 				}
 				?>
 			
-
-
 
     		<!--menu-->
     		<?php
@@ -117,9 +112,6 @@
 		<!--Diaporama de la page home.php-->
 		<?= $this->section('header') ?> 
 
-
-<<<<<<< HEAD
-=======
 		<!-- <form class="navbar-form" role="search">
 		        	<div id="search-input" class="form-group">
 		          		<input type="text" class="form-control" placeholder="Search">
@@ -128,10 +120,6 @@
 		      	</form>
 		 -->
 
-
-
-
->>>>>>> refs/remotes/origin/master
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>

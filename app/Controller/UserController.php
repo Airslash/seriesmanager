@@ -78,7 +78,7 @@ class UserController extends Controller
 				// on récupère le user en base de données
 				$userManager = new \Manager\UserManager;
 				$user = $userManager->find($result);
-				var_dump($result);
+				
 			// on le connecte
 				$authentificationManager->logUserIn($user);
 			} 

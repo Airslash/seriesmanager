@@ -3,7 +3,7 @@
 
 <?= $this->start('header') ?>
 
-<<<<<<< HEAD
+
 <div class="container-fluid" id="header">
 
 	<div id="series-carousel" class="carousel container slide">
@@ -13,7 +13,7 @@
           <div class="item three"></div>
           <div class="item four"></div>
       </div>
-=======
+
 <!-- carousel -->
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Wrapper for slides -->
@@ -33,7 +33,7 @@
       <div class="carousel-caption">
       </div>
     </div>
->>>>>>> refs/remotes/origin/master
+
   </div>
 </div>
 
