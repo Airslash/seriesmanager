@@ -3,6 +3,9 @@
 	//autochargement des classes
 	require("../vendor/autoload.php");
 
+	//chargement de Simple Dom HTML Parser
+	require("../vendor/simplehtmldom/simple_html_dom.php");
+
 	//configuration
 	require("../app/config.php");
 

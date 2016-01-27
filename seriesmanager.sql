@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `episodes` (
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `episode` int(10) UNSIGNED NOT NULL,
   `season` int(10) UNSIGNED NOT NULL,
-  `date` date NOT NULL,
+  `episode` int(10) UNSIGNED NOT NULL,
+  `air_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -97,10 +97,9 @@ CREATE TABLE IF NOT EXISTS `series` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `actors` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seasons` int(10) UNSIGNED NOT NULL,
+  `season_count` int(10) UNSIGNED NOT NULL,
   `start_date` year(4) NOT NULL,
   `end_date` year(4) DEFAULT NULL,
-  `amazon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_title` (`title`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
