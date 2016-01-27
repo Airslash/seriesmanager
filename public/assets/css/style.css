@@ -1,6 +1,7 @@
 html, body {
     color: black;
     background-color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
 	
 }
 
@@ -37,7 +38,34 @@ header {
 
 #log-nav {
     float: right;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 200px;
+    height: 160px;
 }
+
+ #pw-forgot, #login-input {
+    margin-left: 18px;
+ }
+
+ #pw-forgot {
+    font-size: 11px;
+ }
+
+ #log-form input {
+    width: 144px;
+ }
+
+ /* menu */
+ #menu a, #menu-logout a {
+    font-size: 18px;
+ }
+
+ #menu a:hover, #menu-logout a:hover {
+    background-color: #23BDEF;
+ }
 
 /*********************************
 Barre de recherche

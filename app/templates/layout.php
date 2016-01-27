@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/normalize.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 
 
@@ -30,7 +31,7 @@
 			<?php
 				if (!empty($w_user)) {
 					?>
-					<p>Vous êtes connecté en tant que <?= $w_user['username'] ?></p>
+					<p>You are logged as <?= $w_user['username'] ?></p>
 
 					<!-- logout -->
 					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
@@ -46,11 +47,10 @@
 					<div class="form-group">
 						<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 						<input type="password" name="password" placeholder="Password">
+						<a href="<?php echo $this->url('password') ?>" title="Password" id="pw-forgot">Forgot your password ?</a>
 					</div>
 
-					<a href="<?php echo $this->url('password') ?>" title="Password">Forgot your password ?</a>
-					<br />
-					<input type="submit" value="Log In" >
+					<input type="submit" value="Log In" id="login-input">
 
 				</form>
 				<?php 
@@ -83,18 +83,15 @@
     		
 		</header><!-- container-fluid-->
 
+		<form action="#" method="GET">
+			<input type="search" name="title" class="form-control" placeholder="Titre, acteurs...">
+		</form>
+
 		
 		<!--Diaporama de la page home.php-->
 		<?= $this->section('header') ?> 
 
-		<!-- <form class="navbar-form" role="search">
-		        	<div id="search-input" class="form-group">
-		          		<input type="text" class="form-control" placeholder="Search">
-		          	 </div>
-		    		<button type="submit" class="btn btn-default">Search</button>
-		      	</form>
-		 -->
-
+		
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>
