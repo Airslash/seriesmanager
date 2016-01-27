@@ -12,7 +12,6 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$scraper = new \Scraper\ImdbScraper("Les hauts et les bas de Sophie Paquin");
 		$this->show('default/home');
 	}
 }

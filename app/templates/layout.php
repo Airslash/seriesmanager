@@ -16,32 +16,28 @@
 
 	<div id="main-content">
 
+<<<<<<< HEAD
 	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
+=======
+>>>>>>> refs/remotes/origin/master
 	<!--Navigation bar -->
 
- 		<nav class="navbar navbar-default" role="navigation">
- 		
- 			<?= $this->section('header') ?> 
+ 		<!-- <nav class="navbar navbar-default" role="navigation"> -->
+ 
+  		<header class="container-fluid">
 
- 			<!--Diaporama de la page home.php-->
+		   	<!--logo-->
+	  		<a href="<?php echo $this->url('home') ?>" id="site-logo">
+	  			<img src="<?= $this->assetUrl('img/logoSM.png') ?>" alt="logo">
+  			</a>
 
-  		<div class="container-fluid">
-  			<div class="navbar-header">
-  				
-    	  		<!--burger-nav-->
-			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			   	</button>
+			<!-- login -->
+			<?php
+				if (!empty($w_user)) {
+					?>
+					<p>Vous êtes connecté en tant que <?= $w_user['username'] ?></p>
 
-			   	<!--logo-->
-    	  		<a class="navbar-brand" href="#home">SM</a>
-
-    	  		<button id="signIn" class="btn btn-default navbar-btn">Sign in</button>
-
-
+<<<<<<< HEAD
 			</div><!-- navbar-header -->
 
     		<!--Drop-down menu-->
@@ -59,24 +55,83 @@
 					<input type="password" name="password" placeholder="Password">
 
 					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
+=======
+					<!-- logout -->
+					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
+
+				<?php
+				}
+				else{?>
+				<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form">		
+					<div class="form-group">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						<input type="username" name="username" placeholder="Username">
+					</div>
+					
+					<div class="form-group">
+						<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+						<input type="password" name="password" placeholder="Password">
+					</div>
+
+					<a href="<?php echo $this->url('password') ?>" title="Password">Forgot your password ?</a>
+					<br />
+					<input type="submit" value="Log In" >
+>>>>>>> refs/remotes/origin/master
 				</form>
+				
+				<?php 
+				}
+				?>
+			
 
-				<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
 
-    		</div><!-- navbar-collapse -->
+
+    		<!--menu-->
+    		<?php
+    			if (!empty($w_user)) {
+    				?>
+		    		<div id="menu">
+			    		<ul class="nav nav-tabs">
+			    		  <li role="navigation"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+			    		  <li role="navigation"><a href="<?php echo $this->url('profile') ?>">Profile</a></li>
+			    		</ul>
+		    		</div>
+	    		<?php
+	    		}
+	    		else{?>
+		    		<div id="menu-logout">
+			    		<ul class="nav nav-tabs">
+			    		  <li role="navigation"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+			    		  <li role="navigation"><a href="<?php echo $this->url('register') ?>">Register</a></li>
+			    		</ul>
+		    		</div>
+	    		<?php 
+	    		}
+	    		?>
     		
-		</div><!-- container-fluid-->
+		</header><!-- container-fluid-->
+
+
 		
-		</nav>
+		
+		<!--Diaporama de la page home.php-->
+		<?= $this->section('header') ?> 
 
 
-		<form class="navbar-form" role="search">
-        	<div id="search-input" class="form-group">
-          		<input type="text" class="form-control" placeholder="Search">
-          	 </div>
-    		<button type="submit" class="btn btn-default">Search</button>
-      	</form>
+<<<<<<< HEAD
+=======
+		<!-- <form class="navbar-form" role="search">
+		        	<div id="search-input" class="form-group">
+		          		<input type="text" class="form-control" placeholder="Search">
+		          	 </div>
+		    		<button type="submit" class="btn btn-default">Search</button>
+		      	</form>
+		 -->
 
+
+
+
+>>>>>>> refs/remotes/origin/master
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>

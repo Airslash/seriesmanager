@@ -4,8 +4,8 @@ namespace Scraper;
 
 /**
  * Scrapes user query from imdb and returns all scraped data
- * @version        1.3
- * @last_modified  21:54 26/01/2016
+ * @version        1.4
+ * @last_modified  12:16 27/01/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @note           seasons and episodes arrays are indexed starting from 1
@@ -43,20 +43,24 @@ Class ImdbScraper {
 		$query = $this->query;
 
 		// Runs first scraping
-		$this->getSerieDetails($query);
+		$result = $this->getSerieDetails($query);
+		if ($result) {
+			// Gets $imdb_id from serie property
+			$imdb_id = $this->serie["imdb_id"];
+			// Runs second scraping for season count and additional details
+			$this->getSeasonCount($imdb_id);
 
-		// Gets $imdb_id from serie property
-		$imdb_id = $this->serie["imdb_id"];
-		// Runs second scraping for season count and additional details
-		$this->getSeasonCount($imdb_id);
+			// Gets $season_count from serie property
+			$season_count = $this->serie["season_count"];
 
-		// Gets $season_count from serie property
-		$season_count = $this->serie["season_count"];
+			// Scrapes all season episodes from serie
+			$this->getSeasons($imdb_id, $season_count);
 
-		// Scrapes all season episodes from serie
-		$this->getSeasons($imdb_id, $season_count);
-
-		return $this->serie;
+			return $this->serie;
+		} else {
+			// Query returned no results
+			return false;
+		}
 	}
 
 	/**
@@ -70,50 +74,59 @@ Class ImdbScraper {
 		// Builds idmb query url from user request
 		$html = file_get_html('http://www.imdb.com/search/title?title='.urlencode($query).'&title_type=tv_series');
 
-		// Gets first result from result list
-		// Narrows down parsed dom to first <tr>
-		$tr = $html->find('tr[class=even detailed]', 0);
+		// Returned result check
+		$main = $html->find('div[id=main]', 0)->plaintext;
+		if (trim($main) !== "No results.") {
 
-		// Gets $poster_src from <img>
-		$poster_src = $tr->find('img', 0)->src;
+			// Gets first result from result list
+			// Narrows down parsed dom to first <tr>
+			$tr = $html->find('tr[class=even detailed]', 0);
 
-		// Gets $poster_id from $poster_src
-		$poster_id = explode("@", explode("/", $poster_src)[5])[0];
+			// Gets $poster_src from <img>
+			$poster_src = $tr->find('img', 0)->src;
 
-		// Gets serie title from <a>
-		$a = $html->find('td[class=title] a', 0);
-		$title = $a->plaintext;
+			// Gets $poster_id from $poster_src
+			$poster_id = explode("@", explode("/", $poster_src)[5])[0];
 
-		// Gets imdb_id from <a>
-		$imdb_id = explode("/", $a->href)[2];
+			// Gets serie title from <a>
+			$a = $html->find('td[class=title] a', 0);
+			$title = $a->plaintext;
 
-		// Gets serie description from first <span>
-		$description = $html->find('span[class=outline]', 0)->plaintext;
-		$description = trim($description);
+			// Gets imdb_id from <a>
+			$imdb_id = explode("/", $a->href)[2];
 
-		// Gets genre from first <span>
-		$genre = $html->find('span[class=genre]', 0)->plaintext;
-		$genre = trim($genre);
+			// Gets serie description from first <span>
+			$description = $html->find('span[class=outline]', 0)->plaintext;
+			$description = trim($description);
 
-		// Gets main actors from first <span>
-		$actors = $html->find('span[class=credit]', 0)->plaintext;
-		$actors = explode("With: ", trim($actors))[1];
+			// Gets genre from first <span>
+			$genre = $html->find('span[class=genre]', 0)->plaintext;
+			$genre = trim($genre);
 
-		// How to build images src from $poster_id :
-		// $xxs    = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_UY67_CR0,0,45,67_AL_.jpg';
-		// $xs     = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1._SY74_CR0,0,54,74_.jpg';
-		// $small  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_UX67_CR0,0,67,98_AL_.jpg';
-		// $medium = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_SY317_CR0,0,214,317_AL_.jpg';
-		// $large  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_SX640_SY720_.jpg';
+			// Gets main actors from first <span>
+			$actors = $html->find('span[class=credit]', 0)->plaintext;
+			$actors = explode("With: ", trim($actors))[1];
 
-		$this->serie = [
-			"title"       => $title,
-			"description" => $description,
-			"genre"       => $genre,
-			"actors"      => $actors,
-			"imdb_id"     => $imdb_id,
-			"poster_id"   => $poster_id
-		];
+			// How to build images src from $poster_id :
+			// $xxs    = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_UY67_CR0,0,45,67_AL_.jpg';
+			// $xs     = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1._SY74_CR0,0,54,74_.jpg';
+			// $small  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_UX67_CR0,0,67,98_AL_.jpg';
+			// $medium = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_SY317_CR0,0,214,317_AL_.jpg';
+			// $large  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_SX640_SY720_.jpg';
+
+			$this->serie = [
+				"title"       => $title,
+				"description" => $description,
+				"genre"       => $genre,
+				"actors"      => $actors,
+				"imdb_id"     => $imdb_id,
+				"poster_id"   => $poster_id
+			];
+			return true;
+		} else {
+			// Query returned no results
+			return false;
+		}
 	}
 
 	/**
@@ -130,7 +143,7 @@ Class ImdbScraper {
 		$title = $html->find('head title', 0)->plaintext;
 
 		// Gets dates
-		$date = explode("–", rtrim(explode(" (TV Series ", $title)[1], ") - IMDb"));
+		$date = explode("â€“", rtrim(explode(" (TV Series ", $title)[1], ") - IMDb"));
 
 		// Narrows down parsed dom to target <div> (third one)
 		$div = $html->find('div[class=seasons-and-year-nav] div', 2);
