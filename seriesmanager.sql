@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `episodes` (
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `episode` int(10) UNSIGNED NOT NULL,
   `season` int(10) UNSIGNED NOT NULL,
+  `episode` int(10) UNSIGNED NOT NULL,
   `air_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_imdb_id` (`imdb_id`)
