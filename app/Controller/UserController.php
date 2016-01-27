@@ -84,8 +84,8 @@ class UserController extends Controller
 			} 
 
 			else {
-				// message d'erreur à faire
-				die("wrong id");
+				// message d'erreur à refaire 
+				$this->redirectToRoute("register");
 			}
 			
 		}
