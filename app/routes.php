@@ -16,7 +16,7 @@
 		['GET|POST', '/password/', 'User#password', 'password'],
 
 		//page new password
-		['GET|POST', '/new_password/', 'User#newPassword', 'new_password'],
+		['GET|POST', '/new_password/[:token]/[:id]/', 'User#newPassword', 'new_password'],
 
 		//page connexion 
 		['GET|POST', '/login/', 'User#login', 'login'],
