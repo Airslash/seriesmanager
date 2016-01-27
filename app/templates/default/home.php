@@ -10,18 +10,10 @@
             <div class="active item one"></div>
             <div class="item two"></div>
             <div class="item three"></div>
-<<<<<<< HEAD
-            <div class="item four"></div>
-            
+            <div class="item four"></div>       
   </div>
 
-  </div>
-=======
-        </div>
-  	</div>
 </div>
->>>>>>> refs/remotes/origin/login-branch
-
 
 <?= $this->stop('header') ?>
 
