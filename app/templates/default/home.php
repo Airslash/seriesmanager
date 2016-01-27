@@ -10,9 +10,17 @@
             <div class="active item one"></div>
             <div class="item two"></div>
             <div class="item three"></div>
+<<<<<<< HEAD
         </div>
   	</div>
 </div>
+=======
+            <div class="item four"></div>
+            
+  </div>
+
+  </div>
+>>>>>>> refs/remotes/origin/master
 
 
 <?= $this->stop('header') ?>
