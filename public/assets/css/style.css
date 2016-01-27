@@ -17,6 +17,8 @@ html, body {
 	float: right;
 	background-color: rgba(255, 255, 255, 0.5);
 }
+
+
 /*********************************
 Barre de recherche
 *********************************/
@@ -27,10 +29,10 @@ Barre de recherche
 .navbar.navbar-default {
 	width: 100%; 
 	background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0;
 }
 
 .navbar-form {
-	
 	margin: 0 auto;
 	width: 50%; 
 }
@@ -48,57 +50,11 @@ Barre de recherche
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* #search-input .form-control {
+#search-input .form-control {
     width: 500px;
 }
- */
+ 
 
 /*************************
 Diaporama
 /*************************/
-
-.carousel { /* keeps this behind all content */
-    z-index: -99; 
-} 
-
-.carousel .item {
-    position: fixed; 
-    width: 100%; height: 100%;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -ms-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    transition: opacity 1s;
- 
-}
-.carousel .one {
-    background: url(../img/GOT.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    -moz-background-size: cover;
-}
-.carousel .two {
-    background: url(../img/orangebg.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    -moz-background-size: cover;
-}
-.carousel .three {
-    background: url(../img/parks.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    -moz-background-size: cover;
-}
-
-.carousel .four {
-    background: url(../img/sunny.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    -moz-background-size: cover;
-}
-
-.carousel .active.left {
-    left:0;
-    opacity:0;
-    z-index:2;
-}

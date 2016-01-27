@@ -22,7 +22,7 @@
 
  		<nav class="navbar navbar-default" role="navigation">
  		
- 			<?= $this->section('header') ?> 
+ 			
 
  			<!--Diaporama de la page home.php-->
 
@@ -72,14 +72,16 @@
 		
 		</nav>
 
+		<?= $this->section('header') ?> 
 
-		<form class="navbar-form" role="search">
-        	<div id="search-input" class="form-group">
-          		<input type="text" class="form-control" placeholder="Search">
-          	 </div>
-    		<button type="submit" class="btn btn-default">Search</button>
-      	</form>
 
+		<!-- <form class="navbar-form" role="search">
+		        	<div id="search-input" class="form-group">
+		          		<input type="text" class="form-control" placeholder="Search">
+		          	 </div>
+		    		<button type="submit" class="btn btn-default">Search</button>
+		      	</form>
+		 -->
 
 
 
