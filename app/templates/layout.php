@@ -28,6 +28,7 @@
   			</a>
 
 			<!-- login -->
+			<div id="log-nav">
 			<?php
 				if (!empty($w_user)) {
 					?>
@@ -35,10 +36,9 @@
 
 					<!-- logout -->
 					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
-
 				<?php
 				}
-				else{?>
+				else {?>
 				<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form">		
 					<div class="form-group">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -54,14 +54,11 @@
 					<br />
 					<input type="submit" value="Log In" >
 				</form>
-				
 				<?php 
 				}
 				?>
+			</div>
 			
-
-
-
     		<!--menu-->
     		<?php
     			if (!empty($w_user)) {
@@ -87,8 +84,6 @@
     		
 		</header><!-- container-fluid-->
 
-
-		
 		
 		<!--Diaporama de la page home.php-->
 		<?= $this->section('header') ?> 

@@ -35,6 +35,10 @@ header {
     float: right;
 }
 
+#log-nav {
+    float: right;
+}
+
 /*********************************
 Barre de recherche
 *********************************/
