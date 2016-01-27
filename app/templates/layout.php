@@ -13,16 +13,10 @@
 
 
 <body>
-<<<<<<< HEAD
-	
-=======
 
 	<div id="main-content">
 
 	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
-
-
->>>>>>> refs/remotes/origin/master
 	<!--Navigation bar -->
 
  		<nav class="navbar navbar-default" role="navigation">
@@ -63,14 +57,10 @@
 					<input type="username" name="username" placeholder="Username">
 			
 					<input type="password" name="password" placeholder="Password">
-<<<<<<< HEAD
 					<input type="submit" value="Login" />
 					
 					<!-- logout -->
-=======
-					<input type="submit" value="Login" >
 
->>>>>>> refs/remotes/origin/master
 					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
 				</form>
 
@@ -86,16 +76,10 @@
 		<form class="navbar-form" role="search">
         	<div id="search-input" class="form-group">
           		<input type="text" class="form-control" placeholder="Search">
-          	 </div>
-<<<<<<< HEAD
-    		<button type="submit" class="btn btn-default">Submit</button>
-=======
-    			<button type="submit" class="btn btn-default">Search</button>
->>>>>>> refs/remotes/origin/master
+          	</div>
+      		<button type="submit" class="btn btn-default">Search</button>
+
       	</form>
-
-
-
 
 
 		<section>

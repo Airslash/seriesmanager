@@ -7,22 +7,14 @@
 
 	<div id="series-carousel" class="carousel container slide">
   		<div class="carousel-inner">
-            <div class="active item one"></div>
-            <div class="item two"></div>
-            <div class="item three"></div>
-<<<<<<< HEAD
-        </div>
-  	</div>
+          <div class="active item one"></div>
+          <div class="item two"></div>
+          <div class="item three"></div>
+          <div class="item four"></div>
+      </div>
+  </div>
 </div>
-=======
-            <div class="item four"></div>
             
-  </div>
-
-  </div>
->>>>>>> refs/remotes/origin/master
-
-
 <?= $this->stop('header') ?>
 
 <?php $this->start('main_content') ?>
