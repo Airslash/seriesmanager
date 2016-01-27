@@ -8,7 +8,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="<?= $this->assetUrl('img/got.png') ?>" alt="Game of Throne">
+      <img src="<?= $this->assetUrl('img/got1.png') ?>" alt="Game of Throne">
       <div class="carousel-caption">
       </div>
     </div>

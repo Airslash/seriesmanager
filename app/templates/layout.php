@@ -16,62 +16,81 @@
 
 	<div id="main-content">
 
-	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
-
 	<!--Navigation bar -->
 
- 		<nav class="navbar navbar-default" role="navigation">
- 		
- 			
+ 		<!-- <nav class="navbar navbar-default" role="navigation"> -->
+ 
+  		<header class="container-fluid">
 
- 			<!--Diaporama de la page home.php-->
+		   	<!--logo-->
+	  		<a href="<?php echo $this->url('home') ?>" id="site-logo">
+	  			<img src="<?= $this->assetUrl('img/logoSM.png') ?>" alt="logo">
+  			</a>
 
-  		<div class="container-fluid">
-  			<div class="navbar-header">
-  				
-    	  		<!--burger-nav-->
-			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			   	</button>
+			<!-- login -->
+			<?php
+				if (!empty($w_user)) {
+					?>
+					<p>Vous êtes connecté en tant que <?= $w_user['username'] ?></p>
 
-			   	<!--logo-->
-    	  		<a class="navbar-brand" href="#home">SM</a>
-
-    	  		<button id="signIn" class="btn btn-default navbar-btn">Sign in</button>
-
-
-			</div><!-- navbar-header -->
-
-    		<!--Drop-down menu-->
-			<div class="collapse navbar-collapse" id="menu">
-		      	<ul class="nav navbar-nav">
-			        <li class="active"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
-			        <li><a href="<?php echo $this->url('register') ?>" title="Register">Register</a></li>
-			        <li><a href="<?php echo $this->url('profile') ?>" title="Profile">Profile</a></li>
-		       	</ul>		
-				
-				<form action="<?php echo $this->url('login') ?>" method="POST">		
-					<!-- login -->
-					<input type="username" name="username" placeholder="Username">
-			
-					<input type="password" name="password" placeholder="Password">
-					<input type="submit" value="Login" >
-					
 					<!-- logout -->
-					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
+					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
+
+				<?php
+				}
+				else{?>
+				<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form">		
+					<div class="form-group">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						<input type="username" name="username" placeholder="Username">
+					</div>
+					
+					<div class="form-group">
+						<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+						<input type="password" name="password" placeholder="Password">
+					</div>
+
+					<a href="<?php echo $this->url('password') ?>" title="Password">Forgot your password ?</a>
+					<br />
+					<input type="submit" value="Log In" >
 				</form>
+				
+				<?php 
+				}
+				?>
+			
 
-				<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
 
-    		</div><!-- navbar-collapse -->
+
+    		<!--menu-->
+    		<?php
+    			if (!empty($w_user)) {
+    				?>
+		    		<div id="menu">
+			    		<ul class="nav nav-tabs">
+			    		  <li role="navigation"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+			    		  <li role="navigation"><a href="<?php echo $this->url('profile') ?>">Profile</a></li>
+			    		</ul>
+		    		</div>
+	    		<?php
+	    		}
+	    		else{?>
+		    		<div id="menu-logout">
+			    		<ul class="nav nav-tabs">
+			    		  <li role="navigation"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+			    		  <li role="navigation"><a href="<?php echo $this->url('register') ?>">Register</a></li>
+			    		</ul>
+		    		</div>
+	    		<?php 
+	    		}
+	    		?>
     		
-		</div><!-- container-fluid-->
-		
-		</nav>
+		</header><!-- container-fluid-->
 
+
+		
+		
+		<!--Diaporama de la page home.php-->
 		<?= $this->section('header') ?> 
 
 

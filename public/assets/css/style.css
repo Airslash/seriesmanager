@@ -1,5 +1,6 @@
 html, body {
     color: black;
+    background-color: #ecf0f1;
 	
 }
 
@@ -18,42 +19,56 @@ html, body {
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
+/*********************************
+Header
+*********************************/
+header {
+    height: 200px;
+}
+
+#site-logo img {
+    width: 16%;
+}
+
+/* Log form */
+#log-form {
+    float: right;
+}
 
 /*********************************
 Barre de recherche
 *********************************/
 .navbar-toggle {
-	float: left;
+    float: left;
 }
 
 .navbar.navbar-default {
-	width: 100%; 
-	background-color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 0;
+    width: 100%; 
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
 }
 
-.navbar-form {
-	margin: 0 auto;
-	width: 50%; 
+/* .navbar-form {
+    margin: 0 auto;
+    width: 50%; 
 }
 
 .navbar-form input{
-	
-	float: left;
-	background-color: rgba(255, 255, 255, 0.5);
+    
+    float: left;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 
 .navbar-form button{
-	margin-left: 5px; 
-	float: right;
-	background-color: rgba(255, 255, 255, 0.5);
+    margin-left: 5px; 
+    float: right;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 #search-input .form-control {
     width: 500px;
-}
- 
+} */
 
 /*************************
 Diaporama
