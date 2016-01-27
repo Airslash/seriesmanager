@@ -12,15 +12,17 @@
 		//page de profil (avec liste des séries)
 		['GET', '/profile/', 'Profile#profile', 'profile'],
 
-		//page mot de passe oublié
-		['GET', '/password/', 'User#password', 'password'],
+		//page password
+		['GET|POST', '/password/', 'User#password', 'password'],
+
+		//page new password
+		['GET|POST', '/new_password/', 'User#newPassword', 'new_password'],
 
 		//page connexion 
 		['GET|POST', '/login/', 'User#login', 'login'],
 
 		//page de déconnexion
 		['GET|POST', '/logout/', 'User#logout', 'logout'],
-
 
 		//page de détail d'un épisode
 		['GET', '/episode_detail/', 'Episode#episode_detail', 'episode_detail'],

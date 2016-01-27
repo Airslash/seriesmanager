@@ -13,35 +13,39 @@
 
 
 <body>
+<<<<<<< HEAD
 
 	<div id="main-content">
 
 	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
 
 
+=======
+	
+>>>>>>> refs/remotes/origin/login-branch
 	<!--Navigation bar -->
 
  		<nav class="navbar navbar-default" role="navigation">
  		
- 			<?= $this->section('header') ?> <!--Diaporama de la page home.php-->
+ 			<?= $this->section('header') ?> 
 
+ 			<!--Diaporama de la page home.php-->
 
   		<div class="container-fluid">
   			<div class="navbar-header">
   				
-    	  			<!--burger-nav-->
-			     	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-			    	</button>
+    	  		<!--burger-nav-->
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			   	</button>
 
-			    	<!--logo-->
-    	  			<a class="navbar-brand" href="#home">SM</a>
+			   	<!--logo-->
+    	  		<a class="navbar-brand" href="#home">SM</a>
 
-    	  			<button id="signIn" class="btn btn-default navbar-btn">Sign in</button>
-
+    	  		<button id="signIn" class="btn btn-default navbar-btn">Sign in</button>
 
 
 			</div><!-- navbar-header -->
@@ -50,17 +54,27 @@
 			<div class="collapse navbar-collapse" id="menu">
 		      	<ul class="nav navbar-nav">
 			        <li class="active"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
-			        <li><a href="<?php echo $this->url('register') ?>" title="Signin">Register</a></li>
+			        <li><a href="<?php echo $this->url('register') ?>" title="Register">Register</a></li>
 			        <li><a href="<?php echo $this->url('profile') ?>" title="Profile">Profile</a></li>
 		       	</ul>		
 				
-				<form action="<?php echo $this->url('login') ?>" method="POST">
+				<form action="<?php echo $this->url('login') ?>" method="POST">		
+					<!-- login -->
 					<input type="username" name="username" placeholder="Username">
+			
 					<input type="password" name="password" placeholder="Password">
+<<<<<<< HEAD
 					<input type="submit" value="Login" >
 
+=======
+					<input type="submit" value="Login" />
+					
+					<!-- logout -->
+>>>>>>> refs/remotes/origin/login-branch
 					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
 				</form>
+
+				<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
 
     		</div><!-- navbar-collapse -->
     		
@@ -73,7 +87,11 @@
         	<div id="search-input" class="form-group">
           		<input type="text" class="form-control" placeholder="Search">
           	 </div>
+<<<<<<< HEAD
     			<button type="submit" class="btn btn-default">Search</button>
+=======
+    		<button type="submit" class="btn btn-default">Submit</button>
+>>>>>>> refs/remotes/origin/login-branch
       	</form>
 
 
