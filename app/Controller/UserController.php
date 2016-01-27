@@ -51,7 +51,7 @@ class UserController extends Controller
 				$this->redirectToRoute("home"); 
 			}
 			else {
-				// invalide, on veut afficher des erreurs
+				// message d'erreur à faire
 			}
 		}
 
@@ -78,12 +78,13 @@ class UserController extends Controller
 				// on récupère le user en base de données
 				$userManager = new \Manager\UserManager;
 				$user = $userManager->find($result);
+
 			// on le connecte
 				$authentificationManager->logUserIn($user);
 			} 
 
 			else {
-
+				// message d'erreur à faire
 				die("wrong id");
 			}
 			
@@ -116,13 +117,14 @@ class UserController extends Controller
 			$email = $_POST['email'];
 
 			$userManager = new \Manager\UserManager();
+			$user = $userManager->getUserByUsernameOrEmail($email);
 
-			if ($userManager->emailExists($email) ){
+			if ($user){
 
-				require 'PHPMailerAutoload.php';
+				require '../PHPMailer/PHPMailerAutoload.php';
 
 				//Create a new PHPMailer instance
-				$mail = new PHPMailer();
+				$mail = new \PHPMailer();
 				//Tell PHPMailer to use SMTP
 				$mail->IsSMTP();
 				//Enable SMTP debugging
@@ -141,21 +143,32 @@ class UserController extends Controller
 				//Whether to use SMTP authentication
 				$mail->SMTPAuth   = true;
 				//Username to use for SMTP authentication - use full email address for gmail
-				$mail->Username   = 'christian.marcucci13@gmail.com';
+				$mail->Username   = 'seriesmanager75@gmail.com';
 				//Password to use for SMTP authentication
-				$mail->Password   = '######';
+				$mail->Password   = 'Webforce3';
 				//Set who the message is to be sent from
-				$mail->SetFrom('christian.marcucci13@gmail.com', 'First Last');
+				$mail->SetFrom('seriesmanager75@gmail.com', 'CAMS Squad');
 				//Set who the message is to be sent to
-				$mail->AddAddress('merlin.axel@gmail.com', 'John Doe');
+				$mail->AddAddress('seriesmanager75@gmail.com', 'John Doe');
 				//Set the subject line
 				//$mail->Subject = 'PHPMailer GMail SMTP test';
 				//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
-				$mail->MsgHTML(file_get_contents('contents.html'), dirname(__FILE__));
-				//Replace the plain text body with one created manually
-				$mail->AltBody = 'Hello darkness my old friend';
-				 
-				//Send the message, check for errors
+				$mail->Subject = 'Test PhPMailer';
+
+				//envoyer un lien par mail
+				$token = \W\Security\StringUtils::randomString(32);
+
+				$userManager->update([
+					'token' => $token
+				], $user['id']);
+
+				$url = $this->generateUrl("new_password", [
+					'token' => $token,
+					'id' => $user['id']
+					], true);
+				$mail->MsgHTML("message" . "<a href='$url'>" . $url . "</a>");
+								 
+				//envoie le message et vérifie s'il y a une erreur
 				if(!$mail->Send()) {
 				  echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} else {
@@ -166,7 +179,7 @@ class UserController extends Controller
 		}
 
 		else {
-
+			// message d'erreur à faire
 		}
 
 		$this->show("user/password");
@@ -177,11 +190,19 @@ class UserController extends Controller
 	 *  page new password
 	 */
 
-	public function newPassword()
+	public function newPassword($token, $id)
 	{
 		$userManager = new \Manager\UserManager();
+		$user = $userManager->find($id);
+		if ($user['token'] == $token){
+			// $this->redirectToRoute("new_password");
+			$this->show("user/new_password");
 
-		$this->show("user/new_password");
+		}
+		else {
+			echo "Piratage";
+		}
+		
 	}
 
 
