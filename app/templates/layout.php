@@ -16,10 +16,6 @@
 
 	<div id="main-content">
 
-	<!--h1 class="hidden-xs">SeriesManager <?= $this->e($title) ?></h1--> 
-
-	<!--Navigation bar -->
-
  		<!-- <nav class="navbar navbar-default" role="navigation"> -->
  
   		<header class="container-fluid">
@@ -36,29 +32,11 @@
 					?>
 					<p>Vous êtes connecté en tant que <?= $w_user['username'] ?></p>
 
-			</div><!-- navbar-header -->
-
-    		<!--Drop-down menu-->
-			<div class="collapse navbar-collapse" id="menu">
-		      	<ul class="nav navbar-nav">
-			        <li class="active"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
-			        <li><a href="<?php echo $this->url('register') ?>" title="Register">Register</a></li>
-			        <li><a href="<?php echo $this->url('profile') ?>" title="Profile">Profile</a></li>
-		       	</ul>		
-				
-				<form action="<?php echo $this->url('login') ?>" method="POST">		
-					<!-- login -->
-					<input type="username" name="username" placeholder="Username">
-			
-					<input type="password" name="password" placeholder="Password">
-
-					<a href="<?php echo $this->url('password') ?>" title="Password">Password forgotten ?</a>
-
 					<!-- logout -->
 					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
-				<?php
-				}
-				else {?>
+			<?php
+			}
+			else {?>				
 				<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form">		
 					<div class="form-group">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
