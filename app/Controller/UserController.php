@@ -34,10 +34,10 @@ class UserController extends Controller
 			} elseif ($userManager->getUserByUsernameOrEmail($username)){
 				$isValid = false;
 				$error = "Username already use";
-			} /*elseif ($username < 1) {
+			} elseif (strlen($username) < 2) {
 				$isValid = false;
 				$error = "Username too short !";
-			} */
+			} 
 
 
 			// password
@@ -47,10 +47,10 @@ class UserController extends Controller
 			} elseif ($password != $password_bis){
 				$isValid = false;
 				$error = "Passwords are not the same !";
-			} /*else if ($password && $password_bis < 5){
+			} else if (strlen($password) < 5){
 				$isValid = false;
 				$error = "Password too short !";
-			} */
+			} 
 
 			// Email 
 			if ($userManager->getUserByUsernameOrEmail($email) ){
@@ -226,6 +226,26 @@ class UserController extends Controller
 		}
 		else {
 			echo "Piratage";
+		}
+
+		if ($_POST){
+			$password = $_POST['password'];
+			$password_bis = $_POST['password_bis'];
+
+			$userManager = new \Manager\UserManager();
+			$isValid = true;
+
+			if (empty($password && $password_bis)) {
+				$isValid = false;
+				$error = "Fill the field please !";
+			} elseif ($password != $password_bis){
+				$isValid = false;
+				$error = "Passwords are not the same !";
+			} /*else if ($password && $password_bis < 5){
+				$isValid = false;
+				$error = "Password too short !";
+			} */
+
 		}
 		
 	}

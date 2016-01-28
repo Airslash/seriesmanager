@@ -9,28 +9,28 @@
 		<div class="form-group">	
 			<label for="username" class="col-sm-2 control-label">Enter your username</label>
 			<div class="col-sm-4">	
-				<input type="text" class="form-control" name="username" placeholder="Enter your username">
+				<input type="text" class="form-control" name="username" value="" placeholder="Enter your username">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Enter your email</label>
 			<div class="col-sm-4">
-				<input type="email" class="form-control" name="email" placeholder="Enter your email">
+				<input type="email" class="form-control" name="email" value=""placeholder="Enter your email">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="password" class="col-sm-2 control-label">Enter your password</label>
 			<div class="col-sm-4">
-				<input type="password" class="form-control" name="password" placeholder="Enter your password">
+				<input type="password" class="form-control" name="password" value="" placeholder="Enter your password">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="password_bis" class="col-sm-2 control-label">Confirm your password</label>
 			<div class="col-sm-4">
-				<input type="password" class="form-control" name="password_bis" placeholder="Confirm your password">
+				<input type="password" class="form-control" name="password_bis" value="" placeholder="Confirm your password">
 			</div>
 		</div>
 
