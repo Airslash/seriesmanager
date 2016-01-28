@@ -13,7 +13,7 @@ class UserController extends Controller
 	public function register()
 	{
 
-		$passwordError = "";
+		$error = "";
 
 		// Vérification de formulaire
 		if ($_POST){
@@ -25,17 +25,36 @@ class UserController extends Controller
 			// validation des données
 			$isValid = true;
 
-			if ($password != $password_bis){
-				$isValid = false;
-				$passwordError = "Le mot de passe ne correspond pas !";
-			}
-
 			$userManager = new \Manager\UserManager();
 
-			// Email déjà existant
-			if ($userManager->emailExists($email) ){
+			// username 
+			if (empty($username)){
 				$isValid = false;
-				$passwordError = "Email déjà utilisé !";
+				$error = "Please put a username";
+			} elseif ($userManager->getUserByUsernameOrEmail($username)){
+				$isValid = false;
+				$error = "Username already use";
+			} 
+
+			// password
+			if (empty($password && $password_bis)) {
+				$isValid = false;
+				$error = "Fill the field please !";
+			} elseif ($password != $password_bis){
+				$isValid = false;
+				$error = "Passwords are not the same !";
+			} else if ($password && $password_bis < 5){
+				$isValid = false;
+				$error = "Password too short !";
+			}
+
+			// Email 
+			if ($userManager->getUserByUsernameOrEmail($email) ){
+				$isValid = false;
+				$error = "Email already used !";
+			} elseif (!preg_match("/^[a-zA-Z0-9._-]+@[a-z0-9-]{1,67}\.[a-z]{2,67}$/", $email)) {
+				$isValid = false;
+				$error = "Email not valid";
 			}
 
 			// si c'est valide
@@ -51,12 +70,16 @@ class UserController extends Controller
 				$this->redirectToRoute("home"); 
 			}
 			else {
-				// message d'erreur à faire
+				
 			}
 		}
 
+		else {
+
+		}
+
 		$this->show('user/register', [
-			"passwordError" => $passwordError
+			"error" => $error
 		]);
 
 	}

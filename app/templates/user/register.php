@@ -34,7 +34,7 @@
 			</div>
 		</div>
 
-		<?php echo $passwordError; ?><br />
+		<?php echo $error; ?><br />
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
