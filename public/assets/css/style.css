@@ -7,8 +7,8 @@ html, body {
 
  #main-content {
     margin: auto;
- 
  }
+
 .navbar-header {
 	width: 100%; 
 }
@@ -119,3 +119,11 @@ footer p {
     text-align: center;
 }
 
+
+@media (min-width: 1300px) {
+
+    #main-content {
+        width: 1300px;
+        margin: auto;
+    }
+}
