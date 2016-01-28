@@ -5,7 +5,8 @@
 <form method="POST">
 	<input type="password" name="password" placeholder="New password"><br />
 	<input type="password" name="password_bis" placeholder="Confirm password"><br />
-	<input type="submit" value="Change" />
+	<input type="submit" value="Change it" />
+	
 </form>
 
 <?php $this->stop('main_content') ?>

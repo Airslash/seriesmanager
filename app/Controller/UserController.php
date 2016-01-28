@@ -41,7 +41,7 @@ class UserController extends Controller
 
 
 			// password
-			if (empty($password && $password_bis)) {
+			if (empty($password) || empty($password_bis)) {
 				$isValid = false;
 				$error = "Fill the field please !";
 			} elseif ($password != $password_bis){
@@ -217,37 +217,48 @@ class UserController extends Controller
 
 	public function newPassword($token, $id)
 	{
-		$userManager = new \Manager\UserManager();
-		$user = $userManager->find($id);
-		if ($user['token'] == $token){
-			// $this->redirectToRoute("new_password");
-			$this->show("user/new_password");
-
-		}
-		else {
-			echo "Piratage";
-		}
+		$error = "";
 
 		if ($_POST){
+
+			$userManager = new \Manager\UserManager();
+
+			$user = $userManager->find($id);
+
+			if ($user['token'] == $token){
+
+			}
+			else {
+				echo "Piratage";
+			}
+
+			// changement de password
 			$password = $_POST['password'];
 			$password_bis = $_POST['password_bis'];
 
-			$userManager = new \Manager\UserManager();
 			$isValid = true;
 
-			if (empty($password && $password_bis)) {
+			if (empty($password) || empty($password_bis)) {
 				$isValid = false;
 				$error = "Fill the field please !";
-			} elseif ($password != $password_bis){
-				$isValid = false;
-				$error = "Passwords are not the same !";
-			} /*else if ($password && $password_bis < 5){
+				
+			} else if (strlen($password) < 5){
 				$isValid = false;
 				$error = "Password too short !";
-			} */
+
+			} else {
+				$userManager->update([
+					'password' => password_hash($password, PASSWORD_DEFAULT)
+				], $user['id']);
+
+				$this->redirectToRoute("profile");
+
+			}
+			
 
 		}
-		
+
+		$this->show("user/new_password", ["error"=>$error]);
 	}
 
 
