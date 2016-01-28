@@ -14,4 +14,15 @@ class DefaultController extends Controller
 	{
 		$this->show('default/home');
 	}
+
+	public function search()
+	{
+		$serieManager = new \Manager\SerieManager();
+
+		$series = $serieManager->findAll();
+
+		$this->show('layout', [
+			"series" => $series
+		]);
+	}
 }

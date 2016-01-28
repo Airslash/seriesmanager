@@ -4,7 +4,7 @@
 <?= $this->start('header') ?>
 
 <!-- carousel -->
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">

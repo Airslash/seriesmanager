@@ -15,11 +15,11 @@
 
 <body>
 
-	<div id="main-content">
+	<div id="main-content" class="container-fluid">
 
  		<!-- <nav class="navbar navbar-default" role="navigation"> -->
  
-  		<header class="container-fluid">
+  		<header>
 
 		   	<!--logo-->
 	  		<a href="<?php echo $this->url('home') ?>" id="site-logo">
@@ -83,9 +83,10 @@
     		
 		</header><!-- container-fluid-->
 
-		<form action="#" method="GET">
-			<input type="search" name="title" class="form-control" placeholder="Titre, acteurs...">
+		<form action="" method="GET" id="serie-search-form">
+			<input type="search" name="serie-search" id="serie-search-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
+		<div id="result-search"></div>
 
 		
 		<!--Diaporama de la page home.php-->
@@ -96,12 +97,14 @@
 			<?= $this->section('main_content') ?>
 		</section>
 
+		</div>
+
 		<footer>
+			<p><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> SeriesManager</p>
+			<p>Made by CAMS Squad</p>
 		</footer>
 
-	</div>
-
-
+	
 
 
 	<script src="<?= $this->assetUrl('js/jquery-1.12.0.min.js') ?>"></script>

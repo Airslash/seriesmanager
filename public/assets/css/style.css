@@ -6,10 +6,9 @@ html, body {
 }
 
  #main-content {
-    width: 1300px;
     margin: auto;
+ 
  }
-
 .navbar-header {
 	width: 100%; 
 }
@@ -105,3 +104,18 @@ Barre de recherche
 /*************************
 Diaporama
 /*************************/
+
+
+/***************************
+Footer
+****************************/
+footer {
+    height: 100px;
+    padding-top: 20px;
+    background-color: #BED9DE;
+}
+
+footer p {
+    text-align: center;
+}
+
