@@ -27,6 +27,6 @@
 		//page de détail d'un épisode
 		['GET', '/episode_detail/', 'Episode#episode_detail', 'episode_detail'],
 
-		//page de détail d'un épisode
+		//page de scraping pour "hydrater" la base en masse
 		['GET', '/scrape/', 'Scrape#scrape', 'scrape'],
 	);
