@@ -83,8 +83,8 @@
     		
 		</header><!-- container-fluid-->
 
-		<form action="" method="GET" id="serie-search-form">
-			<input type="search" name="serie-search" id="serie-search-input" class="form-control" placeholder="Titre, acteurs...">
+		<form action="<?= $this->url('search') ?>" method="GET" id="serie-search-form">
+			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
 		<div id="result-search"></div>
 

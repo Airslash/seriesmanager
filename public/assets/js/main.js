@@ -1,9 +1,3 @@
-//Diaporama
-  $(document).ready(function() {
-    $('.carousel').carousel();
-  });
-
-  
 //masonry
 $('.grid').masonry({
   // options
@@ -12,8 +6,8 @@ $('.grid').masonry({
 });
 
 // Serie search function
-$("#serie-search-input").on("keyup", function() {
-		var wordSearch = $("#serie-search-input").val();
+$("#keyword-input").on("keyup", function() {
+		var wordSearch = $("#keyword-input").val();
 		if (wordSearch.length>=3) {
 			$.ajax({
 				"url": $("#serie-search-form").attr("action"),

@@ -29,4 +29,7 @@
 
 		//page de scraping pour "hydrater" la base en masse
 		['GET', '/scrape/', 'Scrape#scrape', 'scrape'],
+
+		//page de recherche en autocomplétion
+		['GET', '/search/', 'Search#search', 'search'],
 	);

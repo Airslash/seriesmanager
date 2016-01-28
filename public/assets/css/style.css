@@ -27,8 +27,9 @@ header {
 }
 
 #site-logo img {
-    width: 16%;
+    width: 140px;
 }
+
 
 /* Log form */
 #log-form {
@@ -119,11 +120,21 @@ footer p {
     text-align: center;
 }
 
+@media (min-width: 480px) {
+    #site-logo img {
+        width: 176px;
+    }
+}
+
 
 @media (min-width: 1300px) {
 
     #main-content {
         width: 1300px;
         margin: auto;
+    }
+
+    #site-logo img {
+        width: 203px;
     }
 }
