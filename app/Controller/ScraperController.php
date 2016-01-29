@@ -11,14 +11,14 @@ use \W\Controller\Controller;
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
-class ScrapeController extends Controller
+class ScraperController extends Controller
 {
 
 	/**
 	 * Main ScrapeController method
 	 * @return [type] [description]
 	 */
-	public function scrape()
+	public function scraper()
 	{
 
 		// Initializes objects
