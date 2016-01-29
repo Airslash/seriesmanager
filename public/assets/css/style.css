@@ -3,6 +3,9 @@ html, body {
     background-color: rgb(236,240,241);
     font-family: 'Roboto', sans-serif;
 	position: relative;
+    background-image: url(../img/tv.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
  #main-content {
@@ -134,7 +137,7 @@ Footer
 footer {
     height: 100px;
     padding-top: 20px;
-    background-color: rgb(190,217,222);
+    background-color: rgba(190,217,222, 0.5);
 }
 
 footer p {
