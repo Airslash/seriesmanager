@@ -9,14 +9,14 @@
 		<div class="form-group">	
 			<label for="username" class="col-sm-2 control-label">Enter your username</label>
 			<div class="col-sm-4">	
-				<input type="text" class="form-control" name="username" value="" placeholder="Enter your username">
+				<input type="text" class="form-control" name="username" value="<?php echo $username; ?>" placeholder="Enter your username">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Enter your email</label>
 			<div class="col-sm-4">
-				<input type="email" class="form-control" name="email" value=""placeholder="Enter your email">
+				<input type="email" class="form-control" name="email" value="<?php echo $email; ?>"placeholder="Enter your email">
 			</div>
 		</div>
 		
