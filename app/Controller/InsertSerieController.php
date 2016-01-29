@@ -6,16 +6,16 @@ use \W\Controller\Controller;
 
 /**
  * Inserts series and episodes to database
- * @version        1.2.1
+ * @version        1.0
  * @last_modified  12:41 29/01/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
-class ScraperController extends Controller
+class InsertSerieController extends Controller
 {
 
 	/**
-	 * Main ScrapeController method
+	 * Main ScraperController method
 	 */
 	public function scraper() {
 

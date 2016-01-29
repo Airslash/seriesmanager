@@ -4,6 +4,14 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
+/**
+ * UserController
+ * @version        1.1
+ * @last_modified  12:59 29/01/2016
+ * @author         Christian Marcucci <christian.marcucci13@gmail.com>
+ * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team * @author  Christian <[<email address>]>
+ * 
+ */
 class UserController extends Controller
 {
 
@@ -150,7 +158,7 @@ class UserController extends Controller
 
 			if ($user){
 
-				require '../PHPMailer/PHPMailerAutoload.php';
+				require '../vendor/PHPMailer/PHPMailerAutoload.php';
 				
 				//Create a new PHPMailer instance
 				$mail = new \PHPMailer();
