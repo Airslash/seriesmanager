@@ -33,4 +33,23 @@ class SearchController extends Controller {
 					"series" => $series
 		]);
 	}
+
+	/**
+	 * supersearch method
+	 * @version        1.0
+	 * @last_modified  15:21 29/01/2016
+	 * @author         Matthias Morin <matthias.morin@gmail.com>
+	 * @return object  table from db
+	 */
+	public function jsonSearch() {
+		$serieManager = new \Manager\SerieManager();
+
+		// Gets $keyword from $_GET
+		$table  = $_GET['table'];
+		$column = $_GET['column'];
+		$search = $_GET['search'];
+
+		$series = $serieManager->superSearch($table, $column, $search);
+		$this->showJson($series);
+	}
 }

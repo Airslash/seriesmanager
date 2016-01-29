@@ -18,7 +18,7 @@ class SerieManager extends \W\Manager\Manager {
 	 * @last_modified  14:27 29/01/2016
 	 * @author         Axel Merlin <merlin.axel@gmail.com>
  	 * @author         Matthias Morin <matthias.morin@gmail.com>
-	 * @return         string  TV serie title
+	 * @return string  TV serie title
 	 */
 	public function search($keyword) {
 
@@ -30,5 +30,30 @@ class SerieManager extends \W\Manager\Manager {
 		$series = $statement->fetchAll();
 
 		return $series;
+	}
+
+	/**
+	 * find method
+	 * @version        1.0
+	 * @last_modified  15:02 29/01/2016
+ 	 * @author         Matthias Morin <matthias.morin@gmail.com>
+	 * @return boolean True if $keyword present in database
+	 */
+	public function jsonSearch($table, $column, $search) {
+
+		// Searches database for $search into $column from $table
+		$sql = 'SELECT * FROM '.$table.' WHERE '.$column.' = ?;';
+		$statement = $this->dbh->prepare($sql);
+		$statement->execute([
+			':keyword' => '%' . $search . '%'
+			]);
+
+		$result = $statement->fetchAll();
+		// If fetch returned results
+		if ( $result ) {
+			return $result;
+		} else {
+			return false;
+		}
 	}
 }

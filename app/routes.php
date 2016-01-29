@@ -32,4 +32,7 @@
 
 		//page de recherche en autocomplétion
 		['GET', '/search/', 'Search#search', 'search'],
+
+		//page de recherche json
+		['GET|POST', '/jsonsearch/[:query]', 'Search#jsonSearch', 'jsonsearch'],
 	);
