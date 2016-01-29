@@ -34,8 +34,8 @@
 		['GET', '/search/', 'Search#search', 'search'],
 
 		//page d'ajout manuel de série
-		['GET', '/addserie/[:query]', 'Serie#addSerie', 'addserie'],
+		['GET', '/addserie/[:serie]', 'Serie#addSerie', 'addserie'],
 
 		//page de recherche json
-		['GET|POST', '/jsonsearch/[:query]', 'Search#jsonSearch', 'jsonsearch'],
+		['GET|POST', '/jsonsearch/[:serie]', 'Search#jsonSearch', 'jsonsearch'],
 	);
