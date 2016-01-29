@@ -15,7 +15,7 @@ class SerieManager extends \W\Manager\Manager
 
 		$keyword = $_GET['keyword'];
 
-		$sql = "SELECT id, title FROM series 
+		$sql = "SELECT id, title, poster_id, start_date FROM series 
 				WHERE title LIKE :keyword";
 		
 		$statement = $this->dbh->prepare($sql);
