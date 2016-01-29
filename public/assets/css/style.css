@@ -102,7 +102,20 @@ Barre de recherche
     width: 500px;
 } */
 
-/*************************
+/*********************************
+Page série détail
+*********************************/
+#serie-info img {
+   width: 100%;
+   height: 100%;
+}
+
+#links a {
+    color: ;
+    text-decoration: none;
+}
+
+/*********************************
 Diaporama
 /*************************/
 
@@ -113,7 +126,7 @@ Footer
 footer {
     height: 100px;
     padding-top: 20px;
-    background-color: #BED9DE;
+    background-color: rgb(190, 217, 222);
 }
 
 footer p {
@@ -124,8 +137,34 @@ footer p {
     #site-logo img {
         width: 176px;
     }
+
+    /* menu navigation */
+    #log-nav {
+        float: right;
+        border: 1px solid black;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 10px;
+        width: 200px;
+        height: 160px;
+    }
+    
+    /* image série */
+    #serie-info img {
+       width: 480px;
+       height: 720px;
+    }
 }
 
+@media (min-width: 1000px){
+    /* info série */
+    #detail-serie {
+        width: 460px;
+    }
+    #detail-serie {
+        float: right;
+    }
+}
 
 @media (min-width: 1300px) {
 
@@ -137,4 +176,5 @@ footer p {
     #site-logo img {
         width: 203px;
     }
+ 
 }
