@@ -6,21 +6,19 @@ use \W\Controller\Controller;
 
 /**
  * Inserts series and episodes to database
- * @version        1.0
- * @last_modified  12:41 29/01/2016
+ * @version        1.1
+ * @last_modified  13:49 29/01/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
-class InsertSerieController extends Controller
-{
+class InsertSerieController extends Controller {
 
 	/**
 	 * Main ScraperController method
 	 */
-	public function scraper() {
+	public function insertSerie($serie) {
 
 		// Initializes objects
-		$imdbScraper       = new \Scraper\ImdbScraper();
 		$serieManager      = new \Manager\SerieManager();
 		$episodeManager    = new \Manager\EpisodeManager();
 		$lastInsertManager = new \Manager\LastInsertManager();
