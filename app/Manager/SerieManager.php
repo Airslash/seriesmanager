@@ -4,6 +4,12 @@ namespace Manager;
 
 class SerieManager extends \W\Manager\Manager
 {
+
+	/**
+	 * @return string  Le titre de la série
+	 * @version v1.0
+	 * @last_modified  11:25 29/01/2016
+	 */
 	public function search()
 	{
 
