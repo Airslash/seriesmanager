@@ -33,6 +33,9 @@
 		//page de recherche en autocomplétion
 		['GET', '/search/', 'Search#search', 'search'],
 
+		//page d'ajout manuel de série
+		['GET', '/addserie/[:query]', 'Serie#addSerie', 'addserie'],
+
 		//page de recherche json
 		['GET|POST', '/jsonsearch/[:query]', 'Search#jsonSearch', 'jsonsearch'],
 	);
