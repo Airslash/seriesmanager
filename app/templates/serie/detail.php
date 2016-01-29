@@ -5,20 +5,22 @@
 
 		<div id="serie-info">
 			<h4><?= $serie["title"] ?></h4>
-
 			<img src="http://ia.media-imdb.com/images/M/<?= $serie["poster_id"] ?>._V1_SX640_SY720_.jpg" />
-			<div id="serie-start"><?= $serie["start_date"] ?></div>
-			<div id="serie-genre"><?= $serie["genre"] ?></div>
-			<div id="serie-actors"><?= $serie["actors"] ?></div>
-			<div id="serie-summary"><?= $serie["summary"] ?></div>
-
+			<div id="detail-serie">
+				<p id="serie-start"><strong>Start: </strong><?= $serie["start_date"] ?></p>
+				<p id="serie-genre"><strong>Genre: </strong><?= $serie["genre"] ?></p>
+				<p id="serie-actors"><strong>Actors: </strong><?= $serie["actors"] ?></p>
+				<p id="serie-summary"><strong>Synopsis: </strong><?= $serie["summary"] ?></p>
+			</div>
 		</div>
+		
+		<div id="links">
+			<a href="http://www.amazon.fr/s/ref=nb_sb_noss_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=<?= $serie["title"] ?>" target="_blank">Amazon</a>
 
-		<a href="http://www.amazon.fr/s/ref=nb_sb_noss_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=<?= $serie["title"] ?>" target="_blank">Amazon</a>
+			<br />
 
-		<br />
-
-		<a href="https://kat.cr/usearch/<?= $serie["title"] ?>/" target="_blank">Get torrents</a>
+			<a href="https://kat.cr/usearch/<?= $serie["title"] ?>/" target="_blank">Get torrents</a>
+		</div>
 
 	
 <?php $this->stop('main_content') ?>

@@ -115,6 +115,11 @@ Page série détail
    height: 100%;
 }
 
+#links a {
+    color: ;
+    text-decoration: none;
+}
+
 /*********************************
 Diaporama
 *********************************/
@@ -163,11 +168,16 @@ Media query
        height: 720px;
     }
 
-    /* info série */
-    
-
 }
-
+@media (min-width: 1000px){
+    /* info série */
+    #detail-serie {
+        width: 460px;
+    }
+    #detail-serie {
+        float: right;
+    }
+}
 
 @media (min-width: 1300px) {
 
@@ -179,4 +189,5 @@ Media query
     #site-logo img {
         width: 203px;
     }
+ 
 }
