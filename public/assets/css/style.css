@@ -70,45 +70,26 @@ header {
     font-size: 18px;
  }
 
- #menu a:hover, #menu-logout a:hover {
+#menu a:hover, #menu-logout a:hover {
     background-color: rgb(35,189,239);
  }
 
 /*********************************
 Barre de recherche
 *********************************/
-.navbar-toggle {
+#keyword-input {
+    width: 560px;
+}
+
+#search-button {
     float: left;
 }
 
-.navbar.navbar-default {
-    width: 100%; 
-    background-color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 20px;
+
+#result-search {
+    position: relative;
+    background-color: white;
 }
-
-/* .navbar-form {
-    margin: 0 auto;
-    width: 50%; 
-}
-
-.navbar-form input{
-    
-    float: left;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-
-.navbar-form button{
-    margin-left: 5px; 
-    float: right;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-#search-input .form-control {
-    width: 500px;
-} */
-
 
 /*********************************
 Page série détail
@@ -172,6 +153,7 @@ Media query
     }
 
 }
+
 @media (min-width: 1000px){
     /* info série */
     #detail-serie {
@@ -191,6 +173,16 @@ Media query
 
     #site-logo img {
         width: 203px;
+    }
+
+    #result-search {
+        width: 599px;
+    }
+
+    #myCarousel {
+        margin-top: 60px;
+        width: 650px;
+        float: right;
     }
  
 }

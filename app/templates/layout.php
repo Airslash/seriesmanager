@@ -84,15 +84,20 @@
     		
 		</header><!-- container-fluid-->
 
+		<!--Diaporama de la page home.php-->
+		<?= $this->section('header') ?> 
+
+
 		<form action="<?= $this->url('search') ?>" method="GET" id="serie-search-form">
+			<button type="button" class="btn btn-default" aria-label="Left Align" id="search-button">
+  				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			</button>
 			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
 		<div id="result-search"></div>
 
 		
-		<!--Diaporama de la page home.php-->
-		<?= $this->section('header') ?> 
-
+		
 		
 		<section>
 			<?= $this->section('main_content') ?>
