@@ -4,8 +4,8 @@ namespace Scraper;
 
 /**
  * Scrapes user query from imdb and returns all scraped data
- * @version        2.3
- * @last_modified  10:13 29/01/2016
+ * @version        2.3.2
+ * @last_modified  11:41 29/01/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @note           seasons and episodes arrays are indexed starting from 1
@@ -143,7 +143,7 @@ Class ImdbScraper {
 		$posterSrc = $divTitleOverview->find('div.poster img', 0)->src;
 
 		// Gets $poster_id from $posterSrc
-		$poster_id = explode("@", explode("/", $posterSrc)[5])[0];
+		$poster_id = explode(".", explode("/", $posterSrc)[5])[0];
 
 		// gets $summary from first <div class="summary_text">
 		$summary = $html->find('div.summary_text', 0)->plaintext;
@@ -182,7 +182,7 @@ Class ImdbScraper {
 			"imdb_id"    => $imdb_id,
 			"poster_id"  => $poster_id,
 			"start_date" => $date[0],
-			"end_date"   => $date[1]
+			"end_date"   => $date[1],
 		];
 
 		$this->getSeasons($imdb_id, $season_count);
@@ -231,7 +231,7 @@ Class ImdbScraper {
 		$poster_src = $div->find('img', 0)->src;
 
 		// Gets $poster_id from $poster_src
-		$poster_id = explode("@", explode("/", $poster_src)[5])[0];
+		$poster_id = explode(".", explode("/", $poster_src)[5])[0];
 
 		// Narrows down parsed dom to target <div class="info">
 		$info = $div->find('div.info', 0);
@@ -256,7 +256,7 @@ Class ImdbScraper {
 			"summary"   => $summary,
 			"air_date"  => $air_date,
 			"imdb_id"   => $imdb_id,
-			"poster_id" => $poster_id
+			"poster_id" => $poster_id,
 		];
 	}
 

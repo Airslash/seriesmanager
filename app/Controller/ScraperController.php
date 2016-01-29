@@ -36,10 +36,10 @@ class ScraperController extends Controller
 
 			// Joins genre table data into comma separated string
 			$serie["genre"] = join(", ", $serie["genre"]);
-
+			
 			// Joins actors table data into comma separated string
 			$serie["actors"] = join(", ", $serie["actors"]);
-
+			
 			// Sets season count into table
 			$serie["season_count"] = count($serie["seasons"]);
 
