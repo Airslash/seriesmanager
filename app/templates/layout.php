@@ -47,6 +47,7 @@
 					<div class="form-group">
 						<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 						<input type="password" name="password" placeholder="Password">
+						<br />
 						<a href="<?php echo $this->url('password') ?>" title="Password" id="pw-forgot">Forgot your password ?</a>
 					</div>
 
