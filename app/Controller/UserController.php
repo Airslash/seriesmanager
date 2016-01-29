@@ -77,7 +77,7 @@ class UserController extends Controller
 		}
 
 		else {
-
+			$error = "Le formulaire n'a pas été correctement validé.";
 		}
 
 		$this->show('user/register', [
@@ -92,6 +92,7 @@ class UserController extends Controller
 
 	public function login()
 	{
+
 		if (!empty($_POST)){
 			$username = $_POST['username'];
 			$password = $_POST['password'];
@@ -136,7 +137,10 @@ class UserController extends Controller
 	 */
 
 	public function password()
-	{
+	{	
+
+		$error = "";
+
 		// formulaire 
 		if ($_POST){
 			$email = $_POST['email'];
@@ -147,7 +151,7 @@ class UserController extends Controller
 			if ($user){
 
 				require '../PHPMailer/PHPMailerAutoload.php';
-
+				
 				//Create a new PHPMailer instance
 				$mail = new \PHPMailer();
 				//Tell PHPMailer to use SMTP
@@ -204,10 +208,10 @@ class UserController extends Controller
 		}
 
 		else {
-			// message d'erreur à faire
+			$error = "Le formulaire n'a pas été correctement validé.";
 		}
 
-		$this->show("user/password");
+		$this->show("user/password", ["error"=>$error]);
 	}
 
 
@@ -241,7 +245,7 @@ class UserController extends Controller
 			if (empty($password) || empty($password_bis)) {
 				$isValid = false;
 				$error = "Fill the field please !";
-				
+			
 			} else if (strlen($password) < 5){
 				$isValid = false;
 				$error = "Password too short !";
@@ -254,8 +258,10 @@ class UserController extends Controller
 				$this->redirectToRoute("profile");
 
 			}
-			
 
+		} 
+		else {
+			echo "Piratage";
 		}
 
 		$this->show("user/new_password", ["error"=>$error]);
