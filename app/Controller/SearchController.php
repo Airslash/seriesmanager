@@ -10,9 +10,9 @@ class SearchController extends Controller
 	{
 		$serieManager = new \Manager\SerieManager();
 
-		$series = $serieManager->findAll();
+		$series = $serieManager->search();
 
-		$this->show('serie/detail', [
+		$this->show('serie/search', [
 					"series" => $series
 		]);
 	}

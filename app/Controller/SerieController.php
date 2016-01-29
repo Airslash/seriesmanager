@@ -10,14 +10,14 @@ class SerieController extends Controller
 	/**
 	 * Page d'une série
 	 */
-	public function detail()
+	public function detail($id)
 	{
 		$serieManager = new \Manager\SerieManager();
 
-		$series = $serieManager->findAll();
+		$serie = $serieManager->find($id);
 
 		$this->show('serie/detail', [
-			"series" => $series
+			"serie" => $serie
 		]);
 	}
 

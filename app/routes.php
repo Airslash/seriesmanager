@@ -7,7 +7,7 @@
 		['GET|POST', '/register/', 'User#register', 'register'],
 
 		//page de détail d'une série
-		['GET|POST', '/detail/', 'Serie#detail', 'detail'],
+		['GET|POST', '/detail/[:id]/', 'Serie#detail', 'detail'],
 
 		//page de profil (avec liste des séries)
 		['GET', '/profile/', 'Profile#profile', 'profile'],

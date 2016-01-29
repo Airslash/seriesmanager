@@ -7,21 +7,15 @@ class SerieManager extends \W\Manager\Manager
 	public function search()
 	{
 
-		$keyword = $_GET['keyword-input'];
+		$keyword = $_GET['keyword'];
 
 		$sql = "SELECT id, title FROM series 
-				WHERE title LIKE ?";
+				WHERE title LIKE :keyword";
 		
 		$statement = $this->dbh->prepare($sql);
-		$statement->execute([':keyword' => '%' . $kw . '%']);
+		$statement->execute([':keyword' => '%' . $keyword . '%']);
 		$series = $statement->fetchAll();
 
-		foreach($series as $serie){
-		?>
-			<a href="#<?= $serie['id'] ?>" title="<?= $serie['title'] ?>"></a>
-		<?php
-		}
-		?>
-		
+		return $series;
 	}
 }
