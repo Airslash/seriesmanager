@@ -13,6 +13,13 @@ use \W\Controller\Controller;
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
 class SerieController extends Controller {
+
+	/**
+	 * detail method
+	 * @version  1.0
+	 * @param    string $id TV serie title
+	 * @return   object     TV serie details
+	 */
 	public function detail($id)	{
 		$serieManager = new \Manager\SerieManager();
 

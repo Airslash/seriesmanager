@@ -13,12 +13,12 @@ namespace Manager;
 class SerieManager extends \W\Manager\Manager {
 
 	/**
-	 * search method 
-	 * @version        1.0.1
+	 * search method
+	 * @version        1.0.2
 	 * @last_modified  14:27 29/01/2016
 	 * @author         Axel Merlin <merlin.axel@gmail.com>
  	 * @author         Matthias Morin <matthias.morin@gmail.com>
-	 * @return         string  Le titre de la série
+	 * @return         string  TV serie title
 	 */
 	public function search($keyword) {
 
