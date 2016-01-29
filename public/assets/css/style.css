@@ -3,11 +3,14 @@ html, body {
     background-color: rgb(236,240,241);
     font-family: 'Roboto', sans-serif;
 	position: relative;
+    background-image: url(../img/tv.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
  #main-content {
     margin: auto;
-}
+ }
 
 .navbar-header {
 	width: 100%; 
