@@ -90,7 +90,7 @@ Barre de recherche
 }
 
 #search-button {
-    float: left;
+    visibility: hidden;
 }
 
 
@@ -166,6 +166,10 @@ footer, .push {
     height: 100px;
 }
 
+footer a {
+    color: rgb(0, 0, 0);
+}
+
 /*********************************
 Media query
 *********************************/
@@ -207,6 +211,13 @@ Media query
         width: 700px;
         height: 100%;
     }
+
+    /* bouton de recherche */
+    #search-button {
+        float: left;
+        visibility: visible;
+    }
+    
 }
 
 @media (min-width: 1000px){

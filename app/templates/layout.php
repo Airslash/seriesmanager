@@ -96,7 +96,7 @@
 			<button type="button" class="btn btn-default" aria-label="Left Align" id="search-button">
   				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			</button>
-			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Search by title">
+			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
 		<div id="result-search"></div>
 
@@ -113,6 +113,7 @@
 	</div> <!-- main-content -->
 
 		<footer>
+			<a href=""><p>Mentions légales</p></a>
 			<p><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> SeriesManager</p>
 			<p>Made by CAMS Squad</p>
 		</footer>
