@@ -16,7 +16,8 @@ class SerieController extends Controller {
 
 	/**
 	 * detail method
-	 * @version  1.0
+	 * @version               1.0
+	 * @deprecated            1.0
  	 * @author                Axel Merlin <merlin.axel@gmail.com>
 	 * @param    string  $id  TV serie title
 	 * @return   object       TV serie details
@@ -29,6 +30,53 @@ class SerieController extends Controller {
 		$this->show('serie/detail', [
 			"serie" => $serie
 		]);
+	}
+
+	/**
+	 * search method
+	 * @version        1.0 beta
+	 * @deprecated     1.0 beta
+	 * @last_modified  21:09 31/01/2016
+	 * @author         Axel Merlin <merlin.axel@gmail.com>
+	 * @author         Matthias Morin <matthias.morin@gmail.com>
+	 * @return object  Series from db
+	 */
+	public function search($title) {
+		$serieManager = new \Manager\SerieManager();
+
+		// Gets $keyword from $_GET
+		// $keyword = $_GET['keyword'];
+
+		$series = $serieManager->search($title);
+		$this->show('serie/search', [
+					"series" => $series
+		]);
+	}
+
+	/**
+	 * autocompleteSerie
+	 *
+	 * Searches for TV serie into database by title
+	 * Returns TV serie details in json format (by primary key)
+	 *
+	 * @version  1.0 beta
+	 * @param    string  $title  TV serie title
+	 * @return   object          TV serie details
+	 */
+	public function autocompleteSerie($title) {
+		$defaultController = new \Controller\DefaultController();
+		$defaultManager    = new \Manager\DefaultManager();
+
+	 	// Searches for TV serie into database by title
+		$serie = $defaultManager->findLike($title, "title", "series");
+
+		// When TV serie not present into database
+		if (!$serie) {
+			return false;
+		} else {
+			// Returns json to client
+			$this->showJson($serie);
+		}
 	}
 
 	/**
@@ -88,26 +136,6 @@ class SerieController extends Controller {
 
 		// Returns json to client
 		$this->showJson($serie);
-	}
-
-	/**
-	 * search method
-	 * @version        1.0 beta
-	 * @last_modified  21:09 31/01/2016
-	 * @author         Axel Merlin <merlin.axel@gmail.com>
-	 * @author         Matthias Morin <matthias.morin@gmail.com>
-	 * @return object  Series from db
-	 */
-	public function search($title) {
-		$serieManager = new \Manager\SerieManager();
-
-		// Gets $keyword from $_GET
-		// $keyword = $_GET['keyword'];
-
-		$series = $serieManager->search($title);
-		$this->show('serie/search', [
-					"series" => $series
-		]);
 	}
 
 	/**

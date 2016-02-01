@@ -21,6 +21,7 @@ class SerieManager extends \W\Manager\Manager {
 	 * Searches for $keyword into database and returns serie id, title, poster_id, start_date
 	 * 
 	 * @version                  1.1
+	 * @deprecated               1.1
 	 * @author                   Axel Merlin <merlin.axel@gmail.com>
  	 * @author                   Matthias Morin <matthias.morin@gmail.com>
 	 * @param  string  $keyword  User request
@@ -44,6 +45,7 @@ class SerieManager extends \W\Manager\Manager {
 	 * Gets database serie from imdb reference id
 	 * 
 	 * @version              1.0 beta
+	 * @deprecated           1.0 beta
  	 * @author               Matthias Morin <matthias.morin@gmail.com>
 	 * @param  integer  $id  element id
 	 * @return array         Contains serie data
@@ -68,6 +70,7 @@ class SerieManager extends \W\Manager\Manager {
 	 * Gets database serie from imdb reference id and season number
 	 * 
 	 * @version                   1.0 beta
+	 * @deprecated                1.0 beta
  	 * @author                    Matthias Morin <matthias.morin@gmail.com>
 	 * @param  string   $imdb_id  Element imdb_id
 	 * @param  integer  $season   Element season number
