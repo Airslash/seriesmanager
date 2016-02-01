@@ -12,11 +12,11 @@ namespace Scraper;
  * @last_modified  16:25 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
-	* @method         __construct           Initializes $context propery
-	* @method         scrapeSeriesId        Builds $imdb_id list from imdb result page url (50 elements each)
-	* @method         scrapeSerieById       Builds imdb url from user query and scrapes imdb serie details
-	* @method         scrapeSeasons         Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails()
-	* @method         scrapeEpisodeDetails  Scrapes epidode details from imdb
+ * @method         __construct           Initializes $context propery
+ * @method         scrapeSeriesId        Builds $imdb_id list from imdb result page url (50 elements each)
+ * @method         scrapeSerieById       Builds imdb url from user query and scrapes imdb serie details
+ * @method         scrapeSeasons         Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails()
+ * @method         scrapeEpisodeDetails  Scrapes epidode details from imdb
  */
 Class ImdbScraper {
 	/**
