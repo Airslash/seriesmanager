@@ -5,19 +5,28 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * Inserts series and episodes to database
- * @version        1.3
+ * ScraperController
+ * 
+ * Scrapes and inserts series and episodes to database
+ * 
+ * @version        1.3.1
  * @last_modified  13:43 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
+ * @method         scrapeMostPopularSeries  Scrapes top 50 most popular series from imdb
+ * @method         scrapeSerie              Scrapes first TV serie from imdb result page, if any
+ * @method         insertSerie              Main ScraperController method
  */
 class ScraperController extends Controller {
 
 	/**
 	 * scrapeMostPopularSeries
 	 *
-	 * Scrapes top 50 most popular series from imdb
+	 * Scrapes most popular TV series from imdb result page
 	 *
+	 * @version                1.1
+	 * @param  integer  $from  Start from page
+	 * @param  integer  $to    ... To page
 	 */
 	public function scrapeMostPopularSeries($from, $to) {
 
@@ -74,9 +83,9 @@ class ScraperController extends Controller {
 	/**
 	 * insertSerie
 	 *
-	 * Main ScraperController method
 	 * Scrapes TV serie from imdb and inserts serie details into database
 	 *
+	 * @version                  2.5.2
 	 * @param  string  $imdb_id  imdb reference id
 	 */
 	public function insertSerie($imdb_id) {

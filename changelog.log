@@ -1,0 +1,24 @@
+Changelog v1.1
+
+17:01 01/02/2016
+
+DefaultManager : Extends W framework Manager with cool new functionalities
+	countRows : Counts rows from given table
+	lastId    : Retrieves id from last inserted element
+	findLike  : Finds all lines containing $query string into target table and column
+	findWhere : Finds all lines matching exact $query string into target table and column
+
+SerieController : 
+	autocompleteSerie :  Searches for TV serie into database by title
+	searchSerie       :        Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	findSerie         :          Finds TV serie into database by id
+	randomSerie       :        Sends random amount of series from database in json format
+
+ScraperController : Scrapes and inserts series and episodes to database
+	scrapeMostPopularSeries : Scrapes most popular TV series from imdb result page
+	scrapeSerie             : Scrapes first TV serie from imdb result page, if any
+	insertSerie             : Scrapes TV serie from imdb and inserts serie details into database
+
+DefaultController
+	home Default : home page
+	showPrint_r  : Displays raw array data

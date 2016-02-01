@@ -9,17 +9,21 @@ use \W\Manager\Manager;
  * 
  * Extends W framework Manager with cool new functionalities
  * 
- * @version        1.4
- * @last_modified  14:57 01/02/2016
+ * @version        1.4.1
+ * @last_modified  16:52 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
+ * @method         countRows  Counts rows from given table
+ * @method         lastId     Retrieves id from last inserted element
+ * @method         findLike   Finds all lines containing $query string into target table and column
+ * @method         findWhere  Finds all lines matching exact $query string into target table and column
  */
 class DefaultManager extends Manager {
 
 	/**
 	 * countRows
 	 * 
-	 * Counts row from given table
+	 * Counts rows from given table
 	 *
 	 * @see     Manager::$dbh  Uses dbh property from Manager class
 	 * @return  integer        Row count

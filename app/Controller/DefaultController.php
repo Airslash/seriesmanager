@@ -13,6 +13,8 @@ use \W\Controller\Controller;
  * @last_modified  16:16 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
+ * @method         home Default  home page
+ * @method         showPrint_r   Displays raw array data
  */
 class DefaultController extends Controller {
 

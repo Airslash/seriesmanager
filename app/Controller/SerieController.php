@@ -28,6 +28,7 @@ class SerieController extends Controller {
 	 * @version  1.0 beta
 	 * @param    string  $title  TV serie title
 	 * @return   object          TV serie details
+	 * @todo                     Accepter les requètes avec des espaces
 	 */
 	public function autocompleteSerie($title) {
 		$defaultController = new \Controller\DefaultController();
@@ -55,6 +56,7 @@ class SerieController extends Controller {
 	 * @version  1.0 beta
 	 * @param    string  $title  TV serie title
 	 * @return   object          TV serie details
+	 * @todo                     Accepter les requètes avec des espaces
 	 */
 	public function searchSerie($title) {
 		$defaultController = new \Controller\DefaultController();
