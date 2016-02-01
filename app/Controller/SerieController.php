@@ -11,6 +11,11 @@ use \W\Controller\Controller;
  * @author           Axel Merlin <merlin.axel@gmail.com>
  * @author           Matthias Morin <matthias.morin@gmail.com>
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
+ * @method           autocompleteSerie :Searches for TV serie into database by title
+ * @method           searchSerie       :Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+ * @method           findSerie         :Finds TV serie into database by id
+ * @method           randomSerie       :Sends random amount of series from database in json format
+ * 
  */
 class SerieController extends Controller {
 
@@ -43,9 +48,8 @@ class SerieController extends Controller {
 	/**
 	 * searchSerie
 	 *
-	 * Searches for TV serie into database by title
-	 * Scrapes TV serie details from imdb when not present
-	 * and adds TV serie details into database
+	 * Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	 * Adds TV serie details into database when found on imdb
 	 * Returns TV serie details in json format (by primary key)
 	 *
 	 * @version  1.0 beta
@@ -102,7 +106,7 @@ class SerieController extends Controller {
 	/**
 	 * randomSerie
 	 *
-	 * Sends random series from database in json format
+	 * Sends random amount of series from database in json format
 	 *
 	 * @version  1.1
 	 * @param    integer  $number  Series count to retrieve from database
