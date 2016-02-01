@@ -70,6 +70,8 @@ class UserController extends Controller
 				$error = "Email not valid";
 			}
 
+			$authentificationManager = new \W\Security\AuthentificationManager;
+
 			// si c'est valide
 			if ($isValid){
 				// insertion en bdd
@@ -78,9 +80,12 @@ class UserController extends Controller
 					"email" => $email,
 					"password" => password_hash($password, PASSWORD_DEFAULT)
 				]);
+				// connexion du user
+				$result = $authentificationManager->isValidLoginInfo( $username, $password);
+				$user = $userManager->find($result);
+				$authentificationManager->logUserIn($user);
 
-				// redirection de l'utilisateur
-				$this->redirectToRoute("home"); 
+				$this->redirectToRoute("profile");
 			}
 			
 		}
@@ -117,7 +122,7 @@ class UserController extends Controller
 				$user = $userManager->find($result);
 
 			// on le connecte
-				$authentificationManager->logUserIn($user);
+				$authentificationManager->logUserIn($user);		
 			} 
 
 			else {
@@ -127,7 +132,7 @@ class UserController extends Controller
 			
 		}
 
-		$this->show("user/login");
+		$this->show("profile/profile");
 	}
 
 	/**
@@ -140,7 +145,7 @@ class UserController extends Controller
 
 		$authentificationManager->logUserOut();
 
-		$this->show("user/logout");
+		$this->show("default/home");
 	}
 
 	/**
@@ -151,6 +156,7 @@ class UserController extends Controller
 	{	
 
 		$error = "";
+		$email = "";
 
 		// formulaire 
 		if ($_POST){
@@ -232,7 +238,7 @@ class UserController extends Controller
 		}
 
 		$this->show("user/password", [
-			"error"=>$error,
+			"error"=> $error,
 			"email" => $email
 		]);
 	}
