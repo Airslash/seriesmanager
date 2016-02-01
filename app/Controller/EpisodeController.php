@@ -4,8 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
-class EpisodeController extends Controller
-{
+class EpisodeController extends Controller {
 
 	/**
 	 * episode_detail
