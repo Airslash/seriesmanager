@@ -9,8 +9,8 @@ use \W\Manager\Manager;
  * 
  * Extends W framework Manager with cool new functionalities
  * 
- * @version        1.1.2 beta
- * @last_modified  17:04 30/01/2016
+ * @version        1.2
+ * @last_modified  11:32 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
@@ -21,7 +21,6 @@ class DefaultManager extends Manager {
 	 * 
 	 * Retrieves id from last inserted element
 	 *
-	 * @version                1.0 beta
 	 * @see     Manager::$dbh  Uses dbh property from Manager class
 	 * @return  integer        Last inserted object primary key
 	 */
@@ -34,18 +33,22 @@ class DefaultManager extends Manager {
 	 * 
 	 * Finds all lines containing $query string into target table and column
 	 *
-	 * @version                   1.2 beta
+	 * @version                   1.3 beta
 	 * @see     Manager::$table   Gets target table from Manager class property
-	 * @param   string   $search   Text search
+	 * @param   string   $search  Text search
 	 * @param   string   $column  Target column
 	 * @param   string   $table   Optional default is Class name
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
 	 */
-	public function superSearch($search, $column, $table = $this->table) {
+	public function superSearch($search, $column, $table) {
+		// Sets default table from Manager class property
+		if (empty($table)){
+			$table = $this->table;
+		}
 
 		// Searches database for $search into $column from $table
-		$sql = 'SELECT * FROM ' . $table . ' WHERE ' . $column . ' = :search;';
+		$sql = 'SELECT * FROM ' . $table . ' WHERE ' . $column . ' LIKE :search;';
 		$statement = $this->dbh->prepare($sql);
 		$statement->execute([
 			':search' => '%' . $search . '%'
@@ -54,7 +57,6 @@ class DefaultManager extends Manager {
 		$result = $statement->fetchAll();
 		// If fetchAll returned results
 		if ( $result ) {
-			// return $result[0];
 			return $result;
 		} else {
 			return false;
@@ -66,7 +68,7 @@ class DefaultManager extends Manager {
 	 * 
 	 * Finds all lines matching exact $query string into target table and column
 	 *
-	 * @version                   1.2 beta
+	 * @version                   1.3 beta
 	 * @see     Manager::$table   Gets target table from Manager class property
 	 * @param   string   $query   Text query
 	 * @param   string   $column  Target column
@@ -74,7 +76,11 @@ class DefaultManager extends Manager {
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
 	 */
-	public function superFind($query, $column, $table = $this->table) {
+	public function superFind($query, $column, $table) {
+		// Sets default table from Manager class property
+		if (empty($table)){
+			$table = $this->table;
+		}
 
 		// Searches database for $query into $column from $table
 		$sql = 'SELECT * FROM ' . $table . ' WHERE ' . $column . ' = :query;';
@@ -86,7 +92,6 @@ class DefaultManager extends Manager {
 		$result = $statement->fetchAll();
 		// If fetchAll returned results
 		if ( $result ) {
-			// return $result[0];
 			return $result;
 		} else {
 			return false;
