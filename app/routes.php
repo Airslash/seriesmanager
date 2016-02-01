@@ -64,6 +64,9 @@
 		// Affichage d'une serie
 		['GET|POST', '/findserie/[i:id]/', 'Serie#findSerie', 'find_serie'],
 
-		// Affichage d'une serie
+		/**
+		 * Affichage d'un test
+		 * @deprecated test
+		 */
 		['GET|POST', '/test/[:string]/', 'Test#test', 'test'],
 	);
