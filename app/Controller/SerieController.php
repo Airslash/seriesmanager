@@ -128,7 +128,7 @@ class SerieController extends Controller {
 			$randomSerieId = mt_rand(1, $rowCount);
 			$serie = $defaultManager->findWhere($randomSerieId, "id", "series");
 			if ($serie){
-				$series[] = $serie;
+				$series[] = $serie[0];
 			} else {
 				$i--;
 			}
