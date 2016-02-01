@@ -3,9 +3,12 @@
 namespace Manager;
 
 /**
- * SerieManager    Manages all requests related to the "series" table
- * @version        1.0
- * @last_modified  14:22 29/01/2016
+ * SerieManager
+ * 
+ * Manages all requests related to the "series" table
+ * 
+ * @version        1.0.1 beta
+ * @last_modified  16:26 29/01/2016
  * @author         Axel Merlin <merlin.axel@gmail.com>
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
@@ -13,12 +16,15 @@ namespace Manager;
 class SerieManager extends \W\Manager\Manager {
 
 	/**
-	 * search method
-	 * @version        1.0.2
-	 * @last_modified  14:27 29/01/2016
-	 * @author         Axel Merlin <merlin.axel@gmail.com>
- 	 * @author         Matthias Morin <matthias.morin@gmail.com>
-	 * @return string  TV serie title
+	 * search
+	 * 
+	 * Searches for $keyword into database and returns serie id, title, poster_id, start_date
+	 * 
+	 * @version                  1.1
+	 * @author                   Axel Merlin <merlin.axel@gmail.com>
+ 	 * @author                   Matthias Morin <matthias.morin@gmail.com>
+	 * @param  string  $keyword  User request
+	 * @return arrray            Contains id, title, poster_id, start_date
 	 */
 	public function search($keyword) {
 
@@ -33,27 +39,82 @@ class SerieManager extends \W\Manager\Manager {
 	}
 
 	/**
-	 * find method
-	 * @version        1.0
-	 * @last_modified  15:02 29/01/2016
- 	 * @author         Matthias Morin <matthias.morin@gmail.com>
-	 * @return boolean True if $keyword present in database
+	 * getSerie
+	 * 
+	 * Gets database serie from imdb reference id
+	 * 
+	 * @version              1.0 beta
+ 	 * @author               Matthias Morin <matthias.morin@gmail.com>
+	 * @param  integer  $id  element id
+	 * @return array         Contains serie data
 	 */
-	public function jsonSearch($table, $column, $search) {
+	public function getSerie($id) {
 
-		// Searches database for $search into $column from $table
-		$sql = 'SELECT * FROM '.$table.' WHERE '.$column.' = ?;';
+		$sql = "SELECT * FROM series WHERE id = $id";
+		
 		$statement = $this->dbh->prepare($sql);
 		$statement->execute([
-			':keyword' => '%' . $search . '%'
+			':id' => $id
 			]);
 
-		$result = $statement->fetchAll();
-		// If fetch returned results
-		if ( $result ) {
-			return $result;
-		} else {
-			return false;
-		}
+		$serie = $statement->fetch();
+
+		return $serie;
+	}
+
+	/**
+	 * getSeason
+	 * 
+	 * Gets database serie from imdb reference id and season number
+	 * 
+	 * @version                   1.0 beta
+ 	 * @author                    Matthias Morin <matthias.morin@gmail.com>
+	 * @param  string   $imdb_id  Element imdb_id
+	 * @param  integer  $season   Element season number
+	 * @return array              Contains serie data
+	 */
+	public function getSeason($imdb_id, $season) {
+
+		$sql = "SELECT * FROM series WHERE imdb_id = :imdb_id AND season = :season";
+		
+		$statement = $this->dbh->prepare($sql);
+		$statement->execute([
+			':imdb_id' => $imdb_id, 
+			':season'  => $season,
+			]);
+
+		$seasons = $statement->fetch();
+
+		return $seasons;
+	}
+
+	/**
+	 * getEpisode
+	 * 
+	 * Gets database serie from imdb reference id
+	 * 
+	 * @version                   1.0 beta
+	 * @last_modified             14:27 29/01/2016
+	 * @author                    Axel Merlin <merlin.axel@gmail.com>
+ 	 * @author                    Matthias Morin <matthias.morin@gmail.com>
+	 * @param  string   $imdb_id  Element imdb_id
+	 * @param  integer  $season   Element season number
+	 * @return array              Contains serie data
+	 */
+	public function getEpisode($id, $season, $episode) {
+
+
+		$sql = "SELECT * FROM series WHERE id = :id AND season = :season AND episode = :episode";
+		
+		$statement = $this->dbh->prepare($sql);
+		$statement->execute([
+			':id'      => $id, 
+			':season'  => $season,
+			':episode' => $episode,
+			]);
+
+		$seasons = $statement->fetch();
+
+		return $seasons;
 	}
 }

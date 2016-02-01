@@ -14,4 +14,17 @@ class DefaultController extends Controller
 	{
 		$this->show('default/home');
 	}
+
+	/**
+	 * showPrint_r
+	 * 
+	 * Displays raw array data
+	 * 
+	 * @param  array  $array  array data
+	 */
+	public function showPrint_r($array) {
+		echo "<pre>";
+		print_r($array);
+		echo "</pre>";
+	}
 }

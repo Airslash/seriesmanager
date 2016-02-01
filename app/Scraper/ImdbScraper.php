@@ -3,12 +3,15 @@
 namespace Scraper;
 
 /**
+ * ImdbScraper
+ * 
  * Scrapes user query from imdb and returns all scraped data
- * @version        2.3.2
- * @last_modified  11:41 29/01/2016
+ * Seasons and episodes arrays are indexed starting from 1
+ * 
+ * @version        2.5.1
+ * @last_modified  20:19 31/01/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
- * @note           seasons and episodes arrays are indexed starting from 1
  */
 Class ImdbScraper {
 	/**
@@ -34,26 +37,32 @@ Class ImdbScraper {
 
 	/**
 	 * Constructor
+	 * @version    2.4
 	 * Initializes context property
 	 */
 	public function __construct() {
 		// Sets context property options
 		$options = ["http" => [
 			"method"=>"GET",
-			"header"=>"Accept-language:en\r\n"
+			// Will return all data in english language
+			"header"=>"Accept-language:en\r\n",
 		]];	
 		$this->context = stream_context_create($options);
 	}
 
 	/**
-	 * Gets serie from first result on result page, if any
-	 * @param  string   $query User query as serie title
-	 * @return string   Contains imdb_id
-	 * @return boolean  False when query returned no results
+	 * scrapeSerie
+	 * 
+	 * Scrapes first TV serie from imdb result page, if any
+	 * 
+	 * @version          2.5.1
+	 * @param   string   $title User query as serie title
+	 * @return  string   Contains imdb_id
+	 * @return  boolean  False when query returned no results
 	 */
-	public function getSerie($query) {
+	public function scrapeSerie($title) {
 		// Builds imdb result page url from user request
-		$html = file_get_html('http://www.imdb.com/search/title?title='.urlencode($query).'&title_type=tv_series', false, $this->context);
+		$html = file_get_html('http://www.imdb.com/search/title?title='.urlencode($title).'&title_type=tv_series', false, $this->context);
 
 		// Checks results
 		$main = $html->find('div#main', 0);
@@ -73,7 +82,7 @@ Class ImdbScraper {
 			$imdb_id = explode("/", $a->href)[2];
 
 			// Query success
-			$this->getSerieById($imdb_id);
+			$this->scrapeSerieById($imdb_id);
 
 			// Return scraped data
 			return $this->serie;
@@ -81,15 +90,20 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * Builds $imdb_id list from imdb most popular series
-	 * @return array  Contains imdb ids
+	 * scrapeSeriesId
+	 * 
+	 * Builds $imdb_id list from imdb result page url (50 elements each)
+	 * 
+	 * @version              2.4.1
+	 * @param   string $url  Imdb result page url to be parsed
+	 * @return  array        Contains imdb reference ids
 	 */
-	public function getMostPopularSeriesId() {
+	public function scrapeSeriesId($url) {
 		// Empties serieId property
 		$this->serieId = null;
 
-		// Gets dom from imdb most popular series result page
-		$html = file_get_html('http://www.imdb.com/search/title?title_type=tv_series', false, $this->context);
+		// Gets dom from imdb result page
+		$html = file_get_html($url, false, $this->context);
 
 		// Gets results from dom
 		$results = $html->find('table.results td.image');
@@ -115,12 +129,16 @@ Class ImdbScraper {
 	}
 
 	/**
+	 * scrapeSerieById
+	 * 
 	 * Builds imdb url from user query and scrapes imdb serie details
-	 * @param  string   $query User query
-	 * @return array    Contains serie infos : title, summary, genre, actors, imdb_id, poster_id, start_date, end_date
-	 * @return boolean  True when success, false when query returned no results
+	 * 
+	 * @version          2.4
+	 * @param   string   $imdb_id  imdb reference id
+	 * @return  array    Contains  serie infos : title, summary, genre, actors, imdb_id, poster_id, start_date, end_date
+	 * @return  boolean  True when success, false when query returned no results
 	 */
-	public function getSerieById($imdb_id) {
+	public function scrapeSerieById($imdb_id) {
 		// Empties serie property
 		$this->serie = null;
 
@@ -168,11 +186,11 @@ Class ImdbScraper {
 		$season_count = $divSeasons->find('a', 0)->plaintext;
 
 		// How to build images src from $poster_id :
-		// $xxs    = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_UY67_CR0,0,45,67_AL_.jpg';
-		// $xs     = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1._SY74_CR0,0,54,74_.jpg';
-		// $small  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_UX67_CR0,0,67,98_AL_.jpg';
-		// $medium = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_SY317_CR0,0,214,317_AL_.jpg';
-		// $large  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'@._V1_SX640_SY720_.jpg';
+		// $xxs    = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_UY67_CR0,0,45,67_AL_.jpg';
+		// $xs     = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1._SY74_CR0,0,54,74_.jpg';
+		// $small  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_UX67_CR0,0,67,98_AL_.jpg';
+		// $medium = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_SY317_CR0,0,214,317_AL_.jpg';
+		// $large  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_SX640_SY720_.jpg';
 
 		$this->serie = [
 			"title"      => $title,
@@ -185,18 +203,22 @@ Class ImdbScraper {
 			"end_date"   => $date[1],
 		];
 
-		$this->getSeasons($imdb_id, $season_count);
+		$this->scrapeSeasons($imdb_id, $season_count);
 
 		// Return scraped data
 		return $this->serie;
 	}
 
 	/**
-	 * Builds imdb season url from $imdb_id, $season_count and sends each episode found to getEpisodeDetails()
+	 * scrapeSeasons
+	 * 
+	 * Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails()
+	 * 
+	 * @version                       2.4
 	 * @param  string  $imdb_id       id from imdb
 	 * @param  integer $season_count  Season count
 	 */
-	protected function getSeasons($imdb_id, $season_count) {
+	protected function scrapeSeasons($imdb_id, $season_count) {
 		// Resets max_execution_time
 		ini_set("max_execution_time", 30);
 
@@ -213,20 +235,24 @@ Class ImdbScraper {
 			// Gets each episode details from season
 			foreach ($episodes as $episode) {
 				$i++;
-				// Sending <div class="list_item odd"> and <div class="list_item even"> to getEpisodeDetails
-				$this->getEpisodeDetails($season, $i, $episode);
+				// Sending <div class="list_item odd"> and <div class="list_item even"> to scrapeEpisodeDetails
+				$this->scrapeEpisodeDetails($season, $i, $episode);
 			}
 		}
 	}
 
 	/**
+	 * scrapeEpisodeDetails
+	 * 
 	 * Scrapes imdb episodes details
-	 * @param  integer     $season   Season
-	 * @param  integer     $episode  Episode
-	 * @param  dom object  $div      div containing episode details to parse
-	 * @return array                 Contains episode details : poster_id, title, imdb_id, summary, air_date
+	 * 
+	 * @version                       2.4
+	 * @param   integer     $season   Season
+	 * @param   integer     $episode  Episode
+	 * @param   dom object  $div      div containing episode details to parse
+	 * @return  array                 Contains episode details : poster_id, title, imdb_id, summary, air_date
 	 */
-	protected function getEpisodeDetails($season, $episode, $div) {
+	protected function scrapeEpisodeDetails($season, $episode, $div) {
 		// Gets $poster_src from <img>
 		$poster_src = $div->find('img', 0)->src;
 
@@ -259,5 +285,4 @@ Class ImdbScraper {
 			"poster_id" => $poster_id,
 		];
 	}
-
 }
