@@ -120,6 +120,8 @@ Page série détail
     color: rgba(39, 174, 96, 1.0);
 }
 
+
+
 /*********************************
 Diaporama
 *********************************/
@@ -134,7 +136,7 @@ Footer
 footer {
     width: 100%;
     padding-top: 20px;
-    background-color: rgb(204,235,197);
+    background-color: #9098B2;
     position: fixed;
     bottom: 0;
 }
