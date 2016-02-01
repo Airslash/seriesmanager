@@ -22,6 +22,8 @@ class UserController extends Controller
 	{
 
 		$error = "";
+		$username = "";
+		$email = "";
 
 		// Vérification de formulaire
 		if ($_POST){
@@ -46,7 +48,6 @@ class UserController extends Controller
 				$isValid = false;
 				$error = "Username too short !";
 			} 
-
 
 			// password
 			if (empty($password) || empty($password_bis)) {
@@ -90,11 +91,13 @@ class UserController extends Controller
 		}
 
 		else {
-			$error = "Le formulaire n'a pas été correctement validé.";
+			$error = "Please fill the form.";
 		}
 
 		$this->show('user/register', [
-			"error" => $error
+			"error" => $error,
+			"username" => $username,
+			"email" => $email	
 		]);
 
 	}
