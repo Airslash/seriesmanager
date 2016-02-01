@@ -50,8 +50,11 @@
 		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
 
 		// Affichage de series au hazard
-		['GET|POST', '/random/[i:number]/', 'Serie#randomSerie', 'random_serie'],
+		['GET|POST', '/randomseries/[i:number]/', 'Serie#randomSeries', 'random_serie'],
 
 		// Affichage d'une serie
-		['GET|POST', '/findserie/[:id]/', 'Serie#findSerie', 'find_serie'],
+		['GET|POST', '/findserie/[i:id]/', 'Serie#findSerie', 'find_serie'],
+
+		// Affichage d'une serie
+		['GET|POST', '/test/[:string]/', 'Test#test', 'test'],
 	);

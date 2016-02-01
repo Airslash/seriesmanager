@@ -69,7 +69,6 @@ class SerieController extends Controller {
 			// Returns json to client
 			$this->showJson($serie);
 		}
-
 	}
 
 	/**
@@ -109,5 +108,33 @@ class SerieController extends Controller {
 		$this->show('serie/search', [
 					"series" => $series
 		]);
+	}
+
+	/**
+	 * randomSerie
+	 *
+	 * Sends random series from database in json format
+	 *
+	 * @version  1.1
+	 * @param    integer  $number  Series count to retrieve from database
+	 * @return   object            TV serie details
+	 */
+	public function randomSeries($number) {
+		$defaultController = new \Controller\DefaultController();
+		$defaultManager    = new \Manager\DefaultManager();
+
+		for ($i=0; $i<$number; $i++) {
+			$rowCount = $defaultManager->countRows("series");
+			$randomSerieId = mt_rand(1, $rowCount);
+			$serie = $defaultManager->findWhere($randomSerieId, "id", "series");
+			if ($serie){
+				$series[] = $serie;
+			} else {
+				$i--;
+			}
+		}
+
+		// Returns json to client
+		$this->showJson($series);
 	}
 }
