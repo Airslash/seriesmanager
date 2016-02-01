@@ -2,6 +2,5 @@
 
 namespace Manager;
 
-class EpisodeManager extends \W\Manager\Manager
-{
+class EpisodeManager extends \W\Manager\Manager {
 }

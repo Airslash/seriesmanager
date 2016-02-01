@@ -16,7 +16,10 @@
 		// Page d'inscription
 		['GET|POST', '/register/', 'User#register', 'register'],
 
-		// Page de détail d'une série
+		/**
+		 * Page de détail d'une série
+		 * @deprecated detail
+		 */
 		['GET|POST', '/detail/[:id]/', 'Serie#detail', 'detail'],
 
 		// Page de profil (avec liste des séries)
@@ -37,7 +40,10 @@
 		// Page de détail d'un épisode
 		['GET', '/episode_detail/[:id]/', 'Episode#episode_detail', 'episode_detail'],
 
-		// Page de recherche en autocomplétion
+		/**
+		 * Page de recherche en autocomplétion
+		 * @deprecated search
+		 */
 		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],
 
 		// Page de scraping pour "hydrater" la base en masse
@@ -49,12 +55,18 @@
 		// Recherche d'une serie
 		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
 
+		// Autocompletion d'une serie
+		['GET|POST', '/autocomplete/[:title]/', 'Serie#autocompleteSerie', 'autocomplete_serie'],
+
 		// Affichage de series au hazard
 		['GET|POST', '/randomseries/[i:number]/', 'Serie#randomSeries', 'random_serie'],
 
 		// Affichage d'une serie
 		['GET|POST', '/findserie/[i:id]/', 'Serie#findSerie', 'find_serie'],
 
-		// Affichage d'une serie
+		/**
+		 * Affichage d'un test
+		 * @deprecated test
+		 */
 		['GET|POST', '/test/[:string]/', 'Test#test', 'test'],
 	);
