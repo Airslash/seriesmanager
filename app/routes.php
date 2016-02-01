@@ -41,14 +41,17 @@
 		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],
 
 		// Page de scraping pour "hydrater" la base en masse
-		['GET|POST', '/scraper/[i:pages]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
+		['GET|POST', '/scraper/[i:from]/[i:to]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
 
 		// Ajout d'une serie dans la base
 		['GET|POST', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
 
-		// Affichage d'une serie
-		['GET|POST', '/findserie/[:id]/', 'Serie#findSerie', 'find_serie'],
-
 		// Recherche d'une serie
 		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
+
+		// Affichage de series au hazard
+		['GET|POST', '/random/', 'Serie#randomSerie', 'random_serie'],
+
+		// Affichage d'une serie
+		['GET|POST', '/findserie/[:id]/', 'Serie#findSerie', 'find_serie'],
 	);

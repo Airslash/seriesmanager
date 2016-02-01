@@ -19,14 +19,16 @@ class ScraperController extends Controller {
 	 * Scrapes top 50 most popular series from imdb
 	 *
 	 */
-	public function scrapeMostPopularSeries($pages) {
+	public function scrapeMostPopularSeries($from, $to) {
 
 		// Initializes objects
 		$defaultController = new \Controller\DefaultController();
 		$imdbScraper       = new \Scraper\ImdbScraper();
 		$defaultManager    = new \Manager\DefaultManager();
+		$from = $from*50;
+		$to = $to*50;
 
-		for ($i=1; $i<=$pages; $i+=50) {
+		for ($i=$from; $i<=$to; $i+=50) {
 			// Gets 50 series id from imdb from result page
 			$seriesId = $imdbScraper->scrapeSeriesId("http://www.imdb.com/search/title?start=$i&title_type=tv_series");
 			// Inserts serie into database
