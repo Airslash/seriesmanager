@@ -7,13 +7,43 @@ namespace Manager;
  * 
  * Manages all requests related to the "series" table
  * 
- * @version        1.0.1 beta
- * @last_modified  16:26 29/01/2016
+ * @version        1.0.2 beta
+ * @deprecated     1.0.2 beta
  * @author         Axel Merlin <merlin.axel@gmail.com>
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
 class SerieManager extends \W\Manager\Manager {
+
+	/**
+	 * getEpisode
+	 * 
+	 * Gets database serie from imdb reference id
+	 * 
+	 * @version                   1.0 beta
+	 * @deprecated                1.0 beta
+	 * @author                    Axel Merlin <merlin.axel@gmail.com>
+ 	 * @author                    Matthias Morin <matthias.morin@gmail.com>
+	 * @param  string   $imdb_id  Element imdb_id
+	 * @param  integer  $season   Element season number
+	 * @return array              Contains serie data
+	 */
+	public function getEpisode($id, $season, $episode) {
+
+
+		$sql = "SELECT * FROM series WHERE id = :id AND season = :season AND episode = :episode";
+		
+		$statement = $this->dbh->prepare($sql);
+		$statement->execute([
+			':id'      => $id, 
+			':season'  => $season,
+			':episode' => $episode,
+			]);
+
+		$seasons = $statement->fetch();
+
+		return $seasons;
+	}
 
 	/**
 	 * search
@@ -84,36 +114,6 @@ class SerieManager extends \W\Manager\Manager {
 		$statement->execute([
 			':imdb_id' => $imdb_id, 
 			':season'  => $season,
-			]);
-
-		$seasons = $statement->fetch();
-
-		return $seasons;
-	}
-
-	/**
-	 * getEpisode
-	 * 
-	 * Gets database serie from imdb reference id
-	 * 
-	 * @version                   1.0 beta
-	 * @last_modified             14:27 29/01/2016
-	 * @author                    Axel Merlin <merlin.axel@gmail.com>
- 	 * @author                    Matthias Morin <matthias.morin@gmail.com>
-	 * @param  string   $imdb_id  Element imdb_id
-	 * @param  integer  $season   Element season number
-	 * @return array              Contains serie data
-	 */
-	public function getEpisode($id, $season, $episode) {
-
-
-		$sql = "SELECT * FROM series WHERE id = :id AND season = :season AND episode = :episode";
-		
-		$statement = $this->dbh->prepare($sql);
-		$statement->execute([
-			':id'      => $id, 
-			':season'  => $season,
-			':episode' => $episode,
 			]);
 
 		$seasons = $statement->fetch();
