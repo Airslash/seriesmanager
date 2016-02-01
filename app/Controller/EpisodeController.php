@@ -10,14 +10,14 @@ class EpisodeController extends Controller
 	/**
 	 * Page d'un épisode
 	 */
-	public function episode_detail()
+	public function episode_detail($id)
 	{
 		$episodeManager = new \Manager\EpisodeManager();
 
-		$episodes = $episodeManager->findAll();
+		$episode = $episodeManager->find($id);
 
 		$this->show('episode/episode_detail', [
-			"episodes" => $episodes
+			"episode" => $episode
 		]);
 	}
 

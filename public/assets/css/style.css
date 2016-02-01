@@ -198,7 +198,7 @@ Media query
     }
 
     /* info série */
-    #detail-serie {
+    .detail-serie {
         width: 400px;
         float: left;
         margin-right: 100px
@@ -227,7 +227,7 @@ Media query
         float: right;
     }
 
-    #detail-serie {
+    .detail-serie {
         width: 600px;
 
     }

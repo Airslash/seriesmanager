@@ -35,7 +35,7 @@
 		['GET|POST', '/logout/', 'User#logout', 'logout'],
 
 		// Page de détail d'un épisode
-		['GET', '/episode_detail/', 'Episode#episode_detail', 'episode_detail'],
+		['GET', '/episode_detail/[:id]/', 'Episode#episode_detail', 'episode_detail'],
 
 		// Page de recherche en autocomplétion
 		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],

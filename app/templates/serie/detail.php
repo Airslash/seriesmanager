@@ -5,7 +5,7 @@
 	<div id="serie-info">
 		<h2><?= $serie["title"] ?></h2>
 		<img src="http://ia.media-imdb.com/images/M/<?= $serie["poster_id"] ?>._V1_SX640_SY720_.jpg" />
-		<div id="detail-serie">
+		<div class="detail-serie">
 			<p id="serie-start"><strong>Start: </strong><?= $serie["start_date"] ?></p>
 			<p id="serie-genre"><strong>Genre: </strong><?= $serie["genre"] ?></p>
 			<p id="serie-actors"><strong>Main Actors: </strong><?= $serie["actors"] ?></p>

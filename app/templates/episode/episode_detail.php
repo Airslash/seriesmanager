@@ -1,17 +1,16 @@
 <?php $this->layout('layout', ['title' => 'Episode']) ?>
 
 <?php $this->start('main_content') ?>
-	<h2>Episode</h2>
 
-	<?php foreach ($episodes as $episode): ?>
-	
-		<div id="episode-info">
-			<h4><?= $episode["title"] ?></h4>
-			<img src="../assets/episodes_stills/<?= $episode["poster"] ?>" />
-			<div id="episode-start">Original air date : <?= $episode["date"] ?></div>
-			<div id="episode-description"><?= $episode["description"] ?></div>
+	<div id="episode-info">
+		<h2><?= $episode["title"] ?></h2>
+		<div id="season-episode">Season <?= $episode["season"] ?>, Episode <?= $episode["episode"] ?></div>
+		<img src="http://ia.media-imdb.com/images/M/<?= $episode["poster_id"] ?>._V1_SX640_SY720_.jpg" />
+		<div class="detail-serie">
+			<div id="episode-start">Original air date : <?= $episode["air_date"] ?></div>
+			<div id="episode-summary"><?= $episode["summary"] ?></div>
 		</div>
+	</div>
 	
-	<?php endforeach; ?>
 	
 <?php $this->stop('main_content') ?>
