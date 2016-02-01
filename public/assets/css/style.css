@@ -1,15 +1,14 @@
 html, body {
     color: rgb(0, 0, 0);
-    background-color: rgb(236,240,241);
     font-family: 'Roboto', sans-serif;
-	position: relative;
-    background-image: url(../img/tv.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 100%;
 }
 
  #main-content {
-    margin: auto;
+    min-height: 100%;
+    height: 100%;
+    margin: 0 auto -4em;
+    background-color: rgba(255, 255, 255, 1);
  }
 
 .navbar-header {
@@ -87,7 +86,7 @@ Barre de recherche
 
 
 #result-search {
-    position: relative;
+    position: absolute;
     background-color: white;
 }
 
@@ -104,6 +103,23 @@ Page série détail
     text-decoration: none;
 }
 
+#add-collection, #remove-collection {
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    width: 200px;
+}
+
+#remove-collection {
+    background-color: rgba(231, 76, 60, 0.4);
+    color: rgba(231, 76, 60,1.0);
+}
+
+#add-collection {
+    background-color: rgba(39, 174, 96, 0.4);
+    color: rgba(39, 174, 96, 1.0);
+}
+
 /*********************************
 Diaporama
 *********************************/
@@ -114,15 +130,21 @@ Diaporama
 /*********************************
 Footer
 *********************************/
-
+/*méthode du sticky footer prise sur http://ryanfait.com/resources/footer-stick-to-bottom-of-page/*/
 footer {
-    height: 100px;
+    width: 100%;
     padding-top: 20px;
-    background-color: rgba(190,217,222, 0.5);
+    background-color: rgb(204,235,197);
+    position: fixed;
+    bottom: 0;
 }
 
 footer p {
     text-align: center;
+}
+
+footer, .push {
+    height: 100px;
 }
 
 /*********************************
@@ -148,19 +170,36 @@ Media query
     
     /* image série */
     #serie-info img {
-       width: 480px;
-       height: 720px;
+        width: 380px;
+        height: 562px;
     }
 
 }
 
+@media (min-width: 700px) {
+
+    #main-content {
+        width: 700px;
+        height: 100%;
+    }
+}
+
 @media (min-width: 1000px){
+
+    body {
+        background-image: url(../img/cover.jpg);
+    }
+
+    #main-content {
+        width: 1000px;
+        height: 100%;
+    }
+
     /* info série */
     #detail-serie {
-        width: 460px;
-    }
-    #detail-serie {
-        float: right;
+        width: 400px;
+        float: left;
+        margin-right: 100px
     }
 }
 
@@ -168,6 +207,7 @@ Media query
 
     #main-content {
         width: 1300px;
+        height: 100%;
         margin: auto;
     }
 
@@ -184,5 +224,9 @@ Media query
         width: 650px;
         float: right;
     }
- 
+
+    #detail-serie {
+        width: 600px;
+
+    }
 }
