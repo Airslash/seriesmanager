@@ -7,7 +7,7 @@ use \W\Controller\Controller;
 /**
  * UserController
  * @version        1.1
- * @last_modified  17:00 29/01/2016
+ * @last_modified  12:59 29/01/2016
  * @author         Christian Marcucci <christian.marcucci13@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team * @author  Christian <[<email address>]>
  * 
@@ -22,8 +22,6 @@ class UserController extends Controller
 	{
 
 		$error = "";
-		$username = "";
-		$email = "";
 
 		// Vérification de formulaire
 		if ($_POST){
@@ -48,6 +46,7 @@ class UserController extends Controller
 				$isValid = false;
 				$error = "Username too short !";
 			} 
+
 
 			// password
 			if (empty($password) || empty($password_bis)) {
@@ -86,13 +85,11 @@ class UserController extends Controller
 		}
 
 		else {
-			$error = "Please fill the form.";
+			$error = "Le formulaire n'a pas été correctement validé.";
 		}
 
 		$this->show('user/register', [
-			"error" => $error,
-			"username" => $username,
-			"email" => $email	
+			"error" => $error
 		]);
 
 	}
@@ -159,69 +156,60 @@ class UserController extends Controller
 			$userManager = new \Manager\UserManager();
 			$user = $userManager->getUserByUsernameOrEmail($email);
 
-			$isValid = true;
+			if ($user){
 
-			// ne marche pas 
-			if (empty($email)){
-				$isValid = false;
-				$error = "Please enter your email.";
-			}
-			else {
-				if ($user){
+				require '../vendor/PHPMailer/PHPMailerAutoload.php';
+				
+				//Create a new PHPMailer instance
+				$mail = new \PHPMailer();
+				//Tell PHPMailer to use SMTP
+				$mail->IsSMTP();
+				//Enable SMTP debugging
+				// 0 = off (for production use)
+				// 1 = client messages
+				// 2 = client and server messages
+				$mail->SMTPDebug  = 2;
+				//Ask for HTML-friendly debug output
+				$mail->Debugoutput = 'html';
+				//Set the hostname of the mail server
+				$mail->Host       = 'smtp.gmail.com';
+				//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+				$mail->Port       = 465;
+				//Set the encryption system to use - ssl (deprecated) or tls
+				$mail->SMTPSecure = 'ssl';
+				//Whether to use SMTP authentication
+				$mail->SMTPAuth   = true;
+				//Username to use for SMTP authentication - use full email address for gmail
+				$mail->Username   = 'seriesmanager75@gmail.com';
+				//Password to use for SMTP authentication
+				$mail->Password   = 'Webforce3';
+				//Set who the message is to be sent from
+				$mail->SetFrom('seriesmanager75@gmail.com', 'CAMS Squad');
+				//Set who the message is to be sent to
+				$mail->AddAddress('seriesmanager75@gmail.com', 'John Doe');
+				//Set the subject line
+				//$mail->Subject = 'PHPMailer GMail SMTP test';
+				//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
+				$mail->Subject = 'Test PhPMailer';
 
-					require '../vendor/PHPMailer/PHPMailerAutoload.php';
-					
-					//Create a new PHPMailer instance
-					$mail = new \PHPMailer();
-					//Tell PHPMailer to use SMTP
-					$mail->IsSMTP();
-					//Enable SMTP debugging
-					// 0 = off (for production use)
-					// 1 = client messages
-					// 2 = client and server messages
-					$mail->SMTPDebug  = 2;
-					//Ask for HTML-friendly debug output
-					$mail->Debugoutput = 'html';
-					//Set the hostname of the mail server
-					$mail->Host       = 'smtp.gmail.com';
-					//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-					$mail->Port       = 465;
-					//Set the encryption system to use - ssl (deprecated) or tls
-					$mail->SMTPSecure = 'ssl';
-					//Whether to use SMTP authentication
-					$mail->SMTPAuth   = true;
-					//Username to use for SMTP authentication - use full email address for gmail
-					$mail->Username   = 'seriesmanager75@gmail.com';
-					//Password to use for SMTP authentication
-					$mail->Password   = 'Webforce3';
-					//Set who the message is to be sent from
-					$mail->SetFrom('seriesmanager75@gmail.com', 'CAMS Squad');
-					//Set who the message is to be sent to
-					$mail->AddAddress('seriesmanager75@gmail.com', 'John Doe');
-					//Set the subject line
-					//$mail->Subject = 'PHPMailer GMail SMTP test';
-					//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
-					$mail->Subject = 'Test PhPMailer';
+				//envoyer un lien par mail
+				$token = \W\Security\StringUtils::randomString(32);
 
-					//envoyer un lien par mail
-					$token = \W\Security\StringUtils::randomString(32);
+				$userManager->update([
+					'token' => $token
+				], $user['id']);
 
-					$userManager->update([
-						'token' => $token
-					], $user['id']);
-
-					$url = $this->generateUrl("new_password", [
-						'token' => $token,
-						'id' => $user['id']
-						], true);
-					$mail->MsgHTML("message" . "<a href='$url'>" . $url . "</a>");
-									 
-					//envoie le message et vérifie s'il y a une erreur
-					if(!$mail->Send()) {
-					  echo 'Mailer Error: ' . $mail->ErrorInfo;
-					} else {
-					  echo 'Message sent!';
-					}
+				$url = $this->generateUrl("new_password", [
+					'token' => $token,
+					'id' => $user['id']
+					], true);
+				$mail->MsgHTML("message" . "<a href='$url'>" . $url . "</a>");
+								 
+				//envoie le message et vérifie s'il y a une erreur
+				if(!$mail->Send()) {
+				  echo 'Mailer Error: ' . $mail->ErrorInfo;
+				} else {
+				  echo 'Message sent!';
 				}
 			}
 
@@ -231,10 +219,7 @@ class UserController extends Controller
 			$error = "Le formulaire n'a pas été correctement validé.";
 		}
 
-		$this->show("user/password", [
-			"error"=>$error,
-			"email" => $email
-		]);
+		$this->show("user/password", ["error"=>$error]);
 	}
 
 
@@ -269,7 +254,7 @@ class UserController extends Controller
 				$isValid = false;
 				$error = "Fill the field please !";
 			
-			} elseif (strlen($password) < 5){
+			} else if (strlen($password) < 5){
 				$isValid = false;
 				$error = "Password too short !";
 
@@ -287,9 +272,7 @@ class UserController extends Controller
 			echo "Piratage";
 		}
 
-		$this->show("user/new_password", [
-			"error"=>$error
-		]);
+		$this->show("user/new_password", ["error"=>$error]);
 	}
 
 

@@ -17,6 +17,7 @@ class SerieController extends Controller {
 	/**
 	 * detail method
 	 * @version  1.0
+ 	 * @author                Axel Merlin <merlin.axel@gmail.com>
 	 * @param    string  $id  TV serie title
 	 * @return   object       TV serie details
 	 */
@@ -31,17 +32,49 @@ class SerieController extends Controller {
 	}
 
 	/**
-	 * addSerie method
-	 * @version                1.0
-	 * @last_modified          16:02 29/01/2016
-	 * @param          string  $title  TV serie title
+	 * getSerie
+	 *
+	 * Checks if TV serie is present into database (by title)
+	 * Scrapes TV serie details from imdb when not present
+	 * and adds TV serie details into database
+	 * Returns TV serie details in json format (by primary key)
+	 *
+	 * @version                  1.0.1 beta
+	 * @param    string  $title  TV serie title
+	 */
+	public function getSerie($title) {
+		// Initializes objects
+		$defaultManager = new \Manager\DefaultManager();
+
+		// Gets serie from database
+		$serie = $serieManager->superSearch($title, "title", "series");
+
+		// When TV serie not present into database
+		if (!$serie) {
+			// Scraping TV serie (by name)
+			
+		} else {
+
+		}
+	}
+
+	/**
+	 * addSerie
+	 *
+	 * Scrapes TV serie details from imdb
+	 * And adds TV serie details into database
+	 *
+	 * @version                  1.0 beta
+	 * @param    string  $title  TV serie title
 	 */
 	public function addSerie($title) {
 		$serieManager = new \Manager\SerieManager();
 
-		$serie = $serieManager->superFind("series", "title", $title);
+		$serie = $serieManager->superFind("title", $title);
 		if ($serie) {
 			
 		}
 	}
+
+
 }

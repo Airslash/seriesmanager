@@ -16,8 +16,8 @@ class SearchController extends Controller {
 
 	/**
 	 * search method
-	 * @version        1.0
-	 * @last_modified  14:48 29/01/2016
+	 * @version        1.0 beta
+	 * @last_modified  21:09 31/01/2016
 	 * @author         Axel Merlin <merlin.axel@gmail.com>
 	 * @author         Matthias Morin <matthias.morin@gmail.com>
 	 * @return object  Series from db
@@ -36,8 +36,8 @@ class SearchController extends Controller {
 
 	/**
 	 * supersearch method
-	 * @version        1.0
-	 * @last_modified  15:21 29/01/2016
+	 * @version        1.0 beta
+	 * @last_modified  21:09 31/01/2016
 	 * @author         Matthias Morin <matthias.morin@gmail.com>
 	 * @return object  table from db
 	 */
@@ -49,7 +49,7 @@ class SearchController extends Controller {
 		$column = $_GET['column'];
 		$search = $_GET['search'];
 
-		$series = $serieManager->superSearch($table, $column, $search);
+		$series = $serieManager->superSearch($search, $column, $table);
 		$this->showJson($series);
 	}
 }
