@@ -19,7 +19,7 @@
 			<?php
 			}
 			else {?>
-				<p>You can add this serie to your collection if you register.</p>
+				<p>You can add this show to your collection if you <a href="<?php echo $this->url('register') ?>"> register</a>.</p>
 			<?php 
 			}
 			?>
