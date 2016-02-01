@@ -51,45 +51,6 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * scrapeSerie
-	 * 
-	 * Scrapes first TV serie from imdb result page, if any
-	 * 
-	 * @version          2.5.1
-	 * @param   string   $title User query as serie title
-	 * @return  string   Contains imdb_id
-	 * @return  boolean  False when query returned no results
-	 */
-	public function scrapeSerie($title) {
-		// Builds imdb result page url from user request
-		$html = file_get_html('http://www.imdb.com/search/title?title='.urlencode($title).'&title_type=tv_series', false, $this->context);
-
-		// Checks results
-		$main = $html->find('div#main', 0);
-		if (trim($main->plaintext) == "No results.") {
-			// Query returned no results
-			return false;
-		} else {
-
-			// Gets first result from result list
-			$tr = $main->find('tr[class=even detailed]', 0);
-
-			// Gets <a> containing serie $title and $imdb_id
-			$a = $tr->find('td.title a', 0);
-			// $title = $a->plaintext;
-
-			// Gets imdb_id from <a>
-			$imdb_id = explode("/", $a->href)[2];
-
-			// Query success
-			$this->scrapeSerieById($imdb_id);
-
-			// Return scraped data
-			return $this->serie;
-		}
-	}
-
-	/**
 	 * scrapeSeriesId
 	 * 
 	 * Builds $imdb_id list from imdb result page url (50 elements each)
@@ -105,27 +66,34 @@ Class ImdbScraper {
 		// Gets dom from imdb result page
 		$html = file_get_html($url, false, $this->context);
 
-		// Gets results from dom
-		$results = $html->find('table.results td.image');
+		// Checks results
+		$main = $html->find('div#main', 0);
+		if (trim($main->plaintext) == "No results.") {
+			// Query returned no results
+			return false;
+		} else {
+			// Gets results from dom
+			$results = $html->find('table.results td.image');
 
-		// Counts results
-		$resultCount = count($results);
+			// Counts results
+			$resultCount = count($results);
 
-		// Includes each result into seriesId property
-		for ($i=0; $i<$resultCount; $i++) {
+			// Includes each result into seriesId property
+			for ($i=0; $i<$resultCount; $i++) {
 
-			// Gets $aHref from <a>
-			$aHref = $results[$i]->find('a', 0)->href;
+				// Gets $aHref from <a>
+				$aHref = $results[$i]->find('a', 0)->href;
 
-			// Gets $imdb_id from $aHref
-			$imdb_id = explode("/", $aHref)[2];
+				// Gets $imdb_id from $aHref
+				$imdb_id = explode("/", $aHref)[2];
 
-			// Includes serie $imdb_id into seriesId property
-			$this->seriesId[$i] = $imdb_id;
+				// Includes serie $imdb_id into seriesId property
+				$this->seriesId[$i] = $imdb_id;
+			}
+
+			// Returs seriesId property
+			return $this->seriesId;
 		}
-
-		// Returs seriesId property
-		return $this->seriesId;
 	}
 
 	/**

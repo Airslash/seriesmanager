@@ -38,19 +38,17 @@
 		['GET', '/episode_detail/', 'Episode#episode_detail', 'episode_detail'],
 
 		// Page de recherche en autocomplétion
-		['GET', '/search/[:title]', 'Serie#search', 'search'],
+		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],
 
 		// Page de scraping pour "hydrater" la base en masse
-		['GET', '/scraper/[i:pages]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
+		['GET|POST', '/scraper/[i:pages]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
 
-		// Page de détail d'un épisode
-		['GET|POST', '/test/[:title]/', 'Serie#test', 'test'],
+		// Ajout d'une serie dans la base
+		['GET|POST', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
 
-		['GET|POST', '/test2/[:title]/', 'Serie#test2', 'test2'],
+		// Affichage d'une serie
+		['GET|POST', '/findserie/[:id]/', 'Serie#findSerie', 'find_serie'],
 
-		// Page d'ajout manuel de série
-		// ['GET', '/addserie/[:serie]', 'Serie#addSerie', 'addserie'],
-
-		// Page de recherche json
-		// ['GET|POST', '/jsonsearch/[:serie]', 'Search#jsonSearch', 'jsonsearch'],
+		// Recherche d'une serie
+		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
 	);

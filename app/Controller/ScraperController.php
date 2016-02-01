@@ -6,8 +6,8 @@ use \W\Controller\Controller;
 
 /**
  * Inserts series and episodes to database
- * @version        1.2.7
- * @last_modified  20:24 31/01/2016
+ * @version        1.3
+ * @last_modified  13:43 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
@@ -22,24 +22,51 @@ class ScraperController extends Controller {
 	public function scrapeMostPopularSeries($pages) {
 
 		// Initializes objects
-		$defaultManager = new \Manager\DefaultManager();
-		$imdbScraper    = new \Scraper\ImdbScraper();
+		$defaultController = new \Controller\DefaultController();
+		$imdbScraper       = new \Scraper\ImdbScraper();
+		$defaultManager    = new \Manager\DefaultManager();
 
-		echo "<pre>";
 		for ($i=1; $i<=$pages; $i+=50) {
 			// Gets 50 series id from imdb from result page
-			$seriesId = scrapeSeriesId("http://www.imdb.com/search/title?start=$i&title_type=tv_series");
+			$seriesId = $imdbScraper->scrapeSeriesId("http://www.imdb.com/search/title?start=$i&title_type=tv_series");
 			// Inserts serie into database
 			foreach ($seriesId as $serieId) {
-				echo "Scraping : $serieId";
+				// echo "Scraping : $serieId";
 				$this->insertSerie($serieId);
-				// $serie = $defaultManager->superFind($serieId, "imdb_id", "series");
-				// if ($serie) {
-				// 	echo "Inserted : " . $serie["title"] . " - " . $episode["title"] . "\n";
-				// }
+				$serie = $defaultManager->findWhere($serieId, "imdb_id", "series");
+				if ($serie) {
+					$defaultController->showPrint_r($serie);
+					// echo "Inserted : " . $serie["title"] . " - " . $episode["title"] . "\n";
+				}
 			}
 		}
-		echo "</pre>";
+	}
+
+	/**
+	 * scrapeSerie
+	 * 
+	 * Scrapes first TV serie from imdb result page, if any
+	 * 
+	 * @version          2.5.2
+	 * @param   string   $title User query as serie title
+	 * @return  string   Contains imdb_id
+	 * @return  boolean  False when query returned no results
+	 */
+	public function scrapeSerie($title) {
+
+		// Initializes scraper
+		$imdbScraper    = new \Scraper\ImdbScraper();
+
+		// Gets series id containing $title
+		$seriesId = $imdbScraper->scrapeSeriesId('http://www.imdb.com/search/title?title='.urlencode($title).'&title_type=tv_series');
+
+		// Inserting serie into database when results are returned 
+		if ($seriesId) {
+			// Query success
+			$this->insertSerie($seriesId[0]);
+		} else {
+			return false;
+		}
 	}
 
 	/**

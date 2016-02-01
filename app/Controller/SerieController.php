@@ -5,9 +5,9 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * SerieController   Controls all serie related stuff
- * @version          2.0
- * @last_modified    14:39 29/01/2016
+ * SerieController   Controls all serie related data
+ * @version          2.1 beta
+ * @last_modified    13:42 01/02/2016
  * @author           Axel Merlin <merlin.axel@gmail.com>
  * @author           Matthias Morin <matthias.morin@gmail.com>
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
@@ -32,75 +32,63 @@ class SerieController extends Controller {
 	}
 
 	/**
-	 * test method
-	 * @version  1.0 beta
-	 * @param    string  $id  TV serie title
-	 * @return   object       TV serie details
-	 */
-	public function test($title)	{
-		$defaultController = new \Controller\DefaultController();
-		$defaultManager    = new \Manager\DefaultManager();
-
-		// $serie = $defaultManager->superFind($title, "title", "series");
-		$serie = $defaultManager->superSearch($title, "title", "series");
-
-		$defaultController->showPrint_r($serie);
-	}
-
-	public function test2($title)	{
-		$defaultController = new \Controller\DefaultController();
-		$defaultManager    = new \Manager\DefaultManager();
-
-		$serie = $defaultManager->superFind($title, "title", "series");
-
-		$defaultController->showPrint_r($serie);
-	}
-
-	/**
-	 * getSerie
+	 * searchSerie
 	 *
-	 * Checks if TV serie is present into database (by title)
+	 * Searches for TV serie into database by title
 	 * Scrapes TV serie details from imdb when not present
 	 * and adds TV serie details into database
 	 * Returns TV serie details in json format (by primary key)
 	 *
-	 * @version                  1.0.1 beta
+	 * @version  1.0 beta
 	 * @param    string  $title  TV serie title
+	 * @return   object          TV serie details
 	 */
-	public function getSerie($title) {
-		// Initializes objects
-		$defaultManager = new \Manager\DefaultManager();
-		$imdbScraper    = new \Scraper\ImdbScraper();
+	public function searchSerie($title) {
+		$defaultController = new \Controller\DefaultController();
+		$scraperController = new \Controller\ScraperController();
+		$defaultManager    = new \Manager\DefaultManager();
 
-		// Gets serie from database
-		$serie = $serieManager->superSearch($title, "title", "series");
+	 	// Searches for TV serie into database by title
+		$serie = $defaultManager->findLike($title, "title", "series");
 
 		// When TV serie not present into database
 		if (!$serie) {
 			// Scrapes TV serie (by title)
-			$imdbScraper->scrapeSerie($title);
+			$scraperController->scrapeSerie($title);
+
+			// Searches for TV serie into database by title
+			$serie = $defaultManager->findLike($title, "title", "series");
+			if (!$serie) {
+				// Returns Not found message to client
+				$this->$show("Not found");
+			} else {
+				// Returns json to client
+				$this->showJson($serie);
+			}
+		} else {
+			// Returns json to client
+			$this->showJson($serie);
 		}
 
-		// gets TV serie details from database
-		$serie = $defaultManager->superFind($title, "title", "series");
 	}
 
 	/**
-	 * addSerie
+	 * findSerie
 	 *
-	 * Scrapes TV serie details from imdb
-	 * And adds TV serie details into database
+	 * Finds TV serie into database by id
 	 *
-	 * @version                  1.0 beta
-	 * @param    string  $title  TV serie title
+	 * @version  1.1
+	 * @param    integer  $id  TV serie primary key
+	 * @return   object        TV serie details
 	 */
-	public function addSerie($title) {
-		$serieManager = new \Manager\SerieManager();
+	public function findSerie($id) {
+		$defaultController = new \Controller\DefaultController();
+		$defaultManager    = new \Manager\DefaultManager();
 
-		$serie = $serieManager->superFind("title", $title);
-		if ($serie) {
-			
-		}
+		$serie = $defaultManager->findWhere($id, "id", "series");
+
+		// Returns json to client
+		$this->showJson($serie);
 	}
 
 	/**
@@ -122,24 +110,4 @@ class SerieController extends Controller {
 					"series" => $series
 		]);
 	}
-
-	/**
-	 * supersearch method
-	 * @version        1.0 beta
-	 * @last_modified  21:09 31/01/2016
-	 * @author         Matthias Morin <matthias.morin@gmail.com>
-	 * @return object  table from db
-	 */
-	public function jsonSearch() {
-		$serieManager = new \Manager\SerieManager();
-
-		// Gets $keyword from $_GET
-		$table  = $_GET['table'];
-		$column = $_GET['column'];
-		$search = $_GET['search'];
-
-		$series = $serieManager->superSearch($search, $column, $table);
-		$this->showJson($series);
-	}
-
 }

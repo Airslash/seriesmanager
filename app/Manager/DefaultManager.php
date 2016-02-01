@@ -9,8 +9,8 @@ use \W\Manager\Manager;
  * 
  * Extends W framework Manager with cool new functionalities
  * 
- * @version        1.2
- * @last_modified  11:32 01/02/2016
+ * @version        1.3
+ * @last_modified  13:42 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
@@ -29,7 +29,7 @@ class DefaultManager extends Manager {
     }
 
 	/**
-	 * superSearch
+	 * findLike
 	 * 
 	 * Finds all lines containing $query string into target table and column
 	 *
@@ -41,7 +41,7 @@ class DefaultManager extends Manager {
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
 	 */
-	public function superSearch($search, $column, $table) {
+	public function findLike($search, $column, $table) {
 		// Sets default table from Manager class property
 		if (empty($table)){
 			$table = $this->table;
@@ -64,7 +64,7 @@ class DefaultManager extends Manager {
 	}
 
 	/**
-	 * superFind
+	 * findWhere
 	 * 
 	 * Finds all lines matching exact $query string into target table and column
 	 *
@@ -76,7 +76,7 @@ class DefaultManager extends Manager {
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
 	 */
-	public function superFind($query, $column, $table) {
+	public function findWhere($query, $column, $table) {
 		// Sets default table from Manager class property
 		if (empty($table)){
 			$table = $this->table;
