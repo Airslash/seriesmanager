@@ -12,30 +12,27 @@
 			<p id="serie-summary"><strong>Synopsis: </strong><?= $serie["summary"] ?></p>
 			<div id="serie-collection">
 			<?php
-				if (!empty($w_user)) {
-					$sql = "SELECT users.username, bookmarks.serie_id FROM users JOIN bookmarks ON users.id = bookmarks.user_id WHERE users.id =" . $w_user . " AND bookmarks.serie_id =" . $_GET["id"];
-					$getBookmark = $pdo->query($sql);
-					$foundBookmark = $getBookmark->fetchAll();
-					if ($foundCollection)
-					{
-						?>
-						Ce film est présent dans votre collection
-						<a href="movie.remove.php?id=<?=$_GET['id']?>">Supprimer le film de votre collection</a>
-						<br>
-						<?php
-					}
-					else
-					{
-						?>
-						<p id="add-collection"><i class="fa fa-heart"></i> Add to my collection</p>
-						<p id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</p>
+			if (!empty($w_user)) {
+				$sql = "SELECT users.username, bookmarks.serie_id FROM users JOIN bookmarks ON users.id = bookmarks.user_id WHERE users.id =" . $w_user . " AND bookmarks.serie_id =" . $_GET["id"];
+				$getBookmark = $this->dbh->prepare($sql);
+				$foundBookmark = $getBookmark->fetchAll();
+				if ($foundCollection){
+					?>
+					This movie is in your collection
+					<?php
+				} 
+				else {
+					?>
+					<p id="add-collection"><i class="fa fa-heart"></i> Add to my collection</p>
+					<p id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</p>
 				<?php
 				}
-				else {?>
-					<p>You can add this show to your collection if you <a href="<?php echo $this->url('register') ?>"> register</a>.</p>
-				<?php 
-				}
+			else {
 				?>
+				<p>You can add this show to your collection if you <a href="<?php echo $this->url('register') ?>"> register</a>.</p>
+			<?php 
+			}
+			?>
 			</div>			
 		</div>
 	</div>
