@@ -259,6 +259,7 @@ function init() {
 	// Initializes masonry
 	$Grid.masonry({
 		itemSelector: ".grid-item",
+		gutter: 20,
 	});
 
 	// Loads default page
