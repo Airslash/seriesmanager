@@ -184,7 +184,7 @@ Footer
 /*méthode du sticky footer prise sur http://ryanfait.com/resources/footer-stick-to-bottom-of-page/*/
 footer {
     width: 100%;
-    padding-top: 20px;
+    padding-top: 10px;
     background-color: #9098B2;
     position: fixed;
     bottom: 0;
@@ -195,11 +195,22 @@ footer p {
 }
 
 footer, .push {
-    height: 100px;
+    height: 130px;
 }
 
 footer a {
     color: rgb(0, 0, 0);
+    display: inline-block;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    text-align: center;
+}
+
+footer li {
+    display: inline-block;
 }
 
 /*********************************

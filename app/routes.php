@@ -20,6 +20,8 @@
 
 		['GET', '/Terms&Conditions/', 'Default#legal', 'legal'],
 
+		['GET', '/AboutUs/', 'Default#about', 'about'],
+
 
 		// ***********
 		// FORMULAIRES

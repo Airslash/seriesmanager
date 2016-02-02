@@ -50,4 +50,12 @@ class DefaultController extends Controller {
 	{
 		$this->show('default/legal');
 	}
+
+	/**
+	 * Page about
+	 */
+	public function about()
+	{
+		$this->show('default/about');
+	}
 }

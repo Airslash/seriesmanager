@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Terms&Conditions']) ?>
+<?php $this->layout('layout', ['title' => 'Terms & Conditions']) ?>
 
 <?php $this->start('main_content') ?>
 	<h2>Mentions légales</h2>
