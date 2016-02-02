@@ -170,7 +170,7 @@ function fnGetRandomSeries($Target){
 		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
 		"type": "POST",
 		"data":{
-				"method"  : "random",
+				"method"  : "getrandomseries",
 				"limit"   : 15,
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
 		}
@@ -216,7 +216,7 @@ function fnTest($Target){
 			"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
 			"type": "POST",
 			"data":{
-					"method"  : "random",
+					"method"  : "getrandomseries",
 					"limit"   : 15,
 					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
 			}
@@ -245,7 +245,7 @@ function fnTest($Target){
 function init() {
 
 /**
- * @version        1.0
+ * @version        1.1.1
  * @lastmodified   11:58 02/02/2016
  * @category       init
  * @author         Matthias Morin <matthias.morin@gmail.com>
@@ -263,7 +263,7 @@ function init() {
 
 	// Loads default page
 	// fnGetRandomSeries($Grid);
-	fnTest($Grid);
+	fnGetRandomSeries($Grid);
 
 	$("#serie-search-form").on("submit", function(e){
 		// Prevents browser from refreshing page after form submit
@@ -273,7 +273,7 @@ function init() {
 			"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
 			"type": "POST",
 			"data":{
-				"method"  : "scrape",
+				"method"  : "scrapeserie",
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
 				"keyword" : keyword
 			}
@@ -294,7 +294,7 @@ function init() {
 				"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
 				"type": "POST",
 				"data":{
-					"method"  : "search",
+					"method"  : "searchserie",
 					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
 					"keyword" : keyword
 				}
@@ -331,7 +331,7 @@ function fnGetSerieSeasons(strSerieId, $Target){
 		$.ajax({
 			"url": "http://ws.audioscrobbler.com/2.0/",
 			"data":{
-				"method"  : "seasons",
+				"method"  : "getseasons",
 				"id"      : strSerieId,
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
 				"format"  : "json"

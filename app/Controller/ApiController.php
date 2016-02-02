@@ -54,7 +54,7 @@ class ApiController extends Controller {
 		// API key validation
 		if ($api_key = 'inwexrlzidlwncjfrrahtexduwskgtvk'){
 			switch ($method) {
-				case 'search':
+				case 'searchserie':
 					// Gets $keyword from $_POST
 					$keyword = $_POST['keyword'];
 					$this->searchSerie($keyword);
@@ -69,15 +69,15 @@ class ApiController extends Controller {
 					$id = $_POST['id'];
 					$this->getSeasons($id);
 					break;
-				case 'scrape':
+				case 'scrapeserie':
 					// Gets $keyword from $_POST
 					$keyword = $_POST['keyword'];
 					$this->scrapeSerie($keyword);
 					break;
-				case 'random':
+				case 'getrandomseries':
 					// Gets $limit from $_POST
 					$limit = $_POST['limit'];
-					$this->randomSeries($limit);
+					$this->getRandomSeries($limit);
 					break;
 				default:
 					return 'Invalid method';
@@ -202,25 +202,33 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * randomSeries
+	 * getRandomSeries
 	 *
 	 * Sends random series from database in json format
 	 *
-	 * @version  1.1.1
+	 * @version  1.2
 	 * @param    integer  $limit  Series count to retrieve from database
 	 * @return   object           TV serie details
 	 */
-	public function randomSeries($limit) {
+	public function getRandomSeries($limit) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
 		for ($i=0; $i<$limit; $i++) {
+
+			// Database serie count
 			$rowCount = $defaultManager->countRows("series");
+
+			// Generates random id between 1 and $rowCount
 			$randomSerieId = mt_rand(1, $rowCount);
+
+			// Finds random serie into database
 			$serie = $defaultManager->findWhere($randomSerieId, "id", "series");
 			if ($serie){
+				// Appends serie into array if exists 
 				$series[] = $serie[0];
 			} else {
+				// Decrements $i
 				$i--;
 			}
 		}
