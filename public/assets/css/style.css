@@ -209,7 +209,7 @@ footer p {
 }
 
 footer, .push {
-    height: 130px;
+    height: 100px;
 }
 
 footer a {
@@ -221,6 +221,7 @@ footer a {
 footer ul {
     list-style: none;
     text-align: center;
+    margin-bottom: 0;
 }
 
 footer li {
