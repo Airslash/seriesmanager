@@ -22,4 +22,3 @@ ScraperController : Scrapes and inserts series and episodes to database
 DefaultController
 	home Default : home page
 	showPrint_r  : Displays raw array data
-

@@ -83,7 +83,6 @@ class SerieController extends Controller {
 	 * @version  1.0 beta
 	 * @param    string  $keyword  TV serie title
 	 * @return   object            TV series details
-	 * @todo                       Accepter les requètes avec des espaces
 	 */
 	public function searchSerie($keyword) {
 		$defaultController = new \Controller\DefaultController();

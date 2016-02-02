@@ -10,7 +10,7 @@ use \W\Manager\Manager;
  * Extends W framework Manager with cool new functionalities
  * 
  * @version        1.4.2
- * @last_modified  23:53 01/02/2016
+ * @last_modified  11:24 02/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         countRows  Counts rows from given table
@@ -25,15 +25,11 @@ class DefaultManager extends Manager {
 	 * 
 	 * Counts rows from given table
 	 *
-	 * @see     Manager::$dbh  Uses dbh property from Manager class
-	 * @return  integer        Row count
+	 * @see     Manager::$dbh    Uses dbh property from Manager class
+	 * @param   string   $table  Table name
+	 * @return  integer          Row count
 	 */
 	public function countRows($table) {
-		// Sets default table from Manager class property
-		if (empty($table)){
-			$table = $this->table;
-		}
-
 		// Searches database for $search into $column from $table
 		$sql = 'SELECT COUNT(*) FROM ' . $table;
 		$statement = $this->dbh->prepare($sql);
@@ -59,21 +55,13 @@ class DefaultManager extends Manager {
 	 * 
 	 * Finds all lines containing $query string into target table and column
 	 *
-	 * @version                   1.3 beta
-	 * @see     Manager::$table   Gets target table from Manager class property
 	 * @param   string   $search  Text search
 	 * @param   string   $column  Target column
-	 * @param   string   $table   Optional default is Class name
+	 * @param   string   $table   Table name
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
-	 * @todo                      Demander à Guilllaume pour Manager::$table
 	 */
-	public function findLike($search, $column, $table = null) {
-		// Sets default table from Manager class property
-		if (empty($table)){
-			$table = $this->table;
-		}
-
+	public function findLike($search, $column, $table) {
 		// Searches database for $search into $column from $table
 		$sql = 'SELECT * FROM ' . $table . ' WHERE ' . $column . ' LIKE :search;';
 		$statement = $this->dbh->prepare($sql);
@@ -95,21 +83,14 @@ class DefaultManager extends Manager {
 	 * 
 	 * Finds all lines matching exact $query string into target table and column
 	 *
-	 * @version                   1.3 beta
-	 * @see     Manager::$table   Gets target table from Manager class property
 	 * @param   string   $query   Text query
 	 * @param   string   $column  Target column
-	 * @param   string   $table   Optional default is Class name
+	 * @param   string   $table   Table name
+	 * @see     Manager::$dbh     Uses dbh property from Manager class
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
-	 * @todo                      Demander à Guilllaume pour Manager::$table
 	 */
-	public function findWhere($query, $column, $table = null) {
-		// Sets default table from Manager class property
-		if (empty($table)){
-			$table = $this->table;
-		}
-
+	public function findWhere($query, $column, $table) {
 		// Searches database for $query into $column from $table
 		$sql = 'SELECT * FROM ' . $table . ' WHERE ' . $column . ' = :query;';
 		$statement = $this->dbh->prepare($sql);

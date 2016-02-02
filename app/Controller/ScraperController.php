@@ -16,7 +16,6 @@ use \W\Controller\Controller;
  * @method         scrapeMostPopularSeries  Scrapes top 50 most popular series from imdb
  * @method         scrapeSerie              Scrapes first TV serie from imdb result page, if any
  * @method         insertSerie              Main ScraperController method
- * @todo                                    Demander à Guillaume pour les classes
  */
 class ScraperController extends Controller {
 
