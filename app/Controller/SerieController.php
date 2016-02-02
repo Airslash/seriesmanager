@@ -11,8 +11,8 @@ use \W\Controller\Controller;
  * @author           Axel Merlin <merlin.axel@gmail.com>
  * @author           Matthias Morin <matthias.morin@gmail.com>
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
- * @method           seriesManagerApi  Main api method
- * @method           getSeriesLike     Searches for TV serie into database by keyword
+ * @method           seriesManagerApi  Main seriesmanager API
+ * @method           searchSerie       Searches for TV serie into database by keyword
  * @method           randomSerie       Sends random series from database in json format
  * @method           scrapeSerie       Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
  * @method           findSerie         Finds TV serie into database by id
@@ -24,13 +24,19 @@ class SerieController extends Controller {
 	/**
 	 * seriesManagerApi
 	 *
+	 * Main seriesmanager API
 	 * Searches for TV serie into database by title
-	 * Returns TV serie details in json format (by primary key)
+	 * Scrapes TV serie details from imdb when not present into database
+	 * Returns TV serie details in json format
 	 *
-	 * @version  1.1 beta
-	 * @param    string  $title  TV serie title
-	 * @return   object          TV serie details
-	 * @todo                     Accepter les requètes avec des espaces
+	 * @version  1.1.1
+	 * @param    string  $_POST['method']   One of three methods availlable
+	 * @param    string  $_POST['api_key']  API key (fake)
+	 * @param    string  $_POST['search']   Searches for TV serie into database by keyword
+	 * @param    string  $_POST['scrape']   Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	 * @param    string  $_POST['random']   Sends random series from database in json format
+	 * @param    string  $_POST['limit']    TV serie count to send to client
+	 * @return   object                     TV serie details
 	 */
 	public function seriesManagerApi() {
 		$defaultController = new \Controller\DefaultController();
@@ -48,7 +54,7 @@ class SerieController extends Controller {
 				case 'search':
 					// Gets $keyword from $_POST
 					$keyword = $_POST['keyword'];
-					$this->getSeriesLike($keyword);
+					$this->searchSerie($keyword);
 					break;
 				case 'scrape':
 					// Gets $keyword from $_POST
@@ -69,7 +75,7 @@ class SerieController extends Controller {
 	}
 
 	/**
-	 * getSeriesLike
+	 * searchSerie
 	 *
 	 * Searches for TV serie into database by keyword
 	 * Returns TV serie details in json format (by primary key) 
@@ -79,7 +85,7 @@ class SerieController extends Controller {
 	 * @return   object            TV series details
 	 * @todo                       Accepter les requètes avec des espaces
 	 */
-	public function getSeriesLike($keyword) {
+	public function searchSerie($keyword) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
@@ -175,7 +181,7 @@ class SerieController extends Controller {
 	}
 
 	/**
-	 * randomSerie
+	 * getRandomSeries
 	 *
 	 * Sends random series from database in json format
 	 *

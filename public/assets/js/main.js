@@ -10,6 +10,7 @@ function init() {
  * @requires  jQuery, Masonry
  * @uses      fnGetRandomSeries
  * @todo      Demander à Guillaume pour .serialize()
+ * @todo      Please wait
  */
 	// Initializes masonry
 	$Grid.masonry({
@@ -80,35 +81,45 @@ function fnAppendSeriesCard(arSeries, $Target){
 		strSerieImageSrc = 'http://ia.media-imdb.com/images/M/' + arSeries[i].poster_id + strMedium;
 
 		// Appends Serie primary key for easy acces
-		strSerieId   = arSeries[i].id;
-		SerieSummary = arSeries[i].summary;
+		strSerieId      = arSeries[i].id;
+		strSerieSummary = arSeries[i].summary;
 
+		// Creates card to contain TV series
 		var $Card = $("<div>");
 		$Card.addClass("card grid-item col-sm-6 col-lg-4 thumbnail");
 
+		// Adds title
 		var $SerieTitle = $("<h1>");
+		// Adds title content
 		$SerieTitle.html(strSerieTitle);
+		// Append title to card
 		$Card.append($SerieTitle);
 
+		// Adds ImageBox
 		var $ImageBox = $("<div>");
+		// Adds class to ImageBox
 		$ImageBox.addClass("image-box");
-
 		// Adds attribute for strSerieId easy access
 		$ImageBox.attr("data-serie-id", strSerieId);
-
-		// Appends box to card
-		$Card.append($ImageBox);
+		// Adds ImageBox content
 		fnAppendSerieImage(strSerieId, strSerieImageSrc, $ImageBox);
+		// Appends ImageBox to card
+		$Card.append($ImageBox);
 
-		// Creates card ListBox
+		// Creates ListBox
 		var $ListBox = $("<div>");
+		// Add content to ListBox
+		$ListBox.html(strSerieSummary);
+		// Adds class to ListBox
 		$ListBox.addClass("list-box");
 		// Adds attribute to target ListBox easily
 		$ListBox.attr("data-serie-id", strSerieId);
 		// Appends ListBox to card
 		$Card.append($ListBox);
+
 		// Appends $Card to $Grid
 		$Target.append($Card);
+
 		// Updates masonry
 		$Target.masonry('appended', $Card);
 	}
