@@ -15,8 +15,10 @@
 		// ****
 		// HOME
 		// ****
-
+		
 		['GET', '/', 'Default#home', 'home'],
+
+		['GET', '/Terms&Conditions/', 'Default#legal', 'legal'],
 
 
 		// ***********

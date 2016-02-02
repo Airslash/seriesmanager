@@ -10,7 +10,7 @@ use \W\Controller\Controller;
  * Extends W framework Controller with cool new functionalities
  * 
  * @version        1.1
- * @last_modified  16:16 01/02/2016
+ * @last_modified  12h00 02/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         home Default  home page
@@ -41,5 +41,13 @@ class DefaultController extends Controller {
 		echo "<pre>";
 		print_r($array);
 		echo "</pre>";
+	}
+
+	/**
+	 * Page mentions légales
+	 */
+	public function legal()
+	{
+		$this->show('default/legal');
 	}
 }
