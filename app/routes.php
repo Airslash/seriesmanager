@@ -83,7 +83,7 @@
 		/**
 		 * searchserie
 		 * Affichage de series au hazard
-		 * @deprecated v1.0
+		 * @deprecated 1.0
 		 */
 		['GET|POST', '/randomseries/[i:number]/', 'Serie#getRandomSeries', 'random_serie'],
 
@@ -91,28 +91,28 @@
 		/**
 		 * searchserie
 		 * Recherche d'une serie
-		 * @deprecated v1.0
+		 * @deprecated 1.0
 		 */
 		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
 
 		/**
 		 * detail
 		 * Page de détail d'une série
-		 * @deprecated v1.0
+		 * @deprecated 1.0
 		 */
 		['GET|POST', '/detail/[:id]/', 'Serie#detail', 'detail'],
 
 		/**
 		 * search
 		 * Page de recherche en autocomplétion
-		 * @deprecated v1.0
+		 * @deprecated 1.0
 		 */
 		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],
 
 		/**
 		 * test
 		 * Affichage d'un test
-		 * @deprecated v1.0
+		 * @deprecated 1.0
 		 */
 		['GET|POST', '/test', 'Test#test', 'test'],
 	);
