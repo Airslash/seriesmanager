@@ -266,7 +266,7 @@ function init() {
 	// fnGetRandomSeries($Grid);
 	fnTest($Grid);
 
-	$("form").on("submit", function(e){
+	$("#serie-search-form").on("submit", function(e){
 		// Prevents browser from refreshing page after form submit
 		e.preventDefault();
 		var keyword = $("#keyword-input").val();
