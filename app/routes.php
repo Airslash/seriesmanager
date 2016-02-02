@@ -58,7 +58,7 @@
 		// ***
 
 		// Route de l'API principale
-		['GET|POST', '/seriesmanagerapi', 'Serie#seriesManagerApi', 'api'],
+		['GET|POST', '/seriesmanagerapi', 'Api#seriesManager', 'api'],
 
 
 		// ***********

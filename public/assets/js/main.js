@@ -3,8 +3,8 @@
 //--------------------------------------------------
 
 /**
- * @version        1.0
- * @lastmodified   10:31 02/02/2016
+ * @version        1.1
+ * @lastmodified   11:58 02/02/2016
  * @category       linear
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Manages cards layout and ajax for front end
@@ -33,13 +33,13 @@ function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
 
 /**
  * @version        1.0
- * @lastmodified   10:31 02/02/2016
+ * @lastmodified   11:58 02/02/2016
  * @category       seriesmanager_DOM
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Append Serie image to DOM
- * @input          strSerieId As String, strSerieImageSrc As String, $Target As jQuery object
+ * @input          strSerieId as String, strSerieImageSrc as String, $Target as jQuery object
  * @requires       jQuery
- * @uses           fnGetSerieAlbums
+ * @uses           fnGetSerieSeasons
  */
 
 	// Empties $Target
@@ -57,7 +57,7 @@ function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
 		var strSerieId = $(this).attr("data-serie-id");
 		// Targets $Card
 		var $Card = $(this).parent().parent();
-		fnGetSerieAlbums(strSerieId, $Card.children(".list-box"));
+		fnGetSerieSeasons(strSerieId, $Card.children(".list-box"));
 	});
 	// Appends SerieImage to DOM
 	$Target.append($SerieImage);
@@ -75,7 +75,7 @@ function fnAppendSeriesCard(arSeries, $Target){
 
 /**
  * @version        1.0
- * @lastmodified   10:31 02/02/2016
+ * @lastmodified   11:58 02/02/2016
  * @category       seriesmanager_DOM
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Fn append series card v 1 . 0
@@ -157,19 +157,17 @@ function fnGetRandomSeries($Target){
 
 /**
  * @version        1.0
- * @lastmodified   10:31 02/02/2016
- * @category       seriesmanager_DOM
+ * @lastmodified   11:58 02/02/2016
+ * @category       ajax
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets random series from seriesmanager with Ajax
- * @input          strSerie As String, $Target As jQuery object
+ * @input          strSerie as String, $Target as jQuery object
  * @requires       jQuery
  * @uses           fnAppendSeriesCard
  */
 
 	$.ajax({
-		// "url": "http://localhost/seriesmanager/public/randomseries/15/",
 		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-		// "url": "http://localhost/seriesmanager/public/test",
 		"type": "POST",
 		"data":{
 				"method"  : "random",
@@ -198,10 +196,11 @@ function fnTest($Target){
 /**
  * @version        1.0
  * @deprecated     1.0
- * @lastmodified   10:31 02/02/2016
+ * @lastmodified   11:58 02/02/2016
+ * @category       ajax
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets random series from seriesmanager with Ajax
- * @input          strSerie As String, $Target As jQuery object
+ * @input          strSerie as String, $Target as jQuery object
  * @requires       jQuery
  * @uses           fnAppendSeriesCard
  * @note           Caches jSon object into sessionStorage
@@ -247,19 +246,17 @@ function init() {
 
 /**
  * @version        1.0
- * @lastmodified   10:31 02/02/2016
+ * @lastmodified   11:58 02/02/2016
  * @category       init
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Initialyzes script
  * @assumes        $Grid
  * @requires       jQuery, Masonry
  * @uses           fnGetRandomSeries
+ * @todo           Demander à Guillaume pour .serialize()
+ * @todo           Please wait
  */
 
-/**
- * @todo      Demander à Guillaume pour .serialize()
- * @todo      Please wait
- */
 	// Initializes masonry
 	$Grid.masonry({
 		itemSelector: ".grid-item",
@@ -312,4 +309,46 @@ function init() {
 			// $("#result-search").empty();
 		}
 	});
+}
+
+
+function fnGetSerieSeasons(strSerieId, $Target){
+
+/**
+ * @version           1.0b
+ * @datelastmodified  02:33 06/01/2016
+ * @category          ajax
+ * @purpose           Gets artist albums from Last-fm with Ajax
+ * @requires          jQuery
+ * @uses              fnAppendAlbumSmallCovers
+ * @note              Caches jSon object into sessionStorage
+ * @todo              sessionStorage
+ */
+
+	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
+	var jsAlbums = window.sessionStorage.getItem(strSerieId + "_albums");
+	if (!!jsAlbums){
+		// Appends jsAlbums to DOM
+		fnAppendAlbumSmallCovers(JSON.parse(jsAlbums), $Target);
+	}else{
+		$.ajax({
+			"url": "http://ws.audioscrobbler.com/2.0/",
+			"data":{
+				"method"  : "seasons",
+				"id"      : strSerieId,
+				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
+				"format"  : "json"
+			}
+		})
+		.done(function(response){
+				// Stringifys response to properly cache it into sessionStorage
+				var jsAlbums = JSON.stringify(response.topalbums.album);
+				// Caches resulting string into sessionStorage in order to avoid unnecessary server requests
+				window.sessionStorage.setItem(strSerieId + "_albums", jsAlbums);
+				// Returns response value
+				var arAlbums = response.topalbums.album;
+				// Appends arAlbums to DOM
+				fnAppendAlbumSmallCovers(arAlbums, $Target);
+		});
+	}
 }
