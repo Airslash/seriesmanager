@@ -11,13 +11,19 @@
 	 */
 
 	$w_routes = array(
+
+		// ****
+		// HOME
+		// ****
+
 		['GET', '/', 'Default#home', 'home'],
+
+		// ***********
+		// FORMULAIRES
+		// ***********
 
 		// Page d'inscription
 		['GET|POST', '/register/', 'User#register', 'register'],
-
-		// Page de profil (avec liste des séries)
-		['GET', '/profile/', 'Profile#profile', 'profile'],
 
 		// Page password
 		['GET|POST', '/password/', 'User#password', 'password'],
@@ -31,42 +37,82 @@
 		// Page de déconnexion
 		['GET|POST', '/logout/', 'User#logout', 'logout'],
 
-		// Page de détail d'un épisode
-		['GET', '/episode_detail/[:id]/', 'Episode#episode_detail', 'episode_detail'],
 
-		// Page de scraping pour "hydrater" la base en masse
-		['GET|POST', '/scraper/[i:from]/[i:to]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
+		// ***********************************
+		// Affichage par le moteur de template
+		// ***********************************
 
-		// Ajout d'une serie dans la base
-		['GET|POST', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
-
-		// Recherche d'une serie
-		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
-
-		// Autocompletion d'une serie
-		['GET|POST', '/seriesmanagerapi', 'Serie#seriesManagerApi', 'api'],
-
-		// Affichage de series au hazard
-		['GET|POST', '/randomseries/[i:number]/', 'Serie#getRandomSeries', 'random_serie'],
+		// Page de profil (avec liste des séries)
+		['GET', '/profile/', 'Profile#profile', 'profile'],
 
 		// Affichage d'une serie
 		['GET|POST', '/findserie/[i:id]/', 'Serie#findSerie', 'find_serie'],
 
+		// Page de détail d'un épisode
+		['GET', '/episode_detail/[:id]/', 'Episode#episode_detail', 'episode_detail'],
+
+		// ***
+		// API
+		// ***
+
+		// Route de l'API principale
+		['GET|POST', '/seriesmanagerapi', 'Serie#seriesManagerApi', 'api'],
+
+		// ***********
+		// BACK OFFICE
+		// ***********
+
 		/**
+		 * scraper
+		 * Page de scraping pour "hydrater" la base en masse
+		 * For back-office only
+		 */
+		['GET|POST', '/scraper/[i:from]/[i:to]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
+
+		/**
+		 * scrapeserie
+		 * Ajout d'une serie dans la base
+		 * For back-office only
+		 */
+		['GET|POST', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
+
+		// ****************
+		// NE PLUS UTILISER
+		// ****************
+
+		/**
+		 * searchserie
+		 * Affichage de series au hazard
+		 * @deprecated v1.0
+		 */
+		['GET|POST', '/randomseries/[i:number]/', 'Serie#getRandomSeries', 'random_serie'],
+
+
+		/**
+		 * searchserie
+		 * Recherche d'une serie
+		 * @deprecated v1.0
+		 */
+		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
+
+		/**
+		 * detail
 		 * Page de détail d'une série
-		 * @deprecated detail
+		 * @deprecated v1.0
 		 */
 		['GET|POST', '/detail/[:id]/', 'Serie#detail', 'detail'],
 
 		/**
+		 * search
 		 * Page de recherche en autocomplétion
-		 * @deprecated search
+		 * @deprecated v1.0
 		 */
 		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],
 
 		/**
+		 * test
 		 * Affichage d'un test
-		 * @deprecated test
+		 * @deprecated v1.0
 		 */
 		['GET|POST', '/test', 'Test#test', 'test'],
 	);
