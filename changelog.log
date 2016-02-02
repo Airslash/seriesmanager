@@ -1,4 +1,4 @@
-Changelog v1.1
+Changelog v1.2
 
 17:01 01/02/2016
 
@@ -10,9 +10,9 @@ DefaultManager : Extends W framework Manager with cool new functionalities
 
 SerieController : 
 	autocompleteSerie :  Searches for TV serie into database by title
-	searchSerie       :        Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
-	findSerie         :          Finds TV serie into database by id
-	randomSerie       :        Sends random amount of series from database in json format
+	searchSerie       :  Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	findSerie         :  Finds TV serie into database by id
+	randomSerie       :  Sends random amount of series from database in json format
 
 ScraperController : Scrapes and inserts series and episodes to database
 	scrapeMostPopularSeries : Scrapes most popular TV series from imdb result page

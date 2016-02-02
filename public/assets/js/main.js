@@ -1,72 +1,88 @@
+//--------------------------------------------------
+// SERIESMANAGER
+//--------------------------------------------------
+
+
+
+/**
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category linear
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Manages cards layout and ajax for front end
+ * @requires jQuery, Bootstrap, Masonry
+ */
+
 // Sets $Grid as global variable
 $Grid = $("#grid");
 // Initializes script
 init();
 
-function init() {
+
+
+//==================================================
+// FUNCTIONS
+//==================================================
+
+
+//--------------------------------------------------
+// fnAppendSerieImage v1.0
+//--------------------------------------------------
+
+
+function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
+
 /**
- * @purpose   Initialyzes script
- * @assumes   $Grid
- * @requires  jQuery, Masonry
- * @uses      fnGetRandomSeries
- * @todo      Demander à Guillaume pour .serialize()
- * @todo      Please wait
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category seriesmanager_DOM
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Append Serie image to DOM
+ * @input strSerieId As String, strSerieImageSrc As String, $Target As jQuery object
+ * @requires jQuery
+ * @uses fnGetSerieAlbums
  */
-	// Initializes masonry
-	$Grid.masonry({
-		itemSelector: ".grid-item",
-	});
 
-	// Loads default page
-	// fnGetRandomSeries($Grid);
-	fnTest($Grid);
-
-	$("form").on("submit", function(e){
-		// Prevents browser from refreshing page after form submit
-		e.preventDefault();
-		var keyword = $("#keyword-input").val();
-		$.ajax({
-			"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-			"type": "POST",
-			"data":{
-				"method"  : "scrape",
-				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
-				"keyword" : keyword
-				// "keyword" : $("#serie-search-form").serialize()
-			}
-		}).done(function(response) {
-			$Grid.empty();
-			fnAppendSeriesCard(response, $Grid);
-			// Empties $Grid
-			// fnGetRandomSeries($Grid);
-		});
+	// Empties $Target
+	$Target.empty();
+	// Creates SerieImage
+	var $SerieImage = $("<img>");
+	$SerieImage.attr("src", strSerieImageSrc);
+	$SerieImage.attr("width", 214);
+	$SerieImage.attr("height", 317);
+	$SerieImage.attr("data-serie-id", strSerieId);
+	$SerieImage.addClass("serie-image");
+	// Listens to events on image
+	$SerieImage.on("mousedown", function(){
+		// Gets strSerieId from image attribute (anonymous function doesn't accept arguments)
+		var strSerieId = $(this).attr("data-serie-id");
+		// Targets $Card
+		var $Card = $(this).parent().parent();
+		fnGetSerieAlbums(strSerieId, $Card.children(".list-box"));
 	});
-
-	// Serie search function
-	$("#keyword-input").on("keyup", function(e) {
-		e.preventDefault();
-		var keyword = $("#keyword-input").val();
-		if (keyword.length>=2) {
-			$.ajax({
-				"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-				"type": "POST",
-				"data":{
-					"method"  : "search",
-					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
-					"keyword" : keyword
-					// "keyword" : $("#serie-search-form").serialize()
-				}
-			}).done(function(response) {
-				$Grid.empty();
-				fnAppendSeriesCard(response, $Grid);
-			});
-		} else {
-			// $("#result-search").empty();
-		}
-	});
+	// Appends SerieImage to DOM
+	$Target.append($SerieImage);
 }
 
+
+
+//--------------------------------------------------
+// fnAppendSeriesCard v1.0
+//--------------------------------------------------
+
+
 function fnAppendSeriesCard(arSeries, $Target){
+
+/**
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category seriesmanager_DOM
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Fn append series card v 1 . 0
+ * @input arSeries as Array, $Target as jQuery object
+ * @requires jQuery, Bootstrap, Masonry
+ */
+
 	intLength = arSeries.length;
 	for (i=0; i<intLength; i++){
 
@@ -129,44 +145,65 @@ function fnAppendSeriesCard(arSeries, $Target){
 	$Target.masonry("layout");
 }
 
-function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
-/**
- * @category          seriesmanager_DOM
- * @purpose           Append Serie image to DOM
- * @input             strSerieId As String, strSerieImageSrc As String, $Target As jQuery object
- * @requires          jQuery
- * @uses              fnGetSerieAlbums
- */
 
-	// Empties $Target
-	$Target.empty();
-	// Creates SerieImage
-	var $SerieImage = $("<img>");
-	$SerieImage.attr("src", strSerieImageSrc);
-	$SerieImage.attr("width", 214);
-	$SerieImage.attr("height", 317);
-	$SerieImage.attr("data-serie-id", strSerieId);
-	$SerieImage.addClass("serie-image");
-	// Listens to events on image
-	$SerieImage.on("mousedown", function(){
-		// Gets strSerieId from image attribute (anonymous function doesn't accept arguments)
-		var strSerieId = $(this).attr("data-serie-id");
-		// Targets $Card
-		var $Card = $(this).parent().parent();
-		fnGetSerieAlbums(strSerieId, $Card.children(".list-box"));
-	});
-	// Appends SerieImage to DOM
-	$Target.append($SerieImage);
-}
+
+//--------------------------------------------------
+// fnGetRandomSeries v1.0
+//--------------------------------------------------
+
 
 function fnGetRandomSeries($Target){
 
 /**
- * @purpose           Gets random series from seriesmanager with Ajax
- * @input             strSerie As String, $Target As jQuery object
- * @requires          jQuery
- * @uses              fnAppendSeriesCard
- * @note              Caches jSon object into sessionStorage
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category seriesmanager_DOM
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Gets random series from seriesmanager with Ajax
+ * @input strSerie As String, $Target As jQuery object
+ * @requires jQuery
+ * @uses fnAppendSeriesCard
+ */
+
+	$.ajax({
+		// "url": "http://localhost/seriesmanager/public/randomseries/15/",
+		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
+		// "url": "http://localhost/seriesmanager/public/test",
+		"type": "POST",
+		"data":{
+				"method"  : "random",
+				"limit"   : 15,
+				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
+		}
+	})
+	.done(function(response){
+		var arSeries = response;
+		// Appends arSeries to DOM
+		fnAppendSeriesCard(arSeries, $Target);
+		// console.log(response);
+	});
+}
+
+
+
+//--------------------------------------------------
+// fnTest v1.0
+//--------------------------------------------------
+
+
+function fnTest($Target){
+
+/**
+ * @version 1.0
+ * @deprecated 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category Unknown
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Gets random series from seriesmanager with Ajax
+ * @input strSerie As String, $Target As jQuery object
+ * @requires jQuery
+ * @uses fnAppendSeriesCard
+ * @note Caches jSon object into sessionStorage
  */
 
 	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
@@ -197,30 +234,82 @@ function fnGetRandomSeries($Target){
 	}
 }
 
-function fnTest($Target){
-/**
- * @purpose           Gets random series from seriesmanager with Ajax
- * @input             strSerie As String, $Target As jQuery object
- * @requires          jQuery
- * @uses              fnAppendSeriesCard
- * @note              Caches jSon object into sessionStorage
- */
 
-	$.ajax({
-		// "url": "http://localhost/seriesmanager/public/randomseries/15/",
-		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-		// "url": "http://localhost/seriesmanager/public/test",
-		"type": "POST",
-		"data":{
-				"method"  : "random",
-				"limit"   : 15,
-				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
+
+//--------------------------------------------------
+// init v1.0
+//--------------------------------------------------
+
+
+function init() {
+
+/**
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category init
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Initialyzes script
+ * @input N/A
+ * @return N/A
+ * @assumes $Grid
+ * @requires jQuery, Masonry
+ * @uses fnGetRandomSeries
+ * @todo      Demander à Guillaume pour .serialize()
+ * @todo      Please wait
+ */
+	// Initializes masonry
+	$Grid.masonry({
+		itemSelector: ".grid-item",
+	});
+
+	// Loads default page
+	// fnGetRandomSeries($Grid);
+	fnTest($Grid);
+
+	$("form").on("submit", function(e){
+		// Prevents browser from refreshing page after form submit
+		e.preventDefault();
+		var keyword = $("#keyword-input").val();
+		$.ajax({
+			"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
+			"type": "POST",
+			"data":{
+				"method"  : "scrape",
+				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
+				"keyword" : keyword
+				// "keyword" : $("#serie-search-form").serialize()
+			}
+		}).done(function(response) {
+			$Grid.empty();
+			fnAppendSeriesCard(response, $Grid);
+			// Empties $Grid
+			// fnGetRandomSeries($Grid);
+		});
+	});
+
+	// Serie search function
+	$("#keyword-input").on("keyup", function(e) {
+		e.preventDefault();
+		var keyword = $("#keyword-input").val();
+		if (keyword.length>=2) {
+			$.ajax({
+				"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
+				"type": "POST",
+				"data":{
+					"method"  : "search",
+					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
+					"keyword" : keyword
+					// "keyword" : $("#serie-search-form").serialize()
+				}
+			}).done(function(response) {
+				$Grid.empty();
+				fnAppendSeriesCard(response, $Grid);
+			});
+		} else {
+			// $("#result-search").empty();
 		}
-	})
-	.done(function(response){
-		var arSeries = response;
-		// Appends arSeries to DOM
-		fnAppendSeriesCard(arSeries, $Target);
-		// console.log(response);
 	});
 }
+
+
+

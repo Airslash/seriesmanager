@@ -64,7 +64,7 @@ class SerieController extends Controller {
 				case 'random':
 					// Gets $limit from $_POST
 					$limit = $_POST['limit'];
-					$this->getRandomSeries($limit);
+					$this->randomSeries($limit);
 					break;
 				default:
 					return 'Invalid method';
@@ -181,7 +181,7 @@ class SerieController extends Controller {
 	}
 
 	/**
-	 * getRandomSeries
+	 * randomSeries
 	 *
 	 * Sends random series from database in json format
 	 *
@@ -189,7 +189,7 @@ class SerieController extends Controller {
 	 * @param    integer  $limit  Series count to retrieve from database
 	 * @return   object           TV serie details
 	 */
-	public function getRandomSeries($limit) {
+	public function randomSeries($limit) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
