@@ -253,7 +253,6 @@ function init() {
  * @assumes        $Grid
  * @requires       jQuery, Masonry
  * @uses           fnGetRandomSeries
- * @todo           Demander à Guillaume pour .serialize()
  * @todo           Please wait
  */
 
@@ -277,7 +276,6 @@ function init() {
 				"method"  : "scrape",
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
 				"keyword" : keyword
-				// "keyword" : $("#serie-search-form").serialize()
 			}
 		}).done(function(response) {
 			$Grid.empty();
@@ -299,7 +297,6 @@ function init() {
 					"method"  : "search",
 					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
 					"keyword" : keyword
-					// "keyword" : $("#serie-search-form").serialize()
 				}
 			}).done(function(response) {
 				$Grid.empty();

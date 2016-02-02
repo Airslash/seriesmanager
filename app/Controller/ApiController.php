@@ -5,10 +5,12 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * ApiController     Controls seriesmanager main  api
- * @version          2.1.1 beta
- * @last_modified    16:34 01/02/2016
- * @author           Axel Merlin <merlin.axel@gmail.com>
+ * ApiController
+ * 
+ * Controls seriesmanager main api
+ * 
+ * @version          3.2.1 beta
+ * @last_modified    12:36 02/02/2016
  * @author           Matthias Morin <matthias.morin@gmail.com>
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method           seriesManager  Main seriesmanager API
@@ -18,7 +20,6 @@ use \W\Controller\Controller;
  * @method           findSerie         Finds TV serie into database by id
  * @method           randomSerie       Sends random amount of series from database in json format
  * @todo                               namespace?
- *
  */
 class ApiController extends Controller {
 
@@ -29,8 +30,9 @@ class ApiController extends Controller {
 	 * Searches for TV serie into database by title
 	 * Scrapes TV serie details from imdb when not present into database
 	 * Returns TV serie details in json format
-	 *
+	 * 
 	 * @version  1.1.1
+	 * @api
 	 * @assumes  string  $_POST['method']   One of three methods availlable
 	 * @assumes  string  $_POST['api_key']  API key (fake)
 	 * @assumes  string  $_POST['search']   Searches for TV serie into database by keyword
@@ -60,12 +62,12 @@ class ApiController extends Controller {
 				case 'getserie':
 					// Gets $id from $_POST
 					$keyword = $_POST['id'];
-					$this->searchSerie($id);
+					$this->getSerie($id);
 					break;
 				case 'getseasons':
 					// Gets $id from $_POST
 					$id = $_POST['id'];
-					$this->searchSerie($id);
+					$this->getSeasons($id);
 					break;
 				case 'scrape':
 					// Gets $keyword from $_POST
@@ -153,25 +155,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * findSerie
-	 *
-	 * Finds TV serie into database by id
-	 *
-	 * @version  1.1
-	 * @param    integer  $id  TV serie primary key
-	 * @return   object        TV serie details
-	 */
-	public function findSerie($id) {
-		$defaultController = new \Controller\DefaultController();
-		$defaultManager    = new \Manager\DefaultManager();
-
-		$serie = $defaultManager->findWhere($id, "id", "series");
-
-		// Returns json to client
-		$this->showJson($serie);
-	}
-
-	/**
 	 * getSerie
 	 *
 	 * Gets TV serie from database by id
@@ -200,22 +183,22 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * getEpisodes
+	 * getSeasons
 	 *
 	 * gets TV serie episodes from database by serie id
 	 *
-	 * @version  1.1
+	 * @version  2.1
 	 * @param    integer  $id  TV serie primary key
 	 * @return   object        TV serie details
 	 */
-	public function getEpisodes($id) {
+	public function getSeasons($id) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
-		$episodes = $defaultManager->findWhere($id, "serie_id", "episodes");
+		$seasons = $defaultManager->findWhere($id, "serie_id", "episodes");
 
 		// Returns json to client
-		$this->showJson($episodes);
+		$this->showJson($seasons);
 	}
 
 	/**
