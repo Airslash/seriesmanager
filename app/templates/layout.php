@@ -92,7 +92,8 @@
 		<?= $this->section('header') ?> 
 
 
-		<form action="<?= $this->url('search') ?>" method="GET" id="serie-search-form">
+		<!-- <form action="<?= $this->url('api') ?>" method="POST" id="serie-search-form"> -->
+		<form id="serie-search-form">
 			<button type="button" class="btn btn-default" aria-label="Left Align" id="search-button">
   				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			</button>
@@ -103,8 +104,8 @@
 		
 		
 		
-		<section>
-			<?= $this->section('main_content') ?>
+		<section id="grid">
+			<!-- <?= $this->section('main_content') ?> -->
 		</section>
 		
 		<!-- for sticky footer -->

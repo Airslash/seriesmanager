@@ -44,10 +44,10 @@
 		['GET|POST', '/searchserie/[:title]/', 'Serie#searchSerie', 'search_serie'],
 
 		// Autocompletion d'une serie
-		['GET|POST', '/autocomplete/[:title]/', 'Serie#autocompleteSerie', 'autocomplete_serie'],
+		['GET|POST', '/seriesmanagerapi', 'Serie#seriesManagerApi', 'api'],
 
 		// Affichage de series au hazard
-		['GET|POST', '/randomseries/[i:number]/', 'Serie#randomSeries', 'random_serie'],
+		['GET|POST', '/randomseries/[i:number]/', 'Serie#getRandomSeries', 'random_serie'],
 
 		// Affichage d'une serie
 		['GET|POST', '/findserie/[i:id]/', 'Serie#findSerie', 'find_serie'],
@@ -68,5 +68,5 @@
 		 * Affichage d'un test
 		 * @deprecated test
 		 */
-		['GET|POST', '/test/[:string]/', 'Test#test', 'test'],
+		['GET|POST', '/test', 'Test#test', 'test'],
 	);

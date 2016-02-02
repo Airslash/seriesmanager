@@ -9,8 +9,8 @@ use \W\Manager\Manager;
  * 
  * Extends W framework Manager with cool new functionalities
  * 
- * @version        1.4.1
- * @last_modified  16:52 01/02/2016
+ * @version        1.4.2
+ * @last_modified  23:53 01/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         countRows  Counts rows from given table
@@ -66,6 +66,7 @@ class DefaultManager extends Manager {
 	 * @param   string   $table   Optional default is Class name
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
+	 * @todo                      Demander à Guilllaume pour Manager::$table
 	 */
 	public function findLike($search, $column, $table = null) {
 		// Sets default table from Manager class property
@@ -101,6 +102,7 @@ class DefaultManager extends Manager {
 	 * @param   string   $table   Optional default is Class name
 	 * @return  boolean           False When query returns no result
 	 * @return  array             Associative array containig data from database
+	 * @todo                      Demander à Guilllaume pour Manager::$table
 	 */
 	public function findWhere($query, $column, $table = null) {
 		// Sets default table from Manager class property

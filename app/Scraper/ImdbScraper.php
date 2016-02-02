@@ -137,6 +137,9 @@ Class ImdbScraper {
 		$poster_id = explode(".", explode("/", $posterSrc)[5])[0];
 
 		// gets $summary from first <div class="summary_text">
+		/**
+		 * @todo See full summary
+		 */
 		$summary = $html->find('div.summary_text', 0)->plaintext;
 		$summary = trim($summary);
 
@@ -157,13 +160,6 @@ Class ImdbScraper {
 
 		// Finds first <a> to get season total
 		$season_count = $divSeasons->find('a', 0)->plaintext;
-
-		// How to build images src from $poster_id :
-		// $xxs    = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_UY67_CR0,0,45,67_AL_.jpg';
-		// $xs     = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1._SY74_CR0,0,54,74_.jpg';
-		// $small  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_UX67_CR0,0,67,98_AL_.jpg';
-		// $medium = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_SY317_CR0,0,214,317_AL_.jpg';
-		// $large  = 'http://ia.media-imdb.com/images/M/'.$poster_id.'._V1_SX640_SY720_.jpg';
 
 		$this->serie = [
 			"title"      => $title,

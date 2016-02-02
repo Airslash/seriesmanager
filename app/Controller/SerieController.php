@@ -11,31 +11,80 @@ use \W\Controller\Controller;
  * @author           Axel Merlin <merlin.axel@gmail.com>
  * @author           Matthias Morin <matthias.morin@gmail.com>
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
- * @method           autocompleteSerie  Searches for TV serie into database by title
- * @method           searchSerie        Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
- * @method           findSerie          Finds TV serie into database by id
- * @method           randomSerie        Sends random amount of series from database in json format
- * 
+ * @method           seriesManagerApi  Main api method
+ * @method           getSeriesLike     Searches for TV serie into database by keyword
+ * @method           randomSerie       Sends random series from database in json format
+ * @method           scrapeSerie       Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+ * @method           findSerie         Finds TV serie into database by id
+ * @method           randomSerie       Sends random amount of series from database in json format
+ *
  */
 class SerieController extends Controller {
 
 	/**
-	 * autocompleteSerie
+	 * seriesManagerApi
 	 *
 	 * Searches for TV serie into database by title
 	 * Returns TV serie details in json format (by primary key)
 	 *
-	 * @version  1.0 beta
+	 * @version  1.1 beta
 	 * @param    string  $title  TV serie title
 	 * @return   object          TV serie details
 	 * @todo                     Accepter les requètes avec des espaces
 	 */
-	public function autocompleteSerie($title) {
+	public function seriesManagerApi() {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
-	 	// Searches for TV serie into database by title
-		$serie = $defaultManager->findLike($title, "title", "series");
+		// Gets $method from $_POST
+		$method = $_POST['method'];
+
+		// Gets $apikey from $_POST
+		$apikey = $_POST['api_key'];
+
+		// API key validation
+		if ($api_key = 'inwexrlzidlwncjfrrahtexduwskgtvk'){
+			switch ($method) {
+				case 'search':
+					// Gets $keyword from $_POST
+					$keyword = $_POST['keyword'];
+					$this->getSeriesLike($keyword);
+					break;
+				case 'scrape':
+					// Gets $keyword from $_POST
+					$keyword = $_POST['keyword'];
+					$this->scrapeSerie($keyword);
+					break;
+				case 'random':
+					// Gets $limit from $_POST
+					$limit = $_POST['limit'];
+					$this->getRandomSeries($limit);
+					break;
+				default:
+					return 'Invalid method';
+			}
+		} else {
+			return 'You need a valid api key to perform this action.';
+		}
+	}
+
+	/**
+	 * getSeriesLike
+	 *
+	 * Searches for TV serie into database by keyword
+	 * Returns TV serie details in json format (by primary key) 
+	 *
+	 * @version  1.0 beta
+	 * @param    string  $keyword  TV serie title
+	 * @return   object            TV series details
+	 * @todo                       Accepter les requètes avec des espaces
+	 */
+	public function getSeriesLike($keyword) {
+		$defaultController = new \Controller\DefaultController();
+		$defaultManager    = new \Manager\DefaultManager();
+
+		// Searches for TV serie into database by keyword
+		$serie = $defaultManager->findLike($keyword, "title", "series");
 
 		// When TV serie not present into database
 		if (!$serie) {
@@ -44,10 +93,11 @@ class SerieController extends Controller {
 			// Returns json to client
 			$this->showJson($serie);
 		}
+
 	}
 
 	/**
-	 * searchSerie
+	 * scrapeSerie
 	 *
 	 * Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
 	 * Adds TV serie details into database when found on imdb
@@ -56,14 +106,14 @@ class SerieController extends Controller {
 	 * @version  1.0 beta
 	 * @param    string  $title  TV serie title
 	 * @return   object          TV serie details
-	 * @todo                     Accepter les requètes avec des espaces
+	 * @todo                     Not found
 	 */
-	public function searchSerie($title) {
+	public function scrapeSerie($title) {
 		$defaultController = new \Controller\DefaultController();
 		$scraperController = new \Controller\ScraperController();
 		$defaultManager    = new \Manager\DefaultManager();
 
-	 	// Searches for TV serie into database by title
+		// Searches for TV serie into database by title
 		$serie = $defaultManager->findLike($title, "title", "series");
 
 		// When TV serie not present into database
@@ -106,19 +156,38 @@ class SerieController extends Controller {
 	}
 
 	/**
-	 * randomSerie
+	 * findEpisodes
 	 *
-	 * Sends random amount of series from database in json format
+	 * Finds TV serie into database by id
 	 *
 	 * @version  1.1
-	 * @param    integer  $number  Series count to retrieve from database
-	 * @return   object            TV serie details
+	 * @param    integer  $id  TV serie primary key
+	 * @return   object        TV serie details
 	 */
-	public function randomSeries($number) {
+	public function findEpisodes($id) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
-		for ($i=0; $i<$number; $i++) {
+		$episodes = $defaultManager->findWhere($id, "serie_id", "episodes");
+
+		// Returns json to client
+		$this->showJson($episodes);
+	}
+
+	/**
+	 * randomSerie
+	 *
+	 * Sends random series from database in json format
+	 *
+	 * @version  1.1.1
+	 * @param    integer  $limit  Series count to retrieve from database
+	 * @return   object           TV serie details
+	 */
+	public function getRandomSeries($limit) {
+		$defaultController = new \Controller\DefaultController();
+		$defaultManager    = new \Manager\DefaultManager();
+
+		for ($i=0; $i<$limit; $i++) {
 			$rowCount = $defaultManager->countRows("series");
 			$randomSerieId = mt_rand(1, $rowCount);
 			$serie = $defaultManager->findWhere($randomSerieId, "id", "series");
@@ -137,7 +206,7 @@ class SerieController extends Controller {
 	 * detail method
 	 * @version               1.0
 	 * @deprecated            1.0
- 	 * @author                Axel Merlin <merlin.axel@gmail.com>
+	 * @author                Axel Merlin <merlin.axel@gmail.com>
 	 * @param    string  $id  TV serie title
 	 * @return   object       TV serie details
 	 */

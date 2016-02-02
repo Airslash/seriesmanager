@@ -9,13 +9,14 @@ use \W\Controller\Controller;
  * 
  * Scrapes and inserts series and episodes to database
  * 
- * @version        1.3.1
- * @last_modified  13:43 01/02/2016
+ * @version        1.3.3
+ * @last_modified  00:04 02/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         scrapeMostPopularSeries  Scrapes top 50 most popular series from imdb
  * @method         scrapeSerie              Scrapes first TV serie from imdb result page, if any
  * @method         insertSerie              Main ScraperController method
+ * @todo                                    Demander à Guillaume pour les classes
  */
 class ScraperController extends Controller {
 
@@ -42,12 +43,10 @@ class ScraperController extends Controller {
 			$seriesId = $imdbScraper->scrapeSeriesId("http://www.imdb.com/search/title?start=$i&title_type=tv_series");
 			// Inserts serie into database
 			foreach ($seriesId as $serieId) {
-				// echo "Scraping : $serieId";
 				$this->insertSerie($serieId);
 				$serie = $defaultManager->findWhere($serieId, "imdb_id", "series");
 				if ($serie) {
 					$defaultController->showPrint_r($serie);
-					// echo "Inserted : " . $serie["title"] . " - " . $episode["title"] . "\n";
 				}
 			}
 		}
@@ -67,16 +66,23 @@ class ScraperController extends Controller {
 
 		// Initializes scraper
 		$imdbScraper    = new \Scraper\ImdbScraper();
+		$defaultManager = new \Manager\DefaultManager();
 
-		// Gets series id containing $title
-		$seriesId = $imdbScraper->scrapeSeriesId('http://www.imdb.com/search/title?title='.urlencode($title).'&title_type=tv_series');
+		// Check if title is already into database
+		$isPresent = $defaultManager->findWhere($title, "title", "series");
 
-		// Inserting serie into database when results are returned 
-		if ($seriesId) {
-			// Query success
-			$this->insertSerie($seriesId[0]);
-		} else {
-			return false;
+		if (!$isPresent) {
+
+			// Gets series id containing $title
+			$seriesId = $imdbScraper->scrapeSeriesId('http://www.imdb.com/search/title?title='.urlencode($title).'&title_type=tv_series');
+
+			// Inserting serie into database when results are returned 
+			if ($seriesId) {
+				// Query success
+				$this->insertSerie($seriesId[0]);
+			} else {
+				return false;
+			}
 		}
 	}
 
@@ -96,40 +102,45 @@ class ScraperController extends Controller {
 		$serieManager   = new \Manager\SerieManager();
 		$episodeManager = new \Manager\EpisodeManager();
 
-		$serie = $imdbScraper->scrapeSerieById($imdb_id);
+		// Check if serie is already into database
+		$isPresent = $defaultManager->findWhere($imdb_id, "imdb_id", "series");
 
-		// Joins genre table data into comma separated string
-		$serie["genre"] = join(", ", $serie["genre"]);
+		if (!$isPresent) {
+			$serie = $imdbScraper->scrapeSerieById($imdb_id);
 
-		// Joins actors table data into comma separated string
-		$serie["actors"] = join(", ", $serie["actors"]);
+			// Joins genre table data into comma separated string
+			$serie["genre"] = join(", ", $serie["genre"]);
 
-		// Sets season count into table
-		$serie["season_count"] = count($serie["seasons"]);
+			// Joins actors table data into comma separated string
+			$serie["actors"] = join(", ", $serie["actors"]);
 
-		// Stores seasons table into new table
-		$seasons = $serie["seasons"];
+			// Sets season count into table
+			$serie["season_count"] = count($serie["seasons"]);
 
-		// Deletes "seasons" table from $series
-		unset($serie["seasons"]);
+			// Stores seasons table into new table
+			$seasons = $serie["seasons"];
 
-		// Includes serie to database
-		$serieManager->insert($serie);
-		$lastId = $defaultManager->lastId();
+			// Deletes "seasons" table from $series
+			unset($serie["seasons"]);
 
-		// Includes serie episodes from each season to database
-		foreach ($seasons as $seasonIndex => $season) {
-			foreach ($season["episodes"] as $episodeIndex => $episode) {
+			// Includes serie to database
+			$serieManager->insert($serie);
+			$lastId = $defaultManager->lastId();
 
-				// Inserts series primary key into episodes for future table juncture
-				$episode["serie_id"] = $lastId;
+			// Includes serie episodes from each season to database
+			foreach ($seasons as $seasonIndex => $season) {
+				foreach ($season["episodes"] as $episodeIndex => $episode) {
 
-				// Inserts season number into episodes table
-				$episode["season"] = $seasonIndex;
+					// Inserts series primary key into episodes for future table juncture
+					$episode["serie_id"] = $lastId;
 
-				// Inserts episode number into episodes table
-				$episode["episode"] = $episodeIndex;
-				$episodeManager->insert($episode);
+					// Inserts season number into episodes table
+					$episode["season"] = $seasonIndex;
+
+					// Inserts episode number into episodes table
+					$episode["episode"] = $episodeIndex;
+					$episodeManager->insert($episode);
+				}
 			}
 		}
 	}
