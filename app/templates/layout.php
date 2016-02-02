@@ -96,7 +96,6 @@
 			</button>
 			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
-		<div id="result-search"></div>
 
 		</header><!-- container-fluid-->
 
