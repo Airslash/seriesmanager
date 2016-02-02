@@ -6,9 +6,17 @@
 
 <!-- for masonry -->
 
-<section id="grid">
+<div class="container-fluid">
+	<div class="row">
+		<div>
+			<section id="grid">
 
-</section>
+			</section>
+
+		</div>
+		
+	</div>
+</div>
 
 
  
