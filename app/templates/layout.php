@@ -94,7 +94,7 @@
 			<button type="button" class="btn btn-default" aria-label="Left Align" id="search-button">
   				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			</button>
-			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
+			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Search by title...">
 		</form>
 
 		</header><!-- container-fluid-->
@@ -102,7 +102,7 @@
 		
 		
 		<!-- for masonry -->
-		<section>
+		<section id="section">
 			<?= $this->section('main_content') ?>
 		</section>
 
