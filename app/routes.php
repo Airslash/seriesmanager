@@ -18,6 +18,7 @@
 
 		['GET', '/', 'Default#home', 'home'],
 
+
 		// ***********
 		// FORMULAIRES
 		// ***********
@@ -51,12 +52,14 @@
 		// Page de détail d'un épisode
 		['GET', '/episode_detail/[:id]/', 'Episode#episode_detail', 'episode_detail'],
 
+
 		// ***
 		// API
 		// ***
 
 		// Route de l'API principale
 		['GET|POST', '/seriesmanagerapi', 'Serie#seriesManagerApi', 'api'],
+
 
 		// ***********
 		// BACK OFFICE
@@ -75,6 +78,7 @@
 		 * For back-office only
 		 */
 		['GET|POST', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
+
 
 		// ****************
 		// NE PLUS UTILISER
