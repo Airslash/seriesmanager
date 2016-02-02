@@ -127,7 +127,7 @@
 	
 	<script language="javascript">
 		// Defines asset url
-		var assetUrl = "<?= $this->assetUrl("") ?>";
+		var strAssetUrl = "<?= $this->assetUrl("") ?>";
 	</script>
 
 	<script src="<?= $this->assetUrl('js/jquery-1.12.0.min.js') ?>"></script>

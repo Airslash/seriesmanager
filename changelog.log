@@ -1,4 +1,9 @@
-Changelog v1.2
+Changelog v1.3
+
+ * @author         Matthias Morin <matthias.morin@gmail.com>
+ * @author         Axel Merlin <merlin.axel@gmail.com>
+ * @author         Christian Marcucci <christian.marcucci13@gmail.com>
+ * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
 
 17:01 01/02/2016
 
@@ -8,7 +13,7 @@ DefaultManager : Extends W framework Manager with cool new functionalities
 	findLike  : Finds all lines containing $query string into target table and column
 	findWhere : Finds all lines matching exact $query string into target table and column
 
-SerieController : 
+SerieController :
 	autocompleteSerie :  Searches for TV serie into database by title
 	searchSerie       :  Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
 	findSerie         :  Finds TV serie into database by id
