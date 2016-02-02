@@ -123,7 +123,7 @@ function fnAppendSeriesCard(arSeries, $Target){
 		$Card.append($ImageBox);
 
 		// Creates ListBox
-		var $ListBox = $("<div>");
+		var $ListBox = $("<p>");
 		// Add content to ListBox
 		$ListBox.html(strSerieSummary);
 		// Adds class to ListBox
