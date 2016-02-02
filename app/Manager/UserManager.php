@@ -6,10 +6,11 @@ namespace Manager;
 
 class UserManager extends \W\Manager\UserManager
 {
-	public function collection() {
+	public function isInCollection($id) {
+		$sql = "SELECT users.username, bookmarks.serie_id FROM users JOIN bookmarks ON users.id = bookmarks.user_id WHERE users.id =" . $_SESSION["user"]["id"] . " AND bookmarks.serie_id =" . $id;
+		$getBookmark = $this->dbh->prepare($sql);
+		$foundBookmark = $getBookmark->fetchAll();
 
-		$sql = "INSERT INTO bookmarks (user_id, serie_id) VALUES ($w_user);";
-		$statement = $pdo->prepare($sql);
-		$statement->execute([$_GET["id"]]);
+		return ($foundBookmark);
 	}
 }

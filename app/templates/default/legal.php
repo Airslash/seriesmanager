@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 	
 	<div class="background">
-		<h2>Mentions légales</h2>
+		<h2>Terms and Conditions</h2>
 		
 		<img src="<?= $this->assetUrl('img/bob.png') ?>" alt="Terms & Conditions">
 		<br />
