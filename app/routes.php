@@ -122,5 +122,5 @@
 		 * Affichage d'un test
 		 * @deprecated 1.0
 		 */
-		['GET|POST', '/test', 'Test#test', 'test'],
+		['GET|POST', '/test', 'Default#showPrint_r', 'test'],
 	);
