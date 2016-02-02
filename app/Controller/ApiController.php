@@ -6,9 +6,9 @@ use \W\Controller\Controller;
 
 /**
  * ApiController
- * 
+ *
  * Controls seriesmanager main api
- * 
+ *
  * @version          3.2.1 beta
  * @last_modified    12:36 02/02/2016
  * @author           Matthias Morin <matthias.morin@gmail.com>
@@ -30,16 +30,18 @@ class ApiController extends Controller {
 	 * Searches for TV serie into database by title
 	 * Scrapes TV serie details from imdb when not present into database
 	 * Returns TV serie details in json format
-	 * 
-	 * @version  1.1.1
+	 *
+	 * @version  1.1.2
 	 * @api
-	 * @assumes  string  $_POST['method']   One of three methods availlable
-	 * @assumes  string  $_POST['api_key']  API key (fake)
-	 * @assumes  string  $_POST['search']   Searches for TV serie into database by keyword
-	 * @assumes  string  $_POST['scrape']   Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
-	 * @assumes  string  $_POST['random']   Sends random series from database in json format
-	 * @assumes  string  $_POST['limit']    TV serie count to send to client
-	 * @return   object                     TV serie details
+	 * @assumes  string  $_POST['api_key']          API key (fake)
+	 * @assumes  string  $_POST['method']           One of five methods availlable
+	 * @assumes  string  $_POST['searchserie']      Searches for TV serie into database by keyword
+	 * @assumes  string  $_POST['getserie']         Returns TV serie details in json format
+	 * @assumes  string  $_POST['getseasons']       Returns TV serie seasons in json format
+	 * @assumes  string  $_POST['scrapeserie']      Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	 * @assumes  string  $_POST['getrandomseries']  Sends random series from database in json format
+	 * @assumes  string  $_POST['limit']            TV serie count to send to client
+	 * @return   object                             TV serie details
 	 */
 	public function seriesManager() {
 		$defaultController = new \Controller\DefaultController();
@@ -91,7 +93,7 @@ class ApiController extends Controller {
 	 * searchSerie
 	 *
 	 * Searches for TV serie into database by keyword
-	 * Returns TV serie details in json format (by primary key) 
+	 * Returns TV serie details in json format (by primary key)
 	 *
 	 * @version  1.1
 	 * @param    string  $keyword  TV serie title
@@ -158,7 +160,7 @@ class ApiController extends Controller {
 	 * getSerie
 	 *
 	 * Gets TV serie from database by id
-	 * Returns TV serie details in json format (by primary key) 
+	 * Returns TV serie details in json format (by primary key)
 	 *
 	 * @version  1.0 beta
 	 * @param    string  $id  TV serie title

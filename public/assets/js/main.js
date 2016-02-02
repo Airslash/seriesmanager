@@ -94,7 +94,12 @@ function fnAppendSeriesCard(arSeries, $Target){
 		var strSmall     = '._V1_UX67_CR0,0,67,98_AL_.jpg';
 		var strMedium    = '._V1_SY317_CR0,0,214,317_AL_.jpg';
 		var strLarge     = '._V1_SX640_SY720_.jpg';
-		strSerieImageSrc = 'http://ia.media-imdb.com/images/M/' + arSeries[i].poster_id + strMedium;
+		strSerieImageSrc = arSeries[i].poster_id;
+		if (!strSerieImageSrc) {
+			strSerieImageSrc = 'http://localhost/seriesmanager/public/img/chill-out.jpg';
+		} else {
+			strSerieImageSrc = 'http://ia.media-imdb.com/images/M/' + strSerieImageSrc + strMedium;
+		};
 
 		// Appends Serie primary key for easy acces
 		strSerieId      = arSeries[i].id;
