@@ -27,7 +27,8 @@
 
 		   	<!--logo-->
 	  		<a href="<?php echo $this->url('home') ?>" id="site-logo">
-	  			<img src="<?= $this->assetUrl('img/logoSM.png') ?>" alt="logo">
+	  			<img src="<?= $this->assetUrl('img/logoSM.png') ?>" alt="logo" class="hidden-xs">
+	  			<img src="<?= $this->assetUrl('img/logoSMsmall.png') ?>" alt="logo" class="visible-xs">
   			</a>
 
 			<!-- login -->
