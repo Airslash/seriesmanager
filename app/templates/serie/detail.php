@@ -17,12 +17,12 @@
 				if ($foundCollection){
 					?>
 					<p>This show is in your collection</p>
-					<a href="#" id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</a>
+					<a href="" id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</a>
 					<?php
 				} 
 				else {
 					?>
-					<a href="" id="add-collection"><i class="fa fa-heart"></i> Add to my collection</a>
+					<a href="<?= $this->assetUrl('Manager/BookmarkManager') ?>" id="add-collection"><i class="fa fa-heart"></i> Add to my collection</a>
 				<?php
 				}
 			} else {
