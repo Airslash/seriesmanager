@@ -59,7 +59,7 @@ class DefaultManager extends Manager {
 	 * @param   string   $column  Target column
 	 * @param   string   $table   Table name
 	 * @return  boolean           False When query returns no result
-	 * @return  array             Associative array containig data from database
+	 * @return  array             Associative array containing data from database
 	 */
 	public function findLike($search, $column, $table) {
 		// Searches database for $search into $column from $table
@@ -83,12 +83,13 @@ class DefaultManager extends Manager {
 	 * 
 	 * Finds all lines matching exact $query string into target table and column
 	 *
+	 * @version                   1.1
 	 * @param   string   $query   Text query
 	 * @param   string   $column  Target column
 	 * @param   string   $table   Table name
 	 * @see     Manager::$dbh     Uses dbh property from Manager class
 	 * @return  boolean           False When query returns no result
-	 * @return  array             Associative array containig data from database
+	 * @return  array             Associative array containing data from database
 	 */
 	public function findWhere($query, $column, $table) {
 		// Searches database for $query into $column from $table
@@ -98,7 +99,7 @@ class DefaultManager extends Manager {
 			':query' => $query
 			]);
 
-		$result = $statement->fetchAll();
+		$result = $statement->fetch();
 		// If fetchAll returned results
 		if ( $result ) {
 			return $result;
@@ -116,7 +117,7 @@ class DefaultManager extends Manager {
 	 * @param   string   $table   Table name
 	 * @see     Manager::$dbh     Uses dbh property from Manager class
 	 * @return  boolean           False When query returns no result
-	 * @return  array             Associative array containig data from database
+	 * @return  array             Associative array containing data from database
 	 */
 	public function getRandom($limit, $table) {
 		// Searches database for $query into $column from $table

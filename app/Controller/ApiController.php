@@ -33,52 +33,54 @@ class ApiController extends Controller {
 	 *
 	 * @version  1.1.2
 	 * @api
-	 * @assumes  string  $_POST['api_key']          API key (fake)
-	 * @assumes  string  $_POST['method']           One of five methods availlable
-	 * @assumes  string  $_POST['searchserie']      Searches for TV serie into database by keyword
-	 * @assumes  string  $_POST['getserie']         Returns TV serie details in json format
-	 * @assumes  string  $_POST['getseasons']       Returns TV serie seasons in json format
-	 * @assumes  string  $_POST['scrapeserie']      Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
-	 * @assumes  string  $_POST['getrandomseries']  Sends random series from database in json format
-	 * @assumes  string  $_POST['limit']            TV serie count to send to client
-	 * @return   object                             TV serie details
+	 * @assumes  string   $_GET['api_key']          API key (fake)
+	 * @assumes  string   $_GET['method']           One of five methods availlable
+	 * @assumes  string   $_GET['searchserie']      Searches for TV serie into database by keyword
+	 * @assumes  string   $_GET['getserie']         Returns TV serie details in json format
+	 * @assumes  string   $_GET['scrapeserie']      Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	 * @assumes  string   $_GET['getrandomseries']  Sends random series from database in json format
+	 * @assumes  integer  $_GET['limit']            TV serie count to send to client
+	 * @assumes  integer  $_GET['id']               TV serie primary key
+	 * @return   object                              TV serie details
+	 * 
+	 * @assumes  string   $_GET['getseasons']       Returns TV serie seasons in json format
 	 */
 	public function seriesManager() {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
-		// Gets $method from $_POST
-		$method = $_POST['method'];
+		// Gets $method from $_GET
+		$method = $_GET['method'];
 
-		// Gets $apikey from $_POST
-		$apikey = $_POST['api_key'];
+		// Gets $apikey from $_GET
+		$api_key = $_GET['api_key'];
 
 		// API key validation
-		if ($api_key = 'inwexrlzidlwncjfrrahtexduwskgtvk'){
+		if ($api_key == 'inwexrlzidlwncjfrrahtexduwskgtvk'){
 			switch ($method) {
 				case 'searchserie':
-					// Gets $keyword from $_POST
-					$keyword = $_POST['keyword'];
+					// Gets $keyword from $_GET
+					$keyword = $_GET['keyword'];
 					$this->searchSerie($keyword);
 					break;
 				case 'getserie':
-					// Gets $id from $_POST
-					$keyword = $_POST['id'];
+					// Gets $id from $_GET
+					$id = $_GET['id'];
 					$this->getSerie($id);
 					break;
-				case 'getseasons':
-					// Gets $id from $_POST
-					$id = $_POST['id'];
-					$this->getSeasons($id);
-					break;
+				// case 'getseasons':
+				// 	// Gets $id from $_GET
+				// 	$id = $_GET['id'];
+				// 	$this->getSeasons($id);
+				// 	break;
 				case 'scrapeserie':
-					// Gets $keyword from $_POST
-					$keyword = $_POST['keyword'];
+					// Gets $keyword from $_GET
+					$keyword = $_GET['keyword'];
 					$this->scrapeSerie($keyword);
 					break;
 				case 'getrandomseries':
-					// Gets $limit from $_POST
-					$limit = $_POST['limit'];
+					// Gets $limit from $_GET
+					$limit = $_GET['limit'];
 					$this->getRandomSeries($limit);
 					break;
 				default:
@@ -178,29 +180,45 @@ class ApiController extends Controller {
 		if (!$serie) {
 			return false;
 		} else {
+
+			debug($serie);
+			die();
+
+			// Gets every season episode
+			$seasons = $this->getSeasons($id, $serie["season_count"]);
+
+			// Inserts seasons into $serie array
+			$serie["seasons"] = $seasons;
+
 			// Returns json to client
 			$this->showJson($serie);
 		}
-
 	}
 
 	/**
 	 * getSeasons
 	 *
-	 * gets TV serie episodes from database by serie id
+	 * gets TV serie season episodes from database by serie primary key and season
 	 *
-	 * @version  2.1
-	 * @param    integer  $id  TV serie primary key
-	 * @return   object        TV serie details
+	 * @version     2.1
+	 * @deprecated  2.1
+	 * @param       integer  $id  TV serie primary key
+	 * @return      object        TV serie details
 	 */
-	public function getSeasons($id) {
+	protected function getSeasons($id, $seasonCount) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
+		$episodeManager    = new \Manager\EpisodeManager();
 
-		$seasons = $defaultManager->findWhere($id, "serie_id", "episodes");
+		// Gets serie episodes by season
+		for ($i=1; $i<=$seasonCount; $i++){
 
-		// Returns json to client
-		$this->showJson($seasons);
+			// Gets TV serie seasons from database by id
+			$seasons[$i]["episodes"] = $episodeManager->findEpisodes($id, $i);
+		}
+		
+		// Returns array
+		return $seasons;
 	}
 
 	/**

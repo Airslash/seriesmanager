@@ -3,8 +3,8 @@
 //--------------------------------------------------
 
 /**
- * @version        1.1
- * @lastmodified   11:58 02/02/2016
+ * @version        1.1.1
+ * @lastmodified   16:23 02/02/2016
  * @category       linear
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Manages cards layout and ajax for front end
@@ -20,7 +20,7 @@ init();
 
 
 //==================================================
-// FUNCTION
+// FUNCTIONS
 //==================================================
 
 
@@ -78,7 +78,7 @@ function fnAppendSeriesCard(arSeries, $Target){
  * @lastmodified   11:58 02/02/2016
  * @category       seriesmanager_DOM
  * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Fn append series card v 1 . 0
+ * @purpose        Appends series cards
  * @input          arSeries as Array, $Target as jQuery object
  * @requires       jQuery, Bootstrap, Masonry
  */
@@ -161,8 +161,8 @@ function fnAppendSeriesCard(arSeries, $Target){
 function fnGetRandomSeries($Target){
 
 /**
- * @version        1.0
- * @lastmodified   11:58 02/02/2016
+ * @version        1.1
+ * @lastmodified   16:45 02/02/2016
  * @category       ajax
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets random series from seriesmanager with Ajax
@@ -173,7 +173,7 @@ function fnGetRandomSeries($Target){
 
 	$.ajax({
 		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-		"type": "POST",
+		"type": "GET",
 		"data":{
 				"method"  : "getrandomseries",
 				"limit"   : 20,
@@ -188,58 +188,40 @@ function fnGetRandomSeries($Target){
 	});
 }
 
-
-
-
 //--------------------------------------------------
-// fnTest v1.0
+// fnGetEpisodes v1.0
 //--------------------------------------------------
 
 
-function fnTest($Target){
+function fnGetEpisodes(strSerieId, $Target){
 
 /**
  * @version        1.0
- * @deprecated     1.0
- * @lastmodified   11:58 02/02/2016
+ * @lastmodified   16:26 02/02/2016
  * @category       ajax
  * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Gets random series from seriesmanager with Ajax
- * @input          strSerie as String, $Target as jQuery object
+ * @purpose        Gets series episodes from seriesmanager API with Ajax
+ * @input          strSerieId as Integer, $Target as jQuery object
  * @requires       jQuery
  * @uses           fnAppendSeriesCard
- * @note           Caches jSon object into sessionStorage
  */
 
-	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
-	var jsSeries = window.sessionStorage.getItem("Series");
-	if (!!jsSeries){
-		// Appends jsSeries to DOM
-		fnAppendSeriesCard(JSON.parse(jsSeries), $Target);
-	}else{
-		$.ajax({
-			"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-			"type": "POST",
-			"data":{
-					"method"  : "getrandomseries",
-					"limit"   : 20,
-					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
-			}
-		})
-		.done(function(response){
-			// Stringifys response to properly cache it into sessionStorage
-			var jsSeries = JSON.stringify(response);
-			// Caches resulting string into sessionStorage in order to avoid unnecessary server requests
-			window.sessionStorage.setItem("Series", jsSeries);
-			// Returns response value
-			var arSeries = response;
-			// Appends arSeries to DOM
-			fnAppendSeriesCard(arSeries, $Target);
-		});
-	}
+	$.ajax({
+		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
+		"type": "GET",
+		"data":{
+				"method"  : "getserie",
+				"id"      : strSerieId,
+				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
+		}
+	})
+	.done(function(response){
+		var arSeries = response;
+		// Appends arSeries to DOM
+		fnAppendSeriesCard(arSeries, $Target);
+		// console.log(response);
+	});
 }
-
-
 
 
 //--------------------------------------------------
@@ -268,8 +250,8 @@ function init() {
 	});
 
 	// Loads default page
+	fnGetEpisodes(1, $Grid);
 	// fnGetRandomSeries($Grid);
-	fnGetRandomSeries($Grid);
 
 	$("#serie-search-form").on("submit", function(e){
 		// Prevents browser from refreshing page after form submit
@@ -277,17 +259,17 @@ function init() {
 		var keyword = $("#keyword-input").val();
 		$.ajax({
 			"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-			"type": "POST",
+			"type": "GET",
 			"data":{
 				"method"  : "scrapeserie",
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
 				"keyword" : keyword
 			}
 		}).done(function(response) {
-			$Grid.empty();
-			fnAppendSeriesCard(response, $Grid);
 			// Empties $Grid
-			// fnGetRandomSeries($Grid);
+			$Grid.empty();
+
+			fnAppendSeriesCard(response, $Grid);
 		});
 	});
 
@@ -298,7 +280,7 @@ function init() {
 		if (keyword.length>=2) {
 			$.ajax({
 				"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
-				"type": "POST",
+				"type": "GET",
 				"data":{
 					"method"  : "searchserie",
 					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
@@ -312,46 +294,4 @@ function init() {
 			// $("#result-search").empty();
 		}
 	});
-}
-
-
-function fnGetSerieSeasons(strSerieId, $Target){
-
-/**
- * @version           1.0b
- * @datelastmodified  02:33 06/01/2016
- * @category          ajax
- * @purpose           Gets artist albums from Last-fm with Ajax
- * @requires          jQuery
- * @uses              fnAppendAlbumSmallCovers
- * @note              Caches jSon object into sessionStorage
- * @todo              sessionStorage
- */
-
-	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
-	var jsAlbums = window.sessionStorage.getItem(strSerieId + "_albums");
-	if (!!jsAlbums){
-		// Appends jsAlbums to DOM
-		fnAppendAlbumSmallCovers(JSON.parse(jsAlbums), $Target);
-	}else{
-		$.ajax({
-			"url": "http://ws.audioscrobbler.com/2.0/",
-			"data":{
-				"method"  : "getseasons",
-				"id"      : strSerieId,
-				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk",
-				"format"  : "json"
-			}
-		})
-		.done(function(response){
-				// Stringifys response to properly cache it into sessionStorage
-				var jsAlbums = JSON.stringify(response.topalbums.album);
-				// Caches resulting string into sessionStorage in order to avoid unnecessary server requests
-				window.sessionStorage.setItem(strSerieId + "_albums", jsAlbums);
-				// Returns response value
-				var arAlbums = response.topalbums.album;
-				// Appends arAlbums to DOM
-				fnAppendAlbumSmallCovers(arAlbums, $Target);
-		});
-	}
 }
