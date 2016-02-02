@@ -2,25 +2,26 @@
 // SERIESMANAGER
 //--------------------------------------------------
 
+
+
 /**
- * @version        1.0
- * @lastmodified   10:31 02/02/2016
- * @category       linear
- * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Manages cards layout and ajax for front end
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category linear
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Manages cards layout and ajax for front end
+ * @requires jQuery, Bootstrap, Masonry
  */
 
 // Sets $Grid as global variable
 $Grid = $("#grid");
-
 // Initializes script
 init();
 
 
 
-
 //==================================================
-// FUNCTION
+// FUNCTIONS
 //==================================================
 
 
@@ -32,14 +33,14 @@ init();
 function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
 
 /**
- * @version        1.0
- * @lastmodified   10:31 02/02/2016
- * @category       seriesmanager_DOM
- * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Append Serie image to DOM
- * @input          strSerieId As String, strSerieImageSrc As String, $Target As jQuery object
- * @requires       jQuery
- * @uses           fnGetSerieAlbums
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category seriesmanager_DOM
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Append Serie image to DOM
+ * @input strSerieId As String, strSerieImageSrc As String, $Target As jQuery object
+ * @requires jQuery
+ * @uses fnGetSerieAlbums
  */
 
 	// Empties $Target
@@ -65,7 +66,6 @@ function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
 
 
 
-
 //--------------------------------------------------
 // fnAppendSeriesCard v1.0
 //--------------------------------------------------
@@ -74,13 +74,13 @@ function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
 function fnAppendSeriesCard(arSeries, $Target){
 
 /**
- * @version        1.0
- * @lastmodified   10:31 02/02/2016
- * @category       seriesmanager_DOM
- * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Fn append series card v 1 . 0
- * @input          arSeries as Array, $Target as jQuery object
- * @requires       jQuery, Bootstrap, Masonry
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category seriesmanager_DOM
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Fn append series card v 1 . 0
+ * @input arSeries as Array, $Target as jQuery object
+ * @requires jQuery, Bootstrap, Masonry
  */
 
 	intLength = arSeries.length;
@@ -147,7 +147,6 @@ function fnAppendSeriesCard(arSeries, $Target){
 
 
 
-
 //--------------------------------------------------
 // fnGetRandomSeries v1.0
 //--------------------------------------------------
@@ -156,14 +155,14 @@ function fnAppendSeriesCard(arSeries, $Target){
 function fnGetRandomSeries($Target){
 
 /**
- * @version        1.0
- * @lastmodified   10:31 02/02/2016
- * @category       seriesmanager_DOM
- * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Gets random series from seriesmanager with Ajax
- * @input          strSerie As String, $Target As jQuery object
- * @requires       jQuery
- * @uses           fnAppendSeriesCard
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category seriesmanager_DOM
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Gets random series from seriesmanager with Ajax
+ * @input strSerie As String, $Target As jQuery object
+ * @requires jQuery
+ * @uses fnAppendSeriesCard
  */
 
 	$.ajax({
@@ -187,7 +186,6 @@ function fnGetRandomSeries($Target){
 
 
 
-
 //--------------------------------------------------
 // fnTest v1.0
 //--------------------------------------------------
@@ -196,15 +194,16 @@ function fnGetRandomSeries($Target){
 function fnTest($Target){
 
 /**
- * @version        1.0
- * @deprecated     1.0
- * @lastmodified   10:31 02/02/2016
- * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Gets random series from seriesmanager with Ajax
- * @input          strSerie As String, $Target As jQuery object
- * @requires       jQuery
- * @uses           fnAppendSeriesCard
- * @note           Caches jSon object into sessionStorage
+ * @version 1.0
+ * @deprecated 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category Unknown
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Gets random series from seriesmanager with Ajax
+ * @input strSerie As String, $Target As jQuery object
+ * @requires jQuery
+ * @uses fnAppendSeriesCard
+ * @note Caches jSon object into sessionStorage
  */
 
 	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
@@ -237,7 +236,6 @@ function fnTest($Target){
 
 
 
-
 //--------------------------------------------------
 // init v1.0
 //--------------------------------------------------
@@ -246,17 +244,16 @@ function fnTest($Target){
 function init() {
 
 /**
- * @version        1.0
- * @lastmodified   10:31 02/02/2016
- * @category       init
- * @author         Matthias Morin <matthias.morin@gmail.com>
- * @purpose        Initialyzes script
- * @assumes        $Grid
- * @requires       jQuery, Masonry
- * @uses           fnGetRandomSeries
- */
-
-/**
+ * @version 1.0
+ * @lastmodified 10:31 02/02/2016
+ * @category init
+ * @author Matthias Morin <matthias.morin@gmail.com>
+ * @purpose Initialyzes script
+ * @input N/A
+ * @return N/A
+ * @assumes $Grid
+ * @requires jQuery, Masonry
+ * @uses fnGetRandomSeries
  * @todo      Demander à Guillaume pour .serialize()
  * @todo      Please wait
  */
@@ -313,3 +310,6 @@ function init() {
 		}
 	});
 }
+
+
+
