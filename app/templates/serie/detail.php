@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-	<div id="serie-info">
+	<div id="serie-info" class="background">>
 		<h2><?= $serie["title"] ?></h2>
 		<img src="http://ia.media-imdb.com/images/M/<?= $serie["poster_id"] ?>._V1_SX640_SY720_.jpg" />
 		<div class="detail-serie">

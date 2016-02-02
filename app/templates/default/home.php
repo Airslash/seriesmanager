@@ -7,15 +7,11 @@
 <!-- for masonry -->
 
 <div class="container-fluid">
-	<div class="row">
-		<div>
-			<section id="grid">
 
-			</section>
+	<section id="grid" class="row">
 
-		</div>
-		
-	</div>
+	</section>
+
 </div>
 
 

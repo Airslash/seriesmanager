@@ -87,11 +87,7 @@
 	    		}
 	    		?>
     		
-		</header><!-- container-fluid-->
-
-		<!--Diaporama de la page home.php-->
-		<?= $this->section('header') ?> 
-
+		
 
 		<!-- <form action="<?= $this->url('api') ?>" method="POST" id="serie-search-form"> -->
 		<form id="serie-search-form">
@@ -101,6 +97,8 @@
 			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
 		<div id="result-search"></div>
+
+		</header><!-- container-fluid-->
 
 		
 		

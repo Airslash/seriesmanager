@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-	<div id="episode-info">
+	<div id="episode-info" class="background">
 		<h2><?= $episode["title"] ?></h2>
 		<div id="season-episode">Season <?= $episode["season"] ?>, Episode <?= $episode["episode"] ?></div>
 		<img src="http://ia.media-imdb.com/images/M/<?= $episode["poster_id"] ?>._V1_SX640_SY720_.jpg" />

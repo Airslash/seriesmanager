@@ -2,13 +2,22 @@ html, body {
     color: rgb(0, 0, 0);
     font-family: 'Roboto', sans-serif;
     height: 100%;
+    background-image: url(../img/cover.jpg);
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
 }
 
 #main-content {
     min-height: 100%;
     height: 100%;
     margin: 0 auto -4em;
-    background-color: rgba(255, 255, 255, 1);
+    /* */
 }
 
 .navbar-header {
@@ -25,7 +34,9 @@ html, body {
 Header
 *********************************/
 header {
-    height: 200px;
+    height: 205px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-bottom: 20px; 
 }
 
 #site-logo img {
@@ -269,10 +280,6 @@ Media query
 
 @media (min-width: 1000px){
 
-    body {
-        background-image: url(../img/cover.jpg);
-    }
-
     #main-content {
         width: 1000px;
         height: 100%;
@@ -292,6 +299,10 @@ Media query
 }
 
 @media (min-width: 1300px) {
+
+    header {
+        height: 213px;
+    }
 
     #main-content {
         width: 1300px;
