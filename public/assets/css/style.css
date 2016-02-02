@@ -112,6 +112,11 @@ Vignette Masonry
     margin-right: auto;
 }
 
+#grid p {
+    text-align: justify;
+    padding: 20px;
+}
+
 
 
 
