@@ -94,8 +94,9 @@
 			<button type="button" class="btn btn-default" aria-label="Left Align" id="search-button">
   				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			</button>
-			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Search by title...">
+			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Titre, acteurs...">
 		</form>
+		<div id="result-search"></div>
 
 		</header><!-- container-fluid-->
 
@@ -123,11 +124,11 @@
 			<p>Made by CAMS Squad</p>
 		</footer>
 
-	
 	<script language="javascript">
 		// Defines asset url
 		var strAssetUrl = "<?= $this->assetUrl("") ?>";
 	</script>
+
 
 	<script src="<?= $this->assetUrl('js/jquery-1.12.0.min.js') ?>"></script>
 
