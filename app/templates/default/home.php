@@ -4,6 +4,11 @@
 <?php $this->start('main_content') ?>
 	
 
+<!-- for masonry -->
+
+<section id="grid">
+
+</section>
 
 
  

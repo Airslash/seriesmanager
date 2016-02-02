@@ -103,11 +103,11 @@
 
 		
 		
-		
-		<section id="grid">
-			<!-- <?= $this->section('main_content') ?> -->
+		<!-- for masonry -->
+		<section>
+			<?= $this->section('main_content') ?>
 		</section>
-		
+
 		<!-- for sticky footer -->
 		<div class="push"></div>
 
