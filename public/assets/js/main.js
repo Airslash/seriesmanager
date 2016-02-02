@@ -47,8 +47,8 @@ function fnAppendSerieImage(strSerieId, strSerieImageSrc, $Target){
 	// Creates SerieImage
 	var $SerieImage = $("<img>");
 	$SerieImage.attr("src", strSerieImageSrc);
-	$SerieImage.attr("width", 214);
-	$SerieImage.attr("height", 317);
+	$SerieImage.attr("width", 240);
+	$SerieImage.attr("height", 354);
 	$SerieImage.attr("data-serie-id", strSerieId);
 	$SerieImage.addClass("serie-image");
 	// Listens to events on image
@@ -102,10 +102,10 @@ function fnAppendSeriesCard(arSeries, $Target){
 
 		// Creates card to contain TV series
 		var $Card = $("<div>");
-		$Card.addClass("card grid-item col-sm-6 col-lg-4 thumbnail");
+		$Card.addClass("card grid-item col-sm-6 col-lg-3 thumbnail");
 
 		// Adds title
-		var $SerieTitle = $("<h1>");
+		var $SerieTitle = $("<h2>");
 		// Adds title content
 		$SerieTitle.html(strSerieTitle);
 		// Append title to card
@@ -171,7 +171,7 @@ function fnGetRandomSeries($Target){
 		"type": "POST",
 		"data":{
 				"method"  : "getrandomseries",
-				"limit"   : 15,
+				"limit"   : 20,
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
 		}
 	})
@@ -217,7 +217,7 @@ function fnTest($Target){
 			"type": "POST",
 			"data":{
 					"method"  : "getrandomseries",
-					"limit"   : 15,
+					"limit"   : 20,
 					"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
 			}
 		})

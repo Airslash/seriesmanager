@@ -100,6 +100,22 @@ Barre de recherche
 }
 
 /*********************************
+Vignette Masonry
+*********************************/
+#grid h2 {
+    text-align: center;
+}
+
+#grid img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+/*********************************
 Page série détail
 *********************************/
 #serie-info img {
@@ -139,10 +155,22 @@ Page série détail
 #links i:hover {
     color: rgb(0, 0, 0);
 }
-/*********************************
-Diaporama
-*********************************/
 
+/*********************************
+Page détail épisode
+*********************************/
+ #episode-info img {
+    width: 100%;
+    height: 100%;
+ }
+
+ #season-episode {
+    font-size: 15px;
+ }
+
+ #episode-info div {
+    padding-bottom: 20px;
+ }
 
 
 
@@ -217,7 +245,7 @@ Media query
         float: left;
         visibility: visible;
     }
-    
+
 }
 
 @media (min-width: 1000px){
@@ -265,4 +293,9 @@ Media query
         width: 600px;
 
     }
+
+     #episode-info img {
+        width: 500px;
+        height: 333px;
+     }
 }
