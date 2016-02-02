@@ -9,8 +9,8 @@ use \W\Manager\Manager;
  * 
  * Extends W framework Manager with cool new functionalities
  * 
- * @version        1.4.2
- * @last_modified  11:24 02/02/2016
+ * @version        1.5
+ * @last_modified  14:32 02/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         countRows  Counts rows from given table
@@ -97,6 +97,32 @@ class DefaultManager extends Manager {
 		$statement->execute([
 			':query' => $query
 			]);
+
+		$result = $statement->fetchAll();
+		// If fetchAll returned results
+		if ( $result ) {
+			return $result;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * getRandom
+	 * 
+	 * Returns random lines from target table with given limit
+	 *
+	 * @param   integer  $limit   Lines count to retreive
+	 * @param   string   $table   Table name
+	 * @see     Manager::$dbh     Uses dbh property from Manager class
+	 * @return  boolean           False When query returns no result
+	 * @return  array             Associative array containig data from database
+	 */
+	public function getRandom($limit, $table) {
+		// Searches database for $query into $column from $table
+		$sql = 'SELECT * FROM ' . $table . ' ORDER BY RAND() LIMIT ' . $limit . ';';
+		$statement = $this->dbh->prepare($sql);
+		$statement->execute();
 
 		$result = $statement->fetchAll();
 		// If fetchAll returned results

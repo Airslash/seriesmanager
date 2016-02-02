@@ -206,7 +206,7 @@ class ApiController extends Controller {
 	 *
 	 * Sends random series from database in json format
 	 *
-	 * @version  1.2
+	 * @version  1.3
 	 * @param    integer  $limit  Series count to retrieve from database
 	 * @return   object           TV serie details
 	 */
@@ -214,24 +214,8 @@ class ApiController extends Controller {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
-		for ($i=0; $i<$limit; $i++) {
-
-			// Database serie count
-			$rowCount = $defaultManager->countRows("series");
-
-			// Generates random id between 1 and $rowCount
-			$randomSerieId = mt_rand(1, $rowCount);
-
-			// Finds random serie into database
-			$serie = $defaultManager->findWhere($randomSerieId, "id", "series");
-			if ($serie){
-				// Appends serie into array if exists 
-				$series[] = $serie[0];
-			} else {
-				// Decrements $i
-				$i--;
-			}
-		}
+		// Finds random serie into database
+		$series = $defaultManager->getRandom($limit, "series");
 
 		// Returns json to client
 		$this->showJson($series);
