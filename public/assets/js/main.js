@@ -96,7 +96,7 @@ function fnAppendSeriesCard(arSeries, $Target){
 		var strLarge     = '._V1_SX640_SY720_.jpg';
 		strSerieImageSrc = arSeries[i].poster_id;
 		if (!strSerieImageSrc) {
-			strSerieImageSrc = 'http://localhost/seriesmanager/public/img/chill-out.jpg';
+			strSerieImageSrc = assetUrl + 'img/chill-out.jpg';
 		} else {
 			strSerieImageSrc = 'http://ia.media-imdb.com/images/M/' + strSerieImageSrc + strMedium;
 		};
