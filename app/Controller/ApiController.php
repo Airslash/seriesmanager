@@ -27,16 +27,34 @@ use \W\Controller\Controller;
  */
 class ApiController extends Controller {
 	/**
+	 * Contains client "method" call
+	 * @var string
+	 */
+	protected $method;
+
+	/**
+	 * Contains clients "api_key"
+	 * @var string
+	 */
+	protected $api_key;
+
+	/**
 	 * Contains "notFound" serie array
 	 * @var array
 	 */
 	protected $notFound;
 
 	/**
-	 * Initializes "notFound" property
-	 * @version 1.0
+	 * Initializes method, api_key, notFound class properties
+	 * @version 1.1
 	 */
 	public function __construct() {
+
+		// Gets $method from $_GET
+		$this->method = $_GET['method'];
+
+		// Gets $apikey from $_GET
+		$this->api_key = $_GET['api_key'];
 
 		// Sets "notFound" property options
 		$this->notFound = [
@@ -72,22 +90,16 @@ class ApiController extends Controller {
 	 * $_GET['getrandomseries']  As string   Sends random series from database in json format
 	 * $_GET['limit']            As integer  TV serie count to send to client
 	 * </pre>
-	 * @version 1.1.4
+	 * @version 1.1.5
 	 * @api
 	 * @return   array                              TV serie details
 	 */
 	public function seriesManager() {
 		$defaultController = new \Controller\DefaultController();
 
-		// Gets $method from $_GET
-		$method = $_GET['method'];
-
-		// Gets $apikey from $_GET
-		$api_key = $_GET['api_key'];
-
 		// API key validation
-		if ($api_key == 'inwexrlzidlwncjfrrahtexduwskgtvk'){
-			switch ($method) {
+		if ($this->api_key == 'inwexrlzidlwncjfrrahtexduwskgtvk'){
+			switch ($this->method) {
 				case 'searchserie':
 
 					// Gets $keyword from $_GET
