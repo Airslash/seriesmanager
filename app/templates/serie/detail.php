@@ -16,7 +16,6 @@
 				
 				if ($foundCollection){
 					?>
-					<p>This show is in your collection</p>
 					<a href="<?= $this->url('removeFromCollection', ["id"=>$serie["id"]]) ?>" id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</a>
 					<?php
 				} 
