@@ -286,6 +286,23 @@ function fnGetSerie(intSerieId, $Target){
 	});
 }
 
+function fnBuildSerieSeasons(arSerie){
+	strList = "";
+	for (i=1; i<=arSerie["season_count"]; i++){
+		strList += "<p>Season " + i;
+		arEpisodes = arSerie["seasons"][i]["episodes"];
+		strList += "<ul>\n";
+		console.log(arEpisodes);
+		// console.log(arEpisodes.length);
+		for (j=1; j<=arEpisodes.length; j++){
+			strList += "<li>Episode&nbsp;" + j + "&nbsp;:&nbsp;" + arEpisodes[j]["title"] + "</li>\n";
+		}
+		strList += "</ul>\n";
+		strList += "</p>\n";
+	}
+	return strList;
+}
+
 function fnAppendSerieSheet(arSerie, $Target){
 
 /**
@@ -408,6 +425,18 @@ function fnAppendSerieSheet(arSerie, $Target){
 	$Summary.html(strSerieSummary);
 	// Appends Summary to sheet
 	$Sheet.append($Summary);
+
+	// --------------------------------------------------
+	// SEASONS
+	// --------------------------------------------------
+
+	var $Seasons = $("<p>");
+	// Adds class to Seasons
+	$Seasons.addClass("Seasons thumbnail");
+	// Add content to Seasons
+	$Seasons.html(fnBuildSerieSeasons(arSerie));
+	// Appends Seasons to sheet
+	$Sheet.append($Seasons);
 
 	// --------------------------------------------------
 	// APPENDS TO DOM
