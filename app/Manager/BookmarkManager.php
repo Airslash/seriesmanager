@@ -6,5 +6,14 @@ namespace Manager;
 
 class BookmarkManager extends \W\Manager\Manager
 {
-
+	public function delete($ids)
+	{
+		extract ($ids);
+		$sql = "DELETE 
+				FROM bookmarks 
+				WHERE bookmarks.user_id =" . $_SESSION["user"]["id"] . 
+								" AND bookmarks.serie_id =" . $ids["serie_id"];
+		$getBookmark = $this->dbh->prepare($sql);
+		$getBookmark->execute();
+	}
 }

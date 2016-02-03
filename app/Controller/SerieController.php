@@ -23,12 +23,13 @@ class SerieController extends Controller {
 	 * @return   object       TV serie details
 	 */
 	public function detail($id)	{
+		if (!$this->getUser()){
+			$this->redirectToRoute("login");
+		}
 		$serieManager = new \Manager\SerieManager();
-
 		$serie = $serieManager->find($id);
 		$userManager = new \Manager\UserManager();
 		$foundBookmark = $userManager->isInCollection($id);
-				debug($foundBookmark);
 		$this->show('serie/detail', [
 			"serie" => $serie,
 			"foundCollection" => $foundBookmark
@@ -36,6 +37,9 @@ class SerieController extends Controller {
 	}
 
 	public function addToCollection($id) {
+		if (!$this->getUser()){
+			$this->redirectToRoute("login");
+		}
 		$user=$this->getUser();
 		$bookmarkManager = new \Manager\BookmarkManager();
 		$bookmarkManager->insert([
@@ -46,6 +50,9 @@ class SerieController extends Controller {
 	}
 
 	public function removeFromCollection($id) {
+		if (!$this->getUser()){
+			$this->redirectToRoute("login");
+		}
 		$user=$this->getUser();
 		$bookmarkManager = new \Manager\BookmarkManager();
 		$bookmarkManager->delete([
