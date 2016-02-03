@@ -34,7 +34,7 @@ series :
 episodes :
 	id        = int(10) UNSIGNED NOT NULL, -- PRIMARY KEY
 	imdb_id   = varchar(191), -- INDEX -- UNIQUE
-	serie_id  = varchar(191), -- INDEX
+	serie_id  = int(10) UNSIGNED NOT NULL, -- INDEX
 	title     = varchar(191), -- INDEX
 	poster_id = varchar(255),
 	summary   = varchar(255),

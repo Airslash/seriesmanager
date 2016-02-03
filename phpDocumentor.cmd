@@ -1,1 +1,1 @@
-php .\phpDocumentor.phar -d ./app -t ./docs/app --template="clean"
+php .\phpDocumentor.phar -d ./app -t ./docs/app --template="responsive"

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 03 Février 2016 à 00:51
+-- Généré le :  Mer 03 Février 2016 à 11:22
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -33,8 +33,7 @@ CREATE TABLE `bookmarks` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `serie_id` int(10) UNSIGNED DEFAULT NULL,
-  `episode_id` int(10) UNSIGNED DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `episode_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -47,7 +46,7 @@ DROP TABLE IF EXISTS `episodes`;
 CREATE TABLE `episodes` (
   `id` int(10) UNSIGNED NOT NULL,
   `imdb_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `serie_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `serie_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poster_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `summary` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -140,25 +139,40 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `bookmarks`
 --
 ALTER TABLE `bookmarks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `series`
 --
 ALTER TABLE `series`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables exportées
+--
 
-
+--
+-- Contraintes pour la table `bookmarks`
+--
 ALTER TABLE `bookmarks`
   ADD CONSTRAINT `bookmarks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `bookmarks_ibfk_2` FOREIGN KEY (`serie_id`) REFERENCES `series` (`id`),
   ADD CONSTRAINT `bookmarks_ibfk_3` FOREIGN KEY (`episode_id`) REFERENCES `episodes` (`id`);
+
+--
+-- Contraintes pour la table `episodes`
+--
+ALTER TABLE `episodes`
+  ADD CONSTRAINT `episodes_ibfk_1` FOREIGN KEY (`serie_id`) REFERENCES `series` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
