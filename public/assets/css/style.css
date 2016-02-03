@@ -150,6 +150,10 @@ Vignette Masonry
     margin: auto;
 }
 
+#grid .card {
+    width: 290px;
+}
+
 /* section vignette */
 #section {
     padding-top: 170px;
@@ -223,6 +227,7 @@ footer {
     position: fixed;
     bottom: 0;
     font-size: 13px;
+    visibility: hidden;
 }
 
 footer p {
@@ -296,6 +301,10 @@ Media query
         text-align: center;
     }
 
+    footer {
+        visibility: visible;
+    }
+
 }
 
 @media (min-width: 700px) {
@@ -323,7 +332,7 @@ Media query
     #section {
         padding-top: 30px;
     }
-
+    
 }
 
 @media (min-width: 1000px){
