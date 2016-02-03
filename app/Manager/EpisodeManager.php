@@ -5,10 +5,10 @@ namespace Manager;
 /**
  * EpisodeManager
  *
- * Manages requests to "episodes" table
+ * Manages requests to episodes table
  *
- * @version                      1.5
- * @last_modified                16:13 02/02/2016
+ * @version                      1.6
+ * @last_modified                20:32 02/02/2016
  * @author                       Matthias Morin <matthias.morin@gmail.com>
  * @copyright                    2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         findEpisodes  Finds serie episodes by season
@@ -34,7 +34,7 @@ class EpisodeManager extends \W\Manager\Manager {
 			':season'   => $season,
 			]);
 
-		$episodes = $statement->fetch();
+		$episodes = $statement->fetchAll();
 
 		// Shifts array indexes
 		foreach ($episodes as $key => $value) {

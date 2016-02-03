@@ -1,17 +1,70 @@
-Changelog v1.3
+Changelog v1.4
+
+17:01 01/02/2016
 
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @author         Axel Merlin <merlin.axel@gmail.com>
  * @author         Christian Marcucci <christian.marcucci13@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
 
-17:01 01/02/2016
+
+--------------------------------------------------
+Architecture de la base de donnée :
+--------------------------------------------------
+
+series :
+	id           = int(10) UNSIGNED NOT NULL, -- PRIMARY KEY
+	imdb_id      = varchar(191), -- INDEX -- UNIQUE
+	title        = varchar(191), -- INDEX
+	poster_id    = varchar(255),
+	summary      = varchar(255),
+	actors       = varchar(255),
+	genre        = varchar(255),
+	season_count = int(10) UNSIGNED NOT NULL,
+	start_date   = year(4) NOT NULL,
+	end_date     = year(4) DEFAULT NULL
+
+episodes :
+	id        = int(10) UNSIGNED NOT NULL, -- PRIMARY KEY
+	imdb_id   = varchar(191), -- INDEX -- UNIQUE
+	serie_id  = varchar(191), -- INDEX
+	title     = varchar(191), -- INDEX
+	poster_id = varchar(255),
+	summary   = varchar(255),
+	season    = int(10) UNSIGNED NOT NULL,
+	episode   = int(10) UNSIGNED NOT NULL,
+	air_date  = varchar(255)
+
+users :
+	id       = int(10) UNSIGNED NOT NULL, -- PRIMARY KEY
+	email    = varchar(191), -- INDEX -- UNIQUE
+	password = varchar(255),
+	token    = varchar(255),
+	username = varchar(191) -- UNIQUE
+
+@todo  Demander à Guillaume si c'est nécessaire de mettre des index sur ces tables
+bookmarks :
+	user_id    = int(10) UNSIGNED NOT NULL, -- INDEX
+	element_id = int(10) UNSIGNED NOT NULL, -- INDEX
+	type       = varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+
+
+
+--------------------------------------------------
+Managers
+--------------------------------------------------
 
 DefaultManager : Extends W framework Manager with cool new functionalities
 	countRows : Counts rows from given table
 	lastId    : Retrieves id from last inserted element
 	findLike  : Finds all lines containing $query string into target table and column
 	findWhere : Finds all lines matching exact $query string into target table and column
+
+
+--------------------------------------------------
+Controllers
+--------------------------------------------------
+
 
 SerieController :
 	autocompleteSerie :  Searches for TV serie into database by title

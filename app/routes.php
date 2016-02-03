@@ -71,17 +71,24 @@
 
 		/**
 		 * scraper
+		 * Page de scraping pour "hydrater" la base avec les 50 series les plus populaires
+		 * For back-office only
+		 */
+		['GET', '/scraper/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
+
+		/**
+		 * scraper
 		 * Page de scraping pour "hydrater" la base en masse
 		 * For back-office only
 		 */
-		['GET|POST', '/scraper/[i:from]/[i:to]/', 'Scraper#scrapeMostPopularSeries', 'scraper'],
+		['GET', '/scrapepages/[:from]/[:to]', 'Scraper#scrapePages', 'scrapepages'],
 
 		/**
 		 * scrapeserie
 		 * Ajout d'une serie dans la base
 		 * For back-office only
 		 */
-		['GET|POST', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
+		['GET', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
 
 
 		// ****************

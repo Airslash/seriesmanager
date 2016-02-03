@@ -4,12 +4,12 @@ namespace Scraper;
 
 /**
  * ImdbScraper
- * 
+ *
  * Scrapes user query from imdb and returns all scraped data
  * Seasons and episodes arrays are indexed starting from 1
- * 
- * @version        2.5.3
- * @last_modified  16:35 01/02/2016
+ *
+ * @version        2.6.1
+ * @last_modified  23:59 02/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  * @method         __construct           Initializes $context propery
@@ -42,8 +42,10 @@ Class ImdbScraper {
 
 	/**
 	 * Constructor
-	 * @version    2.4
+	 *
 	 * Initializes context property
+	 *
+	 * @version  2.5
 	 */
 	public function __construct() {
 		// Sets context property options
@@ -51,18 +53,20 @@ Class ImdbScraper {
 			"method"=>"GET",
 			// Will return all data in english language
 			"header"=>"Accept-language:en\r\n",
-		]];	
+		]];
 		$this->context = stream_context_create($options);
 	}
 
 	/**
 	 * scrapeSeriesId
-	 * 
+	 *
 	 * Builds $imdb_id list from imdb result page url (50 elements each)
-	 * 
-	 * @version              2.4.1
+	 *
+	 * @version              2.5
 	 * @param   string $url  Imdb result page url to be parsed
 	 * @return  array        Contains imdb reference ids
+	 * @url                  http://www.imdb.com/search/title?start=1&title_type=tv_series
+	 * @url                  http://www.imdb.com/search/title?title=how%20i%20met%20your%20mother&title_type=tv_series
 	 */
 	public function scrapeSeriesId($url) {
 		// Empties serieId property
@@ -70,122 +74,160 @@ Class ImdbScraper {
 
 		// Gets dom from imdb result page
 		$html = file_get_html($url, false, $this->context);
+		if ($html) {
 
-		// Checks results
-		$main = $html->find('div#main', 0);
-		if (trim($main->plaintext) == "No results.") {
-			// Query returned no results
-			return false;
-		} else {
-			// Gets results from dom
-			$results = $html->find('table.results td.image');
+			// Checks results
+			$main = $html->find('div#main', 0);
+			if (trim($main->plaintext) == "No results.") {
+				// Query returned no results
+				return false;
+			} else {
+				// Gets results from dom
+				$results = $html->find('table.results td.image');
 
-			// Counts results
-			$resultCount = count($results);
+				// Counts results
+				$resultCount = count($results);
 
-			// Includes each result into seriesId property
-			for ($i=0; $i<$resultCount; $i++) {
+				// Includes each result into seriesId property
+				for ($i=0; $i<$resultCount; $i++) {
 
-				// Gets $aHref from <a>
-				$aHref = $results[$i]->find('a', 0)->href;
+					// Gets $aHref from <a>
+					$aHref = $results[$i]->find('a', 0)->href;
 
-				// Gets $imdb_id from $aHref
-				$imdb_id = explode("/", $aHref)[2];
+					// Gets $imdb_id from $aHref
+					$imdb_id = explode("/", $aHref)[2];
 
-				// Includes serie $imdb_id into seriesId property
-				$this->seriesId[$i] = $imdb_id;
+					// Includes serie $imdb_id into seriesId property
+					$this->seriesId[$i] = $imdb_id;
+				}
+
+				// Returs seriesId property
+				return $this->seriesId;
 			}
-
-			// Returs seriesId property
-			return $this->seriesId;
+		} else {
+			return false;
 		}
 	}
 
 	/**
 	 * scrapeSerieById
-	 * 
+	 *
 	 * Builds imdb url from user query and scrapes imdb serie details
-	 * 
-	 * @version          2.4
+	 *
+	 * @version          2.6
 	 * @param   string   $imdb_id  imdb reference id
 	 * @return  array    Contains  serie infos : title, summary, genre, actors, imdb_id, poster_id, start_date, end_date
 	 * @return  boolean  True when success, false when query returned no results
+	 * @uses             scrapeSeasons
+	 * @url              http://www.imdb.com/title/tt0460649/
 	 */
 	public function scrapeSerieById($imdb_id) {
+		$defaultManager = new \Manager\DefaultManager();
+
 		// Empties serie property
 		$this->serie = null;
 
-		// Builds idmb query url from $imbd_id and gets imdb dom from imbd_id
-		$html = file_get_html("http://www.imdb.com/title/$imdb_id", false, $this->context);
+		// Gets TV serie from database by id
+		$serie = $defaultManager->findWhere($imdb_id, "imdb_id", "series");
 
-		// Parsing <head><title> gives more consistant results for unknown reason
-		$headTitle = $html->find('head title', 0)->plaintext;
+		// Checks if serie exists in database already
+		if ($serie) {
+			$this->serie = $serie;
+			return $serie;
+		} else {
+			// Builds idmb query url from $imbd_id and gets imdb dom from imbd_id
+			$html = file_get_html("http://www.imdb.com/title/$imdb_id", false, $this->context);
 
-		// Gets title
-		$title = trim(explode(" (TV Series ", $headTitle)[0]);
+			// Checks if not null
+			if (!$html) {
+				return false;
+			} else {
+				// Parsing <head><title> gives more consistant results for unknown reason
+				$headTitle = $html->find('head title', 0)->plaintext;
 
-		// Gets dates
-		$date = explode("–", rtrim(explode(" (TV Series ", $headTitle)[1], ") - IMDb"));
+				// Gets title
+				$title = trim(explode(" (TV Series ", $headTitle)[0]);
 
-		// Narrows down parsed dom to first <div class="title-overview">
-		$divTitleOverview = $html->find('div.title-overview', 0);
+				// Gets dates
+				$date = explode("–", rtrim(explode(" (TV Series ", $headTitle)[1], ") - IMDb"));
 
-		// Gets $posterSrc from <img>
-		$posterSrc = $divTitleOverview->find('div.poster img', 0)->src;
+				// Narrows down parsed dom to first <div class="title-overview">
+				$divTitleOverview = $html->find('div.title-overview', 0);
 
-		// Gets $poster_id from $posterSrc
-		$poster_id = explode(".", explode("/", $posterSrc)[5])[0];
+				// Checks if $divTitleOverview exists
+				if ($divTitleOverview){
+					// Gets $posterSrc from <img>
+					$posterSrc = $divTitleOverview->find('div.poster img', 0)->src;
 
-		// gets $summary from first <div class="summary_text">
-		/**
-		 * @todo See full summary
-		 */
-		$summary = $html->find('div.summary_text', 0)->plaintext;
-		$summary = trim($summary);
+					// Gets $poster_id from $posterSrc
+					$poster_id = explode(".", explode("/", $posterSrc)[5])[0];
+				}
 
-		// Narrows down parsed dom to all <div class="titleBar"><span itemprop="genre">
-		$spanGenres = $html->find('div.titleBar span[itemprop=genre]');
-		foreach ($spanGenres as $spanGenre) {
-			$genres[] = rtrim(trim($spanGenre->plaintext), " ,");
+				// gets $summary from first <div class="summary_text">
+				/**
+				 * @todo See full summary
+				 */
+				$summary = $html->find('div.summary_text', 0)->plaintext;
+				$summary = trim($summary);
+
+				// Narrows down parsed dom to all <div class="titleBar"><span itemprop="genre">
+				$spanGenres = $html->find('div.titleBar span[itemprop=genre]');
+
+				// Checks if $spanGenres exists
+				if ($spanGenres) {
+					foreach ($spanGenres as $spanGenre) {
+						$genres[] = rtrim(trim($spanGenre->plaintext), " ,");
+					}
+				}
+
+				// Narrows down parsed dom to all <div class="credit_summary_item"><span itemprop="actors">
+				$spanActors = $html->find('div.credit_summary_item span[itemprop=actors]');
+
+				// Checks if $spanActors exists
+				if ($spanActors) {
+					foreach ($spanActors as $spanActor) {
+						$actors[] = rtrim(trim($spanActor->plaintext), " ,");
+					}
+				}
+
+				// Narrows down parsed dom to target <div> (third one)
+				$divSeasons = $html->find('div.seasons-and-year-nav div', 2);
+
+				// Checks if $divSeasons exists
+				if ($divSeasons) {
+					// Finds first <a> to get season total
+					$season_count = $divSeasons->find('a', 0)->plaintext;
+				}
+
+				$this->serie = [
+					"title"      => $title,
+					"summary"    => $summary,
+					"genre"      => $genres,
+					"actors"     => $actors,
+					"imdb_id"    => $imdb_id,
+					"poster_id"  => $poster_id,
+					"start_date" => $date[0],
+					"end_date"   => $date[1],
+				];
+
+				$this->scrapeSeasons($imdb_id, $season_count);
+
+				// Return scraped data
+				return $this->serie;
+			}
 		}
-
-		// Narrows down parsed dom to all <div class="credit_summary_item"><span itemprop="actors">
-		$spanActors = $html->find('div.credit_summary_item span[itemprop=actors]');
-		foreach ($spanActors as $spanActor) {
-			$actors[] = rtrim(trim($spanActor->plaintext), " ,");
-		}
-
-		// Narrows down parsed dom to target <div> (third one)
-		$divSeasons = $html->find('div.seasons-and-year-nav div', 2);
-
-		// Finds first <a> to get season total
-		$season_count = $divSeasons->find('a', 0)->plaintext;
-
-		$this->serie = [
-			"title"      => $title,
-			"summary"    => $summary,
-			"genre"      => $genres,
-			"actors"     => $actors,
-			"imdb_id"    => $imdb_id,
-			"poster_id"  => $poster_id,
-			"start_date" => $date[0],
-			"end_date"   => $date[1],
-		];
-
-		$this->scrapeSeasons($imdb_id, $season_count);
-
-		// Return scraped data
-		return $this->serie;
 	}
 
 	/**
 	 * scrapeSeasons
-	 * 
+	 *
 	 * Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails()
-	 * 
+	 *
 	 * @version                       2.4
 	 * @param  string  $imdb_id       id from imdb
 	 * @param  integer $season_count  Season count
+	 * @uses                          scrapeEpisodeDetails
+	 * @url                           http://www.imdb.com/title/tt0460649/episodes?season=1
 	 */
 	protected function scrapeSeasons($imdb_id, $season_count) {
 		// Resets max_execution_time
@@ -212,9 +254,9 @@ Class ImdbScraper {
 
 	/**
 	 * scrapeEpisodeDetails
-	 * 
+	 *
 	 * Scrapes epidode details from imdb
-	 * 
+	 *
 	 * @version                       2.4
 	 * @param   integer     $season   Season
 	 * @param   integer     $episode  Episode
