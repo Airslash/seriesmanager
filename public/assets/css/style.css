@@ -372,7 +372,7 @@ Media query
         text-align: left;
     }
 
-    #menu-logout {
+    #menu-logout, #menu {
         padding-top: 145px;
     }
 
@@ -414,6 +414,10 @@ Media query
         width: 300px;
      }
 
+     #keyword-input {
+         width: 970px;
+     }
+
 }
 
 @media (min-width: 1300px) {
@@ -445,4 +449,8 @@ Media query
         width: 500px;
         height: 333px;
     }
+
+    #keyword-input {
+         width: 1270px;
+     }
 }
