@@ -80,7 +80,7 @@
 		    		<div id="menu-logout">
 			    		<ul class="nav-menu">
 			    		  <li><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
-			    		  <li><a data-toggle="collapse" href="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin">Login</a>
+			    		  <li><a data-toggle="collapse" href="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin" class="visible-xs">Login</a>
 			    		  <div class="collapse" id="collapseLogin">
 			    		    <div class="well">
 			    		      

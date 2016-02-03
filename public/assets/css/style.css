@@ -4,7 +4,6 @@ html, body {
     font-size: 16px;
     height: 100%;
     background-image: url(../img/cover6.jpeg);
-    text-decoration: none;
 }
 
 
@@ -96,6 +95,7 @@ header {
 /* menu */
 #menu a, #menu-logout a {
     font-size: 18px;
+    text-decoration: none;
 }
 
 #menu a:hover, #menu-logout a:hover {
@@ -378,6 +378,15 @@ Media query
 
     #menu-logout li, #menu li {
         display: inline;
+    }
+
+    #menu a, #menu-logout a {
+        padding: 10px;
+        margin: 0;
+    }
+
+    #menu a:hover, #menu-logout a:hover {
+        background-color: #F5F5F5;
     }
 
     /* bouton de recherche */
