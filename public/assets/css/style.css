@@ -302,7 +302,7 @@ Media query
 
 @media (min-width: 480px) {
     header {
-        background-color: rgb(146, 150, 151);
+        background-color: rgba(146, 150, 151, 0.7);
     }
 
     /* logo */
