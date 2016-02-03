@@ -7,26 +7,20 @@ use \W\Controller\Controller;
 /**
  * ScraperController
  *
- * Scrapes and inserts series and episodes to database
- * Tis class is not meant for front end purposes
+ * Scrapes and inserts series and episodes to database.
+ * 
+ * This class is not meant for front end purposes
  *
- * @version        1.3.3
- * @last_modified  00:04 02/02/2016
+ * @version 1.3.3
+ * @last_modified  13:38 03/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
- * @method         scrapeMostPopularSeries  Scrapes 50 most popular TV series from imdb result page
- * @method         scrapePages              Scrapes most popular TV series from imdb result pages
- * @method         scrapeSerie              Scrapes first TV serie from imdb result page, if any
- * @method         insertSerie              Main ScraperController method
  */
 class ScraperController extends Controller {
 
 	/**
-	 * scrapeMostPopularSeries
-	 *
-	 * Scrapes 50 most popular TV series from imdb result page
-	 *
-	 * @version  1.0
+	 * Scrapes 50 most popular TV series from imdb result page.
+	 * @version 1.0
 	 */
 	public function scrapeMostPopularSeries() {
 
@@ -48,11 +42,8 @@ class ScraperController extends Controller {
 	}
 
 	/**
-	 * scrapePages
-	 *
-	 * Scrapes most popular TV series from imdb result pages
-	 *
-	 * @version                1.2
+	 * Scrapes most popular TV series from imdb result pages.
+	 * @version 1.2
 	 * @param  integer  $from  Start from page
 	 * @param  integer  $to    ... To page
 	 */
@@ -80,11 +71,8 @@ class ScraperController extends Controller {
 	}
 
 	/**
-	 * scrapeSerie
-	 *
-	 * Scrapes first TV serie from imdb result page, if any
-	 *
-	 * @version          2.5.2
+	 * Scrapes first TV serie from imdb result page, if any.
+	 * @version 2.5.2
 	 * @param   string   $title User query as serie title
 	 * @return  string   Contains imdb_id
 	 * @return  boolean  False when query returned no results
@@ -114,11 +102,8 @@ class ScraperController extends Controller {
 	}
 
 	/**
-	 * insertSerie
-	 *
-	 * Scrapes TV serie from imdb and inserts serie details into database
-	 *
-	 * @version                  2.5.2
+	 * Scrapes TV serie from imdb and inserts serie details into database.
+	 * @version 2.5.2
 	 * @param  string  $imdb_id  imdb reference id
 	 */
 	public function insertSerie($imdb_id) {

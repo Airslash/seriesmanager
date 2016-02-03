@@ -119,7 +119,6 @@
 				<li><a href="<?php echo $this->url('legal') ?>"><p>Terms & Conditions</p></a><span> | </span></li>	
 				<li><a href="<?php echo $this->url('about') ?>"><p>About Us</p></a></li>	
 			</ul>
-
 			<p><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> SeriesManager</p>
 			<p>Made by CAMS Squad</p>
 		</footer>

@@ -177,7 +177,7 @@ class UserController extends Controller
 				// 0 = off (for production use)
 				// 1 = client messages
 				// 2 = client and server messages
-				$mail->SMTPDebug  = 2;
+				$mail->SMTPDebug  = 0;
 				//Ask for HTML-friendly debug output
 				$mail->Debugoutput = 'html';
 				//Set the hostname of the mail server
@@ -213,26 +213,26 @@ class UserController extends Controller
 					'id' => $user['id']
 					], true);
 				$mail->MsgHTML("message" . "<a href='$url'>" . $url . "</a>");
-								 
+
 				//envoie le message et vérifie s'il y a une erreur
 				if(!$mail->Send()) {
-				  echo 'Mailer Error: ' . $mail->ErrorInfo;
+					echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} else {
-				  echo 'Message sent!';
+					
 				}
 			}
 
 		}
 
 		else {
-			$error = "Le formulaire n'a pas été correctement validé.";
+			$error = "Please put a email.";
 		}
 
 		$this->show("user/password", [
 			"error"=> $error,
 			"email" => $email
 		]);
-		$this->show("user/password", ["error"=>$error]);
+		
 	}
 
 
@@ -282,7 +282,7 @@ class UserController extends Controller
 
 		} 
 		else {
-			echo "Piratage";
+			
 		}
 
 		$this->show("user/new_password", ["error"=>$error]);

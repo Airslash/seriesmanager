@@ -3,49 +3,36 @@
 namespace Scraper;
 
 /**
- * ImdbScraper
- *
- * Scrapes user query from imdb and returns all scraped data
+ * Scrapes user query from imdb and returns all scraped data.
+ * 
  * Seasons and episodes arrays are indexed starting from 1
- *
- * @version        2.6.1
- * @last_modified  23:59 02/02/2016
+ * @version 2.6.2
+ * @last_modified  13:45 03/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
- * @method         __construct           Initializes $context propery
- * @method         scrapeSeriesId        Builds $imdb_id list from imdb result page url (50 elements each)
- * @method         scrapeSerieById       Builds imdb url from user query and scrapes imdb serie details
- * @method         scrapeSeasons         Builds imdb season url from $imdb_id, $season_count and sends each found episode to scrapeEpisodeDetails()
- * @method         scrapeEpisodeDetails  Scrapes epidode details from imdb
  */
 Class ImdbScraper {
 	/**
-	 * Property
 	 * Contains TV serie details
 	 * @var array
 	 */
 	protected $serie;
 
 	/**
-	 * Property
 	 * Contains TV series $imdb_id
 	 * @var array
 	 */
 	protected $seriesId;
 
 	/**
-	 * Property
 	 * Contains stream_context_create object
 	 * @var object
 	 */
 	protected $context;
 
 	/**
-	 * Constructor
-	 *
 	 * Initializes context property
-	 *
-	 * @version  2.5
+	 * @version 2.5.1
 	 */
 	public function __construct() {
 		// Sets context property options
@@ -58,11 +45,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * scrapeSeriesId
-	 *
 	 * Builds $imdb_id list from imdb result page url (50 elements each)
-	 *
-	 * @version              2.5
+	 * @version 2.5.1
 	 * @param   string $url  Imdb result page url to be parsed
 	 * @return  array        Contains imdb reference ids
 	 * @url                  http://www.imdb.com/search/title?start=1&title_type=tv_series
@@ -110,11 +94,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * scrapeSerieById
-	 *
 	 * Builds imdb url from user query and scrapes imdb serie details
-	 *
-	 * @version          2.6
+	 * @version          2.6.1
 	 * @param   string   $imdb_id  imdb reference id
 	 * @return  array    Contains  serie infos : title, summary, genre, actors, imdb_id, poster_id, start_date, end_date
 	 * @return  boolean  True when success, false when query returned no results
@@ -164,9 +145,6 @@ Class ImdbScraper {
 				}
 
 				// gets $summary from first <div class="summary_text">
-				/**
-				 * @todo See full summary
-				 */
 				$summary = $html->find('div.summary_text', 0)->plaintext;
 				$summary = trim($summary);
 
@@ -219,11 +197,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * scrapeSeasons
-	 *
 	 * Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails()
-	 *
-	 * @version                       2.4
+	 * @version 2.4.1
 	 * @param  string  $imdb_id       id from imdb
 	 * @param  integer $season_count  Season count
 	 * @uses                          scrapeEpisodeDetails
@@ -253,14 +228,11 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * scrapeEpisodeDetails
-	 *
 	 * Scrapes epidode details from imdb
-	 *
-	 * @version                       2.4
+	 * @version 2.4.1
 	 * @param   integer     $season   Season
 	 * @param   integer     $episode  Episode
-	 * @param   dom object  $div      div containing episode details to parse
+	 * @param   object      $div      div containing episode details to parse
 	 * @return  array                 Contains episode details : poster_id, title, imdb_id, summary, air_date
 	 */
 	protected function scrapeEpisodeDetails($season, $episode, $div) {

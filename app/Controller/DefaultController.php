@@ -33,10 +33,7 @@ class DefaultController extends Controller {
 	}
 
 	/**
-	 * showPrint_r
-	 * 
 	 * Displays raw array data
-	 *
 	 * @version       1.0
 	 * @deprecated    1.0
 	 * @param  array  $array  array data

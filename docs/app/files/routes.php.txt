@@ -117,6 +117,13 @@
 		 */
 		['GET|POST', '/detail/[:id]/', 'Serie#detail', 'detail'],
 
+		//Permet d'ajouter une série dans la collection
+		['GET|POST', '/addToCollection/[:id]/', 'Serie#addToCollection', 'addToCollection'],
+
+		//Permet de retirer une série dans la collection
+		['GET|POST', '/removeFromCollection/[:id]/', 'Serie#removeFromCollection', 'removeFromCollection'],
+
+
 		/**
 		 * search
 		 * Page de recherche en autocomplétion

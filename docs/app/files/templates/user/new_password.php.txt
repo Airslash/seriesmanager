@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<form method="POST">
+<form method="POST" class="background">
 	<input type="password" name="password" placeholder="New password"><br />
 	<input type="password" name="password_bis" placeholder="Confirm password"><br />
 	<input type="submit" value="Change it" />
