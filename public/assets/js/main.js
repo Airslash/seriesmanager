@@ -453,5 +453,7 @@ function fnAppendSerieImage(intSerieId, strSerieImageSrc, $Target){
 		var $Card = $(this).parent().parent();
 		fnGetSerie(intSerieId, $Grid);
 	});
-
+	// Appends SerieImage to DOM
+	$Target.append($SerieImage);
 }
+
