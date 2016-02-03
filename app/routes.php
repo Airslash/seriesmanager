@@ -50,6 +50,9 @@
 		// Page de profil (avec liste des séries)
 		['GET', '/profile/', 'Profile#profile', 'profile'],
 
+		// Page changement de username
+		['GET', '/username/', 'Profile#username', 'username'],
+
 		// Affichage d'une serie
 		['GET|POST', '/findserie/[i:id]/', 'Serie#findSerie', 'find_serie'],
 

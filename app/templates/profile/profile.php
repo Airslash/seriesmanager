@@ -2,8 +2,15 @@
 
 <?php $this->start('main_content') ?>
 	
-	<div class="background">
-		<h2>My collection</h2>
+	<div id="profile-list" class="background">
+		<h2>My profile</h2>
+		<ul>
+			<li><i class="fa fa-user"></i><a href="<?php echo $this->url('username') ?>"> Change username</a></li>
+			<li><i class="fa fa-key"></i>
+			<a href="<?php echo $this->url('password') ?>">Change password</a></li>
+		</ul>
+
+
 
 	</div>
 

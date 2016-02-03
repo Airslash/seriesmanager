@@ -240,6 +240,21 @@ Page détail épisode
     padding-bottom: 20px;
 }
 
+/*********************************
+Page profil
+*********************************/
+#profile-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#profile-list li a {
+    text-decoration: none;
+}
+
+
+
+
 
 /*********************************
 Footer

@@ -19,4 +19,42 @@ class ProfileController extends Controller
 
 
 	}
+
+	/**
+	 * Page pour changer de username
+	 */
+	public function username()
+	{	
+		$error = "";
+		$username = "";
+
+		if($username){
+			$username = $_POST['username'];
+
+			$user = $userManager->getUserByUsernameOrEmail($email);
+
+			$isValid = true;
+
+			if (empty($username)){
+				$isValid = false;
+				$error = "Please put a username";
+			} elseif ($userManager->getUserByUsernameOrEmail($username)){
+				$isValid = false;
+				$error = "Username already use";
+			} elseif (strlen($username) < 2) {
+				$isValid = false;
+				$error = "Username too short !";
+			}
+		}
+		$userManager = new \Manager\UserManager();
+		
+		$userManager->update([
+			'username' => $username
+		], $user['id']);
+
+		$this->show('profile/username', [
+			"error" => $error,
+			"username" => $username
+		]);
+	}
 }

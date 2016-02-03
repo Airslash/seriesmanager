@@ -35,7 +35,7 @@ class UserController extends Controller
 			// validation des données
 			$isValid = true;
 
-			$userManager = new \Manager\UserManager();
+				
 
 			// username 
 			if (empty($username)){
@@ -108,7 +108,6 @@ class UserController extends Controller
 
 	public function login()
 	{
-
 		if (!empty($_POST)){
 			$username = $_POST['username'];
 			$password = $_POST['password'];
@@ -122,7 +121,8 @@ class UserController extends Controller
 				$user = $userManager->find($result);
 
 			// on le connecte
-				$authentificationManager->logUserIn($user);		
+				$authentificationManager->logUserIn($user);
+				$this->redirect($_SERVER['HTTP_REFERER']);		
 			} 
 
 			else {
@@ -145,7 +145,7 @@ class UserController extends Controller
 
 		$authentificationManager->logUserOut();
 
-		$this->show("default/home");
+		$this->redirectToRoute("home");
 	}
 
 	/**
