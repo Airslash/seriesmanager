@@ -339,3 +339,9 @@ function init() {
 		}
 	});
 }
+
+
+/*Fonction burger menu*/
+$("#burger-icon").on("click", function(){
+	$("#burger").toggleClass("opened");
+});

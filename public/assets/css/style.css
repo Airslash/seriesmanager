@@ -1,9 +1,10 @@
 html, body {
-    color: rgb(0, 0, 0);
+    color: black;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     height: 100%;
     background-image: url(../img/cover6.jpeg);
+    text-decoration: none;
 }
 
 .background {
@@ -36,10 +37,11 @@ html, body {
 Header
 *********************************/
 header {
-    height: 205px;
+    height: auto;
     margin-bottom: 20px; 
     border-bottom-left-radius: 10px; 
     border-bottom-right-radius: 10px;
+    background-color: rgb(146, 150, 151);
 }
 
 #site-logo img {
@@ -101,8 +103,26 @@ header {
 }
 
 #menu-logout a{
-    color: rgb(255, 255, 255);
+    color: black;
 }
+
+#menu ul, #menu-logout ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#menu-logout, #menu {
+    text-align: center;
+}
+
+#menu li, #menu-logout li {
+    padding: 4px;
+}
+
+#login-name {
+    text-align: center;
+}
+
 
 /*********************************
 Barre de recherche
@@ -141,11 +161,12 @@ Vignette Masonry
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 10px;
 }
 
 #grid p {
     text-align: justify;
-    padding: 20px;
+    padding: 10px;
     width: 260px;
     margin: auto;
 }
@@ -154,10 +175,14 @@ Vignette Masonry
     width: 290px;
 }
 
-/* section vignette */
-#section {
-    padding-top: 170px;
+#grid {
+    margin: auto;
 }
+
+/* section vignette */
+/* #section {
+    padding-top: 170px;
+} */
 /*********************************
 Page série détail
 *********************************/
@@ -267,10 +292,14 @@ Media query
 
     /* logo */
     #site-logo img {
-        width: 0px;
-        margin: 0px;
-        display: inline;
+        width: 75px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto
     }
+
+    /*menu*/
+
 
     /* menu navigation */
     #log-nav {
@@ -307,16 +336,33 @@ Media query
 
 }
 
-@media (min-width: 700px) {
+@media (min-width: 770px) {
 
     /* barre de recherche */
     #keyword-input {
-        width: 560px;
+        width: 670px;
     }
 
     #main-content {
         width: 700px;
         height: 100%;
+    }
+
+    #site-logo img {
+        width: 203px;
+        float: left;
+    }
+
+    #menu-logout, #menu {
+        text-align: left;
+    }
+
+    #menu-logout {
+        padding-top: 145px;
+    }
+
+    #menu-logout li, #menu li {
+        display: inline;
     }
 
     /* bouton de recherche */
