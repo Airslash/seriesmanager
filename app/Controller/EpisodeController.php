@@ -12,6 +12,9 @@ class EpisodeController extends Controller
 	 */
 	public function episode_detail($id)
 	{
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
 		$episodeManager = new \Manager\EpisodeManager();
 
 		$episode = $episodeManager->find($id);

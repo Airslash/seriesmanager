@@ -12,8 +12,11 @@ class ProfileController extends Controller
 	 */
 	public function profile()
 	{
-
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
 		$this->show('profile/profile');
+
 
 	}
 }

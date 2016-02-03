@@ -24,7 +24,7 @@ class SerieController extends Controller {
 	 */
 	public function detail($id)	{
 		if (!$this->getUser()){
-			$this->redirectToRoute("login");
+			$this->redirectToRoute("register");
 		}
 		$serieManager = new \Manager\SerieManager();
 		$serie = $serieManager->find($id);
@@ -38,7 +38,7 @@ class SerieController extends Controller {
 
 	public function addToCollection($id) {
 		if (!$this->getUser()){
-			$this->redirectToRoute("login");
+			$this->redirectToRoute("register");
 		}
 		$user=$this->getUser();
 		$bookmarkManager = new \Manager\BookmarkManager();
@@ -51,7 +51,7 @@ class SerieController extends Controller {
 
 	public function removeFromCollection($id) {
 		if (!$this->getUser()){
-			$this->redirectToRoute("login");
+			$this->redirectToRoute("register");
 		}
 		$user=$this->getUser();
 		$bookmarkManager = new \Manager\BookmarkManager();
