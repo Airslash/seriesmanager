@@ -22,7 +22,7 @@
 				} 
 				else {
 					?>
-					<a href="<?= $this->assetUrl('Manager/BookmarkManager') ?>" id="add-collection"><i class="fa fa-heart"></i> Add to my collection</a>
+					<a href="" id="add-collection"><i class="fa fa-heart"></i> Add to my collection</a>
 				<?php
 				}
 			} else {
