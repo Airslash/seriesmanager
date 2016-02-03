@@ -28,11 +28,33 @@ class SerieController extends Controller {
 		$serie = $serieManager->find($id);
 		$userManager = new \Manager\UserManager();
 		$foundBookmark = $userManager->isInCollection($id);
+				debug($foundBookmark);
 		$this->show('serie/detail', [
 			"serie" => $serie,
 			"foundCollection" => $foundBookmark
 		]);
 	}
+
+	public function addToCollection($id) {
+		$user=$this->getUser();
+		$bookmarkManager = new \Manager\BookmarkManager();
+		$bookmarkManager->insert([
+			"user_id" => $user["id"],
+			"serie_id" => $id,
+		]);
+		$this->redirectToRoute("detail", ["id"=>$id]);
+	}
+
+	public function removeFromCollection($id) {
+		$user=$this->getUser();
+		$bookmarkManager = new \Manager\BookmarkManager();
+		$bookmarkManager->delete([
+			"user_id" => $user["id"],
+			"serie_id" => $id,
+		]);
+		$this->redirectToRoute("detail", ["id"=>$id]);
+	}
+
 
 	/**
 	 * search method

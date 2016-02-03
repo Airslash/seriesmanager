@@ -216,14 +216,16 @@ footer {
     background-color: #9098B2;
     position: fixed;
     bottom: 0;
+    font-size: 13px;
 }
 
 footer p {
     text-align: center;
+    margin-bottom: 5px;
 }
 
 footer, .push {
-    height: 100px;
+    height: 80px;
 }
 
 footer a {
@@ -236,6 +238,7 @@ footer ul {
     list-style: none;
     text-align: center;
     margin-bottom: 0;
+    height: 23px;
 }
 
 footer li {

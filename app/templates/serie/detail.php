@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-	<div id="serie-info" class="background">>
+	<div id="serie-info" class="background">
 		<h2><?= $serie["title"] ?></h2>
 		<img src="http://ia.media-imdb.com/images/M/<?= $serie["poster_id"] ?>._V1_SX640_SY720_.jpg" />
 		<div class="detail-serie">
@@ -17,12 +17,12 @@
 				if ($foundCollection){
 					?>
 					<p>This show is in your collection</p>
-					<a href="" id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</a>
+					<a href="<?= $this->url('removeFromCollection', ["id"=>$serie["id"]]) ?>" id="remove-collection"><i class="fa fa-times"></i> Remove from my collection</a>
 					<?php
 				} 
 				else {
 					?>
-					<a href="" id="add-collection"><i class="fa fa-heart"></i> Add to my collection</a>
+					<a href="<?= $this->url('addToCollection', ["id"=>$serie["id"]]) ?>" id="add-collection"><i class="fa fa-heart"></i> Add to my collection</a>
 				<?php
 				}
 			} else {
