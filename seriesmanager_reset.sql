@@ -30,8 +30,10 @@ USE `seriesmanager`;
 
 DROP TABLE IF EXISTS `bookmarks`;
 CREATE TABLE `bookmarks` (
+  `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `element_id` int(10) UNSIGNED NOT NULL,
+  `serie_id` int(10) UNSIGNED DEFAULT NULL,
+  `episode_id` int(10) UNSIGNED DEFAULT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -97,7 +99,10 @@ CREATE TABLE `users` (
 -- Index pour la table `bookmarks`
 --
 ALTER TABLE `bookmarks`
-  ADD KEY `user_id` (`user_id`,`element_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `serie_id` (`serie_id`),
+  ADD KEY `episode_id` (`episode_id`);
 
 --
 -- Index pour la table `episodes`
@@ -132,6 +137,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+--
 -- AUTO_INCREMENT pour la table `episodes`
 --
 ALTER TABLE `episodes`
@@ -146,6 +156,9 @@ ALTER TABLE `series`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+ALTER TABLE `bookmarks`
+  ADD CONSTRAINT `bookmarks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `bookmarks_ibfk_2` FOREIGN KEY (`serie_id`) REFERENCES `series` (`id`),
+  ADD CONSTRAINT `bookmarks_ibfk_3` FOREIGN KEY (`episode_id`) REFERENCES `episodes` (`id`);

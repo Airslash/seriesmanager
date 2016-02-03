@@ -61,19 +61,17 @@ class ApiController extends Controller {
 	 * Scrapes TV serie details from imdb when not present into database
 	 * Returns TV serie details in json format
 	 *
-	 * @version  1.1.3
+	 * @version  1.1.4
 	 * @api
-	 * @assumes  string   $_GET['api_key']          API key (fake)
-	 * @assumes  string   $_GET['method']           One of five methods availlable
-	 * @assumes  string   $_GET['getserie']         Returns TV serie details in json format
-	 * @assumes  integer  $_GET['id']               TV serie primary key
-	 * @assumes  string   $_GET['searchserie']      Searches for TV serie into database by title
-	 * @assumes  string   $_GET['scrapeserie']      Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
-	 * @assumes  string   $_GET['getrandomseries']  Sends random series from database in json format
-	 * @assumes  integer  $_GET['limit']            TV serie count to send to client
-	 * @return   object                             TV serie details
-	 * @todo                                        Demander à Guillaume pour retour d'erreurs
-	 * @todo                                        Demander à Guillaume pour PHPDocumentor
+	 * @param   string   $_GET['api_key']          API key (fake)
+	 * @param   string   $_GET['method']           One of five methods availlable
+	 * @param   string   $_GET['getserie']         Returns TV serie details in json format
+	 * @param   integer  $_GET['id']               TV serie primary key
+	 * @param   string   $_GET['searchserie']      Searches for TV serie into database by title
+	 * @param   string   $_GET['scrapeserie']      Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+	 * @param   string   $_GET['getrandomseries']  Sends random series from database in json format
+	 * @param   integer  $_GET['limit']            TV serie count to send to client
+	 * @return  object                             TV serie details
 	 */
 	public function seriesManager() {
 		$defaultController = new \Controller\DefaultController();

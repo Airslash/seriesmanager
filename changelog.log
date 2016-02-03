@@ -1,4 +1,4 @@
-Changelog v1.4
+﻿Changelog v1.4
 
 17:01 01/02/2016
 
@@ -6,6 +6,13 @@ Changelog v1.4
  * @author         Axel Merlin <merlin.axel@gmail.com>
  * @author         Christian Marcucci <christian.marcucci13@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
+
+--------------------------------------------------
+Documentation : 
+--------------------------------------------------
+
+php .\phpDocumentor.phar -d ./app -t ./docs/app
+
 
 
 --------------------------------------------------
