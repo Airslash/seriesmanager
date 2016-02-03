@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="API Documentation" version="v2.8.5">
   <partials/>
-  <file path="routes.php" generated-path="routes.html" hash="ba3f7f67f6e61040b7de7efa6d3df071" package="Default">
+  <file path="routes.php" generated-path="routes.html" hash="32345277870fe3f19e533016952f1b25" package="Default">
     <docblock line="0">
       <description>Routes
 http://localhost/W/docs/tuto/?p=routes</description>
@@ -11,9 +11,9 @@ http://localhost/W/docs/tuto/?p=routes</description>
 "default_services"  Route name (must be unique)</long-description>
       <tag name="package" line="0" description="Default"/>
     </docblock>
-    <source>eJylVttu4zYQfc4C+w9EXNSJsa22D31Ju9i6qdM1mjSCL+hDYBiMNLbYUKSWpDZN0R/Kd+THOrzoajvbbIVEHh3OjM5cONSP74useP3q9aujaDTCOxmRmSwNaC9nxhRnUcRlQnkmtYn+iFKZ6MiURkbvi3eqpevvx79OFv/E1/PFMamvD4tFTBTojyVoQ3IwmUyDdqRBfWIJ6KjWX84uSU71XdD4BTa05GZQKaLeuRRGSc5BEUFzIFSkwSsxkiBVHmxTb7tu2brovNlJXiKdWyClYEjt1BlFLhlf3a99aOQdoUrRhxMHH0URGY1coqz44fpq0kPt/80QczB8Q4aRvVX8M5mDfXa/qzfeX6O6AJXrrzGylBkmhe7YcthSbgEv7FqPb5HtsmtELWYBL3ijFt1wBeTiena1vBxPZ5P5Pp2AxXQLJB0yoRPFCku05uGK7sgo2DJtQDk2S8z9oEIsUMtVFJXbgmp9L1W6x2O11HisEAvUct+jgPvnvOLyuvZ8c2bkHYgVCixdNS9Cpbj1rrbNzvsSKQT8tT8pXG6ZaNy6R1dRJ/Q9pfj39PgZf1jVjsNQ7iAdqvehK2iONxuWZL4einAguTRQKsvIQF5wauAlPntBFUpuGCcn9BMkhNs+QFQT/fSoGOjTblN7ZXAxxl4eBMyVPYit3DXk02EpgGBiGOxJ3oaJ1K1FN6wu99wCA7vkJAvZh7VTPFAhQzEa+y7y9FgwLVPohgAeXKdgNVu9NfELg66CXekh/TJWkcbTNhZkP9yQGh+iAmabiYQVlO/LgQtL51RgNIoWzILjgg08fuVxNz5w7TPD4+fx+W/k+uJiej45ODy8Mk5lHB20ABWeqmQ6lIktKSR223H2kCpsNXVMOCW3VOOQdy2DzfL9W19X7Z4KXuJNFiWnTLmjyHq9kAqtkrtvpO0IIFLwB78UdQsUyPgG8PLAY1d43MXOr3L9oK1KUG+64f9GBcKedRq+jHeBr9HYVRsl85UbYavdQCyXFnlnczCAescgMv4T26m9k0hKha6ofxnjsOvODDMcVnvSXu+9lv7zsyzAv09IfLmck+ViejmdT2YHtXthA1VJ1gm7GSJQdRotSUb/pv4YQZ2fUigUJFjLlHz37dt+wK2zEL9NZO692GEjyvwWVHvgbMHMnFLTZd5ovRP7M6RnkGSA2M7kewnZltteiRxTv9wUyD32x2PN0c+v3n5oj0wIY/+lLHdmqWfXTNDO5NxNW4+SqjOHe5Hid20i8ZhDnuHcfXkC69z1U9dkbQ85/Ng0ux1oj5bWyn9mYm3aH4M6k/cxHgdm7Wa6W7Ycjk5/+BdjwEaj</source>
+    <source>eJylV9tu4zYQfc4C+w9EXNSJsa22D31Ju9i6qdM1mjSCL+hDYBiMNLbYUKSWpJJmsT+U78iPdXjRxbKdrbdCoowOZ4ZnOMMh8/P7Iitev3r96igaDPBNBmQiSwPay5kxxVkUcZlQnkltor+iVCY6MqWR0fvinWrp+vfx76PZ5/h6Ojsm9fNhNouJAv2xBG1IDiaTadCONKh7loCOav355JLkVN8Fjd9gRUtuepUi6p1LYZTkHBQRNAdCRRq8EiMJUuXBNvW2y5ati86bneQl0rkFUgqG1E6dUeQW45uHpQ+NvCNUKfp44uCjKCKDgVsoK364vhp1UPt708c16L8h/ci+Kv6ZzMF+u7+LN95fozoDletvMbKUGSaF3rDlsKbcAl7Yth7eItv5phG1mAW84I1adMMTkIvrydX8cjiejKa7dAIW0zWQtM+EThQrLNGah0u6I6NgzbQB5djMce17FWKBWq6iqNwWVOsHqdIdHquhxmOFWKCWux4FPLzkFYeXteebMyPvQCxQYOmimQiV4tZcbZut+RIpBPyze1G4XDPRuHWfLqNO6HpK8ef56Qv+MKsbDkO6g7Qv3/ueoDlcrViS+XwowoHk0kCpLCMDecGpgUN8doIqlFwxTk7oPSSE2zpAVBP9/KQY6NPNovbK4GKMvdwLmEt7EFtr15BP+6UAggvDYMfirZhI3Vh0w+p0Ty3Qs0NOspD9WDrFPRkyFKOxc5Hnp4JpmcJmCODBZQpWs1VbIz/Q21SwIx2km8Yq0njcxoLsmxtS431UwNVmImEF5bvWwIWlcyowGkULZsFhwXoev/K4ax849oXm8evw/A9yfXExPh/tbR5eGbsytg5agApf1WI6lIk1KSRW23H2mCosNXVMOCW3VGOTdyWDxfLjW59X7b4KXuJLFiWnTLmjyHq9kAqtkrvvpK0IIFLwRz8UbSYokPEF4OWex67wuIudX+XqQVuVoN5Uw/+NCoQ96zR8He8Cp9FYVSsl84VrYYvtQCyXFnlnszeAescgMvwby6m9k0hKha6ofx3jsOvODDMcFjuWvd57Lf2Xe1mA/xyR+HI+JfPZ+HI8HU32anfCBqqSbCPspolAVWm0JBn9RP0xgjq/pFAoSDCXKfnh+7fdgFtnId5NZO692GYjyvwWVLvhrMFMnFJTZd5ouRX7C6QnkGSA2FbnO4Rsy20nRY6pH24S5D677bHm6PtXZz+0WyaEtn8oy61e6tk1HXSjc9oiiPFuBbaSqa1ovDU2k9clndj7ZLLnRkPTdCbPa42tuTvjrmt2oG02gFdigz3rcDoKcnkPF7jpX+C0S8nfv3bg+4usk0BV1xl2Lor/BSQSLwWY1cD08HKrK61baE2N7aguvJqb7f1qD+LWyH9mYm3aV2edyYcYD0+zdCegG7Ycjk5/+hfFHaqd</source>
   </file>
-  <file path="templates\serie\detail.php" generated-path="templates.serie.detail.html" hash="038851fed4e368981f9657cc3e8170f7" package="Default">
+  <file path="templates\serie\detail.php" generated-path="templates.serie.detail.html" hash="a4cbf716fff8b850b0ef3d36db14b615" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -22,9 +22,9 @@ http://localhost/W/docs/tuto/?p=routes</description>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
     </parse_markers>
-    <source>eJyFVdtumzAYvqZS3+EfakoiLaGHdYcKiHrQejHlpummVVWFHDDgATaynUbZ1Afac+zFZmxISJtsEvIBf/78/Qf/9sZVVsGBzIgYBgVasrnsO6Z33sKDI4kssAN+AM70z29OsPM4gHGwv7e/53W3Com42lkiQsOIUYmpdFqg5cXkCUjs2wIrhiGhCbMhKpAQvj1DUZ5yNqexHSi0ZXnZSeCNfTjQ4AdbK7AfFZfnqiUNIWUKgke+nUlZnbsuQaMSxwQNSRnPRhErXVKiFAt34napKiYk5iGJNd0o/HYcTr+/f3cUTu8/nByFox9VaoNrjqglNxJjLBEphprE1quWV3Xs0bbbgSckZzQNpvX0HDy3mXcVaGgYI9laVG3hSzHleM13U0938BnobioUScbFmmui4gMX+ucOxmbHbkoxL0vElx17l5RVguwibPGbjJsZEbGiwJEkjLb+rXNLj0gC/Te4rOSyf7AI5wo/GMAvvWSZtkYcJHUGXa1oBg3CGgfNwKuCO5WpIDK2ANUrP6gk57A+eiVOgRFkHCe+bWuRHJfsaVOlR9rsSBAkaChJiWs/uySAWw2HhLMSyuXGCWh1wspA6xlMjwuB4bXuVor2qbls6lwsv/Ki70wQVXnO3UvGcuXlvJnrq2e0ozj+p/AMm+SthV/EMUi2S3NXsu6eoSu5Vawcfc/mECEKqOZbOV0xv/A4qNCpX9CxsS4pOMpYa+q8tpLjlNQ315gVQDuvtY3WOaU3G2W6bRR5rkq2oEkXM1EjXZjMt0rGgtBc2KZmrR3f1JjFYjFCJfrJ6CjhrnDrNToLxSykTIjwZByGZR4mPPx86/euTnsfzyam612d9S6v6/GnM90eHyqrfKEcH2VDVBAkeqfXqBKHCcFFPMzxcsF4LPztVdAGVUNSLH07nBWI5q9DalQqP13oQR1aE0Vt1ozrEvfKRKFszJEcRdydG23udgHu/xXEbEELhlRJhxssVeQ5Vw+CMFfiC4lyhb1rflprfevodML04plh1ZZX5i/kEgI3</source>
+    <source>eJyVVe1umzAU/U2lvsMdSkoiLaEf6z4qIOpatT+m/mmqaVVVIQcMeAGMbKdRNvWB9hx7sfkDAmmTTZMQtuH6+Bzf42tvUmUV9ERG+CjI0YouxMAxrfMWHhxBRI4d8ANwpr9/MYKdxyFMgv29/T2vO5ULxOTMApEyjGgpcCmcJtDyYvIEJPZtjiXCiJQJtSHKEee+PUPRPGV0Uca2DLYsLzsOvIkPPR37YGsC9qOE8lz5S4eQIgXOIt/OhKjOXJegcYFjgkakiGfjiBYuKVCKuXvjdqEqygVmIYk13Dj8ehROv71/dxhO7z8cH4bj71Vqg2uWUIxrhjEWiOQjDWI4Wl7VkaOl24HHBaNlGkzV8Aw8tx53GejQMEaiUVRtwUtxyXCLd62GO/BM6G4oFAnKeIt1I9MD5/rjDsR6xm5IvigKxFYdvauSVpzsAmziNxE3DRHRPMeRILRs9ldZS/dIAoM3uKjEatBbhgsZPxzCT/3LMm8V0UuUgS7WMMM6wpoEdcergjtpVOAZXYJs5T5IjzNol16Tk8EIMoYT39ZCjMEXLB84DBf0CV8xWrRrqWNiS0/5QSNZGUyfEltrNJM2RHqkMVeCIEEjQQqs0uSSAG51OCRyEShWGwTRmuB6f6xnMC3OOYbXsncpQXF8R/9DhIz/q4IMm0OgFJzHMQi6i3yXu26eocu9oS4Tdk8XEKESkMJbJ08iv8gcSAvIT9ARqyoTjjL6InspURVAFyY7gGasuI1bb+rJhpl+14w8V5o2qG1nBrKn65t51qbOSTnntil9bQbqWrVcLseoQD9oOU6Yy131r5yFfBaWlPPweBKGxTxMWHh16/cvTvofT29M07847X++VP1Pp/p9dCBV+VxufJSNUE4Q759cooofJATn8WiOV0vKYu5vr6Y2yFqUYuHb4SxH5fx1Sg1LuU/nuqNSa7KoZc2YLpWvJHKpcY7EOGLuwnBztxNw/80gpssyp0jeDHCNhcw8Y/Je4eZsfCHRXMbe1R+tll+bnU6aXtxWtNpyWf0BFPMYHA==</source>
   </file>
-  <file path="Controller\SerieController.php" generated-path="Controller.SerieController.html" hash="85bae8a23ce9316506772c9e4146c99d" package="Default">
+  <file path="Controller\SerieController.php" generated-path="Controller.SerieController.html" hash="86421c3510bccce117cf3fc0a0d54840" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -67,18 +67,44 @@ http://localhost/W/docs/tuto/?p=routes</description>
           <type>string</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="46" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="38" package="Default">
+        <name>addToCollection</name>
+        <full_name>\Controller\SerieController::addToCollection()</full_name>
+        <docblock line="38">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="48" package="Default">
+        <name>removeFromCollection</name>
+        <full_name>\Controller\SerieController::removeFromCollection()</full_name>
+        <docblock line="48">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="68" package="Default">
         <name>search</name>
         <full_name>\Controller\SerieController::search()</full_name>
-        <docblock line="46">
+        <docblock line="68">
           <description>search method</description>
           <long-description></long-description>
-          <tag name="version" line="46" description="1.0 beta"/>
-          <tag name="deprecated" line="46" description="1.0 beta"/>
-          <tag name="last_modified" line="46" description="21:09 31/01/2016"/>
-          <tag name="author" line="46" description="Axel Merlin" link="mailto:merlin.axel@gmail.com"/>
-          <tag name="author" line="46" description="Matthias Morin" link="mailto:matthias.morin@gmail.com"/>
-          <tag name="return" line="46" description="Series from db" type="object">
+          <tag name="version" line="68" description="1.0 beta"/>
+          <tag name="deprecated" line="68" description="1.0 beta"/>
+          <tag name="last_modified" line="68" description="21:09 31/01/2016"/>
+          <tag name="author" line="68" description="Axel Merlin" link="mailto:merlin.axel@gmail.com"/>
+          <tag name="author" line="68" description="Matthias Morin" link="mailto:matthias.morin@gmail.com"/>
+          <tag name="return" line="68" description="Series from db" type="object">
             <type>object</type>
           </tag>
         </docblock>
@@ -91,11 +117,15 @@ http://localhost/W/docs/tuto/?p=routes</description>
     </class>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
-      <error line="46" code="PPC:ERR-50015">Argument $title is missing from the Docblock of search</error>
+      <error line="38" code="PPC:ERR-50015">Argument $id is missing from the Docblock of addToCollection</error>
+      <error line="38" code="PPC:ERR-50008">No summary for method addToCollection()</error>
+      <error line="48" code="PPC:ERR-50015">Argument $id is missing from the Docblock of removeFromCollection</error>
+      <error line="48" code="PPC:ERR-50008">No summary for method removeFromCollection()</error>
+      <error line="68" code="PPC:ERR-50015">Argument $title is missing from the Docblock of search</error>
     </parse_markers>
-    <source>eJydU11v2jAUfQ4S/+GqQuJDQAholdYW1o5u1R54gq0PpapMcgEPJ85sp7Sa+t9nOwmEr6lbhIRyzznX954cX32Kl3G5VC5FJEQZEx9hyCMlOGMoLg2QSITp/XRbne4R3EajXIIGjFFQ3GIAeScJhDGQBgaBjCgMICCKWNX1MwpJeQSbp9fuwAxzmBGpnkIe0DnVMv143YveOXS6rv51O955SiOJWnKxbQI3L8hghILRCK5C+98muna9CAllbZ+HgxPKEVFqSYmEERdWnL23Q/N+oPd5/CroYqlyvR7qQ8tMBi0Y3ozGMP6VkKAJXxPtwlgRfwX3OINbfEbG41ivDxMkoenmlku+XlgeeIkvCqNAFr4N/DbeO9Z8R88RaMcogxD1NkFaOrTWPl67k+EBxgJ9+z2O4gfWvN9Zq4+JIKGRSKWdWwBUqD5p8iPLgqKKYUYVqBJhJuWzn+jnXm6o6XbSkrVJTpzMGPVhnkS+MhumeE33rzvaGMepWN2IRGShvepDhGuYZq/TcQGr1W2Ic4Wm7khbgzmNAtv40rL0dRAn2n7fQrWMPedJFHzmfBUSsTK9C/LWgMpv0dB8TbtE4RCdN9kayCVf16p2GjddsNqEB0Nwzmz1DPqDbNxmWrbnbVumhJ0hDO/RHvO2GyCJRPjLvwbI29zMY/HZQ/cubte76HyEnud2vOzaHovY+7O1J/yHS1vMW542mwgJc8FDCGYnY5Z6VKvY5NbhP5PmunCHSkJlha9rLoL02MrT3ZdJBm+Qflp+qGaF6uNOWuVhXHdHPBWnlLWJUx4oWUiU3EnK2x8Gvcrd</source>
+    <source>eJzFVFtv2jAUfg4S/+EIIZFW3EK1SmsL62VrtQdeBlsfSlWZ+AAeSZzZTi+q+t9nOwkhUKr2qRES8vnOdy5fnO/kW7yIq5VqJSIhypj4CBc8UoIHAYpjAyQSYXI9KaKTjYTO/n61AvswQsGwwADyShJIEIA0MAgMiEIKlChiWaf3KCTjEayeg3YXppjDAZHqLuSUzZim6cfrHR0cQrfX0b9e1ztM00iiFlwUReDsEQMYoghYBCeh/W8THTudh4QFbZ+Hgx3MIVFqwYiEIReWnJ3boTlv8X0ePwk2X6icr4f60jKTQQsuzoYjGP1LCG3CZaJVGCniL+Eap/Ad7zHgcazXhzGS0FTrVCu+XlhuaYmPCiMq194NPBvtHSu+o+egWjEWQIh6G5qGtqW1j9fuZjjFWKBv38er+JY071fW8mMiSGgoUmnl5gB1pjuN/2R3QTEVYJYqUCXCTMqnf9HPtVylpttJm6xFcuJkGjAfZknkK7Nhiru6/p6jhXGcuuUNSUTmWqs+RPgAk+w4Ga1h7p69xDlDp5aorcGMRdQWPrZZ+nMQO8r+LiA3y57xJKLnnC9DIpam9hq9NWDyZ3Rh3qZdomjiOBSnydwt07OS+i7K1kAu+IPbsJN20uUbTbix5JqN1qA/yFZppmFbrGiXJpQ6mLxb2+bFarKpMqF0zDcGhueVLP1stjkqI0WuwTSrvkO18zK8g6XFinRN5WY7mn53jKZLmMNNTZ9um2sKrGBGm8VmuYACKdOXX435L54odGupijWtoqnUH2jaW1oIDPk9XgoefpYgFAPUg3+SIOveI5EIf/Gm93grU3/NeTbQDc/veUfdr3Dgdbpe5vivudP7bWmD+AG/X7eq3KismUiY6ZsAdLrToVKN3Lo1vfySfNikOh24QiWhvsSnBy5o2rZ+d/VjnMErpJ+GbxpZoHFbMjq57XTlEXe5TZq1cpv8csk1w5ElI3n5D7Zvdqk=</source>
   </file>
-  <file path="templates\user\password.php" generated-path="templates.user.password.html" hash="47d4d677c36e4ecd181397831ea8de90" package="Default">
+  <file path="templates\user\password.php" generated-path="templates.user.password.html" hash="132352492cbd68d66df8fa4b735501cf" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -104,9 +134,9 @@ http://localhost/W/docs/tuto/?p=routes</description>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
     </parse_markers>
-    <source>eJxtj09rAkEMxc8V/A5hKIyCsvcyu3vyrFhvUkp2N7IDmT/MZC1+e0eFtrSewgu/95Jn2jhGeJXR5nXDeAmTLPRj6hUctVhh0lA3oCPm/BXSoD+W0Dbz2XxmfpuzYCpeh9Z/9sELedHf4CkkB45kDEOtdtv3gyr7F8PYETc7JswExUAJyuUEVFIY3sBUD8J0Caq7w/o4CcglUq3ulAKP7kdExp7GwAOlWm3+JKp/EXnqnBUFZ+SpyD314Uzpxpnq9vOzmiE+aXkFHbho+w==</source>
+    <source>eJxtj01LAzEQhs8W+h+GIMSCsnfJbk+eW9SbiMxmp25w8kEyqfTfm7agoj0NLzzvw7xmneYE1zK7cjcwHmKVG32++hZetDhh0tAPoBOW8hnzpF9XsB6Wi+XC/C4Xwdy6Hl14szEIBdHf4C5mD55kjlOvtpunZwWWm69XI9qP9xxrmFRDrwzjSDxsmbAQNAdlaM9koCZmuAfTnQkzZuhODRdSFZBDol6dKAUB/U9IjJbmyBPlXj38Map/ilJH70TBHrm2+Eg27ikfOdMdZ1xaHtOF4V+4BG/S</source>
   </file>
-  <file path="Controller\UserController.php" generated-path="Controller.UserController.html" hash="17e07cbdd86512c2f495fc0b3de8eb90" package="Default">
+  <file path="Controller\UserController.php" generated-path="Controller.UserController.html" hash="08344a71d759b7ea04752b87362ab79f" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -182,7 +212,7 @@ http://localhost/W/docs/tuto/?p=routes</description>
       <error line="243" code="PPC:ERR-50015">Argument $token is missing from the Docblock of newPassword</error>
       <error line="243" code="PPC:ERR-50015">Argument $id is missing from the Docblock of newPassword</error>
     </parse_markers>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="templates\default\about.php" generated-path="templates.default.about.html" hash="3f7ac1f9e49ab8df1ac7959d783d6cf2" package="Default">
     <docblock line="0">
@@ -344,7 +374,7 @@ Tis class is not meant for front end purposes</long-description>
     </parse_markers>
     <source>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</source>
   </file>
-  <file path="Manager\UserManager.php" generated-path="Manager.UserManager.html" hash="bc7b7e7a3396862a9ebda69f68444d04" package="Default">
+  <file path="Manager\UserManager.php" generated-path="Manager.UserManager.html" hash="0d9d735b6c366f0791b479e9c4ddce05" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -379,9 +409,9 @@ Tis class is not meant for front end purposes</long-description>
       <error line="9" code="PPC:ERR-50015">Argument $id is missing from the Docblock of isInCollection</error>
       <error line="9" code="PPC:ERR-50008">No summary for method isInCollection()</error>
     </parse_markers>
-    <source>eJxtkVFrgzAUhZ8V/A+X4IOF2f6Arh1d51jHqlA3+tCWEs21hqbRJcoGo/+9RoU52EtCzvnOzQm5fyjz0rEdW9IL6pKmCGsq6QnV1KiTCaSCao3AEBJq9hoy1bBfhToborXhQ6Pqc4DfFUqmYb/d99J+YDv2j2NbZZ0InkJWy7TihQSuV3JZCIHt0XM5G4HhLFd/CpgBiYO3YPkOdTNIj81q+t5BUhTnC1VnPW4kjkfO4HkTrTsOXqNV+ItAFPb5hpoNokY0ye1LsAkGCIExuMc4iONVFO6IMchhRzgjh8YhsAif/ivQ5Tibtv1PWD32THOpW+Vc+3OW5P68VFhShZ554qiDs6KWbIgP0v48wyrNF0J4o/ZvLEthVSsJ3t9cO+vq2Ncb79qY5w==</source>
+    <source>eJxtj19rwjAUxZ9b6He4lD5UmPoBnA7nOuaYLdgNH1QkbW5tsKZd/jBh+N1tasHKloeEnPM7h3sfn6q8cmzH5uSIsiIpwoJwskcxMupwCGlBpESgCAkxr4ZM1OxPKQ6GaGz4kijaHOBJIacSNqtNK206tmP/OrZV6aRgKWSap4qVHJic81lZFNh8fY/RHhjO8uR3AWNw4+AjmH2CrovkwNxm3gdIyvJwJOIgB7XEcMcomJRlvS6jxZWG92ge3sDWj8K2q06MOzVGvLWs3oJl0AFdGIC3i4M4nkfh2jWGu127jLrb2rlmzHFhGr78N9y1gdFRs9se1XPL1EN4KmeyP6FJ3p9UAisi0Dfr9/7A/QmeMNUK/dbLSs1pt+oOzlCl+bQoGtrwApUWHPz7XNN1duzzBd1VoqQ=</source>
   </file>
-  <file path="templates\user\new_password.php" generated-path="templates.user.new_password.html" hash="eac4ce85c6c4ed1cfd2aeae78e57247d" package="Default">
+  <file path="templates\user\new_password.php" generated-path="templates.user.new_password.html" hash="e01dccf6b156ca1d4421a396b2b3f947" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -390,7 +420,7 @@ Tis class is not meant for front end purposes</long-description>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
     </parse_markers>
-    <source>eJyNkMsKAjEMRdcK/kMoQhUUf2AeC/cq6E5k6DjRFvqizTj491ZFURF0FXJzc8hNVnrpYUhSxWmhxdm1NOL3yiew5aRII4e8AG6xq7yIsXOh4bsxlMWgP+hnr4BIIqR9I5St9s4SWuJP48EFAwZJuiZnq+V6w5Ley5T1LQGdPebsgWdghXnrvRZ7lE43GHK2wA6eoyKrA8z+RlW1ih+4ubMHlW77hYxtbRQxOAndpnYuhT0iXJWbN0WcXTN+e4vzX75yAYJ1e6Y=</source>
+    <source>eJyNkMFqwzAMhs8r9B2EGXiDlb5AnB56bwfrrYygJG5tZsvGlhv69nM3VrZR2E5C0q9P+tWsoolwz8bmRevwHAo/yM8on2Av2bLTElQLkvTURcx5CmmUr4+wauez+az5DsiMqc57tNQNgVgTy6vwEJIHr9mEUYnn7ctOwOAqT4keh7djCoVGUaV3jaVYGPgctRJfGwUQ+h95dDhoE9yokxIbPcG11TZ9guW/UV1v8y/cOtDB1nP/QubSe8sCTuhKTdcG6ajhUvnQVtfLi+1bnwrxxqPeAYS6gn0=</source>
   </file>
   <file path="templates\w_errors\403.php" generated-path="templates.w_errors.403.html" hash="3f2c08173c0178d75cccc5338a945453" package="Default">
     <docblock line="0">
@@ -658,14 +688,14 @@ Contains stream_context_create object</description>
     </parse_markers>
     <source>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</source>
   </file>
-  <file path="Manager\BookmarkManager.php" generated-path="Manager.BookmarkManager.html" hash="932964fd40032e35a491c0f37c93279f" package="Default">
+  <file path="Manager\BookmarkManager.php" generated-path="Manager.BookmarkManager.html" hash="e312fa84229deb6485bf765e816bff8d" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
       <tag name="package" line="0" description="Default"/>
     </docblock>
     <class final="false" abstract="false" namespace="Manager" line="7" package="Default">
-      <extends>\W\Manager\BookmarkManager</extends>
+      <extends>\W\Manager\Manager</extends>
       <name>BookmarkManager</name>
       <full_name>\Manager\BookmarkManager</full_name>
       <docblock line="7">
@@ -678,7 +708,7 @@ Contains stream_context_create object</description>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
       <error line="7" code="PPC:ERR-50005">No summary for class \Manager\BookmarkManager</error>
     </parse_markers>
-    <source>eJyzsS/IKODl4uXKS8xNLS5ITE5V8E3MS0xPLbIGierrKyTnJBYXpyqkpCokJYLoUoW0IqDa8vyibJAKsLSCU35+dm5iUTZUr0JqRUlqXkqxQkx4DFQoBk0JL1c1SHstAHpQKks=</source>
+    <source>eJyzsS/IKODl4uXKS8xNLS5ITE5V8E3MS0xPLbIGierrKyTnJBYXpyqkpCokJYLoUoW0IqDa8vyibJAKsLSCU35+dm5iUTZUr0JqRUlqXkqxQkx4DFQIRvNyVYO01QIAIz8nFQ==</source>
   </file>
   <file path="Manager\SerieManager.php" generated-path="Manager.SerieManager.html" hash="0a44ceeb0de1d6f2fa1e887faa06338e" package="Default">
     <docblock line="0">
@@ -840,7 +870,7 @@ Contains stream_context_create object</description>
     </parse_markers>
     <source>eJxtjsEKgkAQhs8JvsOwBKNQWuCtdT1169opIjYV3Vpd2R2D3r41CYI6Dcw3/3w/L4Z2gCW1yq2Flk8zUoTzxBWckBTpGiEXgAfjCAo8x1CIMAgD/h11JK1PdlL1l9L0VPeE8e59ySv1gFJL53J2leW9sWbsK+bJgrdbsbfWWMg2WQKzgad+O0HVNeBsmTNe5B+P/1LT0eoIPU21DyS3ocGpE4NJlnqb+Clnhv/dXvgETRA=</source>
   </file>
-  <file path="templates\layout.php" generated-path="templates.layout.html" hash="147011eb0739c26cbc15536a568b5df3" package="Default">
+  <file path="templates\layout.php" generated-path="templates.layout.html" hash="f8e8061dd92f6a8362eaa29f650b01d4" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -849,7 +879,7 @@ Contains stream_context_create object</description>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
     </parse_markers>
-    <source>eJzdWFtr3EYUft5C/8OJCF0HKikpLZRW0mKShhZiYmLnIZQSZqVZaeyRRp0ZraOm+e89c5N2jdd2Ej8V4pXOXL5z/zST7NGL18/P353+Bo1uefHtN5l5AiddnUcbGdkRSip8LrKWagJlQ6SiOo/enr+Mf47miY60NI+2jF71QuoIStFp2uHCK1bpJq/olpU0tsL3wDqmGeGxKgmn+TMDY4A005wW2SqHx7phKi7o0WM79gRWRZa6aVxo1nLWXYKkPI+UHjlVDaWotZF0k0c7CEShtW8lP1qWSqWdkC3h7B+aoLQ0qM6DLwJbC6GVlqRPWtY9BKBdugc0Qdmdy0brXv2SphuMrUpqIWpOSc9UUoo2xX2rDWkZH/M3Yi20WFoDlrMBS9BjT/Olph+0Wb7c1XDA2KCyJR/Kqksmn41gtBpTYnJFlWhp+mPyU/LUIO8Nh/A4h7LUF5QV1qIavRUV2wKr8qglrIt99WAZcYxRHhkZx6mMN3xglYOCxSJ7FMeQdWQbFuLrmkhwj7iiGzJwhJEC68xMsppoJrqogDhGEMB/BsbYRKWzZAE4ZIC5qIVdtbBryJS/vumBlo0IaRxMBht01SXOuqGYphYhCgCLjLU1KFkeKAGcTc2Gs5Ok72oPRTi2kIUJHjasqmgXf1BfAKyw+vmt6Fum2JpTD+/QU+ID48KN61nnwmeGQt5wOMYAR37YBMm+LdgGjh7Rttfj0eOr94Oi8skT+OjmFqvCv2R98U4MQCQ1CmpaAVFg3XF7/lyaX8Myy78sG/TBqNksMejJrrsT5jb4SFhuyaNXdiwq3NN4nq0lpNd9+mR/KVcUPq4Ko8zpzDZIMEBKU2K36WWdV4vU2QgM3unrs/NoCqNBiYoA6kLs82Om4lqKoY+Cn4tM9aQLC2o+9g3DfoHpLTaRw2RLRmJXPXmk5UAjjKLZOgOxrscQWpaIQrgjT+2z3HNS0kZw7Bj8DoThKewpmhuEh/KAi/Lysz3oEe5KyCp4MMt7HpyG4Rllzvk96ijA7lfShGqz2l+ZpNYCS+ulfcIoBglhK6xck+0FMIi7Lqlh3TLksy3hgytX+KObCgeJ0y6Opt1ZasLtkZ397t1VcGi/nZyZpgfPrC3tBkeTbsjVvxMOtrWf9tB+50TuiOjj7GcGvkPdhrdjTdZqbw0AfqJuoPDPYGSflN+FKVTza1s75ewh9PRSbBj3qopTJ92kIEsHvhuVEPW98Hrp0/RmaObjwWjG3FPW/yyoktZMaSp9VN948QvDCjfEdTUVttnrOsadJ66xeL5nGB64DpI3NgGjsaJElo1n8fBBcqAHFrkmXA9aI+u5TnfC9F1e6w7wbz7RWC7kZG2Oba/oRsMxZ3UXzLDYHiJ8x+9mWbfvTp7NUofspT1+8giOcC/pOFOgFzxD7X0NzOkOK+QaL59ZLFiPrtCSJHGB2uG0qRMkVRiV4ECxS6HuwImHO5vbawdJmxyXfvdnFyE+tESJTo5T+hS19eDjW7oi9seCqUD8xNHSHGLf+0OsrRZniZ8vdorN6FKalZcjvgqs8EnjzjezH9S+V+4VLMLugRkmhzKH5k30DbIwh/3PaPECT2WusfvCdp4tAvgXfDnMnXgv4Gs9jeBzWz+IAk5rwmf0cypbBd/Bc9FVzARe3apncX9FZD0dHY2iYyPC2xl+hvPk5N774s4eLEU/SlY3Om6JvPXMA2eGSNQJ6UjtIhiUnGC9m755fnxyBmd/D6QKs6Z3fFmYKlKlZL229/0BQfLogmyJG3TFnabwgm6wXxTY+wSg92Z8S0zVymN/x4Acbrx6RJEN0a+2Yh2uv/lNug9fWy5UevH3QOUYP0ue/ZA8tffIi3A53sO7H9r+hf1rkDw5JP1lXX0l0EFLkGXd5RgJzPznzH9h9xvx</source>
+    <source>eJzdWFtr3EYUft5C/8OJCF0HKikpLZRW0mKShhZiYmLnIZQSZqVZaeyRRp0ZraOm+e89c5N2jdd2Ej8V4pXOXL5z/zST7NGL18/P353+Bo1uefHtN5l5AiddnUcbGdkRSip8LrKWagJlQ6SiOo/enr+Mf47miY60NI+2jF71QuoIStFp2uHCK1bpJq/olpU0tsL3wDqmGeGxKgmn+TMDY4A005wW2SqHx7phKi7o0WM79gRWRZa6aVxo1nLWXYKkPI+UHjlVDaWotZF0k0c7CEShtW8lP1qWSqWdkC3h7B+aoLQ0qM6DLwJbC6GVlqRPWtY9BKBdugc0Qdmdy0brXv2SphuMrUpqIWpOSc9UUoo2xX2rDWkZH/M3Yi20WFoDlrMBS9BjT/Olph+0Wb7c1XDA2KCyJR/Kqksmn41gtBpTYnJFlWhp+mPyU/LUIO8Nh/A4h7LUF5QV1qIavRUV2wKr8qglrIt99WAZcYxRHhkZx6mMN3xglYOCxSJ7FMeQdWQbFuLrmkhwj7iiGzJwhJEC68xMsppoJrqogDhGEMB/BsbYRKWzZAE4ZIC5qIVdtbBryJS/vumBlo0IaRxMBht01SXOuqGYphYhCgCLjLU1KFkeKAGcTc2Gs5Ok72oPRTi2kIUJHjasqmgXf1BfAKyw+vmt6Fum2JpTD+/QU+ID48KN61nnwmeGQt5wOMYAR37YBMm+LdgGjh7Rttfj0eOr94Oi8skT+OjmFqvCv2R98U4MQCQ1CmpaAVFg3XF7/lyaX8Myy78sG/TBqNksMejJrrsT5jb4SFhuyaNXdiwq3NN4nq0lpNd9+mR/KVcUPq4Ko8zpzDZIMEBKU2K36WWdV4vU2QgM3unrs/NoCqNBiYoA6kLs82Om4lqKoY+Cn4tM9aQLC2o+9g3DfoHpLTaRw2RLRmJXPXmk5UAjjKLZOgOxrscQWpaIQrgjT+2z3HNS0kZw7Bj8DoThKewpmhuEh/KAi/Lysz3oEe5KyCp4MMt7HpyG4Rllzvk96ijA7lfShGqz2l+ZpNYCS+ulfcIoBglhK6xck+0FMIi7Lqlh3TLksy3hgytX+KObCgeJ0y6Opt1ZasLtkZ397t1VcGi/nZyZpgfPrC3tBkeTbsjVvxMOtrWf9tB+50TuiOjj7GcGvkPdhrdjTdZqbw0AfqJuoPDPYGSflN+FKVTza1s75ewh9PRSbBj3qopTJ92kIEsHvhuVEPW98Hrp0/RmaObjwWjG3FPW/yyoktZMaSp9VN948QvDCjfEdTUVttnrOsadJ66xeL5nGB64DpI3NgGjsaJElo1n8fBBcqAHFrkmXA9aI+u5TnfC9F1e6w7wbz7RWC7kZG2Oba/oRsMxZ3UXzLDYHiJ8x+9mWbfvTp7NUofspT1+8giOcC/pOFOgFzxD7X0NzOkOK+QaL59ZLFiPrtCSJHGB2uG0qRMkVRiV4ECxS6HuwImHO5vbawdJmxyXfvdnFyE+tESJTo5T+hS19eDjW7oi9seCqUD8xNHSHGLf+0OsrRZniZ8vdorN6FKalZcjvgqs8EnjzjezH9S+V+4VLMLugRkmhzKH5k30DbIwh/3PaPECT2WusfvCdp4tAvgXfDnMnXgv4Gs9jeBzWz+IAk5rwmf0cypbBd/Bc9FVzARe3apncX9FZD0dHY2iYyPC2xl+hpvIyZxw7+zAUvSjZHWj45bIW088cGZoRJ2QjtQufkHJCVa76ZrnxydncPb3QKowazrHF4WpIVVK1mt72x8QJI8uyJa4QVfaaQov6Aa7RYG9TQD6bsa3xNSsPPY3DMjhxotHFNkA/Wrr1eH6e9+k+/Cl5UKlF38PVI7xs+TZD8lTe4u8CFfjPbz7oe1f178GyVND0l/W1VcCHbQEOdZdjZG+zH/N/AdaJBva</source>
   </file>
   <file path="Manager\DefaultManager.php" generated-path="Manager.DefaultManager.html" hash="1c247c2e403fe12f15ce1a4f69c94e70" package="Default">
     <docblock line="0">
@@ -1295,100 +1325,100 @@ Contains stream_context_create object</description>
     </parse_markers>
     <source>eJx1kl1LwzAUhq832H8IYRCFtZlDFEbaXXkpXhREGaNkTWyPNh8kmbB/b+2Hc3VCICl5znN6XsI2trJoHirwUVrzozmEK9LtZIG2JECoJUFJisiDBW+EJLtrtEln09mU/a71gbumVHHQeWF0kDqQAZwwAZ8IRIJl54hAvxmMipp7n+A9Lz5KZw5a4AafTFi1StkmQfOe3uL2L/Cu0THaXLbQoPSSe6OjnsVp1n6jc0EHtYYF6gcZIYOg69LYuzagSuRdkeAqBLumFHispAAegRL7uDCKguKl9PSRnvus8UG6HERrjPPnmzx7ubtd5tnr/WqZx++2xIieZunDEDJwqCMvHcgujr/ptVnjlPngjC7TJwclaF4jDg4JHiRaM9rfjYZsiPybGE15ocVBKe6OpybZURvrwf/vHkpGAQ6nn0O7Rm/H2ItP5wv5JdDg</source>
   </file>
-  <file path="Controller\ApiController.php" generated-path="Controller.ApiController.html" hash="3dd62b3cf18e519840417c0bce86610b" package="Default">
+  <file path="Controller\ApiController.php" generated-path="Controller.ApiController.html" hash="958179ab3d7034f364bad5bd9af962d8" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
       <tag name="package" line="0" description="Default"/>
     </docblock>
     <namespace-alias name="Controller">\W\Controller\Controller</namespace-alias>
-    <class final="false" abstract="false" namespace="Controller" line="23" package="Default">
+    <class final="false" abstract="false" namespace="Controller" line="21" package="Default">
       <extends>\W\Controller\Controller</extends>
       <name>ApiController</name>
       <full_name>\Controller\ApiController</full_name>
-      <docblock line="23">
-        <description>ApiController</description>
-        <long-description>Controls seriesmanager main api</long-description>
-        <tag name="version" line="23" description="3.3.3"/>
-        <tag name="last_modified" line="23" description="23:46 02/02/2016"/>
-        <tag name="author" line="23" description="Matthias Morin" link="mailto:matthias.morin@gmail.com"/>
-        <tag name="copyright" line="23" description="2015-2016 - CAMS Squad, Full Stack Web Developpers Team"/>
-        <tag name="package" line="23" description="Default"/>
+      <docblock line="21">
+        <description>Controls seriesmanager main api</description>
+        <long-description></long-description>
+        <tag name="version" line="21" description="3.3.3"/>
+        <tag name="last_modified" line="21" description="23:46 02/02/2016"/>
+        <tag name="author" line="21" description="Matthias Morin" link="mailto:matthias.morin@gmail.com"/>
+        <tag name="copyright" line="21" description="2015-2016 - CAMS Squad, Full Stack Web Developpers Team"/>
+        <tag name="package" line="21" description="Default"/>
       </docblock>
-      <property static="false" visibility="protected" namespace="Controller" line="29" package="Default">
+      <property static="false" visibility="protected" namespace="Controller" line="27" package="Default">
         <name>$notFound</name>
         <full_name>\Controller\ApiController::notFound</full_name>
         <default></default>
-        <docblock line="29">
+        <docblock line="27">
           <description>Property
 Contains not found serie object</description>
           <long-description></long-description>
-          <tag name="var" line="29" description="" type="array" variable="">
+          <tag name="var" line="27" description="" type="array" variable="">
             <type>array</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="38" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="36" package="Default">
         <name>__construct</name>
         <full_name>\Controller\ApiController::__construct()</full_name>
-        <docblock line="38">
+        <docblock line="36">
           <description>Constructor</description>
           <long-description>Initializes notFound property</long-description>
-          <tag name="version" line="38" description="1.0"/>
+          <tag name="version" line="36" description="1.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="76" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="72" package="Default">
         <name>seriesManager</name>
         <full_name>\Controller\ApiController::seriesManager()</full_name>
-        <docblock line="76">
-          <description>seriesManager</description>
-          <long-description>Main seriesmanager API method
+        <docblock line="72">
+          <description>Main seriesmanager API method
 Searches for TV serie into database by title
 Scrapes TV serie details from imdb when not present into database
-Returns TV serie details in json format</long-description>
-          <tag name="version" line="76" description="1.1.4"/>
-          <tag name="api" line="76" description=""/>
-          <tag name="param" line="76" description="&lt;p&gt;API key (fake)&lt;/p&gt;" type="string" variable="$_GET['api_key']">
+Returns TV serie details in json format</description>
+          <long-description></long-description>
+          <tag name="version" line="72" description="1.1.4"/>
+          <tag name="api" line="72" description=""/>
+          <tag name="param" line="72" description="&lt;p&gt;API key (fake)&lt;/p&gt;" type="string" variable="$_GET['api_key']">
             <type>string</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;One of five methods availlable&lt;/p&gt;" type="string" variable="$_GET['method']">
+          <tag name="param" line="72" description="&lt;p&gt;One of five methods availlable&lt;/p&gt;" type="string" variable="$_GET['method']">
             <type>string</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;Returns TV serie details in json format&lt;/p&gt;" type="string" variable="$_GET['getserie']">
+          <tag name="param" line="72" description="&lt;p&gt;Returns TV serie details in json format&lt;/p&gt;" type="string" variable="$_GET['getserie']">
             <type>string</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;TV serie primary key&lt;/p&gt;" type="integer" variable="$_GET['id']">
+          <tag name="param" line="72" description="&lt;p&gt;TV serie primary key&lt;/p&gt;" type="integer" variable="$_GET['id']">
             <type>integer</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;Searches for TV serie into database by title&lt;/p&gt;" type="string" variable="$_GET['searchserie']">
+          <tag name="param" line="72" description="&lt;p&gt;Searches for TV serie into database by title&lt;/p&gt;" type="string" variable="$_GET['searchserie']">
             <type>string</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;Searches for TV serie by title and scrapes TV serie details from imdb when not present into database&lt;/p&gt;" type="string" variable="$_GET['scrapeserie']">
+          <tag name="param" line="72" description="&lt;p&gt;Searches for TV serie by title and scrapes TV serie details from imdb when not present into database&lt;/p&gt;" type="string" variable="$_GET['scrapeserie']">
             <type>string</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;Sends random series from database in json format&lt;/p&gt;" type="string" variable="$_GET['getrandomseries']">
+          <tag name="param" line="72" description="&lt;p&gt;Sends random series from database in json format&lt;/p&gt;" type="string" variable="$_GET['getrandomseries']">
             <type>string</type>
           </tag>
-          <tag name="param" line="76" description="&lt;p&gt;TV serie count to send to client&lt;/p&gt;" type="integer" variable="$_GET['limit']">
+          <tag name="param" line="72" description="&lt;p&gt;TV serie count to send to client&lt;/p&gt;" type="integer" variable="$_GET['limit']">
             <type>integer</type>
           </tag>
-          <tag name="return" line="76" description="TV serie details" type="object">
+          <tag name="return" line="72" description="TV serie details" type="object">
             <type>object</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="130" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="124" package="Default">
         <name>searchSerie</name>
         <full_name>\Controller\ApiController::searchSerie()</full_name>
-        <docblock line="130">
-          <description>searchSerie</description>
-          <long-description>Searches for TV serie into database by title
-Returns TV serie details in json format (by primary key)</long-description>
-          <tag name="version" line="130" description="1.1"/>
-          <tag name="param" line="130" description="&lt;p&gt;TV serie title&lt;/p&gt;" type="string" variable="$keyword">
+        <docblock line="124">
+          <description>Searches for TV serie into database by title
+Returns TV serie details in json format (by primary key)</description>
+          <long-description></long-description>
+          <tag name="version" line="124" description="1.1"/>
+          <tag name="param" line="124" description="&lt;p&gt;TV serie title&lt;/p&gt;" type="string" variable="$keyword">
             <type>string</type>
           </tag>
-          <tag name="return" line="130" description="TV series details" type="object">
+          <tag name="return" line="124" description="TV series details" type="object">
             <type>object</type>
           </tag>
         </docblock>
@@ -1398,22 +1428,22 @@ Returns TV serie details in json format (by primary key)</long-description>
           <type>string</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="158" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="150" package="Default">
         <name>scrapeSerie</name>
         <full_name>\Controller\ApiController::scrapeSerie()</full_name>
-        <docblock line="158">
-          <description>scrapeSerie</description>
-          <long-description>Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
+        <docblock line="150">
+          <description>Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
 Adds TV serie details into database when found on imdb
-Returns TV serie details in json format (by primary key)</long-description>
-          <tag name="version" line="158" description="1.1 beta"/>
-          <tag name="param" line="158" description="&lt;p&gt;TV serie title&lt;/p&gt;" type="string" variable="$title">
+Returns TV serie details in json format (by primary key)</description>
+          <long-description></long-description>
+          <tag name="version" line="150" description="1.1 beta"/>
+          <tag name="param" line="150" description="&lt;p&gt;TV serie title&lt;/p&gt;" type="string" variable="$title">
             <type>string</type>
           </tag>
-          <tag name="return" line="158" description="TV serie details" type="object">
+          <tag name="return" line="150" description="TV serie details" type="object">
             <type>object</type>
           </tag>
-          <tag name="todo" line="158" description="Not found"/>
+          <tag name="todo" line="150" description="Not found"/>
         </docblock>
         <argument line="0" by_reference="false">
           <name>$title</name>
@@ -1421,21 +1451,21 @@ Returns TV serie details in json format (by primary key)</long-description>
           <type>string</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="199" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="189" package="Default">
         <name>getSerie</name>
         <full_name>\Controller\ApiController::getSerie()</full_name>
-        <docblock line="199">
-          <description>getSerie</description>
-          <long-description>Gets TV serie, seasons and episodes from database by id
-Returns TV serie details in json format (by primary key)</long-description>
-          <tag name="version" line="199" description="1.0 beta"/>
-          <tag name="param" line="199" description="&lt;p&gt;TV serie title&lt;/p&gt;" type="string" variable="$id">
+        <docblock line="189">
+          <description>Gets TV serie, seasons and episodes from database by id
+Returns TV serie details in json format (by primary key)</description>
+          <long-description></long-description>
+          <tag name="version" line="189" description="1.0 beta"/>
+          <tag name="param" line="189" description="&lt;p&gt;TV serie title&lt;/p&gt;" type="string" variable="$id">
             <type>string</type>
           </tag>
-          <tag name="return" line="199" description="TV series details" type="object">
+          <tag name="return" line="189" description="TV series details" type="object">
             <type>object</type>
           </tag>
-          <tag name="url" line="199" description="http://localhost/seriesmanager/public/seriesmanagerapi?method=getserie&amp;amp;id=1&amp;amp;api_key=inwexrlzidlwncjfrrahtexduwskgtvk"/>
+          <tag name="url" line="189" description="http://localhost/seriesmanager/public/seriesmanagerapi?method=getserie&amp;amp;id=1&amp;amp;api_key=inwexrlzidlwncjfrrahtexduwskgtvk"/>
         </docblock>
         <argument line="0" by_reference="false">
           <name>$id</name>
@@ -1443,17 +1473,17 @@ Returns TV serie details in json format (by primary key)</long-description>
           <type>string</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Controller" line="231" package="Default">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Controller" line="219" package="Default">
         <name>getSeasons</name>
         <full_name>\Controller\ApiController::getSeasons()</full_name>
-        <docblock line="231">
-          <description>getSeasons</description>
-          <long-description>Returns TV serie season and episodes from database by serie primary key and season</long-description>
-          <tag name="version" line="231" description="2.2.1"/>
-          <tag name="param" line="231" description="&lt;p&gt;TV serie primary key&lt;/p&gt;" type="integer" variable="$id">
+        <docblock line="219">
+          <description>Returns TV serie season and episodes from database by serie primary key and season</description>
+          <long-description></long-description>
+          <tag name="version" line="219" description="2.2.1"/>
+          <tag name="param" line="219" description="&lt;p&gt;TV serie primary key&lt;/p&gt;" type="integer" variable="$id">
             <type>integer</type>
           </tag>
-          <tag name="return" line="231" description="TV serie seasons and episodes" type="object">
+          <tag name="return" line="219" description="TV serie seasons and episodes" type="object">
             <type>object</type>
           </tag>
         </docblock>
@@ -1468,17 +1498,17 @@ Returns TV serie details in json format (by primary key)</long-description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="254" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Controller" line="240" package="Default">
         <name>getRandomSeries</name>
         <full_name>\Controller\ApiController::getRandomSeries()</full_name>
-        <docblock line="254">
-          <description>getRandomSeries</description>
-          <long-description>Sends random series from database in json format</long-description>
-          <tag name="version" line="254" description="1.3"/>
-          <tag name="param" line="254" description="&lt;p&gt;Series count to retrieve from database&lt;/p&gt;" type="integer" variable="$limit">
+        <docblock line="240">
+          <description>Sends random series from database in json format</description>
+          <long-description></long-description>
+          <tag name="version" line="240" description="1.3"/>
+          <tag name="param" line="240" description="&lt;p&gt;Series count to retrieve from database&lt;/p&gt;" type="integer" variable="$limit">
             <type>integer</type>
           </tag>
-          <tag name="return" line="254" description="TV serie details" type="object">
+          <tag name="return" line="240" description="TV serie details" type="object">
             <type>object</type>
           </tag>
         </docblock>
@@ -1488,87 +1518,87 @@ Returns TV serie details in json format (by primary key)</long-description>
           <type>integer</type>
         </argument>
       </method>
-      <method final="false" static="false" visibility="public" line="23">
+      <method final="false" static="false" visibility="public" line="21">
         <name/>
         <docblock>
           <description>seriesManager     Main seriesmanager API method</description>
           <long-description/>
-          <tag name="magic" line="23"/>
-          <tag name="return" line="23" type="">
+          <tag name="magic" line="21"/>
+          <tag name="return" line="21" type="">
             <type/>
           </tag>
-          <tag name="method" line="23" description="seriesManager     Main seriesmanager API method" method_name=""/>
+          <tag name="method" line="21" description="seriesManager     Main seriesmanager API method" method_name=""/>
         </docblock>
       </method>
-      <method final="false" static="false" visibility="public" line="23">
+      <method final="false" static="false" visibility="public" line="21">
         <name/>
         <docblock>
           <description>getSerie          Gets TV serie, seasons and episodes from database by id</description>
           <long-description/>
-          <tag name="magic" line="23"/>
-          <tag name="return" line="23" type="">
+          <tag name="magic" line="21"/>
+          <tag name="return" line="21" type="">
             <type/>
           </tag>
-          <tag name="method" line="23" description="getSerie          Gets TV serie, seasons and episodes from database by id" method_name=""/>
+          <tag name="method" line="21" description="getSerie          Gets TV serie, seasons and episodes from database by id" method_name=""/>
         </docblock>
       </method>
-      <method final="false" static="false" visibility="public" line="23">
+      <method final="false" static="false" visibility="public" line="21">
         <name/>
         <docblock>
           <description>getSeasons        Returns TV serie season and episodes from database by serie primary key and season</description>
           <long-description/>
-          <tag name="magic" line="23"/>
-          <tag name="return" line="23" type="">
+          <tag name="magic" line="21"/>
+          <tag name="return" line="21" type="">
             <type/>
           </tag>
-          <tag name="method" line="23" description="getSeasons        Returns TV serie season and episodes from database by serie primary key and season" method_name=""/>
+          <tag name="method" line="21" description="getSeasons        Returns TV serie season and episodes from database by serie primary key and season" method_name=""/>
         </docblock>
       </method>
-      <method final="false" static="false" visibility="public" line="23">
+      <method final="false" static="false" visibility="public" line="21">
         <name/>
         <docblock>
           <description>searchSerie       Searches for TV serie into database by title</description>
           <long-description/>
-          <tag name="magic" line="23"/>
-          <tag name="return" line="23" type="">
+          <tag name="magic" line="21"/>
+          <tag name="return" line="21" type="">
             <type/>
           </tag>
-          <tag name="method" line="23" description="searchSerie       Searches for TV serie into database by title" method_name=""/>
+          <tag name="method" line="21" description="searchSerie       Searches for TV serie into database by title" method_name=""/>
         </docblock>
       </method>
-      <method final="false" static="false" visibility="public" line="23">
+      <method final="false" static="false" visibility="public" line="21">
         <name/>
         <docblock>
           <description>scrapeSerie       Searches for TV serie by title and scrapes TV serie details from imdb when not present into database</description>
           <long-description/>
-          <tag name="magic" line="23"/>
-          <tag name="return" line="23" type="">
+          <tag name="magic" line="21"/>
+          <tag name="return" line="21" type="">
             <type/>
           </tag>
-          <tag name="method" line="23" description="scrapeSerie       Searches for TV serie by title and scrapes TV serie details from imdb when not present into database" method_name=""/>
+          <tag name="method" line="21" description="scrapeSerie       Searches for TV serie by title and scrapes TV serie details from imdb when not present into database" method_name=""/>
         </docblock>
       </method>
-      <method final="false" static="false" visibility="public" line="23">
+      <method final="false" static="false" visibility="public" line="21">
         <name/>
         <docblock>
           <description>getRandomSeries   Sends random series from database in json format</description>
           <long-description/>
-          <tag name="magic" line="23"/>
-          <tag name="return" line="23" type="">
+          <tag name="magic" line="21"/>
+          <tag name="return" line="21" type="">
             <type/>
           </tag>
-          <tag name="method" line="23" description="getRandomSeries   Sends random series from database in json format" method_name=""/>
+          <tag name="method" line="21" description="getRandomSeries   Sends random series from database in json format" method_name=""/>
         </docblock>
       </method>
     </class>
     <markers>
-      <todo line="158">Not found</todo>
+      <todo line="150">Not found</todo>
     </markers>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
-      <error line="231" code="PPC:ERR-50015">Argument $seasonCount is missing from the Docblock of getSeasons</error>
+      <error line="219" code="PPC:ERR-50015">Argument $seasonCount is missing from the Docblock of getSeasons</error>
     </parse_markers>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="templates\default\legal.php" generated-path="templates.default.legal.html" hash="541ca3c716eb63421020504a1685a3d7" package="Default">
     <docblock line="0">

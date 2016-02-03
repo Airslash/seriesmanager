@@ -5,8 +5,6 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * ApiController
- *
  * Controls seriesmanager main api
  *
  * @version          3.3.3
@@ -54,8 +52,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * seriesManager
-	 *
 	 * Main seriesmanager API method
 	 * Searches for TV serie into database by title
 	 * Scrapes TV serie details from imdb when not present into database
@@ -118,8 +114,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * searchSerie
-	 *
 	 * Searches for TV serie into database by title
 	 * Returns TV serie details in json format (by primary key)
 	 *
@@ -144,8 +138,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * scrapeSerie
-	 *
 	 * Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
 	 * Adds TV serie details into database when found on imdb
 	 * Returns TV serie details in json format (by primary key)
@@ -186,8 +178,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * getSerie
-	 *
 	 * Gets TV serie, seasons and episodes from database by id
 	 * Returns TV serie details in json format (by primary key)
 	 *
@@ -220,8 +210,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * getSeasons
-	 *
 	 * Returns TV serie season and episodes from database by serie primary key and season
 	 *
 	 * @version                   2.2.1
@@ -243,8 +231,6 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * getRandomSeries
-	 *
 	 * Sends random series from database in json format
 	 *
 	 * @version  1.3
