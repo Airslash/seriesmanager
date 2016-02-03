@@ -10,7 +10,7 @@ html, body {
     width: 100%;
     height: 100%;
     margin: auto;
-    background-color: white;
+    background-color: rgb(236, 240, 241);
     padding: 30px;
     border-radius: 10px;
 }
@@ -65,7 +65,8 @@ header {
 }
 
 #menu-logout a{
-    visibility: hidden;
+    /*visibility: hidden;*/
+
 }
 
 #log-form {
@@ -192,18 +193,18 @@ Page série détail
 /*********************************
 Page détail épisode
 *********************************/
- #episode-info img {
+#episode-info img {
     width: 100%;
     height: 100%;
- }
+}
 
- #season-episode {
+#season-episode {
     font-size: 15px;
- }
+}
 
- #episode-info div {
+#episode-info div {
     padding-bottom: 20px;
- }
+}
 
 
 /*********************************
@@ -213,7 +214,7 @@ Footer
 footer {
     width: 100%;
     padding-top: 10px;
-    background-color: #9098B2;
+    background-color: rgb(236, 240, 241);
     position: fixed;
     bottom: 0;
     font-size: 13px;
@@ -251,7 +252,7 @@ Media query
 
 @media (min-width: 480px) {
     header {
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgb(236, 240, 241);
     }
 
     /* logo */
@@ -289,6 +290,7 @@ Media query
 }
 
 @media (min-width: 700px) {
+
     /* barre de recherche */
     #keyword-input {
         width: 560px;
