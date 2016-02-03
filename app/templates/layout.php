@@ -69,18 +69,18 @@
     			if (!empty($w_user)) {
     				?>
 		    		<div id="menu">
-			    		<ul class="nav nav-tabs">
-			    		  <li role="navigation"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
-			    		  <li role="navigation"><a href="<?php echo $this->url('profile') ?>">Profile</a></li>
+			    		<ul class="">
+			    		  <li><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+			    		  <li><a href="<?php echo $this->url('profile') ?>">Profile</a></li>
 			    		</ul>
 		    		</div>
 	    		<?php
 	    		}
 	    		else{?>
 		    		<div id="menu-logout">
-			    		<ul class="nav nav-tabs">
-			    		  <li role="navigation"><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
-			    		  <li role="navigation"><a href="<?php echo $this->url('register') ?>">Register</a></li>
+			    		<ul class="">
+			    		  <li><a href="<?php echo $this->url('home') ?>" title="Home">Home</a></li>
+			    		  <li><a href="<?php echo $this->url('register') ?>">Register</a></li>
 			    		</ul>
 		    		</div>
 	    		<?php 
