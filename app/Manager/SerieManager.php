@@ -3,14 +3,7 @@
 namespace Manager;
 
 /**
- * SerieManager
- * 
- * Manages requests to "series" table
- * 
- * @version        1.0.3 beta
- * @deprecated     1.0.3 beta
  * @author         Axel Merlin <merlin.axel@gmail.com>
- * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
 class SerieManager extends \W\Manager\Manager {

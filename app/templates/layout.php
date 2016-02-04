@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title><?= $this->e($title) ?></title>
-	
+
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/normalize.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
@@ -22,7 +22,7 @@
 	<div id="main-content" class="container-fluid">
 
  		<!-- <nav class="navbar navbar-default" role="navigation"> -->
- 
+
   		<header>
 
 		   	<!--logo-->
@@ -33,22 +33,18 @@
 
 			<!-- login -->
 			<div id="log-nav" class="hidden-xs">
-			<?php
-				if (!empty($w_user)) {
-					?>
-					<p>You are logged as <?= $w_user['username'] ?></p>
+			<?php if (!empty($w_user)) { ?>
+				<p>You are logged as <?= $w_user['username'] ?></p>
 
-					<!-- logout -->
-					<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
-			<?php
-			}
-			else {?>				
-				<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form">		
+				<!-- logout -->
+				<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
+			<?php } else { ?>
+				<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form">
 					<div class="form-group">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 						<input type="username" name="username" placeholder="Username">
 					</div>
-					
+
 					<div class="form-group">
 						<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 						<input type="password" name="password" placeholder="Password">
@@ -59,11 +55,11 @@
 					<input type="submit" value="Log In" id="login-input">
 
 				</form>
-				<?php 
+				<?php
 				}
 				?>
 			</div>
-			
+
     		<!--menu-->
     		<?php
     			if (!empty($w_user)) {
@@ -83,7 +79,7 @@
 			    		  <li><a data-toggle="collapse" href="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin" class="visible-xs">Login</a>
 			    		  <div class="collapse" id="collapseLogin">
 			    		    <div class="well">
-			    		      
+
 								<!-- Collapse login -->
 			    		      <?php
 			    		      	if (!empty($w_user)) {
@@ -94,13 +90,13 @@
 			    		      		<a href="<?php echo $this->url('logout') ?>" title="Logout">Logout</a><br />
 			    		      <?php
 			    		      }
-			    		      else {?>				
-			    		      	<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form-collapse">		
+			    		      else {?>
+			    		      	<form action="<?php echo $this->url('login') ?>" method="POST" id="log-form-collapse">
 			    		      		<div class="form-group">
 			    		      			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 			    		      			<input type="username" name="username" placeholder="Username">
 			    		      		</div>
-			    		      		
+
 			    		      		<div class="form-group">
 			    		      			<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 			    		      			<input type="password" name="password" placeholder="Password">
@@ -111,7 +107,7 @@
 			    		      		<input type="submit" value="Log In" id="login-input">
 
 			    		      	</form>
-			    		      	<?php 
+			    		      	<?php
 			    		      	}
 			    		      	?>
 
@@ -120,7 +116,7 @@
 			    		  <li><a href="<?php echo $this->url('register') ?>">Register</a></li>
 			    		</ul>
 		    		</div>
-	    		<?php 
+	    		<?php
 	    		}
 	    		?>
 
@@ -136,10 +132,9 @@
 	    		}
 	    		?>
 	    		</div>
-    		
-		
 
-		<!-- <form action="<?= $this->url('api') ?>" method="POST" id="serie-search-form"> -->
+
+
 		<form id="serie-search-form">
 			<input type="search" name="keyword" id="keyword-input" class="form-control" placeholder="Search by title...">
 		</form>
@@ -147,8 +142,8 @@
 
 		</header><!-- container-fluid-->
 
-		
-		
+
+
 		<!-- for masonry -->
 		<section id="section">
 			<?= $this->section('main_content') ?>
@@ -159,20 +154,20 @@
 
 	</div> <!-- main-content -->
 
-		<footer>
-			<ul>
-				<li><a href="<?php echo $this->url('home') ?>"><p>Home</p></a><span> | </span></li>
-				<li><a href="<?php echo $this->url('register') ?>"><p>Register</p></a><span> | </span></li>
-				<li><a href="<?php echo $this->url('legal') ?>"><p>Terms & Conditions</p></a><span> | </span></li>	
-				<li><a href="<?php echo $this->url('about') ?>"><p>About Us</p></a></li>	
-			</ul>
-			<p><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> SeriesManager</p>
-			<p>Made by CAMS Squad</p>
-		</footer>
+	<footer>
+		<ul>
+			<li><a href="<?php echo $this->url('home') ?>"><p>Home</p></a><span> | </span></li>
+			<li><a href="<?php echo $this->url('register') ?>"><p>Register</p></a><span> | </span></li>
+			<li><a href="<?php echo $this->url('legal') ?>"><p>Terms & Conditions</p></a><span> | </span></li>
+			<li><a href="<?php echo $this->url('about') ?>"><p>About Us</p></a></li>
+		</ul>
+		<p><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> SeriesManager</p>
+		<p>Made by CAMS Squad</p>
+	</footer>
 
-	<script language="javascript">
+	<script>
 		// Defines asset url
-		var strAssetUrl = "<?= $this->assetUrl("") ?>";
+		var strAssetUrl = "<?= $this->assetUrl('') ?>";
 	</script>
 
 

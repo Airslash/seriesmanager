@@ -91,7 +91,7 @@
 		 * Ajout d'une serie dans la base
 		 * For back-office only
 		 */
-		['GET', '/scrapeserie/[:title]/', 'Scraper#scrapeSerie', 'scrapeserie'],
+		['GET', '/scrapeserie/[:title]', 'Scraper#scrapeSerie', 'scrapeserie'],
 
 
 		// ****************

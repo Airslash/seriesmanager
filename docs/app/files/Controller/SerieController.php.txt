@@ -5,14 +5,53 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * SerieController   Controls all serie related data
- * @version          3.0 beta
- * @last_modified    12:36 02/02/2016
- * @author           Axel Merlin <merlin.axel@gmail.com>
- * @author           Matthias Morin <matthias.morin@gmail.com>
- * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
+ * Controls all serie related data.
+ * 
+ * @last_modified  23:34 03/02/2016
+ * @author         Axel Merlin <merlin.axel@gmail.com>
+ * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
 class SerieController extends Controller {
+
+	/**
+	 * addToCollection.
+	 * 
+	 * @version                1.0
+	 * @author                 Axel Merlin <merlin.axel@gmail.com>
+	 * @param    integer  $id  TV serie title
+	 */
+	public function addToCollection($id) {
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
+		$user=$this->getUser();
+		$bookmarkManager = new \Manager\BookmarkManager();
+		$bookmarkManager->insert([
+			"user_id" => $user["id"],
+			"serie_id" => $id,
+		]);
+		$this->redirectToRoute("detail", ["id"=>$id]);
+	}
+
+	/**
+	 * removeFromCollection.
+	 * 
+	 * @version                1.0
+	 * @author                 Axel Merlin <merlin.axel@gmail.com>
+	 * @param    integer  $id  TV serie title
+	 */
+	public function removeFromCollection($id) {
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
+		$user=$this->getUser();
+		$bookmarkManager = new \Manager\BookmarkManager();
+		$bookmarkManager->delete([
+			"user_id" => $user["id"],
+			"serie_id" => $id,
+		]);
+		$this->redirectToRoute("detail", ["id"=>$id]);
+	}
 
 	/**
 	 * detail method
@@ -23,38 +62,18 @@ class SerieController extends Controller {
 	 * @return   object       TV serie details
 	 */
 	public function detail($id)	{
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
 		$serieManager = new \Manager\SerieManager();
-
 		$serie = $serieManager->find($id);
 		$userManager = new \Manager\UserManager();
 		$foundBookmark = $userManager->isInCollection($id);
-				debug($foundBookmark);
 		$this->show('serie/detail', [
 			"serie" => $serie,
 			"foundCollection" => $foundBookmark
 		]);
 	}
-
-	public function addToCollection($id) {
-		$user=$this->getUser();
-		$bookmarkManager = new \Manager\BookmarkManager();
-		$bookmarkManager->insert([
-			"user_id" => $user["id"],
-			"serie_id" => $id,
-		]);
-		$this->redirectToRoute("detail", ["id"=>$id]);
-	}
-
-	public function removeFromCollection($id) {
-		$user=$this->getUser();
-		$bookmarkManager = new \Manager\BookmarkManager();
-		$bookmarkManager->delete([
-			"user_id" => $user["id"],
-			"serie_id" => $id,
-		]);
-		$this->redirectToRoute("detail", ["id"=>$id]);
-	}
-
 
 	/**
 	 * search method

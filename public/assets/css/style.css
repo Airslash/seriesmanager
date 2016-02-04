@@ -151,38 +151,58 @@ Barre de recherche
 }
 
 /*********************************
+Grid
+*********************************/
+#grid {
+    margin: auto;
+}
+
+/*********************************
 Vignette Masonry
 *********************************/
-#grid h1 {
+.card h1 {
     text-align: center;
 }
 
-#grid img {
+.card img {
     display: block;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 10px;
 }
 
-#grid p {
+.card p {
     text-align: justify;
     padding: 10px;
     width: 260px;
     margin: auto;
 }
 
-#grid .card {
+.card {
     width: 290px;
-}
-
-#grid {
-    margin: auto;
 }
 
 /* section vignette */
 /* #section {
     padding-top: 170px;
 } */
+
+
+/*********************************
+Sheet
+*********************************/
+.sheet {
+	padding-bottom: 80px;
+}
+
+.sheet h1 {
+    text-align: center;
+}
+
+.sheet-item {
+	padding-bottom: 20px;
+}
+
 /*********************************
 Page série détail
 *********************************/
@@ -275,7 +295,7 @@ footer p {
     margin-bottom: 5px;
 }
 
-footer, .push {
+footer .push {
     height: 80px;
 }
 

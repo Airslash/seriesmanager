@@ -5,14 +5,23 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * ScraperController
+ * Scrapes and inserts series and episodes to database from the "back office".
  *
- * Scrapes and inserts series and episodes to database.
- * 
- * This class is not meant for front end purposes
+ * This class is not meant for front end purposes.
  *
- * @version 1.3.3
- * @last_modified  13:38 03/02/2016
+ * Routes :
+ * <pre>
+ *     /scraper/
+ *     /scrapepages/[:from]/[:to]
+ *     /scrapeserie/[:title]
+ * </pre>
+ * will access methods :
+ * <pre>
+ *     scrapeMostPopularSeries()
+ *     scrapePages($from, $to)
+ *     scrapeSerie($title)
+ * </pre>
+ * @last_modified  23:27 03/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
@@ -20,6 +29,7 @@ class ScraperController extends Controller {
 
 	/**
 	 * Scrapes 50 most popular TV series from imdb result page.
+	 *
 	 * @version 1.0
 	 */
 	public function scrapeMostPopularSeries() {
@@ -43,6 +53,7 @@ class ScraperController extends Controller {
 
 	/**
 	 * Scrapes most popular TV series from imdb result pages.
+	 *
 	 * @version 1.2
 	 * @param  integer  $from  Start from page
 	 * @param  integer  $to    ... To page
@@ -72,6 +83,7 @@ class ScraperController extends Controller {
 
 	/**
 	 * Scrapes first TV serie from imdb result page, if any.
+	 *
 	 * @version 2.5.2
 	 * @param   string   $title User query as serie title
 	 * @return  string   Contains imdb_id
@@ -103,6 +115,7 @@ class ScraperController extends Controller {
 
 	/**
 	 * Scrapes TV serie from imdb and inserts serie details into database.
+	 *
 	 * @version 2.5.2
 	 * @param  string  $imdb_id  imdb reference id
 	 */

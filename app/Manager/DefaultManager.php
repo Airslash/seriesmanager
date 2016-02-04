@@ -5,29 +5,21 @@ namespace Manager;
 use \W\Manager\Manager;
 
 /**
- * DefaultManager
+ * Extends W framework manager with 5 cool new functionalities.
  * 
- * Extends W framework Manager with cool new functionalities
- * 
- * @version        1.5
- * @last_modified  14:32 02/02/2016
+ * @last_modified  23:36 03/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
- * @method         countRows  Counts rows from given table
- * @method         lastId     Retrieves id from last inserted element
- * @method         findLike   Finds all lines containing $query string into target table and column
- * @method         findWhere  Finds all lines matching exact $query string into target table and column
  */
 class DefaultManager extends Manager {
 
 	/**
-	 * countRows
+	 * Counts rows from given table.
 	 * 
-	 * Counts rows from given table
-	 *
-	 * @see     Manager::$dbh    Uses dbh property from Manager class
-	 * @param   string   $table  Table name
-	 * @return  integer          Row count
+	 * @version                   1.0
+	 * @see      Manager::$dbh    Uses dbh property from Manager class
+	 * @param    string   $table  Table name
+	 * @return   integer          Row count
 	 */
 	public function countRows($table) {
 		// Searches database for $search into $column from $table
@@ -39,27 +31,25 @@ class DefaultManager extends Manager {
     }
 
 	/**
-	 * lastId
+	 * Retrieves id from last inserted element.
 	 * 
-	 * Retrieves id from last inserted element
-	 *
-	 * @see     Manager::$dbh  Uses dbh property from Manager class
-	 * @return  integer        Last inserted object primary key
+	 * @version                 1.0
+	 * @see      Manager::$dbh  Uses dbh property from Manager class
+	 * @return   integer        Last inserted object primary key
 	 */
 	public function lastId() {
 		return $this->dbh->lastInsertId();
     }
 
 	/**
-	 * findLike
+	 * Finds all lines containing $query string into target table and column.
 	 * 
-	 * Finds all lines containing $query string into target table and column
-	 *
-	 * @param   string   $search  Text search
-	 * @param   string   $column  Target column
-	 * @param   string   $table   Table name
-	 * @return  boolean           False When query returns no result
-	 * @return  array             Associative array containing data from database
+	 * @version                    1.0
+	 * @param    string   $search  Text search
+	 * @param    string   $column  Target column
+	 * @param    string   $table   Table name
+	 * @return   boolean           False When query returns no result
+	 * @return   array             Associative array containing data from database
 	 */
 	public function findLike($search, $column, $table) {
 		// Searches database for $search into $column from $table
@@ -79,9 +69,7 @@ class DefaultManager extends Manager {
 	}
 
 	/**
-	 * findWhere
-	 * 
-	 * Finds all lines matching exact $query string into target table and column
+	 * Finds all lines matching exact $query string into target table and column.
 	 *
 	 * @version                   1.1
 	 * @param   string   $query   Text query
@@ -109,10 +97,9 @@ class DefaultManager extends Manager {
 	}
 
 	/**
-	 * getRandom
-	 * 
-	 * Returns random lines from target table with given limit
+	 * Returns random lines from target table with given limit.
 	 *
+	 * @version                   1.0
 	 * @param   integer  $limit   Lines count to retreive
 	 * @param   string   $table   Table name
 	 * @see     Manager::$dbh     Uses dbh property from Manager class

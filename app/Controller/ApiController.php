@@ -7,7 +7,14 @@ use \W\Controller\Controller;
 /**
  * Controls seriesmanager main api.
  *
- * API allow control of four main methods : searchSerie(), scrapeSerie(), getSerie() and getRandomSeries()
+ * API allows control of four main methods : 
+ * 
+ * <code>
+ * searchSerie()
+ * scrapeSerie()
+ * getSerie()
+ * getRandomSeries()
+ * </code>
  *
  * User must provide the following arguments with the get method :
  * <pre>
@@ -20,7 +27,6 @@ use \W\Controller\Controller;
  * $_GET['getrandomseries']  As string   Sends random series from database in json format
  * $_GET['limit']            As integer  TV serie count to send to client
  * </pre>
- * @version 3.3.4
  * @last_modified    13:35 03/02/2016
  * @author           Matthias Morin <matthias.morin@gmail.com>
  * @copyright        2015-2016 - CAMS Squad, Full Stack Web Developpers Team
@@ -45,10 +51,10 @@ class ApiController extends Controller {
 	protected $notFound;
 
 	/**
-	 * Initializes method, api_key, notFound class properties
-	 * @version 1.1
+	 * Initializes "method", "api_key" and "notFound" properties
+	 * @version 1.1.1
 	 */
-	public function __construct() {
+	protected function __construct() {
 
 		// Gets $method from $_GET
 		$this->method = $_GET['method'];
@@ -73,26 +79,17 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * Main seriesmanager API method.
-	 * 
-	 * Searches for TV serie into database by title
-	 * Scrapes TV serie details from imdb when not present into database
-	 * Returns TV serie details in json format
+	 * seriesmanager API main switch.
 	 *
-	 * User must provide the following arguments with the get method :
-	 * <pre>
-	 * $_GET['api_key']          As string   API key (fake)
-	 * $_GET['method']           As string   One of four methods availlable
-	 * $_GET['getserie']         As string   Returns TV serie details in json format
-	 * $_GET['id']               As integer  TV serie primary key
-	 * $_GET['searchserie']      As string   Searches for TV serie into database by title
-	 * $_GET['scrapeserie']      As string   Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
-	 * $_GET['getrandomseries']  As string   Sends random series from database in json format
-	 * $_GET['limit']            As integer  TV serie count to send to client
-	 * </pre>
-	 * @version 1.1.5
+	 * Sends user requests to child methods.
+	 * 
+	 * @version 1.1.6
 	 * @api
-	 * @return   array                              TV serie details
+	 * @uses    searchSerie()
+	 * @uses    scrapeSerie()
+	 * @uses    getSerie()
+	 * @uses    getRandomSeries()
+	 * @todo    Error management
 	 */
 	public function seriesManager() {
 		$defaultController = new \Controller\DefaultController();
@@ -134,13 +131,13 @@ class ApiController extends Controller {
 
 	/**
 	 * Searches for TV serie into database by title.
-	 * 
+	 *
 	 * Returns TV serie details in json format (by primary key)
-	 * @version 1.1
+	 * @version  1.1
 	 * @param    string  $keyword  TV serie title
-	 * @return   object            TV series details
+	 * @return   object            TV series details (json)
 	 */
-	public function searchSerie($keyword) {
+	protected function searchSerie($keyword) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
@@ -158,14 +155,14 @@ class ApiController extends Controller {
 
 	/**
 	 * Searches for TV serie by title and scrapes TV serie details from imdb when not present into database.
-	 * 
+	 *
 	 * Adds TV serie details into database when found on imdb
 	 * Returns TV serie details in json format (by primary key)
-	 * @version 1.1.1
+	 * @version  1.1.1
 	 * @param    string  $title  TV serie title
-	 * @return   array           TV serie details
+	 * @return   object          TV serie details (json)
 	 */
-	public function scrapeSerie($title) {
+	protected function scrapeSerie($title) {
 		$defaultController = new \Controller\DefaultController();
 		$scraperController = new \Controller\ScraperController();
 		$defaultManager    = new \Manager\DefaultManager();
@@ -197,14 +194,15 @@ class ApiController extends Controller {
 
 	/**
 	 * Gets TV serie, seasons and episodes from database by id.
-	 * 
+	 *
 	 * Returns TV serie details in json format (by primary key)
-	 * @version 1.0.1
+	 * @version  1.0.1
 	 * @param    string  $id  TV serie title
-	 * @return   array        TV series details
+	 * @return   object       TV series details (json)
+	 * @uses                  getSeasons()
 	 * @url                   http://localhost/seriesmanager/public/seriesmanagerapi?method=getserie&id=1&api_key=inwexrlzidlwncjfrrahtexduwskgtvk
 	 */
-	public function getSerie($id) {
+	protected function getSerie($id) {
 		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
@@ -228,14 +226,35 @@ class ApiController extends Controller {
 	}
 
 	/**
-	 * Returns TV serie season and episodes from database by serie primary key and season
-	 * @version 2.2.1
+	 * Sends random series from database in json format.
+	 *
+	 * @version                   1.3
+	 * @param    integer  $limit  Series count to retrieve from database
+	 * @return   object            TV serie details (json)
+	 */
+	protected function getRandomSeries($limit) {
+		$defaultController = new \Controller\DefaultController();
+		$defaultManager    = new \Manager\DefaultManager();
+
+		// Finds random serie into database
+		$series = $defaultManager->getRandom($limit, "series");
+
+		// Returns json to client
+		$this->showJson($series);
+	}
+
+	/**
+	 * Returns TV serie season and episodes from database by serie primary key and season.
+	 *
+	 * Gets TV serie season and episodes and rebuilds usable array
+	 *
+	 * @version                            2.2.1
 	 * @param       integer  $id           TV serie primary key
 	 * @param       integer  $seasonCount  TV serie season count
 	 * @return      array                  TV serie seasons and episodes
 	 */
 	protected function getSeasons($id, $seasonCount) {
-		$episodeManager    = new \Manager\EpisodeManager();
+		$episodeManager = new \Manager\EpisodeManager();
 
 		// Gets serie episodes by season
 		for ($i=1; $i<=$seasonCount; $i++){
@@ -246,22 +265,5 @@ class ApiController extends Controller {
 
 		// Returns array
 		return $seasons;
-	}
-
-	/**
-	 * Sends random series from database in json format
-	 * @version 1.3
-	 * @param    integer  $limit  Series count to retrieve from database
-	 * @return   array            TV serie details
-	 */
-	public function getRandomSeries($limit) {
-		$defaultController = new \Controller\DefaultController();
-		$defaultManager    = new \Manager\DefaultManager();
-
-		// Finds random serie into database
-		$series = $defaultManager->getRandom($limit, "series");
-
-		// Returns json to client
-		$this->showJson($series);
 	}
 }

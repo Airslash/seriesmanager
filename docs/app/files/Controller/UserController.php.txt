@@ -5,12 +5,11 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * UserController
- * @version        1.1
- * @last_modified  12:59 29/01/2016
+ * Controlleur de la page d'inscription.
+ * 
+ * @last_modified  23:35 03/02/2016
  * @author         Christian Marcucci <christian.marcucci13@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team * @author  Christian <[<email address>]>
- * 
  */
 class UserController extends Controller
 {
@@ -35,7 +34,7 @@ class UserController extends Controller
 			// validation des données
 			$isValid = true;
 
-			$userManager = new \Manager\UserManager();
+				
 
 			// username 
 			if (empty($username)){
@@ -108,7 +107,6 @@ class UserController extends Controller
 
 	public function login()
 	{
-
 		if (!empty($_POST)){
 			$username = $_POST['username'];
 			$password = $_POST['password'];
@@ -122,7 +120,8 @@ class UserController extends Controller
 				$user = $userManager->find($result);
 
 			// on le connecte
-				$authentificationManager->logUserIn($user);		
+				$authentificationManager->logUserIn($user);
+				$this->redirect($_SERVER['HTTP_REFERER']);		
 			} 
 
 			else {
@@ -145,7 +144,7 @@ class UserController extends Controller
 
 		$authentificationManager->logUserOut();
 
-		$this->show("default/home");
+		$this->redirectToRoute("home");
 	}
 
 	/**
@@ -154,6 +153,9 @@ class UserController extends Controller
 
 	public function password()
 	{	
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
 
 		$error = "";
 		$email = "";
@@ -242,6 +244,10 @@ class UserController extends Controller
 
 	public function newPassword($token, $id)
 	{
+		if (!$this->getUser()){
+			$this->redirectToRoute("register");
+		}
+		
 		$error = "";
 
 		if ($_POST){

@@ -6,13 +6,13 @@
 
 <!-- for masonry -->
 
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 
-	<section id="grid" class="row">
+	<div id="grid" class="row">
 
-	</section>
+	</div>
 
-</div>
+<!-- </div> -->
 
 
  

@@ -5,12 +5,11 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * UserController
- * @version        1.1
- * @last_modified  12:59 29/01/2016
+ * Controlleur de la page d'inscription.
+ * 
+ * @last_modified  23:35 03/02/2016
  * @author         Christian Marcucci <christian.marcucci13@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team * @author  Christian <[<email address>]>
- * 
  */
 class UserController extends Controller
 {

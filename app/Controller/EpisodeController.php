@@ -8,7 +8,9 @@ class EpisodeController extends Controller
 {
 
 	/**
-	 * Page d'un épisode
+	 * Page d'un épisode.
+	 * 
+     * @deprecated 1.0
 	 */
 	public function episode_detail($id)
 	{

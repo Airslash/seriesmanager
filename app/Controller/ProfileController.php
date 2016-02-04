@@ -8,7 +8,9 @@ class ProfileController extends Controller
 {
 
 	/**
-	 * Page de profil avec liste des séries
+	 * Page de profil avec liste des séries.
+	 * 
+	 * @deprecated 1.0
 	 */
 	public function profile()
 	{
@@ -16,12 +18,12 @@ class ProfileController extends Controller
 			$this->redirectToRoute("register");
 		}
 		$this->show('profile/profile');
-
-
 	}
 
 	/**
-	 * Page pour changer de username
+	 * Page pour changer de username.
+	 * 
+	 * @deprecated 1.0
 	 */
 	public function username()
 	{	

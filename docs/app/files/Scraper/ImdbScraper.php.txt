@@ -3,11 +3,11 @@
 namespace Scraper;
 
 /**
- * Scrapes user query from imdb and returns all scraped data.
+ * Scrapes user query from imdb and returns scraped data.
  * 
- * Seasons and episodes arrays are indexed starting from 1
- * @version 2.6.2
- * @last_modified  23:59 02/02/2016
+ * Note : Seasons and episodes arrays are indexed starting from 1.
+ * 
+ * @last_modified  13:45 03/02/2016
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
  */
@@ -32,7 +32,7 @@ Class ImdbScraper {
 
 	/**
 	 * Initializes context property
-	 * @version 2.5.1
+	 * @version 1.5.1
 	 */
 	public function __construct() {
 		// Sets context property options
@@ -45,7 +45,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * Builds $imdb_id list from imdb result page url (50 elements each)
+	 * Builds $imdb_id list from imdb result page url (50 elements each).
+	 * 
 	 * @version 2.5.1
 	 * @param   string $url  Imdb result page url to be parsed
 	 * @return  array        Contains imdb reference ids
@@ -94,7 +95,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * Builds imdb url from user query and scrapes imdb serie details
+	 * Builds imdb url from user query and scrapes imdb serie details.
+	 * 
 	 * @version          2.6.1
 	 * @param   string   $imdb_id  imdb reference id
 	 * @return  array    Contains  serie infos : title, summary, genre, actors, imdb_id, poster_id, start_date, end_date
@@ -145,9 +147,6 @@ Class ImdbScraper {
 				}
 
 				// gets $summary from first <div class="summary_text">
-				/**
-				 * @todo See full summary
-				 */
 				$summary = $html->find('div.summary_text', 0)->plaintext;
 				$summary = trim($summary);
 
@@ -200,7 +199,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails()
+	 * Builds imdb season url from $imdb_id, $season_count and sends each episode found to scrapeEpisodeDetails().
+	 * 
 	 * @version 2.4.1
 	 * @param  string  $imdb_id       id from imdb
 	 * @param  integer $season_count  Season count
@@ -231,7 +231,8 @@ Class ImdbScraper {
 	}
 
 	/**
-	 * Scrapes epidode details from imdb
+	 * Scrapes epidode details from imdb.
+	 * 
 	 * @version 2.4.1
 	 * @param   integer     $season   Season
 	 * @param   integer     $episode  Episode

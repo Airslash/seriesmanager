@@ -4,9 +4,6 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
-/**
- * DefaultController
- */
 class DefaultController extends Controller {
 
 	/**
@@ -30,17 +27,5 @@ class DefaultController extends Controller {
 	public function about()
 	{
 		$this->show('default/about');
-	}
-
-	/**
-	 * Displays raw array data
-	 * @version       1.0
-	 * @deprecated    1.0
-	 * @param  array  $array  array data
-	 */
-	public function showPrint_r($array) {
-		echo "<pre>";
-		print_r($array);
-		echo "</pre>";
 	}
 }
