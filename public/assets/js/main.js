@@ -43,6 +43,7 @@ function fnAppendCardImage(intSerieId, strSerieImageSrc, $Target){
 	$SerieImage.attr("width", 240);
 	$SerieImage.attr("height", 354);
 	$SerieImage.attr("data-serie-id", intSerieId);
+	// $SerieImage.addClass("serie-image img-responsive center-block");
 	$SerieImage.addClass("serie-image");
 	// Listens to events on image
 	$SerieImage.on("mousedown", function(){
