@@ -1,13 +1,15 @@
-//--------------------------------------------------
-// SERIESMANAGER
-//--------------------------------------------------
+//==================================================
+// SERIESMANAGER.TV
+//==================================================
 
 /**
  * @version        1.1.1
- * @lastmodified   16:23 02/02/2016
+ * @lastmodified   11:34 04/02/2016
  * @category       linear
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Manages layout and ajax for front end
+ * @requires       jQuery, Bootstrap, Masonry, Font-Awesome
+ * @uses           N/A
  */
 
 // Sets $Grid as global variable
@@ -16,26 +18,22 @@ $Grid = $("#grid");
 // Initializes script
 init();
 
-
-//==================================================
-// FUNCTIONS
-//==================================================
-
-
 //--------------------------------------------------
-// fnAppendSerieImage v1.0
+// fnAppendCardImage
 //--------------------------------------------------
 
 
-function fnAppendSerieImage(intSerieId, strSerieImageSrc, $Target){
+function fnAppendCardImage(intSerieId, strSerieImageSrc, $Target){
 
 /**
  * @version        1.0
- * @lastmodified   11:58 02/02/2016
+ * @lastmodified   11:34 04/02/2016
  * @category       seriesmanager_DOM
+ * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Append Serie image to DOM
+ * @input          intSerieId as Integer, strSerieImageSrc as String, $Target as jQuery object
  * @requires       jQuery
- * @uses           fnGetDetailedSerie
+ * @uses           fnGetSerie
  */
 
 	// Empties $Target
@@ -61,33 +59,191 @@ function fnAppendSerieImage(intSerieId, strSerieImageSrc, $Target){
 
 
 
+
 //--------------------------------------------------
-// fnAppendSeriesCard v1.0
+// fnAppendEpisodesCards
 //--------------------------------------------------
 
 
-function fnAppendSeriesCard(arSeries, $Target){
+function fnAppendEpisodesCards(intSerieId, arEpisodes, $Target){
 
 /**
- * @version        1.1
- * @lastmodified   21:00 02/02/2016
+ * @version        1.2.1
+ * @lastmodified   12:46 04/02/2016
  * @category       seriesmanager_DOM
+ * @author         Matthias Morin <matthias.morin@gmail.com>
+ * @purpose        Appends episodes cards
+ * @input          intSerieId as Integer, arEpisodes as Array, $Target as jQuery object
+ * @requires       jQuery, Bootstrap, Masonry
+ * @uses           fnAppendCardImage
+ */
+
+	// Initializes masonry
+	$Target.masonry({
+		itemSelector: ".grid-item",
+		gutter: 20,
+	});
+
+	// Empties $Target
+	$Target.empty();
+
+	for (var i in arEpisodes){
+
+		// --------------------------------------------------
+		// CARD
+		// --------------------------------------------------
+
+		// Creates card to contain TV series
+		var $Card = $("<div>");
+		$Card.addClass("card grid-item col-sm-6 col-lg-3 thumbnail");
+
+		// --------------------------------------------------
+		// TITLE
+		// --------------------------------------------------
+
+		strTitle = arEpisodes[i].title;
+		// Adds title
+		var $Episode = $("<h1>");
+		// Adds title content
+		$Episode.html(strTitle);
+		// Append title to card
+		$Card.append($Episode);
+
+		// --------------------------------------------------
+		// IMAGE CONTAINER
+		// --------------------------------------------------
+
+		// Build images src from $poster_id :
+		var strXxs    = '._V1_UY67_CR0,0,45,67_AL_.jpg';
+		var strXs     = '._V1._SY74_CR0,0,54,74_.jpg';
+		var strSmall  = '._V1_UX67_CR0,0,67,98_AL_.jpg';
+		var strMedium = '._V1_SY317_CR0,0,214,317_AL_.jpg';
+		var strLarge  = '._V1_SX640_SY720_.jpg'; // 488 x 720
+
+		strPosterId = arEpisodes[i].poster_id;
+		console.log("poster_id : " + strPosterId);
+		if (!strPosterId || strPosterId == '01') {
+			strImageSrc = strAssetUrl + 'img/chill-out.jpg';
+		} else {
+			strImageSrc = 'http://ia.media-imdb.com/images/M/' + strPosterId + strMedium;
+		};
+
+		// Adds ImageContainer
+		var $ImageContainer = $("<div>");
+		// Adds class to ImageContainer
+		$ImageContainer.addClass("image-box");
+		// Adds attribute for intSerieId easy access
+		$ImageContainer.attr("data-serie-id", intSerieId);
+		// Adds ImageContainer content
+		fnAppendCardImage(intSerieId, strImageSrc, $ImageContainer);
+		// Appends ImageContainer to card
+		$Card.append($ImageContainer);
+
+		// --------------------------------------------------
+		// TEXT CONTAINER
+		// --------------------------------------------------
+
+		// Creates TextContainer
+		var $TextContainer = $("<div>");
+		// Adds class to TextContainer
+		$TextContainer.addClass("list-box");
+		// Adds attribute to target TextContainer easily
+		$TextContainer.attr("data-serie-id", intSerieId);
+		// Appends TextContainer to card
+		$Card.append($TextContainer);
+
+		// --------------------------------------------------
+		// SExEPx
+		// --------------------------------------------------
+
+		strEpisodeSeason = 'se' + arEpisodes[i].season + 'ep' + arEpisodes[i].episode + '&nbsp;&nbsp;-&nbsp;&nbsp;' + arEpisodes[i].air_date;
+		var $EpisodeSeason = $("<p>");
+		// Add content to EpisodeSeason
+		$EpisodeSeason.html(strEpisodeSeason);
+		// Appends EpisodeSeason to card
+		$Card.append($EpisodeSeason);
+
+		// --------------------------------------------------
+		// SUMMARY
+		// --------------------------------------------------
+
+		strSummary = arEpisodes[i].summary;
+		var $Summary = $("<p>");
+		// Add content to Summary
+		$Summary.html(strSummary);
+		// Appends Summary to card
+		$Card.append($Summary);
+
+		// --------------------------------------------------
+		// APPENDS TO DOM
+		// --------------------------------------------------
+
+		// Appends $Card to $Grid
+		$Target.append($Card);
+		// Updates masonry
+		$Target.masonry("appended", $Card);
+	}
+	// Reloads masony layout
+	$Target.masonry("reloadItems");
+	// Refreshes $Target layout
+	$Target.masonry("layout");
+}
+
+
+
+
+//--------------------------------------------------
+// fnAppendSeriesCards
+//--------------------------------------------------
+
+
+function fnAppendSeriesCards(arSeries, $Target){
+
+/**
+ * @version        1.2
+ * @lastmodified   12:39 04/02/2016
+ * @category       seriesmanager_DOM
+ * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Appends series cards
  * @input          arSeries as Array, $Target as jQuery object
  * @requires       jQuery, Bootstrap, Masonry
+ * @uses           fnAppendCardImage
  */
 
-	// Empties $Grid
-	$Grid.empty();
+	// Initializes masonry
+	$Target.masonry({
+		itemSelector: ".grid-item",
+		gutter: 20,
+	});
 
-	intLength = arSeries.length;
-	for (i=0; i<intLength; i++){
+	// Empties $Target
+	$Target.empty();
+
+	for (var i in arSeries){
 
 		// --------------------------------------------------
-		// DATA
+		// CARD
+		// --------------------------------------------------
+
+		// Creates card to contain TV series
+		var $Card = $("<div>");
+		$Card.addClass("card grid-item col-sm-6 col-lg-3 thumbnail");
+
+		// --------------------------------------------------
+		// TITLE
 		// --------------------------------------------------
 
 		strSerieTitle = arSeries[i].title;
+		// Adds title
+		var $SerieTitle = $("<h1>");
+		// Adds title content
+		$SerieTitle.html(strSerieTitle);
+		// Append title to card
+		$Card.append($SerieTitle);
+
+		// --------------------------------------------------
+		// IMAGE CONTAINER
+		// --------------------------------------------------
 
 		// Build images src from $poster_id :
 		var strXxs    = '._V1_UY67_CR0,0,45,67_AL_.jpg';
@@ -103,58 +259,39 @@ function fnAppendSeriesCard(arSeries, $Target){
 			strSerieImageSrc = 'http://ia.media-imdb.com/images/M/' + strSerieImageSrc + strMedium;
 		};
 
+		// Adds ImageContainer
+		var $ImageContainer = $("<div>");
+
 		// Appends Serie primary key for easy acces
-		intSerieId      = arSeries[i].id;
-		strSerieGenre   = arSeries[i].genre;
-		strSerieSummary = arSeries[i].summary;
+		intSerieId = arSeries[i].id;
+		// Adds class to ImageContainer
+		$ImageContainer.addClass("image-box");
 
-		// Creates card to contain TV series
-		var $Card = $("<div>");
-		$Card.addClass("card grid-item col-sm-6 col-lg-3 thumbnail");
-
-		// --------------------------------------------------
-		// TITLE
-		// --------------------------------------------------
-
-		// Adds title
-		var $SerieTitle = $("<h1>");
-		// Adds title content
-		$SerieTitle.html(strSerieTitle);
-		// Append title to card
-		$Card.append($SerieTitle);
-
-		// --------------------------------------------------
-		// IMAGE BOX
-		// --------------------------------------------------
-
-		// Adds ImageBox
-		var $ImageBox = $("<div>");
-		// Adds class to ImageBox
-		$ImageBox.addClass("image-box");
 		// Adds attribute for intSerieId easy access
-		$ImageBox.attr("data-serie-id", intSerieId);
-		// Adds ImageBox content
-		fnAppendSerieImage(intSerieId, strSerieImageSrc, $ImageBox);
-		// Appends ImageBox to card
-		$Card.append($ImageBox);
+		$ImageContainer.attr("data-serie-id", intSerieId);
+		// Adds ImageContainer content
+		fnAppendCardImage(intSerieId, strSerieImageSrc, $ImageContainer);
+		// Appends ImageContainer to card
+		$Card.append($ImageContainer);
 
 		// --------------------------------------------------
-		// TEXT BOX
+		// TEXT CONTAINER
 		// --------------------------------------------------
 
-		// Creates ListBox
-		var $ListBox = $("<div>");
-		// Adds class to ListBox
-		$ListBox.addClass("list-box");
-		// Adds attribute to target ListBox easily
-		$ListBox.attr("data-serie-id", intSerieId);
-		// Appends ListBox to card
-		$Card.append($ListBox);
+		// Creates TextContainer
+		var $TextContainer = $("<div>");
+		// Adds class to TextContainer
+		$TextContainer.addClass("list-box");
+		// Adds attribute to target TextContainer easily
+		$TextContainer.attr("data-serie-id", intSerieId);
+		// Appends TextContainer to card
+		$Card.append($TextContainer);
 
 		// --------------------------------------------------
 		// GENRE
 		// --------------------------------------------------
 
+		strSerieGenre   = arSeries[i].genre;
 		var $Genre = $("<p>");
 		// Add content to Genre
 		$Genre.html(strSerieGenre);
@@ -165,6 +302,7 @@ function fnAppendSeriesCard(arSeries, $Target){
 		// SUMMARY
 		// --------------------------------------------------
 
+		strSerieSummary = arSeries[i].summary;
 		var $Summary = $("<p>");
 		// Add content to Summary
 		$Summary.html(strSerieSummary);
@@ -188,8 +326,9 @@ function fnAppendSeriesCard(arSeries, $Target){
 
 
 
+
 //--------------------------------------------------
-// fnAppendSerieSheet v1.0
+// fnAppendSerieSheet
 //--------------------------------------------------
 
 
@@ -197,8 +336,11 @@ function fnAppendSerieSheet(arSerie, $Target){
 
 /**
  * @version        1.0
+ * @lastmodified   11:34 04/02/2016
  * @category       seriesmanager_DOM
+ * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Appends serie details sheet
+ * @input          arSerie as Array, $Target as jQuery object
  * @requires       jQuery, Bootstrap, Masonry
  */
 
@@ -323,18 +465,43 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// SEASONS
 	// --------------------------------------------------
 
+	fnBuildSerieSeasons(arSerie, $TextContainer);
+}
+
+
+
+
+//--------------------------------------------------
+// fnBuildSerieSeasons
+//--------------------------------------------------
+
+
+function fnBuildSerieSeasons(arSerie, $Target){
+
+/**
+ * @version        1.1
+ * @lastmodified   11:34 04/02/2016
+ * @category       HTML
+ * @author         Matthias Morin <matthias.morin@gmail.com>
+ * @purpose        Build serie seasons
+ * @input          arSerie as Array, $Target as jQuery object
+ * @requires       jQuery, Bootstrap, Masonry, Font-Awesome
+ * @uses           fnGetSeasons
+ */
+
 	// For each season
 	for (i=1; i<=arSerie["season_count"]; i++){
 
 		// Creates Season
 		$Season = $("<div>");
 		$Season.addClass("season sheet-item col-sm-12 col-lg-6 thumbnail");
-
+		$Season.attr("data-season", i);
+		$Season.attr("data-serie-id", arSerie.id);
 
 		// Initializes strHtml
 		strHtml = "";
 		// Display Season number
-		strHtml += '<h2>Season&nbsp;' + i +  '</h2>';
+		strHtml += '<a class="btn btn-primary">Season&nbsp;' + i +  '</a>';
 
 		// For each episode
 		strHtml += '<ul class="sheet-item">\n';
@@ -344,48 +511,29 @@ function fnAppendSerieSheet(arSerie, $Target){
 		strHtml += "</ul>\n";
 		$Season.html(strHtml);
 		// Appends Season to DOM
-		$TextContainer.append($Season);
-	}
-}
-
-
-
-//--------------------------------------------------
-// fnBuildSerieSeasons v1.0
-//--------------------------------------------------
-
-
-function fnBuildSerieSeasons(arSerie, $Target){
-
-	// For each season
-	for (i=1; i<=arSerie["season_count"]; i++){
-
-		// Creates Season
-		$Season = $("<div>");
-		$Season.addClass("season sheet-item col-sm-12 col-lg-12 thumbnail");
-
-
-		// Initializes strHtml
-		strHtml = "";
-		// Display Season number
-		strHtml += '<h2>Season&nbsp;' + i +  '</h2>';
-
-		// For each episode
-		strHtml += '<ul class="sheet-item col-sm-6 col-lg-6">\n';
-		for (var j in arSerie["seasons"][i].episodes){
-			strHtml += "<li>Episode&nbsp;" + j + "&nbsp;:&nbsp;" + arSerie["seasons"][i]["episodes"][j].title + "</li>\n";
-		}
-		strHtml += "</ul>\n";
-		$Season.html(strHtml);
-		// Appends Season to DOM
 		$Target.append($Season);
+
+		// Listens to events on image
+		$Season.on("mousedown", function(){
+
+			// Gets intSerieId from image attribute (anonymous function doesn't accept arguments)
+			var intSerieId = $(this).attr("data-serie-id");
+
+			// Gets intSeason from image attribute
+			var intSeason = $(this).attr("data-season");
+
+			// Targets $Grid
+			var $Grid = $(this).parent().parent();
+			fnGetSeasons(intSerieId, intSeason, $Grid);
+		});
 	}
 }
 
 
 
+
 //--------------------------------------------------
-// fnGetRandomSeries v1.0
+// fnGetRandomSeries
 //--------------------------------------------------
 
 
@@ -393,11 +541,13 @@ function fnGetRandomSeries($Target){
 
 /**
  * @version        1.1
- * @lastmodified   16:45 02/02/2016
+ * @lastmodified   11:34 04/02/2016
  * @category       ajax
+ * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets random series from seriesmanager with Ajax
+ * @input          $Target as jQuery object
  * @requires       jQuery
- * @uses           fnAppendSeriesCard
+ * @uses           fnAppendSeriesCards
  */
 
 	$.ajax({
@@ -412,14 +562,53 @@ function fnGetRandomSeries($Target){
 	.done(function(response){
 		var arSeries = response;
 		// Appends arSeries to DOM
-		fnAppendSeriesCard(arSeries, $Target);
+		fnAppendSeriesCards(arSeries, $Target);
 	});
 }
 
 
 
+
 //--------------------------------------------------
-// fnGetSerie v1.0
+// fnGetSeasons
+//--------------------------------------------------
+
+
+function fnGetSeasons(intSerieId, intSeason, $Target){
+
+/**
+ * @version        1.0
+ * @lastmodified   11:34 04/02/2016
+ * @category       ajax
+ * @author         Matthias Morin <matthias.morin@gmail.com>
+ * @purpose        Gets seasons and episodes from seriesmanager API with Ajax
+ * @input          intSerieId as Integer, intSeason as Integer, $Target as jQuery object
+ * @requires       jQuery
+ * @uses           fnAppendEpisodesCards
+ */
+
+	$.ajax({
+		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
+		"type": "GET",
+		"data":{
+				"method"  : "getserie",
+				"id"      : intSerieId,
+				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
+		}
+	})
+	.done(function(response){
+		var arSerie = response;
+
+		// Appends arSerie to DOM
+		fnAppendEpisodesCards(intSerieId, arSerie["seasons"][intSeason].episodes, $Target);
+	});
+}
+
+
+
+
+//--------------------------------------------------
+// fnGetSerie
 //--------------------------------------------------
 
 
@@ -427,11 +616,13 @@ function fnGetSerie(intSerieId, $Target){
 
 /**
  * @version        1.2
- * @lastmodified   16:19 03/02/2016
+ * @lastmodified   11:34 04/02/2016
  * @category       ajax
+ * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets serie, seasons and episodes from seriesmanager API with Ajax
+ * @input          intSerieId as Integer, $Target as jQuery object
  * @requires       jQuery
- * @uses           fnAppendSeriesCard
+ * @uses           fnAppendSerieSheet
  */
 
 	$.ajax({
@@ -452,8 +643,9 @@ function fnGetSerie(intSerieId, $Target){
 
 
 
+
 //--------------------------------------------------
-// init v1.0
+// init
 //--------------------------------------------------
 
 
@@ -461,21 +653,17 @@ function init() {
 
 /**
  * @version        1.1.2
- * @lastmodified   21:29 02/02/2016
+ * @lastmodified   11:34 04/02/2016
  * @category       init
+ * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Initialyzes script
+ * @input          N/A
+ * @return         N/A
  * @assumes        $Grid
  * @requires       jQuery, Masonry
- * @uses           fnGetRandomSeries
- * @uses           fnAppendSeriesCard
+ * @uses           fnGetRandomSeries, fnAppendSeriesCards
  * @todo           Please wait
  */
-
-	// Initializes masonry
-	$Grid.masonry({
-		itemSelector: ".grid-item",
-		gutter: 20,
-	});
 
 	// Loads random series
 	fnGetRandomSeries($Grid);
@@ -495,7 +683,7 @@ function init() {
 			}
 		}).done(function(response) {
 			// Appends result to card
-			fnAppendSeriesCard(response, $Grid);
+			fnAppendSeriesCards(response, $Grid);
 		});
 	});
 
@@ -515,7 +703,7 @@ function init() {
 				}
 			}).done(function(response) {
 				// Appends result to card
-				fnAppendSeriesCard(response, $Grid);
+				fnAppendSeriesCards(response, $Grid);
 			});
 		} else {
 			// Loads random series
@@ -523,6 +711,3 @@ function init() {
 		}
 	});
 }
-
-
-
