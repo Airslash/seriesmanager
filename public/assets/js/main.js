@@ -431,7 +431,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Genre
 	$Genre.addClass("genre sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Genre
-	$Genre.html("Genre : " + strSerieGenre);
+	$Genre.html("<strong>Genre</strong> : " + strSerieGenre);
 	// Appends Genre to TextContainer
 	$TextContainer.append($Genre);
 
@@ -444,7 +444,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Actors
 	$Actors.addClass("actors sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Actors
-	$Actors.html("Actors : " + strSerieActors);
+	$Actors.html("<strong>Actors</strong> : " + strSerieActors);
 	// Appends Actors to sheet
 	$TextContainer.append($Actors);
 
@@ -457,7 +457,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Summary
 	$Summary.addClass("summary sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Summary
-	$Summary.html(strSerieSummary);
+	$Summary.html("<strong>Summary</strong> : " +strSerieSummary);
 	// Appends Summary to sheet
 	$TextContainer.append($Summary);
 
@@ -465,7 +465,33 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// SEASONS
 	// --------------------------------------------------
 
+<<<<<<< HEAD
 	fnBuildSerieSeasons(arSerie, $TextContainer);
+=======
+	// For each season
+	for (i=1; i<=arSerie["season_count"]; i++){
+
+		// Creates Season
+		$Season = $("<div>");
+		$Season.addClass("season sheet-item col-sm-12 col-lg-6 thumbnail");
+
+
+		// Initializes strHtml
+		strHtml = "";
+		// Display Season number
+		strHtml += '<a data-toggle="collapse" href="#collapseSeason" aria-expanded="false" aria-controls="collapseSeason">Season&nbsp;' + i +  '</a>';
+
+		// For each episode
+		strHtml += '<ul class="sheet-item collapse" id="collapseSeason">\n';
+		for (var j in arSerie["seasons"][i].episodes){
+			strHtml += "<li>Episode&nbsp;" + j + "&nbsp;:&nbsp;" + arSerie["seasons"][i]["episodes"][j].title + "</li>\n";
+		}
+		strHtml += "</ul>\n";
+		$Season.html(strHtml);
+		// Appends Season to DOM
+		$TextContainer.append($Season);
+	}
+>>>>>>> origin/master
 }
 
 
@@ -494,12 +520,18 @@ function fnBuildSerieSeasons(arSerie, $Target){
 
 		// Creates Season
 		$Season = $("<div>");
+<<<<<<< HEAD
 		$Season.addClass("season sheet-item col-sm-12 col-lg-6 thumbnail");
 		$Season.attr("data-season", i);
 		$Season.attr("data-serie-id", arSerie.id);
+=======
+		$Season.addClass("season sheet-item col-sm-12 col-lg-12 thumbnail dropdown");
+
+>>>>>>> origin/master
 
 		// Initializes strHtml
 		strHtml = "";
+
 		// Display Season number
 		strHtml += '<a class="btn btn-primary">Season&nbsp;' + i +  '</a>';
 
