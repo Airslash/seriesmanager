@@ -1,0 +1,24 @@
+var strHtml = "";
+strHtml += '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
+strHtml += '<div class="panel panel-default">';
+
+	// For each season
+	for (i=1; i<=arSerie["season_count"]; i++){
+		strHtml += '<div class="panel-heading" role="tab" id="heading'+i+'">';
+		strHtml += '<h2 class="panel-title">';
+		strHtml += '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+i+'" aria-expanded="true" aria-controls="collapse'+i+'">';
+		strHtml += 'Season&nbsp;'+i;
+		strHtml += '</a></h2></div>';
+
+		strHtml += '<div id="collapse'+i+'" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading'+i+'">';
+		strHtml += '<div class="panel-body">';
+
+		strHtml += '<ul class="sheet-item">\n';
+
+		// For each episode
+		for (var j in arSerie["seasons"][i].episodes){
+			strHtml += "<li>Episode&nbsp;" + j + "&nbsp;:&nbsp;" + arSerie["seasons"][i]["episodes"][j].title + "</li>\n";
+		}
+		strHtml += '</ul></div></div>\n';
+	}
+strHtml += '</div></div>';

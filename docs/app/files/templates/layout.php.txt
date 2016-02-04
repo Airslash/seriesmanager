@@ -112,7 +112,6 @@
 			    		      	?>
 
 			    		   </div>
-			    		   </li>
 			    		  <li><a href="<?php echo $this->url('register') ?>">Register</a></li>
 			    		</ul>
 		    		</div>

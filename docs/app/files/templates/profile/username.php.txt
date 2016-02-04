@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 	
 	<div class="background">
-		<h3>Whant's to change your username ?</h3>
+		<h3>Want to change your username ?</h3>
 		
 		<form method="POST">
 			<label>Please enter your new username : </label><br />

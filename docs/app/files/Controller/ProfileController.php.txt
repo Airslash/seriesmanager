@@ -25,6 +25,7 @@ class ProfileController extends Controller
 	 * 
 	 * @deprecated 1.0
 	 */
+	
 	public function username()
 	{	
 		$error = "";
