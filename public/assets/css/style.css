@@ -259,6 +259,10 @@ Page série détail
     padding-left: 0;
 }
 
+#links {
+    padding-top: 15px;
+}
+
 /*********************************
 Page détail épisode
 *********************************/
@@ -372,6 +376,10 @@ Media query
         visibility: visible;
     }
 
+    #serie-info {
+        height: 1020px;
+     }
+
     footer ul {
         text-align: center;
     }
@@ -433,7 +441,7 @@ Media query
     #section {
         padding-top: 30px;
     }
-    
+
 }
 
 @media (min-width: 1000px){
@@ -458,6 +466,10 @@ Media query
          width: 970px;
      }
 
+    #serie-info {
+        height: 800px;
+     }
+    
 }
 
 @media (min-width: 1300px) {
