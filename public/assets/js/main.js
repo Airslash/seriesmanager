@@ -428,11 +428,25 @@ function fnAppendSerieSheet(arSerie, $Target){
 	strSerieGenre   = arSerie.genre;
 	var $Genre = $("<p>");
 	// Adds class to Genre
-	$Genre.addClass("genre sheet-item col-sm-12 col-lg-12 thumbnail");
+	$Genre.addClass("genre sheet-item col-sm-12 col-lg-6 thumbnail");
 	// Add content to Genre
 	$Genre.html("Genre : " + strSerieGenre);
 	// Appends Genre to TextContainer
 	$TextContainer.append($Genre);
+
+	// --------------------------------------------------
+	// AMAZON
+	// --------------------------------------------------
+
+	// Adds link
+	var $AmazonLink = $("<a>");
+	$AmazonLink.addClass("genre sheet-item col-sm-12 col-lg-6 thumbnail");
+	strLink = "http://www.amazon.fr/s/ref=nb_sb_noss_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=" + arSerie.title;
+	$AmazonLink.attr("href", strLink);
+	$AmazonLink.attr("target", "_blank");
+	$AmazonLink.html('<i class="fa fa-amazon"> Amazon</i>');
+	// Append title to sheet
+	$TextContainer.append($AmazonLink);
 
 	// --------------------------------------------------
 	// ACTORS
