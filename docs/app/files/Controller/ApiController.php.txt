@@ -54,7 +54,7 @@ class ApiController extends Controller {
 	 * Initializes "method", "api_key" and "notFound" properties
 	 * @version 1.1.1
 	 */
-	protected function __construct() {
+	public function __construct() {
 
 		// Gets $method from $_GET
 		$this->method = $_GET['method'];

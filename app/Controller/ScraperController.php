@@ -5,7 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 
 /**
- * Scrapes and inserts series and episodes to database from the "back office".
+ * Scrapes and inserts series and episodes to database from "back office".
  *
  * This class is not meant for front end purposes.
  *
