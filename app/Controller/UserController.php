@@ -153,10 +153,7 @@ class UserController extends Controller
 
 	public function password()
 	{	
-		if (!$this->getUser()){
-			$this->redirectToRoute("register");
-		}
-
+		
 		$error = "";
 		$email = "";
 
@@ -244,9 +241,6 @@ class UserController extends Controller
 
 	public function newPassword($token, $id)
 	{
-		if (!$this->getUser()){
-			$this->redirectToRoute("register");
-		}
 		
 		$error = "";
 
