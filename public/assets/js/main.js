@@ -576,17 +576,26 @@ function fnGetRandomSeries($Target){
 function fnGetSeasons(intSerieId, intSeason, $Target){
 
 /**
- * @version        1.0
- * @lastmodified   11:34 04/02/2016
+ * @version        2.0
+ * @lastmodified   13:47 04/02/2016
  * @category       ajax
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets seasons and episodes from seriesmanager API with Ajax
  * @input          intSerieId as Integer, intSeason as Integer, $Target as jQuery object
  * @requires       jQuery
  * @uses           fnAppendEpisodesCards
+ * @note           Caches jSon object into sessionStorage
  */
 
-	$.ajax({
+	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
+	var jsSerie = window.sessionStorage.getItem(intSerieId);
+	if (!!jsSerie){
+		// Parses json
+		arSerie = JSON.parse(jsSerie);
+		// Appends jsSerie to DOM
+		fnAppendEpisodesCards(intSerieId, arSerie["seasons"][intSeason].episodes, $Target);
+	}else{
+		$.ajax({
 		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
 		"type": "GET",
 		"data":{
@@ -594,16 +603,19 @@ function fnGetSeasons(intSerieId, intSeason, $Target){
 				"id"      : intSerieId,
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
 		}
-	})
-	.done(function(response){
-		var arSerie = response;
-
-		// Appends arSerie to DOM
-		fnAppendEpisodesCards(intSerieId, arSerie["seasons"][intSeason].episodes, $Target);
-	});
+		})
+		.done(function(response){
+			// Stringifys response to properly cache it into sessionStorage
+			var jsSerie = JSON.stringify(response);
+			// Caches resulting string into sessionStorage in order to avoid unnecessary server requests
+			window.sessionStorage.setItem(intSerieId, jsSerie);
+			// Returns response value
+			var arSerie = response;
+			// Appends arSerie to DOM
+			fnAppendEpisodesCards(intSerieId, arSerie["seasons"][intSeason].episodes, $Target);
+		});
+	}
 }
-
-
 
 
 //--------------------------------------------------
@@ -612,19 +624,25 @@ function fnGetSeasons(intSerieId, intSeason, $Target){
 
 
 function fnGetSerie(intSerieId, $Target){
-
 /**
- * @version        1.2
- * @lastmodified   11:34 04/02/2016
+ * @version        2.0
+ * @lastmodified   13:36 04/02/2016
  * @category       ajax
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Gets serie, seasons and episodes from seriesmanager API with Ajax
  * @input          intSerieId as Integer, $Target as jQuery object
  * @requires       jQuery
  * @uses           fnAppendSerieSheet
+ * @note           Caches jSon object into sessionStorage
  */
 
-	$.ajax({
+	// Checks if data is availlable in sessionStorage to avoid unnecessary server requests
+	var jsSerie = window.sessionStorage.getItem(intSerieId);
+	if (!!jsSerie){
+		// Appends jsSerie to DOM
+		fnAppendSerieSheet(JSON.parse(jsSerie), $Target);
+	}else{
+		$.ajax({
 		"url": "http://localhost/seriesmanager/public/seriesmanagerapi",
 		"type": "GET",
 		"data":{
@@ -632,15 +650,19 @@ function fnGetSerie(intSerieId, $Target){
 				"id"      : intSerieId,
 				"api_key" : "inwexrlzidlwncjfrrahtexduwskgtvk"
 		}
-	})
-	.done(function(response){
-		var arSerie = response;
-		// Appends arSerie to DOM
-		fnAppendSerieSheet(arSerie, $Target);
-	});
+		})
+		.done(function(response){
+			// Stringifys response to properly cache it into sessionStorage
+			var jsSerie = JSON.stringify(response);
+			// Caches resulting string into sessionStorage in order to avoid unnecessary server requests
+			window.sessionStorage.setItem(intSerieId, jsSerie);
+			// Returns response value
+			var arSerie = response;
+			// Appends arSerie to DOM
+			fnAppendSerieSheet(arSerie, $Target);
+		});
+	}
 }
-
-
 
 
 //--------------------------------------------------
