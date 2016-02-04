@@ -334,10 +334,10 @@ function fnAppendSerieSheet(arSerie, $Target){
 		// Initializes strHtml
 		strHtml = "";
 		// Display Season number
-		strHtml += '<h2>Season&nbsp;' + i +  '</h2>';
+		strHtml += '<a data-toggle="collapse" href="#collapseSeason" aria-expanded="false" aria-controls="collapseSeason">Season&nbsp;' + i +  '</a>';
 
 		// For each episode
-		strHtml += '<ul class="sheet-item">\n';
+		strHtml += '<ul class="sheet-item collapse" id="collapseSeason">\n';
 		for (var j in arSerie["seasons"][i].episodes){
 			strHtml += "<li>Episode&nbsp;" + j + "&nbsp;:&nbsp;" + arSerie["seasons"][i]["episodes"][j].title + "</li>\n";
 		}
@@ -362,11 +362,12 @@ function fnBuildSerieSeasons(arSerie, $Target){
 
 		// Creates Season
 		$Season = $("<div>");
-		$Season.addClass("season sheet-item col-sm-12 col-lg-12 thumbnail");
+		$Season.addClass("season sheet-item col-sm-12 col-lg-12 thumbnail dropdown");
 
 
 		// Initializes strHtml
 		strHtml = "";
+
 		// Display Season number
 		strHtml += '<h2>Season&nbsp;' + i +  '</h2>';
 

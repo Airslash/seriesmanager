@@ -244,6 +244,21 @@ Page série détail
     color: rgb(0, 0, 0);
 }
 
+.season a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.season li {
+    list-style: none;
+    padding-top: 10px;
+}
+
+.season ul {
+    padding-left: 0;
+}
+
 /*********************************
 Page détail épisode
 *********************************/
