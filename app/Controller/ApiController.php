@@ -92,7 +92,6 @@ class ApiController extends Controller {
 	 * @todo    Error management
 	 */
 	public function seriesManager() {
-		$defaultController = new \Controller\DefaultController();
 
 		// API key validation
 		if ($this->api_key == 'inwexrlzidlwncjfrrahtexduwskgtvk'){
@@ -138,7 +137,6 @@ class ApiController extends Controller {
 	 * @return   object            TV series details (json)
 	 */
 	protected function searchSerie($keyword) {
-		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
 		// Searches for TV serie into database by title
@@ -163,7 +161,6 @@ class ApiController extends Controller {
 	 * @return   object          TV serie details (json)
 	 */
 	protected function scrapeSerie($title) {
-		$defaultController = new \Controller\DefaultController();
 		$scraperController = new \Controller\ScraperController();
 		$defaultManager    = new \Manager\DefaultManager();
 
@@ -203,7 +200,6 @@ class ApiController extends Controller {
 	 * @url                   http://localhost/seriesmanager/public/seriesmanagerapi?method=getserie&id=1&api_key=inwexrlzidlwncjfrrahtexduwskgtvk
 	 */
 	protected function getSerie($id) {
-		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
 		// Gets TV serie from database by id
@@ -233,7 +229,6 @@ class ApiController extends Controller {
 	 * @return   object            TV serie details (json)
 	 */
 	protected function getRandomSeries($limit) {
-		$defaultController = new \Controller\DefaultController();
 		$defaultManager    = new \Manager\DefaultManager();
 
 		// Finds random serie into database

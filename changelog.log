@@ -8,14 +8,6 @@
  * @copyright      2015-2016 - CAMS Squad, Full Stack Web Developpers Team
 
 --------------------------------------------------
-Documentation : 
---------------------------------------------------
-
-php .\phpDocumentor.phar -d ./app -t ./docs/app
-
-
-
---------------------------------------------------
 Architecture de la base de donnée :
 --------------------------------------------------
 
@@ -49,41 +41,7 @@ users :
 	token    = varchar(255),
 	username = varchar(191) -- UNIQUE
 
-@todo  Demander à Guillaume si c'est nécessaire de mettre des index sur ces tables
 bookmarks :
 	user_id    = int(10) UNSIGNED NOT NULL, -- INDEX
 	element_id = int(10) UNSIGNED NOT NULL, -- INDEX
 	type       = varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-
-
-
---------------------------------------------------
-Managers
---------------------------------------------------
-
-DefaultManager : Extends W framework Manager with cool new functionalities
-	countRows : Counts rows from given table
-	lastId    : Retrieves id from last inserted element
-	findLike  : Finds all lines containing $query string into target table and column
-	findWhere : Finds all lines matching exact $query string into target table and column
-
-
---------------------------------------------------
-Controllers
---------------------------------------------------
-
-
-SerieController :
-	autocompleteSerie :  Searches for TV serie into database by title
-	searchSerie       :  Searches for TV serie by title and scrapes TV serie details from imdb when not present into database
-	findSerie         :  Finds TV serie into database by id
-	randomSerie       :  Sends random amount of series from database in json format
-
-ScraperController : Scrapes and inserts series and episodes to database
-	scrapeMostPopularSeries : Scrapes most popular TV series from imdb result page
-	scrapeSerie             : Scrapes first TV serie from imdb result page, if any
-	insertSerie             : Scrapes TV serie from imdb and inserts serie details into database
-
-DefaultController
-	home Default : home page
-	showPrint_r  : Displays raw array data

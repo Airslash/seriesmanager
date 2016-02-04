@@ -133,11 +133,4 @@
 		 * @deprecated 1.0
 		 */
 		['GET|POST', '/search/[:title]', 'Serie#search', 'search'],
-
-		/**
-		 * test
-		 * Affichage d'un test
-		 * @deprecated 1.0
-		 */
-		['GET|POST', '/test', 'Default#showPrint_r', 'test'],
 	);

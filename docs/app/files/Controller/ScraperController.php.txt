@@ -35,7 +35,6 @@ class ScraperController extends Controller {
 	public function scrapeMostPopularSeries() {
 
 		// Initializes objects
-		$defaultController = new \Controller\DefaultController();
 		$imdbScraper       = new \Scraper\ImdbScraper();
 		$defaultManager    = new \Manager\DefaultManager();
 
@@ -46,7 +45,7 @@ class ScraperController extends Controller {
 			$this->insertSerie($serieId);
 			$serie = $defaultManager->findWhere($serieId, "imdb_id", "series");
 			if ($serie) {
-				$defaultController->showPrint_r($serie);
+				debug($serie);
 			}
 		}
 	}
@@ -61,7 +60,6 @@ class ScraperController extends Controller {
 	public function scrapePages($from, $to) {
 
 		// Initializes objects
-		$defaultController = new \Controller\DefaultController();
 		$imdbScraper       = new \Scraper\ImdbScraper();
 		$defaultManager    = new \Manager\DefaultManager();
 		$from = ($from*50)+1;
@@ -75,7 +73,7 @@ class ScraperController extends Controller {
 				$this->insertSerie($serieId);
 				$serie = $defaultManager->findWhere($serieId, "imdb_id", "series");
 				if ($serie) {
-					$defaultController->showPrint_r($serie);
+					debug($serie);
 				}
 			}
 		}
