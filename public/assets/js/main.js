@@ -9,7 +9,6 @@
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Manages layout and ajax for front end
  * @requires       jQuery, Bootstrap, Masonry, Font-Awesome
- * @uses           N/A
  */
 
 // Sets $Grid as global variable
@@ -68,8 +67,8 @@ function fnAppendCardImage(intSerieId, strSerieImageSrc, $Target){
 function fnAppendEpisodesCards(intSerieId, arEpisodes, $Target){
 
 /**
- * @version        1.2.1
- * @lastmodified   12:46 04/02/2016
+ * @version        1.2
+ * @lastmodified   12:39 04/02/2016
  * @category       seriesmanager_DOM
  * @author         Matthias Morin <matthias.morin@gmail.com>
  * @purpose        Appends episodes cards
@@ -121,7 +120,6 @@ function fnAppendEpisodesCards(intSerieId, arEpisodes, $Target){
 		var strLarge  = '._V1_SX640_SY720_.jpg'; // 488 x 720
 
 		strPosterId = arEpisodes[i].poster_id;
-		console.log("poster_id : " + strPosterId);
 		if (!strPosterId || strPosterId == '01') {
 			strImageSrc = strAssetUrl + 'img/chill-out.jpg';
 		} else {
@@ -431,7 +429,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Genre
 	$Genre.addClass("genre sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Genre
-	$Genre.html("<strong>Genre</strong> : " + strSerieGenre);
+	$Genre.html("Genre : " + strSerieGenre);
 	// Appends Genre to TextContainer
 	$TextContainer.append($Genre);
 
@@ -444,7 +442,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Actors
 	$Actors.addClass("actors sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Actors
-	$Actors.html("<strong>Actors</strong> : " + strSerieActors);
+	$Actors.html("Actors : " + strSerieActors);
 	// Appends Actors to sheet
 	$TextContainer.append($Actors);
 
@@ -457,7 +455,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Summary
 	$Summary.addClass("summary sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Summary
-	$Summary.html("<strong>Summary</strong> : " +strSerieSummary);
+	$Summary.html(strSerieSummary);
 	// Appends Summary to sheet
 	$TextContainer.append($Summary);
 
@@ -465,33 +463,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// SEASONS
 	// --------------------------------------------------
 
-<<<<<<< HEAD
 	fnBuildSerieSeasons(arSerie, $TextContainer);
-=======
-	// For each season
-	for (i=1; i<=arSerie["season_count"]; i++){
-
-		// Creates Season
-		$Season = $("<div>");
-		$Season.addClass("season sheet-item col-sm-12 col-lg-6 thumbnail");
-
-
-		// Initializes strHtml
-		strHtml = "";
-		// Display Season number
-		strHtml += '<a data-toggle="collapse" href="#collapseSeason" aria-expanded="false" aria-controls="collapseSeason">Season&nbsp;' + i +  '</a>';
-
-		// For each episode
-		strHtml += '<ul class="sheet-item collapse" id="collapseSeason">\n';
-		for (var j in arSerie["seasons"][i].episodes){
-			strHtml += "<li>Episode&nbsp;" + j + "&nbsp;:&nbsp;" + arSerie["seasons"][i]["episodes"][j].title + "</li>\n";
-		}
-		strHtml += "</ul>\n";
-		$Season.html(strHtml);
-		// Appends Season to DOM
-		$TextContainer.append($Season);
-	}
->>>>>>> origin/master
 }
 
 
@@ -520,20 +492,14 @@ function fnBuildSerieSeasons(arSerie, $Target){
 
 		// Creates Season
 		$Season = $("<div>");
-<<<<<<< HEAD
 		$Season.addClass("season sheet-item col-sm-12 col-lg-6 thumbnail");
 		$Season.attr("data-season", i);
 		$Season.attr("data-serie-id", arSerie.id);
-=======
-		$Season.addClass("season sheet-item col-sm-12 col-lg-12 thumbnail dropdown");
-
->>>>>>> origin/master
 
 		// Initializes strHtml
 		strHtml = "";
-
 		// Display Season number
-		strHtml += '<a class="btn btn-primary">Season&nbsp;' + i +  '</a>';
+		strHtml += '<h2>Season&nbsp;' + i +  '</h2>';
 
 		// For each episode
 		strHtml += '<ul class="sheet-item">\n';
