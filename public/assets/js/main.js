@@ -289,7 +289,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Genre
 	$Genre.addClass("genre sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Genre
-	$Genre.html("Genre : " + strSerieGenre);
+	$Genre.html("<strong>Genre</strong> : " + strSerieGenre);
 	// Appends Genre to TextContainer
 	$TextContainer.append($Genre);
 
@@ -302,7 +302,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Actors
 	$Actors.addClass("actors sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Actors
-	$Actors.html("Actors : " + strSerieActors);
+	$Actors.html("<strong>Actors</strong> : " + strSerieActors);
 	// Appends Actors to sheet
 	$TextContainer.append($Actors);
 
@@ -315,7 +315,7 @@ function fnAppendSerieSheet(arSerie, $Target){
 	// Adds class to Summary
 	$Summary.addClass("summary sheet-item col-sm-12 col-lg-12 thumbnail");
 	// Add content to Summary
-	$Summary.html(strSerieSummary);
+	$Summary.html("<strong>Summary</strong> : " +strSerieSummary);
 	// Appends Summary to sheet
 	$TextContainer.append($Summary);
 

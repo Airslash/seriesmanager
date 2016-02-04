@@ -34,7 +34,7 @@ class UserController extends Controller
 			// validation des données
 			$isValid = true;
 
-				
+			$userManager = new \Manager\UserManager;
 
 			// username 
 			if (empty($username)){
@@ -51,7 +51,7 @@ class UserController extends Controller
 			// password
 			if (empty($password) || empty($password_bis)) {
 				$isValid = false;
-				$error = "Fill the field please !";
+				$error = "Password missing !";
 			} elseif ($password != $password_bis){
 				$isValid = false;
 				$error = "Passwords are not the same !";
